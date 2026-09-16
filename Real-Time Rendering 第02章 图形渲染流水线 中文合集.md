@@ -28,7 +28,7 @@
 本章介绍实时图形的核心组成部分，即图形渲染流水线，也简称为“流水线”。给定虚拟相机、三维物体、光源等信息后，流水线的主要功能是生成——也就是渲染——一幅二维图像。因此，渲染流水线是实时渲染的基础工具。图 2.1 展示了使用流水线的过程。图像中物体的位置和形状，由其几何结构、环境特征以及相机在环境中的位置决定。物体的外观则受到材质属性、光源、纹理（应用于表面的图像）和着色方程的影响。
 
 
-![图2.1 虚拟相机、视锥体及其渲染结果](Real-Time_Rendering_4th_中文/assets/fig_intro_2_1.png)
+![图2.1 虚拟相机、视锥体及其渲染结果](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_intro_2_1.png)
 
 **图 2.1。** 左图中，虚拟相机位于棱锥的顶点，即四条线汇聚的位置。只有位于视景体内的图元才会被渲染。对于使用透视方式渲染的图像（如本图），视景体是一个视锥体（frustum，复数为 frusta），也就是底面为矩形、截去了顶部的棱锥。右图展示了相机“看到”的内容。注意，左图中的红色圆环没有出现在右侧渲染结果中，因为它位于视锥体之外。另外，左图中扭曲的蓝色棱柱受到了视锥体顶平面的裁剪。
 
@@ -46,7 +46,7 @@
 这种流水线结构也出现在实时计算机图形学中。如图 2.2 所示，实时渲染流水线可以粗略划分为四个主要阶段：*应用、几何处理、光栅化和像素处理*。这一结构是实时计算机图形应用所使用的核心，也就是渲染流水线的引擎，因此也是后续各章讨论的重要基础。每个阶段通常本身又是一条流水线，也就是说，它由若干子阶段组成。我们要区分这里展示的功能阶段与其实现结构。一个功能阶段规定了需要完成的某项任务，但并不规定该任务在流水线中的执行方式。某种具体实现可能会将两个功能阶段合并到一个单元中，或使用可编程核心来执行，同时又将另一个更耗时的功能阶段拆分到多个硬件单元中。
 
 
-![图 2.2 渲染流水线的基本结构](Real-Time_Rendering_4th_中文/assets/fig_2.1_2.2.png)
+![图 2.2 渲染流水线的基本结构](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_2.1_2.2.png)
 
 **图 2.2** 渲染流水线的基本结构，由应用、几何处理、光栅化和像素处理四个阶段组成。每个阶段本身都可能是一条流水线，如几何处理阶段下方所示；某个阶段也可能被（部分）并行化，如像素处理阶段下方所示。在这幅图中，应用阶段是单一处理过程，但这个阶段也可以采用流水线或并行化。注意，光栅化负责找出图元（例如三角形）内部的像素。
 
@@ -79,7 +79,7 @@
 GPU 上的几何处理阶段负责大部分逐三角形和逐顶点操作。这一阶段进一步划分为以下功能阶段：顶点着色、投影、裁剪和屏幕映射（图 2.3）。
 
 
-![图 2.3 几何处理的功能阶段](Real-Time_Rendering_4th_中文/assets/fig_2_3_2.3.png)
+![图 2.3 几何处理的功能阶段](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_2_3_2.3.png)
 
 图 2.3. 几何处理阶段划分成由多个功能阶段组成的流水线。
 
@@ -94,7 +94,7 @@ GPU 上的几何处理阶段负责大部分逐三角形和逐顶点操作。这�
 如前所述，只有摄像机（或观察者）看得到的模型才会被渲染。摄像机在世界空间中具有一个位置和一个方向，它们用于放置摄像机并确定其朝向。为了便于投影和裁剪，需要对摄像机和所有模型应用观察变换。观察变换的目的是把摄像机放在原点，并使它朝向 z 轴负方向，同时令 y 轴指向上方、x 轴指向右方。我们采用朝向 −z 轴的约定；某些文献更倾向于沿 +z 轴观察。两者的差别主要在于语义，因为相互转换很简单。应用观察变换后的实际位置和方向取决于底层应用程序编程接口（API）。由此定义的空间称为摄像机空间，更常见的名称是观察空间或眼空间。图 2.4 给出了观察变换如何影响摄像机和模型的示例。模型变换和观察变换都可以用 4×4 矩阵实现，这是第 4 章的主题。不过，必须认识到，程序员可以用自己喜欢的任何方式计算顶点的位置和法线。
 
 
-![图 2.4 世界空间与观察空间](Real-Time_Rendering_4th_中文/assets/fig_2_3_2.4.png)
+![图 2.4 世界空间与观察空间](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_2_3_2.4.png)
 
 图 2.4. 左图以俯视视角展示摄像机按照用户希望的位置和朝向放置在世界中；在这个世界中，+z 轴向上。观察变换重新调整世界的朝向，使摄像机位于原点，沿自身 z 轴负方向观察，并使摄像机的 +y 轴向上，如右图所示。这样做是为了使裁剪和投影操作更简单、更快速。浅蓝色区域是视体。这里假设采用透视观察，因为视体是一个视锥台。类似的技术适用于任何类型的投影。
 
@@ -107,7 +107,7 @@ GPU 上的几何处理阶段负责大部分逐三角形和逐顶点操作。这�
 作为顶点着色的一部分，渲染系统先进行投影，再进行裁剪，将视体变换为极端点位于 (−1,−1,−1) 和 (1,1,1) 的单位立方体。也可以采用不同的取值范围来定义同一个体积，而且实践中确实如此，例如 0≤ z≤1。这个单位立方体称为规范视体。投影先执行，在 GPU 上由顶点着色器完成。常用的投影方法有两种：正交投影（也称平行投影）和透视投影，见图 2.5。实际上，正交投影只是平行投影的一种。其他若干平行投影也有应用，特别是在建筑领域，例如斜投影和轴测投影。老式街机游戏 Zaxxon 的名字就源自后者。
 
 
-![图 2.5 正交投影与透视投影](Real-Time_Rendering_4th_中文/assets/fig_2_3_2.5.png)
+![图 2.5 正交投影与透视投影](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_2_3_2.5.png)
 
 图 2.5. 左侧为正交投影，也称平行投影；右侧为透视投影。
 
@@ -140,7 +140,7 @@ GPU 上的几何处理阶段负责大部分逐三角形和逐顶点操作。这�
 图 2.6 展示了裁剪过程。除了视体的六个裁剪平面，用户还可以定义额外的裁剪平面，以便在视觉上切开物体。这种称为剖切的可视化方式，其示例图见第 818 页的图 19.1。
 
 
-![图 2.6 针对单位立方体进行裁剪](Real-Time_Rendering_4th_中文/assets/fig_2_3_2.6.png)
+![图 2.6 针对单位立方体进行裁剪](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_2_3_2.6.png)
 
 图 2.6. 经过投影变换后，只有单位立方体内部的图元（对应于视锥台内部的图元）才需要继续处理。因此，单位立方体外部的图元被丢弃，完全位于内部的图元被保留。与单位立方体相交的图元会针对单位立方体进行裁剪，由此生成新的顶点，并丢弃旧的顶点。
 
@@ -148,20 +148,20 @@ GPU 上的几何处理阶段负责大部分逐三角形和逐顶点操作。这�
 
 ### 2.3.4 屏幕映射
 
-只有位于视体内部的、经过裁剪的图元才会传递到屏幕映射阶段；进入这个阶段时，坐标仍然是三维的。每个图元的 x 和 y 坐标经过变换，形成屏幕坐标。屏幕坐标连同 z 坐标也称为窗口坐标。假设要将场景渲染到一个窗口中，其最小角点为 (![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_0e75b549241336.png),![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_f1ec51e297ad2b.png))，最大角点为 (![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_f2e965e93477fa.png),![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_573f3a0687ddd7.png))，其中 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_0e75b549241336.png)<![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_f2e965e93477fa.png) 且 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_f1ec51e297ad2b.png)<![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_573f3a0687ddd7.png)。那么屏幕映射就是先平移、再缩放的操作。新的 x 和 y 坐标称为屏幕坐标。z 坐标（OpenGL 中为 [−1,+1]，DirectX 中为 [0,1]）也会被映射到 [![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_baef38445849db.png),![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_786fb04e7e09f1.png)]，其中默认值为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_baef38445849db.png)=0、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_786fb04e7e09f1.png)=1。不过，可以通过 API 改变这些值。窗口坐标连同这个重新映射的 z 值被传递给光栅化器阶段。图 2.7 展示了屏幕映射过程。
+只有位于视体内部的、经过裁剪的图元才会传递到屏幕映射阶段；进入这个阶段时，坐标仍然是三维的。每个图元的 x 和 y 坐标经过变换，形成屏幕坐标。屏幕坐标连同 z 坐标也称为窗口坐标。假设要将场景渲染到一个窗口中，其最小角点为 (![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_0e75b549241336.png),![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_f1ec51e297ad2b.png))，最大角点为 (![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_f2e965e93477fa.png),![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_573f3a0687ddd7.png))，其中 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_0e75b549241336.png)<![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_f2e965e93477fa.png) 且 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_f1ec51e297ad2b.png)<![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_573f3a0687ddd7.png)。那么屏幕映射就是先平移、再缩放的操作。新的 x 和 y 坐标称为屏幕坐标。z 坐标（OpenGL 中为 [−1,+1]，DirectX 中为 [0,1]）也会被映射到 [![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_baef38445849db.png),![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_786fb04e7e09f1.png)]，其中默认值为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_baef38445849db.png)=0、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_786fb04e7e09f1.png)=1。不过，可以通过 API 改变这些值。窗口坐标连同这个重新映射的 z 值被传递给光栅化器阶段。图 2.7 展示了屏幕映射过程。
 
 
-![图 2.7 屏幕映射](Real-Time_Rendering_4th_中文/assets/fig_2_3_2.7.png)
+![图 2.7 屏幕映射](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_2_3_2.7.png)
 
 图 2.7. 经过投影变换后，图元位于单位立方体中，屏幕映射过程负责求出它们在屏幕上的坐标。
 
 接下来，我们说明整数值和浮点值与像素（以及纹理坐标）之间的关系。给定一行水平排列的像素，并采用笛卡尔坐标，最左侧像素的左边缘在浮点坐标中为 0.0。OpenGL 一直采用这种方案，DirectX 10 及其后续版本也采用它。这个像素的中心位于 0.5。因此，范围为 [0,9] 的一组像素覆盖的区间是 [0.0,10.0)。转换很简单：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_50435c0440d37d.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_50435c0440d37d.png)
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_02_03_2a7bdf9a8d169b.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_02_03_2a7bdf9a8d169b.png)
 
 
 其中，d 是像素的离散（整数）索引，c 是像素内部的连续（浮点）值。
@@ -178,7 +178,7 @@ GPU 上的几何处理阶段负责大部分逐三角形和逐顶点操作。这�
 给定经过变换和投影的顶点及其关联的着色数据（这些全部来自几何处理），下一阶段的目标是找出位于正在渲染的图元（例如三角形）内部的所有像素。像素的英文名称 pixel 是 picture element（图像元素）的简称。我们将这一过程称为**光栅化**，并将其划分为两个功能子阶段：**三角形设置**（也称为**图元装配**）和**三角形遍历**。图 2.8 左侧展示了这两个子阶段。请注意，它们也能够处理点和线，但由于三角形最为常见，这两个子阶段的名称中都带有“三角形”。因此，光栅化也称为**扫描转换**，它将屏幕空间中的二维顶点转换为屏幕上的像素；每个顶点都关联着一个 z 值（深度值）以及各种着色信息。光栅化也可以看作几何处理与像素处理之间的一个同步点，因为三个顶点正是在这里组成三角形，并最终向下传递到像素处理阶段。
 
 
-![图 2.8：光栅化与像素处理的功能子阶段](Real-Time_Rendering_4th_中文/assets/fig_2.4_2.8.png)
+![图 2.8：光栅化与像素处理的功能子阶段](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_2.4_2.8.png)
 
 **图 2.8。** 左：光栅化分为两个功能阶段，称为三角形设置和三角形遍历。右：像素处理分为两个功能阶段，即像素处理和合并。
 
@@ -204,7 +204,7 @@ GPU 上的几何处理阶段负责大部分逐三角形和逐顶点操作。这�
 所有逐像素的着色计算都在这里执行，以插值得到的着色数据作为输入。最终结果是一种或多种颜色，它们将被传递到下一阶段。三角形设置和遍历阶段通常由专用的硬连线芯片电路执行，而像素着色阶段则由可编程的 GPU 核心执行。为此，程序员需要提供一个像素着色器程序（在 OpenGL 中称为片元着色器），其中可以包含任何所需的计算。这里可以采用多种多样的技术，其中最重要的技术之一是纹理映射。第 6 章将更详细地介绍纹理映射。简单来说，给物体进行纹理映射，就是出于各种目的将一幅或多幅图像“粘贴”到该物体上。图 2.9 展示了这一过程的简单例子。图像可以是一维、二维或三维的，其中二维图像最为常见。在最简单的情况下，最终产物是每个片元的一个颜色值，这些颜色值将被传递到下一个子阶段。
 
 
-![图 2.9：龙模型的纹理映射](Real-Time_Rendering_4th_中文/assets/fig_2.5_2.9.png)
+![图 2.9：龙模型的纹理映射](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_2.5_2.9.png)
 
 **图 2.9** 左上方显示了一个没有纹理的龙模型。图像纹理中的各个部分被“粘贴”到龙身上，结果如左下方所示。
 
