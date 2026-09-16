@@ -1,0 +1,2484 @@
+# 《Real-Time Rendering》第四版 索引
+
+按原书索引顺序排列，保留原页码、范围与交叉引用；斜体页码表示主要引用。跨页、跨批次的续排标记沿用原条目层级。
+
+## 索引（Index）：原书第1155—1160页
+
+来源：《Real-Time Rendering, Fourth Edition》，PDF物理页1176—1181。
+
+对于具有多个页码引用的索引术语，*斜体页码（或页码范围）* 表示最重要的引用。
+
+译文按原书英文索引顺序排列；缩进表示父子层级。括号保留原文术语及交叉引用。页码均为原书页码；“n”后缀按原文保留。
+
+### 原书第1155页（PDF第1176页）
+
+- 一环邻域（1-ring） — 759, *760*
+- 2.5维（2.5 dimensions） — 531
+- 3D打印（3D printing） — 578, 683, 693
+- 3dfx Interactive — 37
+- A缓冲区（A-buffer） — 见下列条目下的子项：“缓冲区”（see under buffer）
+- AABB — 822, *944*, 946, 974, 976
+  - 创建（creation） — 949
+  - 正交投影（orthographic projection） — 93
+- AABB与物体求交（AABB/object intersection） — 见“相交测试 → AABB/AABB”（see intersection testing, AABB/AABB）
+- 学院色彩编码系统（Academy Color Encoding System） — 见“ACES”（see ACES）
+- 加速算法（acceleration algorithms） — 14, 682, *817–879*, 另见“优化”（see also optimization）
+- 可达性着色（accessibility shading） — 449
+- 调焦（accommodation） — 923
+- 累积缓冲区（accumulation buffer） — 见“缓冲区 → 累积”（see buffer, accumulation）
+- ACE — 1036
+- ACES — 287
+- 适应（adaptation） — 285
+- 自适应细化（adaptive refinement） — 547
+- 邻接图（adjacency graph） — 692
+- 亲和性掩码（affinity mask） — 928
+- 爆炸头武士（Afro Samurai） — 658
+- AHD基（AHD basis） — 见“基 → AHD”（see basis, AHD）
+- 反照率（albedo） — 314
+  - 方向性（directional） — 313
+  - 纹理（texture） — 885
+- 走样（aliasing） — 130, *131*
+  - 爬行状伪影（crawlies） — 130
+  - 萤火虫噪点（fireflies） — 132, 801
+  - 锯齿（jaggies） — 130, *132*, 537
+  - 透视（perspective） — 239
+  - 投影（projective） — 240
+  - 自阴影（self-shadow） — 236
+  - 阴影贴图（shadow map） — 236
+  - 时间域（temporal） — 132, 182
+  - 纹理（texture） — 182, 186
+- 透明度alpha（alpha） — *149*, 159–160, 202–208
+  - 混合（blending） — *149–150*, 203
+  - 通道（channel） — 24, *159*, 160, 203, 1010
+  - 细节层次（LOD） — 见“细节层次 → 透明度alpha”（see level of detail, alpha）
+  - 映射（mapping） — 见“纹理处理”（see texturing）
+  - 预乘（premultiplied） — 159–160
+  - 测试（testing） — 24, 204
+  - 未预乘（unmultiplied） — 160
+- alpha转覆盖率（alpha to coverage） — 149, *207*
+- 交替帧渲染（alternate frame rendering） — 1013
+- ALU — *1002–1003*, 1029, 1036
+- 环境（ambient）
+  - 孔径光照（aperture lighting） — 466
+  - 颜色（color） — 392
+  - 立方体（cube） — *394–395*, 432, 478, 488
+  - 骰子（dice） — *395*, 478, 488
+  - 光（light） — 见“光 → 环境”（see light, ambient）
+- 环境光遮蔽（ambient occlusion） — 446–451
+  - 动态（dynamic） — 453–457
+  - 场（field） — 452
+  - 真实基准（ground-truth） — 461
+  - 基于地平线（horizon-based） — 460
+  - 预计算（precomputed） — 451–453
+  - 屏幕空间（screen-space） — 457–463
+  - 着色（shading） — 463–465
+  - 时间超采样（temporal supersampling） — 462
+  - 体积（volume） — 452
+  - 体积式（volumetric） — 459
+- 环境／高光／方向基（ambient/highlight/direction basis） — 476
+- Amdahl定律（Amdahl’s law） — 1020
+- 动画（animation） — 81, 85, 200, 829
+  - 赛璐璐（cel） — 652
+  - 替身（impostor） — 562
+  - 粒子系统（particle system） — 567
+  - 精灵（sprite） — 550
+  - 细分（subdivision） — 781
+  - 纹理（texture） — 见“纹理处理 → 动画”（see texturing, animation）
+  - 顶点混合（vertex blending） — 见下列条目下的子项：“变换”（see under transform）
+
+### 原书第1156页（PDF第1177页）
+
+- 各向异性过滤（anisotropic filtering） — 见下列条目下的子项：“纹理处理 → 缩小”（see under texturing, minification）
+- 各向异性反射（anisotropic reflection） — 314
+- 非均匀缩放（anisotropic scaling） — 62
+- 反阴影（anti-shadow） — 227
+- 抗锯齿（antialiasing） — 130–148
+  - 覆盖率采样（coverage sampling） — 141
+  - 自定义过滤器（custom filter） — 142
+  - 方向局部化（directionally localized） — 147
+  - 到边缘的距离（distance-to-edge） — 147
+  - 增强质量（enhanced quality） — 141
+  - 快速近似（fast approximate） — 146, 148
+  - FLIPQUAD — 146
+  - 全场景（full-scene） — 138
+  - 几何缓冲区（geometry buffer） — 147
+  - 混合重建（hybrid reconstruction） — 146
+  - 基于图像（image-based） — 147, 148
+  - 抖动（jittering） — 144, 909
+  - 形态学（morphological） — 146–148
+  - 多重采样（multisampling） — *139–142*, 144–148, 155
+  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_75820ecdef3de4.png)车采样（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_75820ecdef3de4.png)-rooks） — 143
+  - 梅花五点采样（Quincunx） — 145–146
+  - 旋转网格（rotated grid） — 143, 145, 146
+  - 基于屏幕（screen based） — 137–148, 204–207
+  - 亚像素形态学（subpixel morphological） — 148
+  - 亚像素重建（subpixel reconstruction） — 147
+  - 超采样（supersampling） — 138–139
+    - 旋转网格（rotated grid） — 1028
+  - 时间域（temporal） — *142–143*, 144–146, 148
+  - 纹理（texture） — 见“纹理处理 → 缩小”（see texturing, minification）
+- 孔径（aperture） — 307
+- 顶点映射（apex point map） — 837, 980
+- API — 15
+- 应用阶段（application stage） — 见下列条目下的子项：“流水线”（see under pipeline）
+- 算术逻辑单元（arithmetic logic unit） — 见“ALU”（see ALU）
+- 艺术化渲染（artistic rendering） — 见“非真实感渲染”（see non-photorealistic rendering）
+- 奇点灰烬（Ashes of the Singularity） — 883, 911, 913
+- Ashikhmin模型（Ashikhmin model） — 357
+- 视图图（aspect graph） — 见下列条目下的子项：“空间数据结构”（see under spatial data structure）
+- 刺客信条（Assassin’s Creed） — 453, 539
+- 刺客信条4：黑旗（Assassin’s Creed 4: Black Flag） — 478, 481
+- 刺客信条：大革命（Assassin’s Creed Unity） — 834, 851, 905
+- Assimp — 716
+- ASTC — 见下列条目下的子项：“纹理处理 → 压缩”（see under texturing, compression）
+- 异步计算引擎（asynchronous compute engine） — 见“ACE”（see ACE）
+- atan2 — *8*, 72
+- 大气（atmosphere） — 595, 596, 601, 613–616, 622–623
+- 衰减指数（attenuation index） — 298
+- 增强现实（augmented reality） — 915–940
+- 平均缓存未命中率（average cache miss ratio） — 700
+- 轴对齐包围盒（axis-aligned bounding box） — 见“AABB”（see AABB）
+- 轴对齐BSP树（axis-aligned BSP tree） — 见下列条目下的子项：“空间数据结构 → BSP树”（see under spatial data structure, BSP tree）
+- B样条（B-spline） — 见下列条目下的子项：“曲线与曲面”（see under curves and surfaces）
+- 后缓冲区（back buffer） — 见“缓冲区 → 后”（see buffer, back）
+- 后平面（back plane） — 93n
+- 背面剔除（backface culling） — 见“剔除 → 背面”（see culling, backface）
+- 反向投影（backprojection） — 252
+- 反向映射（backward mapping） — 532
+- 烘焙（baking） — *451*, 473, 853
+  - 最小二乘（least-squares） — 452
+- 平衡流水线（balancing the pipeline） — 见“流水线”（see pipeline）
+- 带限信号（band-limited signal） — 133
+- 色带（banding） — 161, 1010
+- 色带伪影（banding artifacts） — 279, 1010
+- 带宽（bandwidth） — 1006
+- Bartleson-Breneman效应（Bartleson-Breneman effect） — 285
+- 重心坐标（barycentric coordinates） — 45, 46, 489, 673, 740, 748, 907, *963*, 998–1001
+  - 透视校正（perspective correct） — 999–1001
+- 基（basis） — 209
+  - AHD — *402*, 467, 471, 484, 488, 498
+  - 函数（functions）
+    - 正交（orthogonal） — 398
+    - 标准正交（orthonormal） — 399
+  - 半球（hemispherical） — 402–404
+  - 投影（projection） — 393
+  - 球面（spherical） — 395–402
+    - 高斯（Gaussian） — *397–398*, 471–472, 477–478, 488, 498
+    - 谐波（harmonics） — 见“球面 → 谐波”（see spherical, harmonics）
+    - 径向（radial） — 396
+  - 标准（standard） — 8, 400
+  - 切线空间（tangent space） — *209–210*, 343, 403, 766
+- 批次（batch） — 796
+- 批处理（batching） — 795
+- 战地1（Battlefield 1） — 601
+- 战地4（Battlefield 4） — 514
+- BC — 见下列条目下的子项：“纹理处理 → 压缩”（see under texturing, compression）
+- 钟形曲线（bell curve） — 515
+- 基准测试（benchmarking） — 1012
+- 弯曲锥体，屏幕空间（bent cone, screen-space） — 467
+- 弯曲法线（bent normal） — 448, 465
+- Bernstein
+  - 形式（form） — 835
+    - Bézier曲线（Bézier curve） — 722
+    - Bézier曲面片（Bézier patch） — 737
+    - Bézier三角形（Bézier triangle） — 740
+  - 多项式（polynomial） — *723*, 737
+    - Bézier三角形（Bézier triangle） — 741
+- Bézier基函数（Bézier basis function） — 723
+- Bézier曲线（Bézier curves） — 见“曲线 → Bézier”（see curves, Bézier）
+- Bézier曲面片（Bézier patch） — 见下列条目下的子项：“曲面”（see under surfaces）
+- Bézier三角形（Bézier triangle） — 见下列条目下的子项：“曲面”（see under surfaces）
+- BGR颜色顺序（BGR color order） — 1010
+- 偏移量（bias） — 226
+  - 圆锥（cone） — 249
+
+### 原书第1157页（PDF第1178页）
+
+- 偏移量（bias，续自原书第1156页）
+  - 法线偏移（normal offset） — *238*, 250
+  - 接收平面深度（receiver plane depth） — 250
+  - 斜率比例（slope scale） — *236*, 249
+- 双向反射分布函数（bidirectional reflectance distribution function） — 见“BRDF”（see BRDF）
+- 双向散射分布函数（bidirectional scattering distribution function） — 见“BSDF”（see BSDF）
+- 双向表面散射分布函数（bidirectional surface scattering distribution functions） — 见“BSSRDF”（see BSSRDF）
+- 双线性插值（bilinear interpolation） — 735
+- 公告板（billboard） — 551–564, 另见“替身”（see also impostor）
+  - 轴向（axial） — *559–560*, 568
+  - 云（clouds） — 563–564
+  - 粒子（particle） — 567
+  - 屏幕对齐（screen-aligned） — 553
+  - 球面（spherical） — 559
+  - 世界定向（world-oriented） — 554–559
+- 二叉空间分割树（binary space partitioning tree） — 见“空间数据结构 → BSP树”（see spatial data structure, BSP tree）
+- 二叉树（binary tree） — 820
+- 无绑定纹理（bindless texture） — 192
+- 副法线向量（binormal vector） — 209
+- 双二次曲面（biquadratic surface） — 736
+- 副切线向量（bitangent vector） — 209, 343
+- 混合形状（blend shapes） — 见“变换 → 变形目标”（see transform, morph targets）
+- 混合（blending） — 25
+  - 加法（additive） — *151*, 527
+  - 函数（function） — *723*, 729
+    - 隐式曲面（implicit surface） — 752
+  - 多层alpha（multi-layer alpha） — 156
+  - 操作（operations） — 见“纹理处理”（see texturing）
+  - 曲面（surfaces） — 见“曲面 → 隐式”（see surfaces, implicit）
+- Blinn光照方程（Blinn lighting equation） — 314
+- 阻塞（blocking） — 809
+- 泛光（bloom） — 524, 604
+- 蓝幕抠像（blue-screening） — 160
+- 模糊（blur） — 515–518
+- 散景（bokeh） — *531*, 536
+- Boost — 793
+- 边界（border） — 174
+- 无主之地（Borderlands） — 662, 679
+- 瓶颈（bottleneck） — 12, *783*, 786–788, 1023
+- 边界表示（boundary representation） — 581
+- 有界Bézier曲线（bounded Bézier curve） — 见“曲线 → 有界Bézier”（see curves, bounded Bézier）
+- 包围体（bounding volume） — *819*, 976
+  - 创建（creation） — 948–953
+  - 层次结构（hierarchy） — 见下列条目下的子项：“空间数据结构”（see under spatial data structure）
+  - 时间域（temporal） — 821
+- 包围体与物体求交（bounding volume/object intersection） — 见“相交测试”（see intersection testing）
+- 蝴蝶结结构（bowtie） — 684
+- 盒子与物体求交（box/object intersection） — 见“相交测试”下的具体物体条目（see specific objects under intersection testing）
+- BRDF — 308–315
+  - 各向异性（anisotropic） — 314
+  - Ashikhmin — 357
+  - Banks — 359
+  - Blinn-Phong — 314
+  - 透明涂层（clear coat） — 364
+  - 布料（cloth） — 356–359
+  - Cook-Torrance — 314
+  - Disney漫反射（Disney diffuse） — 354, 357
+  - Disney原则化模型（Disney principled） — 324, 340, 345, 353, 364
+  - Hapke模型（Hapke model） — 314
+  - 各向同性（isotropic） — 310
+  - Kajiya-Kay — 359
+  - 朗伯（Lambertian） — 313, 314
+  - Lommel-Seeliger模型（Lommel-Seeliger model） — 314
+  - 月面（lunar） — 314
+  - Oren-Nayar — 354
+  - Phong — 314, 340
+  - 反射瓣（reflectance lobe） — *315*, 416
+  - 镜面反射瓣（specular lobe） — *315*, 338, 416, 418
+  - Torrance-Sparrow — 334
+  - Ward — 314
+  - 波动光学模型（wave optics model） — 359–363
+- 野兽传奇（Brütal Legend） — 572
+- BSDF — 641–648
+- BSP树（BSP tree） — 见下列条目下的子项：“空间数据结构”（see under spatial data structure）
+- BSSRDF — 634
+- 缓冲区（buffer）
+  - A缓冲区（A-buffer） — 155
+  - 累积（accumulation）
+    - 抗锯齿（antialiasing） — 139
+    - 景深（depth of field） — 529
+    - 运动模糊（motion blur） — 537
+    - 软阴影（soft shadow） — 228
+  - 后（back） — 25, 1012
+  - 缓存（cache） — 1007
+  - 颜色（color） — 24, 1009–1010
+  - 压缩（compression） — *1007–1009*, 1032–1033
+  - 深层（deep） — 884
+  - 双重（double） — 25, *1012*
+  - 动态（dynamic） — 793
+  - 帧缓冲区（framebuffer） — 25
+  - 前（front） — 25, 1012
+  - G缓冲区（G-buffer） — 661, *884*
+  - 标识（identification） — 668, *942*
+  - 交错（interleaved） — 702
+  - 待呈现（pending） — 1013
+  - 单一（single） — 790, *1012*
+  - 静态（static） — 794
+  - 模板（stencil） — *24*, 53
+    - 投影阴影（projection shadow） — 227
+    - 阴影体（shadow volume） — 230–233
+  - 交换（swap） — 25, 1012, 1013
+  - 三重（triple） — 1013
+
+### 原书第1158页（PDF第1179页）
+
+- 缓冲区（续）（buffer (continued)）
+  - 速度（velocity） — 143, *540–541*
+  - 可见性（visibility） — 906–908, 912
+  - z缓冲区（z-buffer） — *24*, 53, 152, 1014–1016, 1048
+    - 分层（hierarchical） — 见下列条目下的子项：“剔除”（see under culling）
+- 凹凸映射（bump mapping） — 167, 208–214
+  - 过滤（filtering）
+    - CLEAN — 370
+    - LEAN — 370
+    - Toksvig — 369
+  - 高度场（heightfield） — 211–212
+  - 法线贴图（normal map） — 195, 211–214, 366, 710
+  - 偏移向量（offset vector） — 211
+- 总线带宽（bus bandwidth） — 1006
+- BV — 见“包围体”（see bounding volume）
+- BVH — 见“空间数据结构 → 包围体层次结构”（see spatial data structure, bounding volume hierarchy）
+- ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_d3847367703df1.png)连续性（continuity） — 见“连续性”（see continuity）
+- ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_7d4203676e2f8d.png)连续性（continuity） — 见“连续性”（see continuity）
+- 缓存（cache）
+  - 层次结构（hierarchy） — 1038
+  - 内存（memory） — 792
+  - 变换后（post-transform） — 700, 705
+  - 变换前（pre-transform） — 705
+  - 纹理（texture） — 1017–1018
+  - 顶点（vertex） — 700, 701, 703
+- 缓存无关网格（cache-oblivious mesh） — 见“网格 → 缓存无关”（see mesh, cache-oblivious）
+- CAD — 546
+- 使命召唤（Call of Duty） — 402, 476, 478
+- 使命召唤：高级战争（Call of Duty: Advanced Warfare） — 286, 542, 718
+- 使命召唤：黑色行动（Call of Duty: Black Ops） — 340, 370
+- 使命召唤：无限战争（Call of Duty: Infinite Warfare） — 325, 363–365, 420, 902
+- 使命召唤：二战（Call of Duty: WWII） — 476
+- 相机（camera） — 307–308
+- 相机空间（camera space） — 15
+- 坎德拉（candela） — 271
+- 规范视体（canonical view volume） — 16, 94
+- 胶囊体（capsule） — 946
+- 卡通渲染（cartoon rendering） — 见“着色 → 卡通”（see shading, toon）
+- 阴极射线管（cathode-ray tube） — 见“CRT”（see CRT）
+- Catmull-Clark细分（Catmull-Clark subdivision） — 见“曲面 → 细分 → Catmull-Clark”（see surfaces, subdivision, Catmull-Clark）
+- Catmull-Rom样条（Catmull-Rom spline） — 731
+- 焦散（caustics） — 630–632
+- 卡通暴力赛车（Cel Damage） — 659, 660
+- 赛璐璐渲染（cel rendering） — 见“着色 → 卡通”（see shading, toon）
+- 单元（cell） — 见“剔除 → 门户”（see culling, portal）
+- 基于单元的可见性（cell-based visibility） — 842
+- CFAA — 见“抗锯齿 → 自定义过滤器”（see antialiasing, custom filter）
+- 角色动画（character animation） — 见“变换 → 顶点混合”（see transform, vertex blending）
+- 炭笔（charcoal） — 652
+- 参数化图块（chart） — 909
+- 棋盘格渲染（checkerboard rendering） — 146, 930
+- 色度子采样（chroma subsampling） — 804
+- 色键抠像（chroma-keying） — 160
+- 色差（chromatic aberration） — 521, 628, *921*
+- 色度（chromaticity） — 273
+- 色度信号（chrominance） — 197
+- Chromium — 1020
+- CIE — 272, 273
+- CIE色度图（CIE chromaticity diagram） — 274–278
+- CIE XYZ — 273–276
+- CIECAM02 — 278
+- CIELAB — 276
+- CIELUV — 276
+- 睫状光晕（ciliary corona） — 524
+- 弥散圆（circle of confusion） — 531
+- 文明5（Civilization V） — 879
+- 钳制（clamp） — 174
+- 黏土之书（Claybook） — 1045
+- CLEAN映射（CLEAN mapping） — 370
+- ClearType — 675
+- 裁剪坐标（clip coordinates） — 18
+- 裁剪贴图（clipmap） — 867
+- 裁剪（clipping） — 19, 997–998
+  - 保护带（guard-band） — 998
+  - 平面（plane） — 19
+- 时钟门控（clock gating） — 1028
+- 时钟频率（clock rate） — 789
+- CLOD — 见“细节层次 → 连续”（see level of detail, continuous）
+- 封闭模型（closed model） — 693
+- 云（clouds） — 257, 556, 563–564, 598, 613, 616–620, 622–623
+- 簇式延迟着色（clustered deferred shading） — 904
+- 簇式前向着色（clustered forward shading） — 904, 907, 908, 914
+- 簇式着色（clustered shading） — 898–905
+- ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_86bf7fa8249987.png)连续性（continuity） — 728
+- 代码优化（code optimization） — 见“优化 → 代码”（see optimization, code）
+- CodeAnalyst — 792
+- 相干性（coherence）
+  - 帧间（frame-to-frame） — 866
+  - 长度（length） — 362
+  - 空间（spatial） — 837
+  - 时间域（temporal） — 866
+- 碰撞检测（collision detection） — 14
+- 颜色（color） — 8, *272–290*
+  - 环境（ambient） — 392
+  - 缓冲区（buffer） — 见“缓冲区 → 颜色”（see buffer, color）
+  - 调色（grading） — 289–290
+  - 匹配（matching） — 272–274
+  - 模式（mode） — 1009
+    - 深色彩（deep color） — 1010
+    - 高彩色（high color） — 1009–1010
+    - 真彩色（true color） — 1009–1010
+  - 感知（perception） — 278
+
+### 原书第1159页（PDF第1180页）
+
+- 色貌模型（color appearance model） — 278
+- 色彩空间（color space）
+  - ACEScg — 278
+  - Adobe 1998 — 277
+  - DCI-P3 — 277
+  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_b1f1a7494460f8.png) — 276, 287
+  - Rec. 2020 — 277, 281
+  - Rec. 709 — 277, 281
+  - sRGB — 277, 281
+  - 工作空间（working） — 278
+- 配色函数（color-matching functions） — 272–273
+- 色度学（colorimetry） — 272–279
+- 命令缓冲区（command buffer） — 812–814
+- 统一着色器核心（common-shader core） — 35
+- 通信（communication） — 1023
+- 合成（compositing） — 159
+- 压缩（compression）
+  - 非对称性（asymmetry） — 196
+  - 缓冲区（buffer） — 见“缓冲区 → 压缩”（see buffer, compression）
+  - 纹理（texture） — 见“纹理处理 → 压缩”（see texturing, compression）
+  - 顶点（vertex） — 见“顶点 → 压缩”（see vertex, compression）
+- 计算摄影（computational photography） — 549, 573
+- 计算着色器（compute shader） — 14, 40, 41, 51, *54*, 245, 256, 259, 288, 514, 518, 535, 536, 569, 578, 582, 611, 677, 778, 784, 795, 798, 812, 851, 879, 888, 893, 895, 896, 901, 903, 907, 911, 912, 914, 986, 1043
+- 计算单元（compute unit） — 1003, 1035
+- 串接（concatenation） — 见“变换 → 串接”（see transform, concatenation of）
+- 锥体追踪（cone tracing） — 455, 467, *584*
+  - 体素（voxel） — 495, 504
+- 能量守恒（conservation of energy） — 312
+- 保守深度（conservative depth） — 1016
+- 保守光栅化（conservative rasterization） — 见“光栅化 → 保守”（see rasterization, conservative）
+- 相长干涉（constructive interference） — 见“光 → 干涉 → 相长”（see light, interference, constructive）
+- 构造实体几何（constructive solid geometry） — 750
+- 连续性（continuity） — 另见“曲线与曲面”（see also curves and surfaces）
+  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_d3847367703df1.png) — *728*, 741, 745
+  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_7d4203676e2f8d.png) — *728*, 742
+  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_86bf7fa8249987.png) — 728
+  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_b0f949a5b178a2.png) — 728, 742
+  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_f44c92620541e7.png) — 728
+- 连续信号（continuous signal） — 131
+- 轮廓（contour） — 686
+  - 边缘检测（edge detection） — 665–669
+  - 光晕（halo） — 659
+  - 图像（image） — 660–665
+  - 线（line） — 655
+  - 环（loop） — 667
+  - 程序化几何（procedural geometry） — 657–660
+  - 着色法线（shading normal） — 656–657
+  - 外壳（shell） — 658–659
+- 等高线状伪影（contouring artifacts） — 见“色带伪影”（see banding artifacts）
+- 控制笼（control cage） — 756
+- 控制网格（control mesh） — 756
+- 控制点（control points） — 720
+- 控制多边形（control polygon） — 754
+- 凸包（convex hull） — 950
+  - Bézier曲线（Bézier curve） — 723
+  - Bézier曲面片（Bézier patch） — 738
+  - Bézier三角形（Bézier triangle） — 741
+  - Loop — 761
+- 凸分割（convex partitioning） — 684
+- 凸多面体（convex polyhedron） — *946*, 950
+- 凸区域（convex region） — 685
+- 卷积（convolution） — 135
+- Cook-Torrance模型（Cook-Torrance model） — 314
+- 光照遮罩（cookie） — 221, 230, 434
+- 坐标系（coordinate system）
+  - 左手（left-handed） — 92, *95*
+  - 右手（right-handed） — 92
+- 切角（corner cutting） — 753
+- 逆时针顶点顺序（counterclockwise vertex order） — 63, 692
+- 覆盖率（coverage） — 995
+- 覆盖掩码，A缓冲区（coverage mask, A-buffer） — 155
+- 受CPU限制（CPU-limited） — 786
+- 裂缝（cracking） — *689*, 769
+  - Bézier三角形（Bézier triangle） — 747
+  - 分数细分（fractional tessellation） — 769
+  - 多边形边（polygon edge） — 689, 714
+  - 四叉树（quadtree） — 774
+  - 曲面细分（tessellation） — 771
+- 爬行状伪影（crawlies） — 130
+- 折痕（crease） — 763
+- 临界角（critical angle） — 326
+- 叉积（cross product） — 7
+- CrossFire X — 1013
+- CRT — 161
+- 孤岛危机（Crysis） — 220, 457, 458, 559
+- 孤岛危机3（Crysis 3） — 631
+- CSAA — 见“抗锯齿 → 覆盖率采样”（see antialiasing, coverage sampling）
+- CSG — 750
+- CSM — 见“阴影 → 贴图 → 级联”（see shadow, map, cascaded）
+- 立方体贴图（cube map） — 173, 190
+- 立方体映射（cube mapping） — 见“环境映射 → 三次”（see environment mapping, cubic）
+- 立方体纹理（cube texture） — 190
+- CubeMapGen — 415
+- 三次卷积（cubic convolution） — 178
+- 三次曲线（cubic curve） — 见“曲线 → 三次”（see curves, cubic）
+- 图案遮光板（cuculoris） — 434
+- CUDA — 54, 1040
+- 剔除（culling） — 830–851
+  - 背面（backface） — 800, *831–835*
+    - 朝向一致性（orientation consistency） — 63
+  - 成簇背面（clustered backface） — 833–835
+  - 细节（detail） — 839–840
+
+### 原书第1160页（PDF第1181页）
+
+- 剔除（续）（culling (continued)）
+  - 早期z剔除（early-z） — 53, 801, 849, 851, *1016*
+  - 正面（frontface） — 832
+  - 分层z缓冲（hierarchical z-buffering） — 846–850
+  - 分层视锥（hierarchical view frustum） — 807, *835–837*, 981
+  - 图像空间（image-space） — *843*, 844, 846
+  - 物体空间（object-space） — 843
+  - 遮挡（occlusion） — 822, *840–850*
+  - 遮挡查询（occlusion query） — 844–845
+  - 门户（portal） — 837–839
+  - 射线空间（ray-space） — 843
+  - 视锥（view frustum） — 807, *835–837*, 981
+  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_00efa9f788eb2b.png) — 846
+  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_6f44afca509d7a.png) — 1015
+  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_3f16ddb16cefaa.png) — 1015
+- 曲线段（curve segment） — 729–730
+- 弯曲表面（curved surfaces） — 见“曲面”（see surfaces）
+- 曲线（curves）
+  - B样条（B-spline） — *732–734*, 754, 756
+  - Bézier — 720–725
+  - 有界Bézier（bounded Bézier） — 725–726
+  - Catmull-Rom样条（Catmull-Rom spline） — 731
+  - 连续性（continuity） — 726–728
+  - 三次（cubic） — 721, *724*, 729
+  - 次数（degree） — 721
+  - GPU渲染（GPU rendering） — 725–726
+  - Hermite — 729–730
+  - Kochanek-Bartels — 730–732
+  - 参数式（parametric） — 718–734
+  - 分段（piecewise） — 726
+  - 二次（quadratic） — *721*, 722–724
+  - 四次（quartic） — 721
+  - S形（S-shaped） — *728*, 771
+  - 样条（spline） — *729*, 781
+  - 细分（subdivision） — 753–756
+  - 张力参数（tension parameter） — 730
+- D65 — 见“D65照明体”（see illuminant D65）
+- DAG — 见“有向无环图”（see directed acyclic graph）
+- 单折痕顶点（dart） — 763
+- 数据竞争条件（data race condition） — 51
+- 数据缩减（data reduction） — 见“简化”（see simplification）
+- 数据级并行（data-level parallelism） — 1003
+- 面向数据的设计（data-oriented design） — 791
+- de Casteljau
+  - Bézier曲线（Bézier curves） — 721
+  - Bézier曲面片（Bézier patches） — 736
+  - Bézier三角形（Bézier triangles） — 740
+- DEAA — 见“抗锯齿 → 到边缘的距离”（see antialiasing, distance-to-edge）
+- 贴花（decals） — 202, 888–890, 901
+- 抽稀（decimation） — 见“简化”（see simplification）
+- 深色彩模式（deep color mode） — 1010
+- 延迟上下文（deferred context） — 813
+- 延迟光照（deferred lighting） — 892
+- 延迟着色（deferred shading） — 547, *883–890*, 1022, 1028
+- 延迟纹理处理（deferred texturing） — 905–908
+- 降噪（denoising） — 519
+- 依赖纹理读取（dependent texture read） — 见“纹理 → 依赖读取”（see texture, dependent read）
+- 深度（depth）
+  - 缓冲区（buffer） — 见“缓冲区 → z缓冲区”（see buffer, z-buffer）
+    - 反转（reversed） — 100
+  - 复杂度（complexity） — *801*, 841
+  - 剥离（peeling） — 152, 154–155, 252, 625, 893
+  - 精灵（sprite） — 见下列条目下的子项：“替身”（see under impostor）
+- 景深（depth of field） — 523, 525, *527–536*, 835
+- 导数（derivative） — 见“像素梯度”（see gradient of pixel）
+- 命运（Destiny） — 129, 130, 453, 815
+- 命运2（Destiny 2） — 571, 572, 1041
+- 命运：邪神降临（Destiny: The Taken King） — 128
+- 相消干涉（destructive interference） — 见“光 → 干涉 → 相消”（see light, interference, destructive）
+- 矩阵的行列式（determinant of a matrix） — 7
+- 杀出重围：人类分裂（Deus Ex: Mankind Divided） — 908
+- 电介质（dielectric） — 321
+- 高斯差分（difference of Gaussians） — 665
+- 衍射（diffraction） — 303, *360–361*
+- 漫反射颜色（diffuse color） — 314, 348
+- 漫反射项（diffuse term） — 306
+- 扩散（diffusion） — 634
+  - 法线贴图（normal-map） — 635
+  - 屏幕空间（screen-space） — 636–638
+  - 纹理空间（texture-space） — 635
+- 数字微分分析器（digital differential analyzer） — 506
+- 数字视频接口（digital visual interface） — 1011
+- 二面角（dihedral angle） — 654, 660, *695*
+- 降维（dimension reduction） — 955
+- 直接内存访问（direct memory access） — 见“DMA”（see DMA）
+- Direct3D — 21n
+- DirectCompute — 40
+- 有向无环图（directed acyclic graph） — 586, 829
+- 主方向（direction, principal） — 672
+- 方向性遮蔽（directional occlusion） — 465
+  - 动态（dynamic） — 467–468
+  - 预计算（precomputed） — 466
+  - 着色（shading） — 468–472
+- DirectX — 38–41
+- DirectX 11 — 813
+- DirectX 12 — 814
+- 离散几何细节层次（discrete geometry LOD） — 见“细节层次 → 离散几何”（see level of detail, discrete geometry）
+- 离散纵标法（discrete ordinate methods） — 493
+- 离散定向多胞体（discrete oriented polytope） — 见“k-DOP”（see k-DOP）
+- 离散化信号（discretized signal） — 131
+- 迪士尼无限3.0（Disney Infinity 3.0） — 372
+- 位移细分（displaced subdivision） — 见“曲面 → 细分 → 位移”（see surfaces, subdivision, displaced）
+
+## 索引（Index）：原书第1161—1166页
+
+来源：《Real-Time Rendering, Fourth Edition》，PDF 物理页1182—1187。按原书先左栏后右栏排列。斜体页码表示最重要引用；页码后的 n 保留原书注释标记。父子缩进和“见（see）”“见……项下（see under）”“另见（see also）”关系均保留。英文原词供检索，页码均为原书页码。
+
+
+### 原书第1161页（PDF 1182）
+
+- 位移映射（displacement mapping） — 167, 219, 765, 770
+- 显示（display）
+  - 编码（encoding） — 160–165
+  - 引擎（engine） — 1011
+  - 杂散光（flare） — 285
+  - 头戴式显示（head-mounted） — 916
+  - 接口（interface） — 1011
+  - 显示列表（list） — 812
+  - 基色（primary） — 276
+  - 可变焦显示（varifocal） — 923
+- 显示速率（display rate） — 1
+- 显示参照（display-referred） — 283
+- DisplayPort — 1011
+- 距离场（distance field） — 677
+- 镜头畸变（distortion, lens） — 921
+- 法线分布（distribution of normals） — 见 NDF（see NDF）
+- 可见法线分布（distribution of visible normals） — 333
+- 抖色（dithering） — 1010
+- DLAA — 见抗锯齿→方向局部化（see antialiasing, directionally localized）
+- DMA — 1034
+- Dolby Vision — 282
+- DOM — 见离散坐标法（see discrete ordinate methods）
+- 定义域（domain） — 719
+  - 矩形域（rectangular） — 736
+  - 三角形域（triangular） — 740
+- 域着色器（domain shader） — 44
+- DOOM（2016）（DOOM (2016)） — 246, 540, 629, 823, 869, 883, 901
+- 点积（dot product） — 7
+- 每英寸点数（dots per inch） — 817
+- 双缓冲（double buffer） — 见缓冲区→双缓冲（see buffer, double）
+- 降采样（downsampling） — 136, *518*, 525
+- DRAM — 791
+- 绘制调用（draw call） — 35
+- Dreams — 577, 1045
+- 驱动程序（driver） — 见图形驱动程序（see graphics driver）
+- 双抛物面映射（dual paraboloid mapping） — 见环境映射→抛物面（see environment mapping, parabolic）
+- 双源颜色混合（dual source-color blending） — 53
+- 相对视锥体（dueling frusta） — 242
+- Dust 514 — 493
+- DVI — 1011
+- DXR — 1044
+- DXTC — 见纹理→压缩项下（see under texturing, compression）
+- 动态缓冲区（dynamic buffer） — 793
+- 动态超级分辨率（dynamic super resolution） — 139
+- EAC — 194
+- 耳切法（ear clipping） — 685
+- 提前深度剔除（early-z culling） — 见剔除项下（see under culling）
+- 边（edge） — *654–656*；另见线（see also line）
+  - 边沿（border） — 654
+  - 边界（boundary） — *654*, 661, 692, 709
+  - 桥接边（bridge） — 686
+  - 折叠（collapse） — 见简化项下（see under simplification）
+  - 轮廓（contour） — 654–656
+  - 折痕（crease） — *654*, 695, 709, 747
+  - 检测（detection） — 661, 663
+  - 特征（feature） — 654
+  - 边函数（function） — 994–996
+  - 硬边（hard） — 654
+  - 连接边（join） — 686
+  - 钥匙孔边（keyholed） — 686
+  - 材质边（material） — 654
+  - 保持（preservation） — 695
+  - 脊线（ridge） — *654*, 660
+  - 剪影（silhouette） — 654–655
+  - 缝合（stitching） — 689
+  - 暗示轮廓（suggestive contour） — 655
+  - 谷线（valley） — *654*, 660
+- 有效表面（effective surface） — 350
+- 电光传递函数（electrical optical transfer function） — 161, 283
+- EM — 见环境映射（see environment mapping）
+- 能效（energy efficiency） — 1024
+- Enlighten — 482
+- 包络蒙皮（enveloping） — 见变换→顶点混合（see transform, vertex blending）
+- 环境映射（environment mapping） — 404–433
+  - 立方体（cubic） — *410–412*, 425
+  - 辐照度（irradiance） — 424–433
+  - 经纬度（latitude-longitude） — 406–408
+  - 局部化（localized） — 499–502
+  - 八面体（octahedral） — 413
+  - 抛物面（parabolic） — 413
+  - 预滤波（prefiltered） — 415–420, 471, 502, 503
+  - 球面（sphere） — 408–410
+- EOTF — 见电光传递函数（see electrical optical transfer function）
+- EQAA — 见抗锯齿→增强质量（see antialiasing, enhanced quality）
+- 爱立信纹理压缩（Ericsson texture compression） — 见纹理→压缩→ETC（see texturing, compression, ETC）
+- ESM — 见阴影→贴图→指数（see shadow, map, exponential）
+- ETC — 见纹理→压缩项下（see under texturing, compression）
+- 欧拉角（Euler angles） — 59, *70*, 73, 82
+- 欧拉变换（Euler transform） — 见变换→欧拉（see transform, Euler）
+- Euler-Mascheroni 常数（Euler-Mascheroni constant） — 802
+- Euler-Poincaré 公式（Euler-Poincaré formula） — *699*, 706
+- EVS — 见精确可见集（see exact visible set）
+- EVSM — 见阴影→贴图→指数（see shadow, map, exponential）
+- EWA — 189
+- 精确可见集（exact visible set） — 831
+- 执行单元（execution unit） — 1003
+- 辐射出射度（exitance） — *442*, 474
+- 显式曲面（explicit surface） — 见曲面→显式（see surfaces, explicit）
+- 曝光（exposure） — 285, 288–289
+- 非常规顶点（extraordinary vertex） — 758
+- 观察空间（eye space） — 15
+- 眼穹照明（eye-dome lighting） — 575
+- 面片化器（faceter） — 682
+- 光顺性（fairness） — 761
+
+### 原书第1162页（PDF 1183）
+
+- 衰减函数（falloff function） — 114, 381
+- 扇形（fan） — 见三角形→扇形（see triangle, fan）
+- Far Cry — 453, 476
+- Far Cry 3 — 478, 481
+- Far Cry 4 — 420, 481
+- 远平面（far plane） — *93*, 99, 981
+- Feline — 189
+- 栅栏同步（fence） — 938
+- FIFA — 616
+- FIFO — 808, 809, 1023
+- 填充率（fill rate） — 788
+- 电影帧率（film frame rate） — 536
+- 滤波器（filter） — *130–137*, 515
+  - 双边（bilateral） — 462, 518–520
+  - 盒式（box） — *134*, 165, 517, 518
+  - 亮通（bright-pass） — 527
+  - 交叉双边（cross bilateral） — 见滤波器→联合双边（see filter, joint bilateral）
+  - 圆盘（disk） — 518
+  - 保边（edge-preserving） — 520
+  - 高斯（Gaussian） — 136, 189, *515*, 517, 572, 665
+  - 联合双边（joint bilateral） — 249, *519*
+  - 核（kernel） — 517
+  - 低通（low-pass） — 135, 136
+  - 最近邻（nearest neighbor） — 134
+  - 旋转不变（rotation-invariant） — 515
+  - 滑动平均（running-average） — 523
+  - 可分离（separable） — 516, 517, 520, 532
+  - sinc — *135–136*, 515
+  - 可转向（steerable） — 525
+  - 支撑域（support） — 517
+  - 帐篷（tent） — 134
+  - 三角形（triangle） — 134
+- 鳍片（fin） — 646, *668*
+- Final Fantasy XV — 620
+- 萤火虫亮点（fireflies） — 见走样项下（see under aliasing）
+- Firewatch — 104
+- 第一主方向（first principal direction） — 672
+- 固定功能流水线（fixed-function pipeline） — 27
+- 固定视点效果（fixed-view effects） — 546–547
+- 平面着色（flat shading） — 120
+- FLIPQUAD — 146
+- 向下取整（floor） — 769
+- 流程控制（flow control） — 36
+  - 动态（dynamic） — 36
+  - 静态（static） — 36
+- 冲刷（flush） — 1005
+- FMA — 1026, 1033
+- 雾（fog） — 598, *600–602*, 608
+- 力反馈（force feedback） — 14
+- 形状因子（form factor） — 442
+- 正向映射（forward mapping） — 531
+- 前向着色（forward shading） — 883
+- 前向增强着色（forward+ shading） — 见分块→前向着色（see tiled, forward shading）
+- Forza Horizon 2 — 141, 899
+- Forza Motorsport 7 — 2, 412
+- 中央凹渲染（foveated rendering） — 931–932
+- FPS — 1, *13*, 789, 817
+- 片元（fragment） — 22, *49*
+- 片元着色器（fragment shader） — 23, 49, 125；另见像素着色器（see also pixel shader）
+- 帧率（frame rate） — 1, 808
+  - 恒定（constant） — 865
+- 帧间连贯性（frame-to-frame coherence） — 866
+- 帧缓冲区（framebuffer） — 25
+- 每秒帧数（frames per second） — 13
+- FreeSync — 1011
+- FreeType — 676
+- 菲涅耳效应（Fresnel effect） — 319
+- 菲涅耳方程（Fresnel equations） — 316
+- 菲涅耳反射率（Fresnel reflectance） — *316–327*, 330, 331, 348, 351, 405, 420, 421, 426, 498, 626, 631, 632, 643, 892
+  - Schlick 近似（Schlick approximation） — 320, 321, 326, 347, 351, 598
+- 前缓冲区（front buffer） — 见缓冲区→前缓冲（see buffer, front）
+- 前平面（front plane） — 93n
+- Frostbite 游戏引擎（Frostbite game engine） — 111, 113, 115, 116, 287, 290, 312, 325, 616, 804, 811, 851, 878, 890, 893, 903
+- 视锥体素（froxel） — 611
+- 视锥体（frustum） — 11, 17–18, *981*
+  - 平面提取（plane extraction） — 983–984
+  - 追踪（tracing） — 261
+- 视锥体与物体相交（frustum/object intersection） — 见相交测试项下的具体物体（see specific objects under intersection testing）
+- FSAA — 见抗锯齿→全场景（see antialiasing, full-scene）
+- 全屏处理遍（full screen pass） — 514
+- 毛皮（fur） — 640–641, 646–649
+- FX Composer — 44
+- FXAA — 见抗锯齿→快速近似（see antialiasing, fast approximate）
+- G-sync — 1011
+- 一阶几何连续性（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I02_b0f949a5b178a2.png)-continuity） — 见连续性（see continuity）
+- 伽马校正（gamma correction） — *160–165*, 184
+- 色域（gamut） — 276, 323
+  - sRGB — 323
+- 理想气体（gas, ideal） — 297
+- 聚集操作（gather operation） — 532
+- 高斯映射（Gauss map） — 667
+- 各向异性球面高斯（Gaussian, anisotropic spherical） — 398, 498
+- GBAA — 见抗锯齿→几何缓冲区（see antialiasing, geometry buffer）
+- GCN — 见硬件项下（see under hardware）
+- 亏格（genus） — 699
+- 测地曲线（geodesic curve） — 81
+- 几何平均数（geometric mean） — 864
+- 几何（geometry）
+  - 裁剪图（clipmap） — 872–873
+  - 面片（patch） — 775
+
+### 原书第1163页（PDF 1184）
+
+- 几何（geometry，续）
+  - 处理（processing） — 见流水线项下（see under pipeline）
+  - 着色器（shader） — 18–19, *47–48*, 647, 668, 677, 702, 786, 798
+  - 阶段（stage） — 见流水线→几何处理（see pipeline, geometry processing）
+- 几何渐变细节层次（geomorph LOD） — 见细节层次→几何渐变（see level of detail, geomorph）
+- GigaThread 引擎（GigaThread engine） — 1032
+- 万向节锁（gimbal lock） — 73
+- 眩光效果（glare effects） — 524
+- 全局光照（global illumination） — 315, *438*
+- glPolygonOffset — 236, 657, 673
+- GLSL — 35, 39
+- gluLookAt — 67
+- gluPerspective — 99
+- n 阶几何连续性（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I02_f44c92620541e7.png)-continuity） — 728
+- 遮光图案片（gobo） — 173, 221, 230, 434
+- 金线（golden thread） — 547
+- Gooch 着色（Gooch shading） — *103*, 663
+- Gouraud 着色（Gouraud shading） — 118
+- GPA — 785
+- GPU — 13, *29*；另见硬件（see also hardware）
+  - 计算（computing） — 54
+- GPU Boost — 789
+- GPU PerfStudio — 785
+- GPUView — 785
+- 像素梯度（gradient of pixel） — 51, 185
+- 图形分形元（graftals） — 672
+- Grand Theft Auto V — 525
+- 图形驱动程序（graphics driver） — 786, 793, 1012
+- 图形处理单元（graphics processing unit） — 见 GPU（see GPU）
+- 转换为灰度（grayscale, conversion to） — 278
+- 大圆弧（great arc） — 81
+- 大圆（great circle） — 81
+- 绿幕抠像（green-screening） — 160
+- GRID2 — 258
+- GTX 1080 — 见硬件项下（see under hardware）
+- 保护带裁剪（guard-band clipping） — 998
+- H 基（H-basis） — 404
+- 毛发（hair） — 257, 640–646, 649
+- 半程向量（half vector） — 336
+- 半边（half-edge） — 692
+- Half-Life 2 — 402, 403, 476, 478, 499
+- Half-Life 2 基（Half-Life 2 basis） — 403
+- 半空间（half-space） — 6, *946*
+- 光晕（halo） — 524
+- Halo 3 — 475
+- 线条光晕（haloing） — 675
+- Halton 序列（Halton sequence） — 144
+- 硬实时（hard real time） — 865
+- 硬件（hardware）
+  - GameCube — 867
+  - GCN — 1035–1039
+  - GeForce 256 — 29
+  - GeForce3 — 38
+  - GTX 1080 — 1029–1035
+  - Mali 架构（Mali architecture） — 1020, 1024–1029
+  - NVIDIA Pascal — 1029–1035
+  - Pixel-Planes — 8n, 1026
+  - PixelFlow — 1022
+  - PLAYSTATION — 936
+  - PLAYSTATION 3 — 39, 700
+  - PLAYSTATION 4 — 867, 1007, 1035
+  - Pomegranate — 1022
+  - Talisman — 189, 551
+  - Vega — 1035–1039
+  - Voodoo 1 — 1
+  - Wii — 27, 39
+  - Xbox — 1035
+  - Xbox 360 — 39
+  - Xbox One — 867
+- 调和级数（harmonic series） — 802
+- Hausdorff 距离（Hausdorff distance） — 708, 875
+- H 基（H-basis） — 475
+- HBM2 — 1034, 1038
+- HDMI — 1011
+- HDR — 193, 271, 281–283, 405
+  - 显示（display） — 1011
+- HDR10 — 281
+- 航向角（head） — *70*, 72
+- 平视显示器（heads-up display） — 561, 917, 932, 933
+- 热扩散（heat diffusion） — 535
+- 高度场（heightfield） — 564–566；另见凹凸映射（see also bump mapping）
+  - 地形（terrain） — 877
+- Hellgate: London — 609
+- Helmholtz 互易性（Helmholtz reciprocity） — *312*, 351
+- 半球照明（hemisphere lighting） — 431
+- 半球基（hemispherical basis） — 见基→半球（see basis, hemispherical）
+- 半球谐波（hemispherical harmonics） — 404
+- Henyey-Greenstein 相位函数（Henyey-Greenstein phase function） — *598–599*, 620
+- Hermite 曲线（Hermite curves） — 见曲线→Hermite（see curves, Hermite）
+- Hermite 插值（Hermite interpolation） — 见插值→Hermite（see interpolation, Hermite）
+- 赫兹（Hertz） — 13
+- 隐线消除（hidden line removal） — 668–669
+- 隐线渲染（hidden line rendering） — 见线→隐藏（see line, hidden）
+- 分层图像缓存（hierarchical image caching） — 见替身（see impostor）
+- 分层空间数据结构（hierarchical spatial data structure） — 见空间数据结构（see spatial data structure）
+- 分层视锥体剔除（hierarchical view frustum culling） — 见剔除→分层视锥体（see culling, hierarchical view frustum）
+- 分层深度缓冲（hierarchical z-buffering） — 见剔除项下（see under culling）
+- 高彩色模式（high color mode） — 见颜色→模式→高彩色（see color, mode, high color）
+- 高动态范围（high dynamic range） — 见 HDR（see HDR）
+- 高清多媒体接口（high-definition multimedia interface） — 1011
+- 高级着色语言（High-Level Shading Language） — 见 HLSL（see HLSL）
+- 高光（highlight） — 119
+- 高亮选择（highlight selection） — 673
+- 直方图（histogram） — 245
+
+### 原书第1164页（PDF 1185）
+
+- 直方图重归一化（histogram renormalization） — 196
+- 近端（hither） — 93n
+- HiZ — 252, 1015, 1038
+- HLG — 281
+- HLSL — *35*, 39
+- 齐次记法（homogeneous notation） — 6, 58, 62, 173
+- 齐次化（homogenization） — 62, 92
+- 地平线角（horizon angle） — 460
+- 地平线映射（horizon mapping） — 460, *466*
+- 沙漏形（hourglass） — 684
+- HRAA — 见抗锯齿→混合重建（see antialiasing, hybrid reconstruction）
+- HTC Vive — 见 Vive（see Vive）
+- HTILE — 1038
+- HUD — 561, 917, 932, 933
+- 色相（hue） — 276
+- 外壳着色器（hull shader） — 44
+- Hunt 效应（Hunt effect） — 285
+- Huygens-Fresnel 原理（Huygens-Fresnel principle） — 360
+- 混合对数伽马（Hybrid Log-Gamma） — 见 HLG（see HLG）
+- 滞回（hysteresis） — 861
+- HZB 剔除（HZB culling） — 见剔除→分层深度缓冲（see culling, hierarchical z-buffering）
+- IBR — 见基于图像的渲染（see image-based rendering）
+- D65 标准照明体（illuminant D65） — 270, 274
+- 图像（image）
+  - 几何（geometry） — 566, 876
+  - 处理（processing） — 513–522, 665
+  - 金字塔（pyramid） — 846, 847
+  - 状态（state） — 283
+- 基于图像的照明（image-based lighting） — 406, 414–424, 435
+- 基于图像的渲染（image-based rendering） — 269, 545
+- 即时上下文（immediate context） — 813
+- 隐式曲面（implicit surface） — 见曲面→隐式（see surfaces, implicit）
+- 重要性采样（importance sampling） — 385, 445, 451, 503
+- 替身（impostor） — *561–564*, 866
+  - 深度精灵（depth sprite） — 564–565
+  - 分层深度图像（layered depth image） — 565
+- 索引缓冲区（index buffer） — 702–705
+- 折射率（index of refraction） — 298
+  - 复数（complex） — 298
+- 间接绘制命令（indirect draw command） — 851
+- inFAMOUS Second Son — 91, 572
+- 拐点（inflection） — 728
+- 内积（inner product） — 398
+- 输入装配器（input assembler） — 42
+- 内部测试（inside test） — 996
+- 实例（instance） — 15, *829*
+- 实例化（instancing） — 42, 797
+- 指令集架构（instruction set architecture） — 35
+- 指令级并行（instruction-level parallelism） — 1003
+- Instruments — 785, 792
+- 积分（integral）
+  - 两项乘积（double product） — 464, 470
+  - 三项乘积（triple product） — 470
+- 强度（intensity） — 269
+- 交互性（interactivity） — 1
+- 接口（interface） — 见硬件（see hardware）
+- 干涉（interference） — 见光项下（see under light）
+- 交错采样（interleaved sampling） — 145
+- 中间语言（intermediate language） — 35
+- 插值（interpolation） — 781, 998–1001
+  - 重心（barycentric） — 963
+  - 双三次（bicubic） — 178
+  - 双线性（bilinear） — *178–180*, 182, 735–736
+  - 质心（centroid） — 141
+  - Hermite — 729–732
+  - 线性（linear） — 720
+  - 透视校正（perspective-correct） — 22, 49, 1000
+  - 四线性（quadrilinear） — 189
+  - 重复（repeated） — 740
+    - 双线性（bilinear） — 736
+    - 线性（linear） — 720–722
+  - 三线性（trilinear） — 186
+- 瞳距（interpupillary distance） — 923
+- 相交测试（intersection testing） — 941–991
+  - 轴对齐包围盒／轴对齐包围盒（AABB/AABB） — 978–979
+  - 盒／平面（box/plane） — 970–972
+  - 盒／射线（box/ray） — 959–962
+    - 射线斜率（ray slope） — 961–962
+    - 平板法（slabs method） — 959–961
+  - 包围体／包围体（BV/BV） — 976–981
+  - 凸多面体／射线（convex polyhedron/ray） — 961
+  - 穿越测试（crossings test） — 967–970
+  - 降维（dimension reduction） — 955
+  - 视锥体（frustum） — 981–987
+  - 视锥体／盒（frustum/box） — 986–987
+  - 视锥体／射线（frustum/ray） — 961
+  - 视锥体／球（frustum/sphere） — 984–986
+  - 硬件加速（hardware-accelerated） — 942–943
+  - 区间重叠法（interval overlap method） — 972–974
+  - k-DOP／k-DOP（k-DOP/k-DOP） — 979–980
+  - k-DOP／射线（k-DOP/ray） — 961
+  - 线／线（line/line） — 987–990
+  - 有向包围盒／有向包围盒（OBB/OBB） — 980–981
+  - 拾取（picking） — 942
+  - 平面／盒（plane/box） — 970–972
+  - 平面／射线（plane/ray） — 966
+  - 平面／球（plane/sphere） — 970
+  - 多边形／射线（polygon/ray） — 966–970
+  - 多面体／多面体（polyhedron/polyhedron） — 987
+  - 射线／盒（ray/box） — 959–961
+  - 排除测试（rejection test） — 948
+  - 经验法则（rules of thumb） — 954–955
+  - 分离轴（separating axis） — 946
+  - 分离轴测试（separating axis test） — *947*, 974, 979, 980, 986–987
+  - 球／盒（sphere/box） — 977–978
+  - 球／射线（sphere/ray） — 955–959
+
+### 原书第1165页（PDF 1186）
+
+- 相交测试（intersection testing，续）
+  - 球／球（sphere/sphere） — 976–977
+  - 三个平面（three planes） — 990
+  - 三角形／盒（triangle/box） — 974–975
+  - 三角形／射线（triangle/ray） — 962–966
+  - 三角形／三角形（triangle/triangle） — 972–974
+- 区间重叠法（interval overlap method） — 见相交测试项下（see under intersection testing）
+- 内建函数（intrinsic functions） — 36
+- 逆向位移映射（inverse displacement mapping） — 见纹理→视差遮蔽映射（see texturing, parallax occlusion mapping）
+- 逆深度（inverse z） — 100
+- IOR — 见折射率（see index of refraction）
+- 辐照度（irradiance） — *268*, 294, 425
+  - 预计算（precomputed） — 474
+  - 球谐函数（spherical harmonics） — 475
+  - 体积（volume） — 487
+- 辐照度映射（irradiance mapping） — 见环境映射→辐照度（see environment mapping, irradiance）
+- 不规则顶点（irregular vertex） — 758
+- 等面积立方体映射（isocube） — 412
+- 等值面（isosurface） — 584, 682, 753
+- 各向同性缩放（isotropic scaling） — 62
+- 色彩空间（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I02_c58550a5c920ad.png)） — 276
+- 锯齿（jaggies） — 见走样项下（see under aliasing）
+- 抖动采样（jittering） — 见抗锯齿项下（see under antialiasing）
+- 接合点（joint） — 720, *726*, 728, 731
+- Jordan 曲线定理（Jordan curve theorem） — 967
+- 画面颤动（judder） — 935
+- Just Cause 2 — 114, 882
+- Just Cause 3 — 883, 899, 900
+- k 叉树（k-ary tree） — 820
+- k-d 树（k-d tree） — 见空间数据结构项下（see under spatial data structure）
+- k 离散定向多面体（k-DOP） — *945–946*, 961, 976, 990
+  - 创建（creation） — 949
+- Kentucky Route Zero — 121
+- Killzone: Shadow Fall — 116, 523
+- Killzone 2 — 885
+- Kite — 493
+- Kochanek-Bartels 曲线（Kochanek-Bartels curves） — 见曲线→Kochanek-Bartels（see curves, Kochanek-Bartels）
+- LAB — 276
+- 朗伯着色（Lambertian shading） — 见 BRDF→朗伯（see BRDF, Lambertian）
+- The Last of Us — 476
+- 后期深度测试（late depth test） — 1016
+- 延迟锁存（late latching） — 938
+- 延迟（latency） — 1, 30, 791, 807–810, 920–921, 935, *1004–1006*, 1013
+  - 遮挡查询（occlusion query） — 845
+- 拉丁超立方体采样（Latin hypercube sampling） — 143
+- 纬度（latitude） — 407, 944
+- 分层深度图像（layered depth image） — 见替身项下（see under impostor）
+- LCD — 676
+- LDI — 见替身→分层深度图像（see impostor, layered depth image）
+- LEAN 映射（LEAN mapping） — 370
+- 左手系（left-handed） — 见坐标系项下（see under coordinate system）
+- 镜头光晕（lens flare） — 524–526
+- 细节层次（level of detail） — 44, 580, 706, 717, 807, *852–866*
+  - 透明度（alpha） — 857–858
+  - 偏置（bias） — 186；另见纹理（see also texturing）
+  - 混合（blend） — 856
+  - 连续（continuous） — 706, 859, 860
+  - 离散几何（discrete geometry） — 854–856
+  - 分数细分（fractional tessellation） — 768
+  - 生成（generation） — 853
+  - 几何渐变（geomorph） — 859–860
+  - 滞回（hysteresis） — 861
+  - PN 三角形（PN triangle） — 747
+  - 跳变（popping） — 710, *854*, 856, 858
+  - 基于投影面积（projected area-based） — 861–864
+  - 基于距离（range-based） — 860–861
+  - 选择（selection） — 853, *860–864*
+  - 简化（simplification） — 710
+  - 细分曲面（subdivision surface） — 756
+  - 切换（switching） — 853, *854–860*
+  - 时间关键（time-critical） — 865–866
+- 水平集（level set） — 583
+- 激光雷达（LIDAR） — 573
+- 光（light）
+  - 环境光（ambient） — 391–392
+  - 衰减遮罩（attenuation mask） — 230
+  - 烘焙（baking） — 798
+  - 带宽（bandwidth） — 362
+  - 渗漏（bleeding） — 255
+  - 光场（field） — 269
+  - 干涉（interference）
+    - 相长（constructive） — 296, 298
+    - 相消（destructive） — 296
+    - 薄膜（thin-film） — 361–363
+  - 平方反比衰减（inverse-square attenuation） — 111
+  - 漏光（leak） — 238, 255, 256
+  - 贴图（map） — 484
+  - 测光表（meter） — 271
+  - 单色（monochromatic） — 293
+  - 线偏振（polarized, linearly） — 293
+  - 复色（polychromatic） — 293
+  - 预处理遍（prepass） — 892
+  - 探针（probe） — 414, 490, 901
+  - 传播体积（propagation volumes） — 493
+    - 级联（cascaded） — 494
+  - 散射（scattering） — 见散射（see scattering）
+  - 光柱（shafts） — 602, 604, 608, 631
+  - 光源（source） — *106–117*, 798
+    - 面光源（area） — 116–117, *224*, 228, 377–391
+    - 光卡（card） — 387, 388, 427
+    - 方向光（directional） — 109–110
+
+### 原书第1166页（PDF 1187）
+
+- 光（续）（light (continued)）
+  - 光源（续）（source (continued)）
+    - 圆盘（disk） — 379, 381, 388, 430, 435
+    - 补光（fill） — 431
+    - 全向（omni） — 见光→光源→点（see light, source, point）
+    - 平面（planar） — 388
+    - 点（point） — 111–114
+    - 多边形（polygonal） — 389
+    - 点状（punctual） — 110–116
+    - 球形（spherical） — 381–384, 386, 387, 430
+    - 聚光（spot） — 114–115
+    - 管状（tube） — 387
+    - 体积（volume） — 224
+  - 传输（transport）
+    - 线性性（linearity） — 438, 479
+    - 无网格（meshless） — 484
+    - 模块化（modular） — 484
+    - 记法（notation） — 439–440
+  - 非偏振（unpolarized） — 294
+  - 相速度（velocity, phase） — 294
+  - 可见光（visible） — 268
+- 光照贴图（light map） — 227
+- 光场渲染（light-field rendering） — 549
+- 光源切割（lightcuts） — 431
+- 光照探针（lighting probe） — 490
+- 极限（limit）
+  - 曲线（curve） — *754*, 756
+  - 曲面（surface） — 760
+- 线（line） — 19, 673–675；另见边（see also edge）
+  - 光晕（haloing） — 675
+  - 隐藏（hidden） — 674–675
+  - 积分卷积（integral convolution） — 538
+  - 三角形边渲染（triangle edge rendering） — 673–674
+- 线／线相交（line/line intersection） — 见相交测试→线／线（see intersection testing, line/line）
+- 线性混合蒙皮（linear blend skinning） — 84
+- 线性插值（linear interpolation） — 720
+- 线性加速比（linear speedup） — 810
+- 线性变换（linear transform） — 见变换→线性（see transform, linear）
+- 线性变换余弦（linearly transformed cosines） — 390
+- LiSPSM — 见阴影→贴图→光空间透视（see shadow, map, light space perspective）
+- LittleBigPlanet — 488
+- 负载均衡（load balance） — 1023
+- 波瓣（lobe）
+  - 各向异性（anisotropic） — 422–424
+  - 不对称（asymmetric） — 422–424
+- 局部标架（local frame） — 343
+- 局部光照（local illumination） — 315
+- 局部光照模型（local lighting model） — 438
+- LOD — 见细节层次（see level of detail）
+- 对数（log） — 8
+- 经度（longitude） — 407, 944
+- 查找表（lookup table） — 173
+- 环（loop） — 686
+- Loop 细分（Loop subdivision） — 见曲面→细分→Loop（see surfaces, subdivision, Loop）
+- 松散八叉树（loose octree） — 见空间数据结构项下（see under spatial data structure）
+- 有损压缩（lossy compression） — 194
+- Lost Planet — 647
+- 圆角矩形包围体（lozenge） — 946
+- LPV — 见光→传播体积（see light, propagation volumes）
+- Lumberyard — 740, 1044
+- Lumigraph — 549
+- 亮度（luminance） — 197, 271, 273, 278
+- LUT — 见查找表（see lookup table）
+- LUV — 276
+- Möbius 带（Möbius strips） — 693
+- 马赫带（Mach banding） — 1010
+- 宏观尺度（macroscale） — 208, 367
+- 放大（magnification） — 见纹理项下（see under texturing）
+- 主轴（main axes） — 8
+- Mali — 见硬件→Mali 架构（see hardware, Mali architecture）
+- 流形（manifold） — 694
+- Mantle — 40
+- 移动立方体（marching cubes） — *583*, 683, 753
+- 移动四面体（marching tetrahedra） — 753
+- 掩模（mask） — 759
+- 带掩码的分层深度缓冲区（masked hierarchical depth buffer） — 849
+- 遮蔽（masking）
+  - 函数（function） — 333
+  - 感知掩蔽（perceptual） — 278
+- 遮蔽阴影函数（masking-shadowing function） — 334, 335
+- 材质（material） — 125
+  - 光泽（glossy） — 382–386
+  - 实例（instance） — 126
+  - 模板（template） — 126
+- 矩阵（matrix） — 另见变换（see also transform）
+  - 伴随（adjoint） — 68
+  - 基变换（change of basis） — 63, 67, 75
+  - 列主序（column-major） — 60
+  - 行列式（determinant） — 63
+  - 朝向（orientation） — 60, 70
+  - 正交（orthogonal） — 69, 72, 80
+    - 旋转（rotation） — 70
+  - 行主序（row-major） — 60, 95
+  - 迹（trace） — 61, 80
+  - 转置（transpose） — 7, 63
+- 遮片（matte） — 159
+- 平均宽度（mean width） — 954
+- 介质（media） — 310
+- 调制现实（mediated reality） — 917
+- 介质（medium）
+  - 吸收性（absorptive） — 298
+  - 均匀（homogeneous） — 298
+- 巨型纹理（megatexture） — 867
+- 内存（memory）
+  - 分配（allocation） — 793
+  - 架构（architecture） — 1006–1007
+
+> “内存（memory）”条目在下一原书页继续；本文件仅收录本页的“分配”和“架构”。
+
+## 索引（Index）：原书第1167—1172页
+
+> 来源：《Real-Time Rendering, Fourth Edition》，PDF物理页1188—1193。保留原书按英文排列的条目顺序、父子层级、全部页码与页码范围。*斜体页码*表示最重要的引用；“见”对应 see，“见……项下”对应 see under，“另见”对应 see also。括号中保留原文术语及交叉引用。
+
+
+### 原书第1167页（PDF第1188页）
+
+
+- 内存（memory，续前页；仅列本页续排子条目）
+    - 带宽（bandwidth） — 1006
+    - 控制器（controller） — 1038
+    - 动态随机存取（dynamic random access） — 791
+    - 层次结构（hierarchy） — 791
+    - 优化（optimization） — 见“优化 → 内存”（see optimization, memory）
+    - UMA — 1007
+    - 统一内存（unified） — 1007
+    - 内存墙（wall） — 791
+- 像素合并（merging of pixels） — 24–25
+- 合并阶段（merging stage） — *24–25*, 53
+- 网格（mesh）
+    - 缓存无关（cache-oblivious） — 700–701
+    - 参数化（parameterization） — 173
+    - 分割（segmentation） — 683
+    - 平滑（smoothing） — 694–696
+    - 实体性（solidity） — 693–694
+    - 三角形网格（triangle） — 691, *699–701*
+    - 通用网格（universal） — 700–701
+- *Meshlab* — 695, 716
+- 中观尺度（mesoscale） — 208–209, 367
+- 消息传递架构（message-passing architecture） — 见“多处理 → 消息传递”（see multiprocessing, message-passing）
+- 元球（metaball） — 48, 683, 751
+- Metal — *40*, 814
+- 金属（metal） — 323
+- *《合金装备V：原爆点》（Metal Gear Solid V: Ground Zeroes）* — 289
+- 同色异谱失配（metameric failure） — 280
+- 同色异谱色（metamers） — 273
+- 微表面（microfacets） — 331–336
+- 微观几何（microgeometry） — *304*, 327–330
+    - 遮蔽（masking） — 328
+    - 阴影遮挡（shadowing） — 328
+- 微多边形（micropolygon） — 26
+- 微观尺度（microscale） — 208, 367
+- Mie散射（Mie scattering） — 见“散射 → Mie”（see scattering, Mie）
+- *《我的世界》（Minecraft）* — 579, 842
+- 缩小（minification） — 见“纹理映射”项下（see under texturing）
+- mipmap链（mipmap chain） — 184
+- mipmap映射（mipmapping） — 见“纹理映射 → 缩小”项下（see under texturing, minification）
+- 镜像变换（mirror transform） — 见“变换 → 反射”（see transform, reflection）
+- *《镜之边缘：催化剂》（Mirror’s Edge Catalyst）* — 616
+- 混合现实（mixed reality） — 917
+- MLAA — 见“抗锯齿 → 形态学抗锯齿”（see antialiasing, morphological）
+- MMU — 1024
+- 模型空间（model space） — 15
+- 建模器（modeler） — 682–683
+    - 实体建模器（solid） — 682
+    - 曲面建模器（surface） — 683
+- 改进的蝴蝶细分（modified butterfly subdivision） — 见“曲面 → 细分”（see surfaces, subdivision）
+- 改进的Gram-Schmidt正交化（modified Gram-Schmidt） — 344
+- 蒙特卡洛积分（Monte Carlo integration） — 385, 418, 419, 423, 444, 451, 459, 507
+    - 噪声（noise） — 445, 511
+- 摩尔定律（Moore’s Law） — 1042
+- 变形目标（morph targets） — 见“变换”项下（see under transform）
+- 变形（morphing） — 见“变换”项下（see under transform）
+- Morton序列（Morton sequence） — 1018
+- 镶嵌（mosaicing） — 见“纹理映射 → 平铺”（see texturing, tiling）
+- 运动模糊（motion blur） — *536–542*, 835
+- MPEG-4 — 712
+- MRT — 50
+- MSAA — 见“抗锯齿 → 多重采样”（see antialiasing, multisampling）
+- 多视图（multi-view） — 928
+- 多核（multicore） — 806
+- 多处理（multiprocessing） — 805–814, 1023
+    - 动态分配（dynamic assignment） — 810
+    - 消息传递（message-passing） — 806
+    - 并行（parallel） — 809–810
+    - 流水线（pipeline） — 806–809
+    - 静态分配（static assignment） — 810
+    - 对称式（symmetric） — 806
+    - 任务（task） — 811–812
+    - 基于任务（task-based） — 806
+- 多处理器（multiprocessor） — 1003
+    - 共享内存（shared memory） — 806, 1003
+    - 流式（streaming） — 见“流式 → 多处理器”（see streaming, multiprocessor）
+- 多重采样（multisampling） — 见“抗锯齿”项下（see under antialiasing）
+- 多重纹理（multitexturing） — 见“纹理映射”（see texturing）
+- 以小容多（multum in parvo） — 183
+- ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I03_75820ecdef3de4.png)面片（N-patch） — 见“曲面 → PN三角形”（see surfaces, PN triangle）
+- ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I03_75820ecdef3de4.png)车采样（N-rooks sampling） — 143
+- 钉板（nailboard） — 见“替身 → 深度精灵”（see impostor, depth sprite）
+- 纳米几何（nanogeometry） — 359
+- NDF — 332, *337–346*, 367, 498
+    - 各向异性（anisotropic） — 343–346
+    - Beckmann — 338
+    - Blinn-Phong — 339, 340
+    - 滤波（filtering） — 367–372
+    - 广义Trowbridge-Reitz（generalized Trowbridge-Reitz） — 见“NDF → GTR”（see NDF, GTR）
+    - GGX — 340–342, 369
+    - GTR — 342
+    - 各向同性（isotropic） — 338–343
+    - 形状不变性（shape-invariance） — 339
+    - Trowbridge-Reitz — 见“NDF → GGX”（see NDF, GGX）
+- 近裁剪平面（near plane） — *93*, 99, 862, 981
+- 最近邻（nearest neighbor） — 见“滤波器”、 “纹理映射 → 放大”和“纹理映射 → 缩小”项下（see under filter and texturing, magnification and texturing, minification）
+- *《极品飞车》（Need for Speed）* — 616
+- Newell公式（Newell’s formula） — 685
+- 节点（node） — 819–821
+    - 内部节点（internal） — 819
+    - 叶节点（leaf） — 819
+    - 根节点（root） — 819
+- 节点层次结构（node hierarchy） — 828
+- 噪声（noise） — 872
+- 噪声函数（noise function） — 见“纹理映射 → 噪声”（see texturing, noise）
+
+### 原书第1168页（PDF第1189页）
+
+- 非真实感渲染（non-photorealistic rendering） — 651–673
+- 不可交换性（noncommutativity） — 65, 77
+- 法线（normal）
+    - 法线锥（cone） — 833–835
+    - 法向入射（incidence） — 317
+    - 法线贴图（map） — 见“凹凸映射”项下（see under bump mapping）
+    - 法线变换（transform） — 见“变换 → 法线”（see transform, normal）
+- 法线分布函数（normal distribution function） — 见“NDF”（see NDF）
+- 法线与遮蔽的独立性（normal-masking independence） — 334
+- 归一化设备坐标（normalized device coordinates） — *19*, 94, 98, 100
+- NPR — 见“非真实感渲染”（see non-photorealistic rendering）
+- *NSight* — 785
+- NURBS — 781
+- NVIDIA Pascal — 见“硬件”项下（see under hardware）
+- 奈奎斯特极限（Nyquist limit） — 见“采样”项下（see under sampling）
+- OBB — *945*, 946, 976
+- OBB与物体相交（OBB/object intersection） — 见“相交测试”项下的具体物体（see specific objects under intersection testing）
+- 基于物体的着色（object-based shading） — 908–912
+- 遮蔽度（obscurance） — 449, 450, 454, 457
+    - 体积遮蔽度（volumetric） — 459
+- 遮挡体（occluder） — 844
+- 遮挡能力（occluding power） — 844
+- 遮挡剔除（occlusion culling） — 见“剔除 → 遮挡”（see culling, occlusion）
+- 占用率（occupancy） — 32, 127, 801, 886, 898, *1005*
+- 占用函数（occupancy function） — 459
+- 八面体映射（octahedral mapping） — 413
+- 倍频程（octave） — 198
+- 八叉树（octree） — 见“空间数据结构”项下（see under spatial data structure）
+- 八叉树纹理（octree texture） — 190
+- Oculus Rift — 915, *916*, 923, 935
+- OETF — 见“光电传递函数”（see optical electric transfer function）
+- *《大神》（Okami）* — 653
+- 不透明度（opacity） — 149
+- Open3DGC — 712
+- OpenCL — 54
+- OpenCTM — 712
+- OpenGL — 39–41
+    - 扩展（extensions） — 40
+- OpenGL ES — *41*, 194
+- OpenGL着色语言（OpenGL Shading Language） — 35
+- OpenSubdiv — 777–779
+- 光电传递函数（optical electric transfer function） — 161
+- 光学（optics）
+    - 几何光学（geometrical） — 303
+    - 物理光学（physical） — 359
+    - 波动光学（wave） — 359
+- 优化（optimization）
+    - 应用阶段（application stage） — 790–793
+    - 代码（code） — 790–793
+    - 几何处理（geometry processing） — 798–800
+    - 光照（lighting） — 798–800
+    - 内存（memory） — 791–793
+    - 合并（merging） — 805
+    - 移动平台（mobile） — 814
+    - 流水线（pipeline） — 783–815
+    - 像素处理（pixel processing） — 800–804
+    - 像素着色器（pixel shader） — 803
+    - 光栅化（rasterization） — 800
+- *《橙盒》（The Orange Box）* — 288
+- *《教团：1886》（The Order: 1886）* — 91, 357, 365, 370, 477, 498, 896
+- 普通顶点（ordinary vertex） — 758
+- Oren与Nayar模型（Oren and Nayar model） — 354
+- 朝向（orientation） — 见“多边形”项下（see under polygon）
+- 有向包围盒（oriented bounding box） — 见“OBB”（see OBB）
+- 确定摄像机朝向（orienting the camera） — 67
+- over算子（over operator） — *150–151*, 856
+- 过度模糊（overblurring） — 186
+- 超频（overclock） — 787
+- 过度绘制（overdraw） — 见“像素”项下（see under pixel）
+- 紧凑打包的像素格式（packed pixel format） — 1010
+- 填充（padding） — 792
+- 画家算法（painter’s algorithm） — 551, 824
+- 绘画风格渲染（painterly rendering） — 652
+- 摇摄（pan） — 538
+- 抛物线（parabola） — 721
+- 抛物面映射（parabolic mapping） — 413
+- 视差（parallax） — 548
+    - 视差映射（mapping） — 167, 214–220
+    - 视差遮蔽映射（occlusion mapping） — 见“纹理映射”项下（see under texturing）
+- 并行（parallel）
+    - 并行架构（architectures） — 1020
+    - 并行图形（graphics） — 1019
+    - 并行处理（processing） — 见“多处理 → 并行”（see multiprocessing, parallel）
+    - 平行投影（projection） — 见“投影 → 正交”（see projection, orthographic）
+- 并行性（parallelism） — 810
+    - 空间并行性（spatial） — 806
+    - 时间并行性（temporal） — 806
+- 参数曲线（parametric curves） — 见“曲线 → 参数式”（see curves, parametric）
+- 参数曲面（parametric surfaces） — 见“曲面 → 参数式”（see surfaces, parametric）
+- 参与介质（participating media） — 310
+    - 吸收（absorption） — 590
+    - 消光（extinction） — *590*, 593, 595, 610, 616, 624, 639, 643
+    - 光学深度（optical depth） — *593*, 595
+    - 相函数（phase function） — 590, 623, 626, 638, 644
+        - 几何散射（geometric） — 见“散射 → 几何”（see scattering, geometric）
+        - Mie散射（Mie） — 见“散射 → Mie”（see scattering, Mie）
+        - Rayleigh散射（Rayleigh） — 见“散射 → Rayleigh”（see scattering, Rayleigh）
+- 粒子（particle）
+    - 软粒子（soft） — 558–559
+    - 粒子系统（system） — 567–572
+- Pascal — 见“硬件 → NVIDIA Pascal”（see hardware, NVIDIA Pascal）
+- 面片（patch） — 736
+- 路径追踪（path tracing） — 26, 444, 510, 1043, 1044
+
+### 原书第1169页（PDF第1190页）
+
+- PCF — 见“百分比渐近滤波”（see percentage-closer filtering）
+- PCI Express — 1006
+- *《珍珠港》（Pearl Harbor）* — 446
+- 钢笔与墨水画（pen and ink） — 652
+- 待处理缓冲区（pending buffer） — 1013
+- 半影（penumbra） — 见“阴影”项下（see under shadow）
+- 逐三角形操作（per-triangle operations） — 14
+- 逐顶点操作（per-vertex operations） — 14
+- 百分比渐近滤波（percentage-closer filtering） — 247–250, 849
+- 感知量化器（perceptual quantizer） — 见“PQ”（see PQ）
+- 性能测量（performance measurement） — 788–790
+- 垂直点积（perp dot product） — *6*, 987, 989
+- 余辉持续时间（persistence） — 935
+- 透视（perspective）
+    - 透视除法（division） — 19
+    - 透视投影（projection） — 见“投影 → 透视”（see projection, perspective）
+    - 透视扭曲（warping） — 241
+- 透视校正插值（perspective-correct interpolation） — 见“插值”（see interpolation）
+- 彼得潘现象（Peter Panning） — 238
+- Phong光照方程（Phong lighting equation） — 见“BRDF → Phong”（see BRDF, Phong）
+- Phong着色（Phong shading） — 118
+- Phong曲面细分（Phong tessellation） — 见“曲面”项下（see under surfaces）
+- 摄影测量（photogrammetry） — 573, 682
+- 光度曲线（photometric curve） — *271*, 273, 278
+- 光度学（photometry） — 271
+- 明视觉（photopic） — 271
+- 真实感渲染（photorealistic rendering） — 545, *651*
+- PhyreEngine — 893
+- 拾取窗口（pick window） — 见“相交测试 → 拾取”（see intersection testing, picking）
+- 拾取（picking） — *942*, 943, 957
+- 分段Bézier曲线（piecewise Bézier curves） — 见“曲线 → 分段”（see curves, piecewise）
+- 乒乓缓冲区（ping-pong buffers） — *520*, 525
+- 流水线（pipeline） — *11–27*, 783–815
+    - 应用阶段（application stage） — 12, *13–14*, 783
+    - 固定功能（fixed-function） — 27
+    - 冲刷（flush） — 1005
+    - 功能阶段（functional stages） — 13
+    - 几何处理（geometry processing） — 12, *14–21*, 783
+    - 并行性（parallelism） — 1003
+    - 像素处理（pixel processing） — 12, *22–25*, 783
+    - 光栅化（rasterization） — 12, *21–22*, 783, 993–998
+    - 软件流水线（software） — 806
+    - 加速比（speedup） — 12
+    - 阶段（stage） — 12–13
+- *《加勒比海盗》（Pirates of the Caribbean）* — 454
+- 俯仰（pitch） — *70*, 72
+- PIX — 785
+- 像素（pixel） — 21
+    - 局部存储（local storage） — 1027
+    - 过度绘制（overdraw） — 701, 801
+    - 像素处理（processing） — 见“流水线”项下（see under pipeline）
+    - 像素着色器（shader） — 23, 49–52
+    - 同步（synchronization） — 156
+- Pixel-Planes — 见“硬件”项下（see under hardware）
+- 像素化（pixelation） — 178
+- PixelFlow — 1022
+- 每英寸像素数（pixels per inch） — 817
+- 每秒像素数（pixels per second） — 788
+- 平面（plane） — 6
+    - 轴对齐平面（axis-aligned） — 8
+    - 坐标平面（coordinate） — 8
+- 平面掩码（plane masking） — 836
+- 平面与物体相交（plane/object intersection） — 见“相交测试”项下的具体物体（see specific objects under intersection testing）
+- PLAYSTATION — 见“硬件”项下（see under hardware）
+- 点云（point cloud） — 572–578, 683
+- 点渲染（point rendering） — 572–578
+- 基于点的可见性（point-based visibility） — 842
+- 指针间接寻址（pointer indirection） — 792
+- 泊松圆盘（Poisson disk） — 249
+- *《宝可梦GO》（Pokémon GO）* — 917
+- 多立方体映射（polycube maps） — 171
+- 多边形（polygon）
+    - 蝴蝶结形多边形（bowtie） — 684
+    - 整合（consolidation） — 691
+    - 轮廓（contour） — 686
+    - 凸多边形（convex） — 685
+    - 边裂缝（edge cracking） — 见“裂缝 → 多边形边”（see cracking, polygon edge）
+    - 边缝合（edge stitching） — 689
+    - 沙漏形多边形（hourglass） — 684
+    - 环（loop） — 686
+    - 合并（merging） — 691
+    - 网格（mesh） — 691
+    - 朝向（orientation） — 691–693
+    - 排序（sorting） — 824
+    - 多边形汤（soup） — 691
+    - 星形多边形（star-shaped） — 686
+    - T形顶点（T-vertex） — 689–690
+- 与多边形对齐的BSP树（polygon-aligned BSP tree） — 见“空间数据结构 → BSP树”（see spatial data structure, BSP tree）
+- 多边形技术（polygonal techniques） — 853
+- 多边形化（polygonalization） — 583, 683
+- 多形体引擎（polymorph engine） — 1031
+- 多多边形替身（polypostor） — 562
+- POM — 217
+- 跳变（popping） — 见“细节层次”项下（see under level of detail）
+- 端口（port） — 1006
+- 门户剔除（portal culling） — 见“剔除 → 门户”（see culling, portal）
+- 位姿（pose） — *921*, 924, 938
+- 后处理（post-processing） — 514
+- 色调分离（posterization） — 652, 1010
+- 潜在可见集（potentially visible set） — 831
+- 幂形式（power form） — 724
+- 电源门控（power gating） — 1028
+- PowerTune — 789
+- PowerVR — 196
+- PQ — 281
+
+### 原书第1170页（PDF第1191页）
+
+- 预光照（pre-lighting） — 892
+- 前序遍历（pre-order traversal） — 835
+- 精度（precision） — 712–715
+    - 颜色精度（color） — 186, 1010
+    - 深度精度（depth） — 236
+    - 浮点精度（floating point） — 713
+    - 移动平台精度（mobile） — 814
+    - 亚像素精度（subpixel） — 689
+- 预计算辐射传输（precomputed radiance transfer） — 471, 478, 479, 481
+    - 局部可变形（local deformable） — 481
+- 预测性渲染（predictive rendering） — 280
+- 预滤波（prefilter） — 414
+- 图元生成器（primitive generator） — 44
+- 图元着色器（primitive shader） — 1037
+- *《波斯王子》（Prince of Persia）* — 658
+- 主成分分析（principal component analysis） — 480, 484
+- 几何概率（probability, geometric） — 953–954
+- 过程式建模（procedural modeling） — 222, 672, *682*
+- 过程式纹理（procedural texturing） — 见“纹理映射 → 过程式”（see texturing, procedural）
+- 处理器（processor）
+    - 像素处理器（pixel） — 见“像素 → 着色器”（see pixel, shader）
+    - 顶点处理器（vertex） — 见“顶点 → 着色器”（see vertex, shader）
+- 渐进细化（progressive refinement） — 510, 547
+- 投影（projection） — 16–18, 92–102
+    - 三维多边形投影到二维（3D polygon to 2D） — 966
+    - 三维三角形投影到二维（3D triangle to 2D） — 962
+    - 包围体投影（bounding volume） — 861–864
+    - 圆柱投影（cylindrical） — 172
+    - 正交投影（orthographic） — 17–18, 59, *93–95*
+    - 平行投影（parallel） — 见“投影 → 正交”（see projection, orthographic）
+    - 透视投影（perspective） — 17, 59, *96–102*, 1014
+    - 平面投影（planar） — 172
+    - 球面投影（spherical） — 172
+- 投影纹理（projective texturing） — 见“纹理映射 → 投影式”（see texturing, projective）
+- 代理物体（proxy object） — 819
+- PRT — 见“预计算辐射传输”（see precomputed radiance transfer）
+- PSM — 见“阴影 → 贴图 → 透视”（see shadow, map, perspective）
+- Ptex — 191
+- 紫边（purple fringing） — 628
+- 紫线（purple line） — 274
+- PVRTC — 见“纹理映射 → 压缩”项下（see under texturing, compression）
+- PVS — 见“潜在可见集”（see potentially visible set）
+- *PxrSurface* — 343, 359, 363, 364
+- QEM — 708
+- 四像素组（quad） — 51, 801, 994
+- 四像素组过度着色（quad overshading） — 787, 853, 863, 910, *994*
+- 二次曲线（quadratic curve） — 见“曲线 → 二次”（see curves, quadratic）
+- 二次方程（quadratic equation） — 957
+- 二次误差度量（quadric error metric） — 708
+- 四叉树（quadtree） — 见“空间数据结构”项下（see under spatial data structure）
+- *《雷神之锤》（Quake）* — 37, 474
+- *《雷神之锤II》（Quake II）* — 474
+- *《雷神之锤III》（Quake III）* — 37, 402
+- 标量量化（quantization, scalar） — 714
+- *《量子破碎》（Quantum Break）* — 496
+- 四次曲线（quartic curve） — 见“曲线 → 四次”（see curves, quartic）
+- 四元数（quaternion） — 72, 76–84
+    - 加法（addition） — 77
+    - 共轭（conjugate） — 77, 78
+    - 定义（definition） — 76
+    - 对偶四元数（dual） — 87
+    - 单位元（identity） — 77
+    - 虚数单位（imaginary units） — 76
+    - 逆（inverse） — 77
+    - 乘法法则（laws of multiplication） — 78
+    - 对数（logarithm） — 78
+    - 矩阵转换（matrix conversion） — 79–81
+    - 乘法（multiplication） — 77
+    - 范数（norm） — 77, 78
+    - 幂（power） — 78
+    - 球面线性插值（slerp） — 81–83
+    - 球面线性插值（spherical linear interpolation） — 81–82
+    - 样条插值（spline interpolation） — 82–83
+    - 变换（transforms） — 79–84
+    - 单位四元数（unit） — 78, 79
+- Quickhull — 950
+- 梅花形采样（Quincunx） — 见“抗锯齿 → 梅花形采样”（see antialiasing, Quincunx）
+- 五次曲线（quintic curve） — 181
+- 辐亮度（radiance） — *269–270*, 273, 425
+    - 分布（distribution） — 269
+    - 入射辐亮度（incoming） — 315
+- 辐射（radiant）
+    - 辐射出射度（exitance） — 见“出射度”（see exitance）
+    - 辐射通量（flux） — 268
+    - 辐射强度（intensity） — 269
+- 辐射度学（radiometry） — 267
+- 辐射度（radiosity） — 442–443
+    - 辐射度法线映射（normal mapping） — 402–404
+    - 渐进辐射度（progressive） — 483
+- *《狂怒》（RAGE）* — 867
+- *《彩虹六号：围攻》（Rainbow Six Siege）* — 887
+- 基于距离的雾（range-based fog） — 见“雾”（see fog）
+- 光栅引擎（raster engine） — 1031
+- 光栅操作（raster operation） — 见“ROP”（see ROP）
+- 光栅化（rasterization） — 见“流水线”项下（see under pipeline）
+    - 保守光栅化（conservative） — 22, 139, 259, 582, *1001*
+        - 内部保守光栅化（inner） — 1001
+        - 外部保守光栅化（outer） — 1001
+        - 高估式保守光栅化（overestimated） — 1001
+        - 低估式保守光栅化（underestimated） — 1001
+- 光栅器顺序视图（rasterizer order view） — *52*, 139, 156
+- 光栅器阶段（rasterizer stage） — 见“流水线 → 光栅化”（see pipeline, rasterization）
+- *《料理鼠王》（Ratatouille）* — 638
+- 有理线性插值（rational linear interpolation） — 720
+
+### 原书第1171页（PDF第1192页）
+
+- 光线（ray） — 943–944
+    - 光线投射（casting） — 443
+        - 光线投射函数（function） — 437
+    - 光线步进（marching） — 199, 216–220, 262, 566, 570, *594*, 607, 608, 614, 616, 618, 620–622, 639, 642, 648, 752, 753, 1048
+    - 光线追踪（tracing） — 26, 259, 261, *443–445*, 530, 586, 802, 953, 1006, 1044–1047
+        - 架构（architecture） — 1039
+        - 等值面（isosurface） — 584
+        - 体素（voxel） — 580
+- 光线与物体相交（ray/object intersection） — 见“相交测试”项下的具体物体（see specific objects under intersection testing）
+- Rayleigh散射（Rayleigh scattering） — 见“散射 → Rayleigh”（see scattering, Rayleigh）
+- 互易性（reciprocity） — 312
+- 重建（reconstruction） — 131, *133–136*
+- 归约（reduce） — 245, 896
+- 反射率（reflectance）
+    - 各向异性（anisotropic） — 328
+    - 方向—半球反射率（directional-hemispherical） — 313
+    - 反射方程（equation） — 311, 437
+    - 半球—方向反射率（hemispherical-directional） — 313
+    - 各向同性（isotropic） — 328
+    - 光谱反射率（spectral） — 279
+- 反射瓣（reflectance lobe） — 见“BRDF”项下（see under BRDF）
+- 反射（reflection） — 314, 315, 623, 626, 630
+    - 环境映射（environment mapping） — 413
+    - 反射方程（equation） — 见“反射率 → 方程”（see reflectance, equation）
+    - 外反射（external） — 317
+    - 内反射（internal） — 317, 325
+        - 全内反射（total） — 326
+    - 反射定律（law of） — 504
+    - 反射映射（mapping） — 405
+    - 平面反射（planar） — 504–505, 839
+    - 反射探针（probe） — 499
+        - 局部化反射探针（localized） — 500
+    - 反射代理（proxy） — 500
+    - 屏幕空间反射（screen-space） — 505–509
+    - 反射变换（transform） — 见“变换 → 反射”（see transform, reflection）
+- 折射（refraction） — 149, 302, *626–630*, 631–633, 638, 639
+    - 图像空间折射（image-space） — 630
+- 折射率（refractive index） — 298
+- 刷新率（refresh rate） — 1
+    - 垂直刷新率（vertical） — 1011
+- 寄存器组合器（register combiners） — 38
+- 寄存器压力（register pressure） — 127, *801*, 904, 1005
+- 规则顶点（regular vertex） — 758
+- 浮雕纹理映射（relief texture mapping） — 见“纹理映射 → 浮雕”（see texturing, relief）
+- 重新光照（relighting） — 547
+- 渲染目标（render target） — 50
+- *RenderDoc* — 785
+- 渲染（rendering）
+    - 渲染方程（equation） — 437–438
+    - 渲染谱系（spectrum） — 545–546
+    - 渲染状态（state） — 794
+- *RenderMan* — 37, 39
+- 重复线性插值（repeated linear interpolation） — 见“插值 → 重复 → 线性”（see interpolation, repeated, linear）
+- 重投影（reprojection） — 143, 522–523, 936
+- 重采样（resampling） — 136–137
+- 解析（resolve） — 142
+- 重拓扑（retopology） — 712
+- 垂直回扫（retrace, vertical） — 25, 1012
+- 逆反射（retroreflection） — 330
+- 反向映射（reverse mapping） — 532
+- 反向深度![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I03_00efa9f788eb2b.png)（reversed z） — 100
+- Reyes — 908–912
+- RGB — 176
+    - 颜色立方体（color cube） — 275
+    - 颜色模式（color mode） — 见“颜色 → 模式 → 真彩色”（see color, mode, true color）
+    - 转换为灰度（to grayscale） — 278
+- RGBA — *150*, 159, 1010
+    - 纹理（texture） — 176
+- RGSS — 见“抗锯齿 → 旋转网格”（see antialiasing, rotated grid）
+- 右手定则（right-hand rule） — 692
+- 右手系（right-handed） — 92
+- 刚体变换（rigid-body transform） — 见“变换 → 刚体”（see transform, rigid-body）
+- 振铃（ringing） — 256, 401, 428, 570
+- 滚转（roll） — *70*, 72
+- ROP — 24, 25, 1010, 1032–1033
+- 绳纹伪影（roping） — 165
+- 旋转（rotation） — 见“变换”项下（see under transform）
+- 粗糙度（roughness） — 304
+- ROV — 见“光栅器顺序视图”（see rasterizer order view）
+- RSM — 见“阴影 → 贴图 → 反射式”（see shadow, map, reflective）
+- S3TC — 192
+- 扫视（saccade） — 931
+- SAH — 见“表面积启发式”（see surface area heuristic）
+- 样本（sample） — 22
+- 采样（sampling） — 130–137, 143；另见“抗锯齿”（see also antialiasing）
+    - 带限信号（band-limited signal） — 133
+    - 质心采样（centroid） — 141
+    - 连续信号（continuous signal） — 131
+    - 离散化信号（discretized signal） — 131
+    - 奈奎斯特极限（Nyquist limit） — *133*, 182, 186
+    - 采样模式（pattern） — 143
+    - 随机采样（stochastic） — *145*, 149
+    - 分层采样（stratified） — 144
+    - 采样定理（theorem） — 133
+- SAT — 见“相交测试 → 分离轴测试”（see intersection testing, separating axis test）
+- 饱和度（saturation） — 276
+- SBRDF — 310
+- 可扩展链路接口（scalable link interface） — 1013
+- 缩放（scaling） — 见“变换”项下（see under transform）
+- 扫描转换（scan conversion） — 21
+- 扫描线交错（scanline interleave） — 1013
+- 散写操作（scatter operation） — 531
+
+### 原书第1172页（PDF第1193页）
+
+- 散射（scattering） — 297, *589–599*
+    - 后向散射（backward） — *597*, 598, 599
+    - 前向散射（forward） — *597*, 598, 599, 607, 638
+    - 几何散射（geometric） — 596, 599
+    - Mie散射（Mie） — 298, 596, *597–599*, 614, 620
+    - 多重散射（multiple） — 607, 615, 616, *621–622*, 633, 643–646
+    - Rayleigh散射（Rayleigh） — 298, *596–597*, 613, 614
+    - 单次散射（single） — *589*, 592, 610, 614, 618, 633, 638
+    - 次表面散射（subsurface） — 见“次表面散射”（see subsurface scattering）
+    - Tyndall散射（Tyndall） — 298
+- 场景图（scene graph） — 见“空间数据结构”项下（see under spatial data structure）
+- 场景参照（scene-referred） — 283
+- Schlick相函数（Schlick phase function） — 599
+- 记分牌（scoreboard） — 1031
+- 暗视觉（scotopic） — 271
+- 屏幕（screen）
+    - 屏幕坐标（coordinates） — 20
+    - 屏幕映射（mapping） — 20
+    - 屏幕空间覆盖范围（space coverage） — 772, *862*
+- scRGB — 282
+- SDR — 281
+- SDSM — 见“阴影 → 贴图 → 样本分布”（see shadow, map, sample distribution）
+- 二阶方程（second-order equation） — 957
+- 剖切（sectioning） — 19
+- 分割（segmentation） — 683
+- 半导体（semiconductor） — 324
+- 分离轴测试（separating axis test） — 见“相交测试”项下（see under intersection testing）
+- 分离超平面定理（separating hyperplane theorem） — 946
+- SGI算法（SGI algorithm） — 见“三角形 → 条带”（see triangle, strip）
+- 着色树（shade tree） — 37
+- 着色器（shader）
+    - 着色器核心（cores） — 30
+    - 着色器存储缓冲区对象（storage buffer object） — 见“无序访问视图”（see unordered access view）
+    - 统一着色器（unified） — 见“统一着色器架构”（see unified shader architecture）
+- 着色器模型（Shader Model） — 38
+- Shadertoy — 199, 222, 753, 1048
+- 着色（shading） — 16
+    - 聚簇着色（clustered） — 见“聚簇着色”（see clustered shading）
+    - 延迟着色（deferred） — 见“延迟着色”（see deferred shading）
+    - 着色方程（equation） — 16
+    - 平面着色（flat） — 120
+    - 前向着色（forward） — 883
+    - Gouraud着色（Gouraud） — 118
+    - 硬着色（hard） — 652
+    - 着色语言（language） — 35
+    - 着色模型（model） — 103–106
+        - Lambert着色模型（Lambertian） — 109
+    - Phong着色（Phong） — 118
+    - 像素着色（pixel） — 23；另见“像素着色器”（see also pixel shader）
+    - 分块着色（tiled） — 见“分块 → 着色”（see tiled, shading）
+    - 卡通着色（toon） — 652–654
+    - 顶点着色（vertex） — 见“顶点 → 着色器”（see vertex, shader）
+- 阴影（shadow） — 223–265
+    - 阴影痤疮（acne） — 236
+    - 反阴影（anti-shadow） — 227
+    - 阴影缓冲区（buffer） — 234
+    - 接触硬化（contact hardening） — 251
+    - 曲面上的阴影（on curved surfaces） — 229–230
+    - 深度贴图（depth map） — 234
+    - 硬阴影（hard） — 223
+    - 阴影贴图（map） — 230, *234–252*, 594, 604
+        - 自适应体积阴影贴图（adaptive volumetric） — 258
+        - 偏移（bias） — 236–239
+        - 级联阴影贴图（cascaded） — 242–247
+        - 卷积阴影贴图（convolution） — 255
+        - 深度层积阴影贴图（deep） — 257–259, 638
+        - 双重阴影贴图（dual） — 238
+        - 指数阴影贴图（exponential） — 256–257
+        - 滤波阴影贴图（filtered） — 252–257
+        - 不完美阴影贴图（imperfect） — 492
+        - 不规则阴影贴图（irregular） — 259–264
+        - 光空间透视阴影贴图（light space perspective） — 241
+        - 最小最大阴影贴图（minmax） — 252
+        - 矩阴影贴图（moment） — 256
+        - 全向阴影贴图（omnidirectional） — 234
+        - 不透明度阴影贴图（opacity） — 257, 612
+        - 平行分割阴影贴图（parallel-split） — 242
+        - 透视阴影贴图（perspective） — 241
+        - 反射阴影贴图（reflective） — 491, 493
+        - 样本分布阴影贴图（sample distribution） — 245
+        - 次深度阴影贴图（second-depth） — 238
+        - 稀疏阴影贴图（sparse） — 246, 263
+        - 半透明阴影贴图（translucent） — 639
+        - 梯形阴影贴图（trapezoidal） — 241
+        - 方差阴影贴图（variance） — 252–255
+        - 体积阴影贴图（volumetric） — 644
+    - 半影（penumbra） — *224*, 228
+    - 百分比渐近软阴影（percentage-closer soft） — 250–252
+    - 平面阴影（planar） — 225–229
+        - 平面软阴影（soft） — 228–229
+    - 阴影投影（projection） — 225–227
+    - 屏幕空间阴影（screen-space） — 262
+    - 软阴影（soft） — 224–225, 227–229, 247–252, 442
+    - 本影（umbra） — 224
+    - 阴影体（volume） — 230–233
+- 阴影遮挡—遮蔽函数（shadowing-masking function） — 见“遮蔽—阴影遮挡函数”（see masking-shadowing function）
+- 形状混合（shape blending） — 见“变换 → 变形目标”（see transform, morph targets）
+- 共享内存多处理器（shared memory multiprocessor） — 见“多处理器 → 共享内存”（see multiprocessor, shared memory）
+- 错切（shear） — 见“变换”项下（see under transform）
+- 壳层（shell） — 646
+- 壳层映射（shell mapping） — 220, 659
+- 最短弧（shortest arc） — 81
+- 浴室玻璃门效应（shower door effect） — 670
+- *《怪物史瑞克2》（Shrek 2）* — 491
+- 有符号距离场（signed distance field） — 454, 579, 677
+
+## 索引（Index）：原书1173—1178页
+
+来源：Real-Time Rendering, Fourth Edition；原PDF物理页1194—1199。按原页左栏、右栏及原有父子层级排列。斜体页码表示最重要引用；页码后的 n 保留原书注释定位。中文后保留原索引词，see、see under、see also 关系均保留。
+
+
+### 原书第1173页（PDF 1194）
+
+- 有符号距离函数（signed distance function） — 577, 750
+  - 球面（spherical） — 466
+- 轮廓（silhouette） — 765, 773
+  - 环（loop） — 667
+- SIMD — 31, 1003, 1005, 1035
+- SIMD通道（SIMD lane） — 31, 1002
+- 简化（simplification） — *706–712*, 853
+  - 代价函数（cost function） — 707–709
+  - 边折叠（edge collapse） — 706–708
+  - 细节层次（level of detail） — 710
+  - 最优放置（optimal placement） — 707
+  - 可逆性（reversibility） — 706
+- SIMT — 1002
+- 模拟器晕动症（simulation sickness） — 920
+- 单缓冲（single buffer） — 见“缓冲区 › 单”（see buffer, single）
+- 骨架子空间变形（skeleton-subspace deformation） — 见“变换 › 顶点混合”（see transform, vertex blending）
+- 蒙皮（skinning） — 见“变换 › 顶点混合”（see transform, vertex blending）
+- 天空（sky） — 见“大气与云”（see atmosphere and clouds）
+- 天空盒（skybox） — *547–549*, 556, 628, 632
+- 平板区域（slab） — 945
+- slerp — 见下列条目下的子项：“四元数”（see under quaternion）
+- SLI — 1013
+- 切片图（slicemap） — 581
+- SMAA — 见“抗锯齿 › 亚像素形态学”（see antialiasing, subpixel morphological）
+- 小批次问题（small batch problem） — 796
+- 智能合成（smart composition） — 1028
+- Smith遮蔽函数（Smith masking function） — 334, 335, 339, 341–343, 355, 358
+- smoothstep — 115, 181
+- SMOOTHVISION — 145
+- SMP — 806
+- Snell定律（Snell’s law） — *302*, 326
+- 柔光箱（softbox） — 388, 434
+- 软件流水线（software pipelining） — 见“多处理”（see multiprocessing）
+- 实体（solid） — 693
+- 立体角（solid angle） — 268
+  - 微分（differential） — 311
+- 排序（sort） — 822
+  - 空间（space） — 1020
+- 全阶段排序（sort-everywhere） — 1022
+- 前端排序（sort-first） — 1020
+- 后端排序（sort-last） — 1020, 1033
+  - 片元（fragment） — 1021
+  - 图像（image） — 1021, 1022
+- 中间排序（sort-middle） — 1020, 1024
+- 空间划分（space subdivision） — 819
+- 空间填充曲线（space-filling curve） — 1018
+- 空间扭曲（spacewarp） — 935, 937
+- 稀疏纹理（sparse texture） — 见“纹理映射 › 稀疏”（see texturing, sparse）
+- 稀疏体素八叉树（sparse voxel octree） — 494, 579
+- 空间数据结构（spatial data structure） — 818–830
+  - 视象图（aspect graph） — 831
+  - 包围体层次结构（bounding volume hierarchy） — 510, *819–821*, 942
+  - BSP树（BSP tree） — 819, *822–824*
+    - 轴对齐（axis-aligned） — 822–823
+    - 多边形对齐（polygon-aligned） — 823–824
+  - 缓存感知（cache-aware） — 827–828
+  - 缓存无关（cache-oblivious） — 827–828
+  - 层次式（hierarchical） — 818
+  - 非规则（irregular） — 819
+  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_d1e7b95f571d4f.png)-d树（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_d1e7b95f571d4f.png)-d tree） — 822–823
+  - 松散八叉树（loose octree） — 826–827
+  - 八叉树（octree） — 819, *824–827*, 846
+  - 四叉树（quadtree） — 825, 874
+    - 受限（restricted） — 774, 877
+  - 规则（regular） — 819
+  - 场景图（scene graph） — *828–830*, 840, 861
+    - LOD — 861
+- 空间局部性（spatial locality） — 791
+- 空间关系（spatial relationship） — 438
+- 空间化（spatialization） — 830
+- SPD — 见“光谱功率分布”（see spectral power distribution）
+- 光谱功率分布（spectral power distribution） — 270, 272
+- 光谱（spectrum） — 268, 274
+- 镜面反射（specular）
+  - 高光（highlight） — 119
+  - 波瓣（lobe） — 见下列条目下的子项：“BRDF”（see under BRDF）
+  - 项（term） — 306
+- 球体（sphere） — 682
+  - 公式（formula） — 944, 956
+  - 映射（mapping） — 见“环境映射 › 球体”（see environment mapping, sphere）
+- 球体与物体的相交（sphere/object intersection） — 见“相交测试”下的具体物体（see specific objects under intersection testing）
+- 球面（spherical）
+  - 基（basis） — 见“基 › 球面”（see basis, spherical）
+  - 坐标（coordinates） — 407, *944*
+  - 函数（function） — 392–404
+  - Gaussian — 见“基 › 球面 › Gaussian”（see basis, spherical, Gaussian）
+  - 谐波（harmonics） — *398–401*, 427–431, 456, 480, 488
+    - 梯度（gradients） — 488
+  - 线性插值（linear interpolation） — 见下列条目下的子项：“四元数”（see under quaternion）
+- SPIR-V — 40
+- 泼溅图元（splat） — 573–574
+- 样条曲线（spline curves） — 见“曲线 › 样条”（see curves, spline）
+- 样条曲面（spline surfaces） — 见“曲面 › 样条”（see surfaces, spline）
+- 分割与切块（split and dice） — 774–775
+- 《争分夺秒》（*Split/Second*） — 898
+- 《孢子》（*Spore*） — 678, 710
+- 精灵（sprite） — 531, 550–551；另见“替身图”（see also impostor）
+  - 分层（layered） — 550–551
+- SRAA — 见“抗锯齿 › 亚像素重建”（see antialiasing, subpixel reconstruction）
+- sRGB — *161*, 162, 165, 196, 322, 323
+- SSBO — 见“无序访问视图”（see unordered access view）
+- SSE — 977–979
+- 阶段（stage）
+  - 停滞（stalling） — 809
+  - 饥饿（starving） — 12, 809
+
+### 原书第1174页（PDF 1195）
+
+- 停滞（stalling） — 809
+- 标准动态范围（standard dynamic range） — 见“SDR”（see SDR）
+- 《星之海洋4》（*Star Ocean 4*） — 286
+- 《星球大战：前线》（*Star Wars Battlefront*） — 647
+- 星形多边形（star-shaped polygon） — 686
+- 《星际争霸II》（*Starcraft II*） — 459
+- 饥饿（starving） — 见下列条目下的子项：“阶段”（see under stage）
+- 状态（state）
+  - 更改（changes） — 794
+  - 排序（sorting） — 807
+- 静态缓冲区（static buffer） — 794
+- 平稳细分（stationary subdivision） — 见“曲面 › 细分 › 平稳”（see surfaces, subdivision, stationary）
+- 模板（stencil） — 759
+- 模板缓冲区（stencil buffer） — 见“缓冲区 › 模板”（see buffer, stencil）
+- 球面度（steradian） — 268, 269
+- 立体渲染（stereo rendering） — 927–931
+- 立体视觉（stereo vision） — 922–924
+- 立体视（stereopsis） — 922
+- Stevens效应（Stevens effect） — 285
+- 缝合（stitching） — 689
+- 流输出（stream output） — 19, 48–49, 571, 705
+- 流式处理（streaming） — 871–872
+  - 多处理器（multiprocessor） — 1003, 1029
+  - 纹理（texture） — 见“纹理映射 › 流式传输”（see texturing, streaming）
+- 步长（stride） — 702
+- 条带（strip） — 见“三角形 › 条带”（see triangle, strip）
+- 笔划（stroke） — 672
+- 风格化渲染（stylized rendering） — 见“非真实感渲染”（see non-photorealistic rendering）
+- 细分曲线（subdivision curves） — 见“曲线 › 细分”（see curves, subdivision）
+- 细分曲面（subdivision surfaces） — 见“曲面 › 细分”（see surfaces, subdivision）
+- 亚像素寻址（subpixel addressing） — 689
+- 次表面反照率（subsurface albedo） — 348–349
+- 次表面散射（subsurface scattering） — *305–307*, 445, 607
+  - 全局（global） — 306, 632–640
+  - 局部（local） — 306, 347–355
+- 子纹理（subtexture） — 见“纹理映射”（see texturing）
+- 区域求和表（summed-area table） — 见下列条目下的子项：“纹理映射 › 缩小”（see under texturing, minification）
+- 超标量（superscalar） — 14
+- 超级着色器（supershader） — 128
+- 表面积启发式（surface area heuristic） — 953
+- 表面提取（surface extraction） — 583
+- 曲面（surfaces）
+  - 痤疮伪影（acne） — 236
+  - B样条（B-spline） — *749*, 762
+  - Bézier曲面片（Bézier patch） — 735–738
+  - Bézier三角形（Bézier triangle） — *740–741*, 745
+  - 双二次（biquadratic） — 736
+  - 连续性（continuity） — 741–742
+  - 显式（explicit） — 944
+    - 球体（sphere） — 944
+    - 三角形（triangle） — 944, 963
+  - 隐式（implicit） — 749–753, 944
+    - 混合（blending） — 751
+    - 导数（derivatives） — 751
+    - 球体（sphere） — 956
+  - NURBS — 781
+  - 参数化（parametric） — 171, 734–747
+  - Phong曲面细分（Phong tessellation） — 735, 740, 748–749
+  - PN三角形（PN triangle） — 46, 735, 740, *744–747*, 748, 749
+  - 样条（spline） — 689, 761
+  - 细分（subdivision） — 756–767
+    - 自适应四叉树（adaptive quadtree） — 718, 779–780
+    - 逼近型（approximating） — 758
+    - Catmull-Clark — 761–763
+    - 置换（displaced） — 765–766
+    - 特征自适应（feature adaptive） — 777–779
+    - 极限位置（limit position） — 760
+    - 极限曲面（limit surface） — 760
+    - 极限切线（limit tangents） — 760
+    - Loop — *758–761*, 763, 765–767
+    - 掩模（mask） — 759
+    - 改进蝶形（modified butterfly） — 761
+    - 平稳（stationary） — 756
+    - 模板（stencil） — 759
+  - 张量积（tensor product） — 735
+  - 曲面细分（tessellation） — 735
+- 表面元素（surfel） — 573
+- 周围环境（surround） — 285
+- SVBRDF — 310
+- 交换缓冲区（swap buffer） — 见“缓冲区 › 交换”（see buffer, swap）
+- 重排（swizzling） — 1018
+- 与显示器同步（synchronization with monitor） — 790, 1012, 1013
+- TAM — 见“色调艺术贴图”（see tonal art map）
+- 切向（tangent）
+  - 标架（frame） — 209
+  - 贴图（map） — 344
+  - 面片（patch） — 775
+  - 空间（space） — 见下列条目下的子项：“基”（see under basis）
+  - 向量（vector） — 209, 729
+- TBN — 209
+- 《军团要塞2》（*Team Fortress 2*） — 654, 677, 678, 940
+- 撕裂（tearing） — 1012
+- 技术插图（technical illustration） — 651, 673
+- 时间（temporal）
+  - 走样（aliasing） — 见“走样 › 时间”（see aliasing, temporal）
+  - 连贯性（coherence） — 866
+  - 延迟（delay） — 1
+  - 局部性（locality） — 791
+- 临时寄存器（temporary register） — 36
+- 张量积曲面（tensor product surfaces） — 735
+- 地形分块细节层次（terrain chunked LOD） — 874–877
+- 曲面细分（tessellation） — 683–690, 767–780, 853
+  - 自适应（adaptive） — 770–775
+  - 控制着色器（control shader） — 44
+
+### 原书第1175页（PDF 1196）
+
+- 曲面细分（tessellation，续上页）
+  - 域着色器（domain shader） — 44
+  - 求值着色器（evaluation shader） — 44
+  - 因子（factors） — 45
+  - 分数型（fractional） — 768–770, 860
+  - 外壳着色器（hull shader） — 44
+  - 级别（levels） — 45
+  - 阶段（stage） — 18, *44–46*, 677
+  - 曲面（surface） — 735
+  - 曲面细分器（tessellator） — 44
+  - 均匀（uniform） — 767
+- 四面体剖分（tetrahedralization） — 489
+- 纹素（texel） — 169
+- Texram — 189
+- 文本（text） — 675–677, 725
+- 纹理（texture）
+  - 数组（array） — 191
+  - 图集（atlas） — 190
+  - 带宽（bandwidth） — 1006
+  - 缓存（cache） — 见“缓存”（see cache）
+  - 坐标（coordinates） — 169
+  - 立方体贴图（cube map） — 190
+  - 依赖读取（dependent read） — 38, 177, 220, 406
+  - 矩阵（matrix） — 174n, 410
+  - 周期性（periodicity） — 175
+  - 空间（space） — 169
+  - 体纹理（volume） — 189–190
+  - 体积式（volumetric） — 646
+- 纹理处理簇（texture processing cluster） — 1031
+- 纹理空间着色（texture-space shading） — 910
+- 纹理映射（texturing） — 23, 167–222
+  - 反照率颜色贴图（albedo color map） — 201
+  - alpha映射（alpha mapping） — 176, 202–208, 551
+  - 动画（animation） — *200*, 203
+  - 无绑定（bindless） — 192
+  - 边框（border） — 174
+  - 细胞式（cellular） — 199
+  - 图表片区（charts） — 485
+  - 钳制（clamp） — 174
+  - 裁剪图（clipmap） — 867
+  - 压缩（compression） — 192–198, 486, 503
+    - ASTC — 196, 1029
+    - BC — 192–193
+    - DXTC — 192–193
+    - EAC — 194
+    - ETC — 194–195, 1029
+    - 有损（lossy） — 194
+    - 法线（normal） — 195
+    - PVRTC — 195–196
+    - S3TC — 192
+  - 对应函数（corresponder function） — *169*, 174–175
+  - 贴花（decaling） — 202
+  - 细节（detail） — 180
+  - 漫反射颜色贴图（diffuse color map） — 201
+  - 畸变（distortion） — 687–688
+  - 图像（image） — 176–198
+  - 图像尺寸（image size） — 177
+  - 细节层次偏置（level of detail bias） — 186
+  - 光照贴图（light mapping） — 484
+  - 放大（magnification） — 177, *178–181*
+    - 双线性插值（bilinear interpolation） — 178
+    - 三次卷积（cubic convolution） — 178
+    - 最近邻（nearest neighbor） — 178
+  - 缩小（minification） — 177, *182–189*
+    - 各向异性过滤（anisotropic filtering） — 187–188
+    - 双线性插值（bilinear interpolation） — 182
+    - 椭圆加权平均（Elliptical Weighted Average） — 189
+    - 细节层次（level of detail） — 185
+    - 多级渐远纹理映射（mipmapping） — 183–186
+    - 最近邻（nearest neighbor） — 182
+    - 四线性插值（quadrilinear interpolation） — 189
+    - 区域求和表（summed-area table） — 186–188
+    - 三线性插值（trilinear interpolation） — 186
+  - 多级渐远纹理映射（mipmapping） — 485
+  - 镜像（mirror） — 174
+  - 单次镜像（mirror once） — 175
+  - 噪声（noise） — 198, 549
+  - 一维（one-dimensional） — 173
+  - 视差遮挡映射（parallax occlusion mapping） — 167, 216–220
+  - 参数化（parameterization） — 485, 486
+  - 流水线（pipeline） — 169–176
+  - 程序化（procedural） — 198–200
+  - 投影式（projective） — 221, 688
+  - 投影函数（projector function） — 169–174
+  - 浮雕映射（relief） — *216–220*, 222, 565–566, 630, 646, 853, 854
+  - 重复（repeat） — 174
+  - 接缝（seams） — 486
+  - 壳（shells） — 485
+  - 稀疏（sparse） — 246, 263, *867–871*
+  - 流式传输（streaming） — 870–871
+  - 子纹理（subtexture） — 184
+  - 重排（swizzling） — 1018
+  - 纹理坐标（texture coordinates） — 169
+  - 平铺（tiling） — 795
+  - 转码（transcoding） — 870–871
+  - 值变换函数（value transform function） — 169
+  - 顶点（vertex） — 43, 186
+  - 虚拟（virtual） — 867–871
+  - 环绕（wrap） — 174
+- TFAN — 712
+- 《癌症似龙》（*That Dragon, Cancer*） — 121
+- 薄膜干涉（thin-film interference） — 见“光 › 干涉 › 薄膜”（see light, interference, thin-film）
+- 线程（thread）
+  - 分歧（divergence） — 32, 260
+  - 组（group） — *54*, 518
+  - 着色器（shader） — 31
+- 线程级并行（thread-level parallelism） — 1003
+
+### 原书第1176页（PDF 1197）
+
+- *Threading Building Blocks* — 812
+- 三平面相交（three plane intersection） — 见“相交测试 › 三个平面”（see intersection testing, three planes）
+- 三维打印（three-dimensional printing） — 见“3D打印”（see 3D printing）
+- three.js — *41*, 50, 189, 407, 485, 568, 628, 1048
+- 阈值化（thresholding） — 656
+- 吞吐量（throughput） — 30, 783, 808
+- 图块（tile） — 995
+  - 局部存储（local storage） — 156
+  - 屏幕（screen） — 1007, 1021
+  - 表（table） — 1008
+  - 纹理（texture） — 795
+- 分块（tiled）
+  - 缓存（caching） — 1033
+  - 延迟着色（deferred shading） — 894, 896, 904, 914
+  - 前向着色（forward shading） — 895–896, 903, 904, 914
+  - 光栅化（rasterization） — 见“流水线 › 光栅化”（see pipeline, rasterization）
+  - 着色（shading） — 893–898
+  - 三角形遍历（triangle traversal） — 996
+- 平铺（tiling） — 795
+- 时间受限渲染（time-critical rendering） — 865
+- 计时器查询（timer query） — 785
+- 时间扭曲（timewarp） — 935–937
+- 计时（timing） — 955
+- TIN — 705, 877
+- Toksvig映射（Toksvig mapping） — 369
+- 《汤姆·克兰西：全境封锁》（*Tom Clancy’s The Division*） — 478
+- 《古墓丽影》（2013）（*Tomb Raider (2013)*） — 114, 116
+- 《明日之子》（*Tomorrow Children, The*） — 496, 497
+- 色调艺术贴图（tonal art map） — 671
+- 色调映射（tone mapping） — 283–289
+  - 全局（global） — 285
+  - 局部（local） — 285
+- 卡通渲染（toon rendering） — 见“着色 › 卡通”（see shading, toon）
+- 左上规则（top-left rule） — 995
+- 拓扑（topology） — 712
+- Torrance-Sparrow模型（Torrance-Sparrow model） — 334
+- 跟踪（tracking） — 916, 921
+- 事务消除（transaction elimination） — 1028
+- 转码（transcoding） — 见下列条目下的子项：“纹理映射”（see under texturing）
+- 传递函数（transfer function） — 161, 478
+  - 体积（volume） — 605
+- 变换（transform） — *57*；另见“矩阵”（see also matrix）
+  - 仿射（affine） — 58, 68
+  - 保角（angle-preserving） — 66
+  - 串接（concatenation of） — 65–66
+  - 约束（constraining） — 73
+  - 分解（decomposition） — 73–74
+  - Euler — 70–73
+    - 提取参数（extracting parameters） — 72–73
+    - 万向节锁（gimbal lock） — 73
+  - 反馈（feedback） — 49
+  - 逆变换（inverse） — 59, 61–64, 66, *69*, 75
+    - 伴随矩阵法（adjoint method） — 69
+    - Cramer法则（Cramer’s rule） — 69, 964
+    - Gaussian消元（Gaussian elimination） — 69
+    - LU分解（LU decomposition） — 69
+  - 保长度（length-preserving） — 66
+  - 线性（linear） — 57–58
+  - 镜像（mirror） — 见“变换 › 反射”（see transform, reflection）
+  - 模型（model） — 15–16
+  - 变形目标（morph targets） — 89–91
+  - 变形（morphing） — 87–91
+  - 法线（normal） — 68–69
+  - 正交（orthographic） — 见下列条目下的子项：“投影”（see under projection）
+  - 透视（perspective） — 见下列条目下的子项：“投影”（see under projection）
+  - 四元数（quaternion） — 80
+  - 反射（reflection） — 63, 692, 832
+  - 刚体（rigid-body） — 60, *66–67*, 74, 84
+  - 旋转（rotation） — 60–61
+    - 绕任意轴（about an arbitrary axis） — 74–76
+    - 从一个向量转到另一个向量（from one vector to another） — 83–84
+    - 绕一点（around a point） — 61
+  - 缩放（scaling） — 62–63
+    - 各向异性（anisotropic） — 62
+    - 各向同性（isotropic） — 62
+    - 非均匀（nonuniform） — 62
+    - 均匀（uniform） — 62
+  - 错切（shear） — 63–64
+  - 平移（translation） — 59
+  - 顶点混合（vertex blending） — *84–87*, 90, 102, 1006
+  - 视图（view） — 15–16
+  - 保体积（volume-preserving） — 64
+- 平移（translation） — 59
+- 透明（transparency） — 148–160
+  - 顺序无关（order-independent） — 154–159
+  - 筛网式（screen-door） — *149*, 858
+  - 排序（sorting） — 152, 823
+  - 随机（stochastic） — 149
+  - 加权平均（weighted average） — 156–158
+  - 加权和（weighted sum） — 157
+- 透明度自适应抗锯齿（transparency adaptive antialiasing） — 207
+- 树（tree）
+  - 平衡（balanced） — 820
+  - 二叉（binary） — 820
+  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_d1e7b95f571d4f.png)叉树（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_d1e7b95f571d4f.png)-ary tree） — 820
+- 树木（森林）（trees (forest)） — 202, 559–560
+- 三角形（triangle）
+  - 扇（fan） — 686, *696–697*
+  - 公式（formula） — 944, 963
+  - 列表（list） — 696
+    - 带索引（indexed） — 703
+  - 设置（setup） — 22, 997–998
+  - 排序（sorting） — 152–153, 802–803
+  - 三角形汤（soup） — 691
+  - 条带（strip） — 697–699
+    - 带索引（indexed） — 703
+    - 顺序（sequential） — 698
+  - 遍历（traversal） — 22, 996–997
+    - 分块（tiled） — 996
+
+### 原书第1177页（PDF 1198）
+
+- 三角形与物体的相交（triangle/object intersection） — 见“相交测试”下的具体物体（see specific objects under intersection testing）
+- 不规则三角网（triangulated irregular network） — 705, 877
+- 三角剖分（triangulation） — 683–686
+  - Delaunay — 684
+- 三向光照（trilight） — 432
+- 三线性插值（trilinear interpolation） — 186
+- 三缓冲（triple buffer） — 1013
+- 三刺激值（tristimulus values） — 273
+- 真彩色模式（true color mode） — 见“颜色 › 模式 › 真彩色”（see color, mode, true color）
+- TSM — 见“阴影 › 贴图 › 梯形”（see shadow, map, trapezoidal）
+- 湍流（turbulence） — 198
+- T顶点（T-vertex） — 见下列条目下的子项：“多边形”（see under polygon）
+- TXAA — 142
+- Tyndall散射（Tyndall scattering） — 298
+- UAV — 见“无序访问视图”（see unordered access view）
+- 全能着色器（ubershader） — 128
+- UBO — 795
+- UMA — 见“统一内存架构”（see unified memory architecture）
+- 本影（umbra） — 224
+- 《神秘海域2》（*Uncharted 2*） — 286, 357
+- 《神秘海域3》（*Uncharted 3*） — 879
+- 《神秘海域4》（*Uncharted 4*） — 290, 356–359, 492
+- 《神秘海域：德雷克船长的宝藏》（*Uncharted: Drake’s Fortune*） — 893
+- 下叠算子（under operator） — 153
+- 降频（underclock） — 787
+- 统一内存架构（unified memory architecture） — 1007
+- 统一着色器架构（unified shader architecture） — 35, 786
+- uniform缓冲区对象（uniform buffer object） — 795
+- 均匀曲面细分（uniform tessellation） — 767
+- Unity引擎（Unity engine） — 128, 287, 476, 482, 489, 740, 930
+- 无序访问视图（unordered access view） — *51–52*, 87, 155, 192, 896, 1016
+- Unreal引擎（Unreal Engine） — 104, 113, 114, 116, 126, 128–130, 143, 287, 325, 364, 383, 493, 495, 556, 572, 611, 740, 899, 930, 1048
+- 向上方向（up direction） — 70
+- 上采样（upsampling） — 136
+- 价数（valence） — 699, 758
+- *Valgrind* — 792
+- van Emde Boas布局（van Emde Boas layout） — 827–828
+- VAO — 703
+- 方差映射（variance mapping） — 370
+- VDC — 见“视频显示控制器”（see video display controller）
+- 向量辐照度（vector irradiance） — *379–380*, 389
+- 向量范数（vector norm） — 7
+- Vega — 见下列条目下的子项：“硬件”（see under hardware）
+- 辐辏（vergence） — 923, 932
+- 顶点（vertex）
+  - 数组（array） — 见“顶点 › 缓冲区”（see vertex, buffer）
+  - 数组对象（array object） — 703
+  - 混合（blending） — 见下列条目下的子项：“变换”（see under transform）
+  - 缓冲区（buffer） — 701–705, 793
+  - 缓存（cache） — 见“缓存 › 顶点”（see cache, vertex）
+  - 聚类（clustering） — 709
+  - 压缩（compression） — 712–715
+  - 对应关系（correspondence） — 87
+  - 拉取（pulling） — 703
+  - 着色器（shader） — 15–16, *42–43*
+    - 动画（animation） — 43
+    - 效果（effects） — 43
+    - 蒙皮（skinning） — 87
+  - 流（stream） — 702
+- 垂直刷新率（vertical refresh rate） — 1011
+- 垂直回扫（vertical retrace） — 见“回扫 › 垂直”（see retrace, vertical）
+- 垂直同步（vertical synchronization） — 见“与显示器同步”（see synchronization with monitor）
+- 每秒顶点数（vertices per second） — 788
+- VGA — 1011
+- 视频显示控制器（video display controller） — 1011
+- 视频图形阵列（video graphics array） — 1011
+- 显存（video memory） — 1006, 1011
+- 视锥体剔除（view frustum culling） — 见“剔除 › 视锥体”（see culling, view frustum）
+- 视图空间（view space） — *15*, 26
+- 视图变换（view transform） — 见“变换 › 视图”（see transform, view）
+- 视点无关渐进网格化（view-independent progressive meshing） — 706
+- VIPM — 706
+- 虚拟点光源（virtual point light） — 491
+- 虚拟现实（virtual reality） — 523, 912, 915–940
+  - 合成器（compositor） — 924
+  - 光学（optics） — 921–922
+- 可见性（visibility）
+  - 缓冲区（buffer） — 见“缓冲区 › 可见性”（see buffer, visibility）
+  - 锥体（cone） — 470, 471
+  - 函数（function） — 446
+  - 测试（test） — 843
+- 视觉外观（visual appearance） — 103
+- Vive — 915, *916*, 917, 922, 925, 934
+- von Mises-Fisher分布（von Mises-Fisher distribution） — 397
+- Von Neumann瓶颈（Von Neumann bottleneck） — 791
+- 体素（voxel） — 578–586
+- 体素化（voxelization） — *580–582*, 610–612, 974
+- VPL — 见“虚拟点光源”（see virtual point light）
+- VSM — 见“阴影 › 贴图 › 方差”（see shadow, map, variance）
+- vsync — 见“与显示器同步”（see synchronization with monitor）
+- *VTune* — 792
+- Vulkan — *40*, 814
+- Wang图块（Wang tiles） — 175
+- Ward模型（Ward model） — 314
+- 线程束（warp） — 31
+- 水彩（watercolor） — 652, 665
+- 水密模型（watertight model） — 693
+- 瓦特（watt） — 268
+- 波（wave）
+  - 电磁（electromagnetic） — 293
+  - 横向（transverse） — 293
+- 波前（wavefront） — 31, 1035
+
+### 原书第1178页（PDF 1199）
+
+- 波长（wavelength） — 267, 293
+- 小波（wavelets） — 199
+- WebGL — *41*, 50, 122, 125, 129, 189, 201, 208, 407, 485, 568, 628, 631, 713, 796, 805, 829, 1048
+- 顶点焊接（welding vertices） — 691
+- 白点（white point） — 274
+- Wii — 见下列条目下的子项：“硬件”（see under hardware）
+- 绕向（winding direction） — 692
+- 绕数（winding number） — 968
+- 窗口坐标（window coordinates） — 20
+- 线框（wireframe） — 674, 675
+- 《巫师3》（*The Witcher 3*） — 2, 263, 420, 526, 534, 873, 1049
+- 世界空间（world space） — 15
+- 环绕（wrap） — 见“纹理映射 › 重复”（see texturing, repeat）
+- 包裹光照（wrap lighting） — 382, 633
+- Xbox — 见下列条目下的子项：“硬件”（see under hardware）
+- XR — 915
+- Y’CbCr — 892
+- 偏航（yaw） — 70n
+- YCoCg — *197–198*, 804–805
+- 远裁剪距离（yon） — 93n
+- ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_00efa9f788eb2b.png)缓冲区（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_00efa9f788eb2b.png)-buffer） — 见下列条目下的子项：“缓冲区”（see under buffer）
+- 深度冲突（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_00efa9f788eb2b.png)-fighting） — 1014
+- 深度预通道（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_00efa9f788eb2b.png)-prepass） — *803*, 881, 882, 901, 1016
+- 深度金字塔（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_00efa9f788eb2b.png)-pyramid） — 846
+- 《Zaxxon》（*Zaxxon*） — 17
+- 最大深度剔除（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_6f44afca509d7a.png)-culling） — 见“剔除 › ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_6f44afca509d7a.png)”（see culling, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_6f44afca509d7a.png)）
+- 最小深度剔除（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_3f16ddb16cefaa.png)-culling） — 见“剔除 › ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_3f16ddb16cefaa.png)”（see culling, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_3f16ddb16cefaa.png)）
+- 带状谐波（zonal harmonics） — 401, 428, 430, 470
