@@ -44,43 +44,43 @@
 
 任何GPU的一项重要特性，都是绘制三角形和线段的速度。如2.4节所述，光栅化由三角形设置和三角形遍历组成。此外，我们还将介绍如何在三角形上插值属性，这与三角形遍历密切相关。最后介绍保守光栅化，它是标准光栅化的一种扩展。
 
-回顾一下，像素中心为(x + 0.5, y + 0.5)，其中x ∈ [0, W − 1]和y ∈ [0, H − 1]均为整数，W × H是屏幕分辨率，例如3840 × 2160。将未经变换的顶点记为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3ad693c18421f2.png)，i ∈ {0, 1, 2}；将经过变换后的顶点记为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_0f9b3811916657.png) = ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_d362ce63009f47.png)，这些变换包括投影，但不包括除以w。二维屏幕空间坐标于是为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_9b6925c7679a3d.png)，即先用w分量进行透视除法，再通过缩放和平移使数值对应屏幕分辨率。图23.1展示了这一设置。
+回顾一下，像素中心为(x + 0.5, y + 0.5)，其中x ∈ [0, W − 1]和y ∈ [0, H − 1]均为整数，W × H是屏幕分辨率，例如3840 × 2160。将未经变换的顶点记为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3ad693c18421f2.png)，i ∈ {0, 1, 2}；将经过变换后的顶点记为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_0f9b3811916657.png) = ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_d362ce63009f47.png)，这些变换包括投影，但不包括除以w。二维屏幕空间坐标于是为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_9b6925c7679a3d.png)，即先用w分量进行透视除法，再通过缩放和平移使数值对应屏幕分辨率。图23.1展示了这一设置。
 
 
-![图23.1 屏幕空间三角形与辅助像素](Real-Time_Rendering_4th_中文/assets/fig_23_1_23.1.png)
+![图23.1 屏幕空间三角形与辅助像素](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_1_23.1.png)
 
-**图23.1** 一个三角形，其三个二维顶点![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_c11de44d831b47.png)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_19aa1dc33bda1e.png)和![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3a55303a18d915.png)位于屏幕空间中。屏幕大小为16 × 8像素。注意，像素(x, y)的中心是(x + 0.5, y + 0.5)。底边的法向量以红色显示，长度缩放为原来的0.25。只有绿色像素位于三角形内部。黄色的辅助像素属于某个四像素组（2 × 2像素），组中至少有一个像素被判定为在三角形内部，而辅助像素的采样点（中心）位于三角形外部。辅助像素用于通过有限差分计算导数。
+**图23.1** 一个三角形，其三个二维顶点![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_c11de44d831b47.png)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_19aa1dc33bda1e.png)和![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3a55303a18d915.png)位于屏幕空间中。屏幕大小为16 × 8像素。注意，像素(x, y)的中心是(x + 0.5, y + 0.5)。底边的法向量以红色显示，长度缩放为原来的0.25。只有绿色像素位于三角形内部。黄色的辅助像素属于某个四像素组（2 × 2像素），组中至少有一个像素被判定为在三角形内部，而辅助像素的采样点（中心）位于三角形外部。辅助像素用于通过有限差分计算导数。
 
 如图所示，像素网格被划分为2 × 2像素的小组，称为四像素组（quad）。为能够计算纹理细节层次所需的导数（23.8节），只要四像素组中至少有一个像素位于三角形内部，就要对该组全部像素进行像素着色（3.8节也讨论过这一点）。这是绝大多数GPU——甚至可能是所有GPU——的一项核心设计，会影响后面的许多阶段。三角形越小，辅助像素相对于三角形内部像素的比例就越高。这意味着，在执行像素着色时，小三角形的代价相对于其面积而言很高。最糟糕的情况是三角形仅覆盖一个像素，此时需要三个辅助像素。辅助像素的数量有时称为四像素组过度着色（quad overshading）。
 
 为了判断像素中心或其他任意采样位置是否位于三角形内部，硬件为三角形的每条边使用一个边函数[1417]。这些函数基于直线方程，即
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_282370e4915ed4.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_282370e4915ed4.png)
 
 
-其中n是与边正交的向量，有时称为边的法向量；p是直线上的一点。这类方程可以改写为ax + by + c = 0。下面推导经过![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_c11de44d831b47.png)和![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_19aa1dc33bda1e.png)的边函数![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_f92bdb6d943d5e.png)(x, y)。边向量为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_19aa1dc33bda1e.png) − ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_c11de44d831b47.png)，因此法向量就是将该边逆时针旋转90度得到的向量，即![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_89e22e331ef7d0.png)，它指向三角形内部，如图23.1所示。将![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_d13080baeee9f5.png)和![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_c11de44d831b47.png)代入式（23.1），得到
+其中n是与边正交的向量，有时称为边的法向量；p是直线上的一点。这类方程可以改写为ax + by + c = 0。下面推导经过![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_c11de44d831b47.png)和![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_19aa1dc33bda1e.png)的边函数![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_f92bdb6d943d5e.png)(x, y)。边向量为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_19aa1dc33bda1e.png) − ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_c11de44d831b47.png)，因此法向量就是将该边逆时针旋转90度得到的向量，即![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_89e22e331ef7d0.png)，它指向三角形内部，如图23.1所示。将![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_d13080baeee9f5.png)和![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_c11de44d831b47.png)代入式（23.1），得到
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_8987757588f5c1.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_8987757588f5c1.png)
 
 
-对于恰好位于边上的点(x, y)，有e(x, y) = 0。法向量指向三角形内部，意味着对于位于法向量所指一侧的点，有e(x, y) > 0。这条边把空间分成两部分，e(x, y) > 0有时称为正半空间，e(x, y) < 0称为负半空间。利用这些性质就能判断某一点是否在三角形内。将三角形的各条边记为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_90aed5cf0f1430.png)，i ∈ {0, 1, 2}。若采样点(x, y)位于三角形内部或边上，那么对所有i都必须满足![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_90aed5cf0f1430.png)(x, y) ≥ 0。
+对于恰好位于边上的点(x, y)，有e(x, y) = 0。法向量指向三角形内部，意味着对于位于法向量所指一侧的点，有e(x, y) > 0。这条边把空间分成两部分，e(x, y) > 0有时称为正半空间，e(x, y) < 0称为负半空间。利用这些性质就能判断某一点是否在三角形内。将三角形的各条边记为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_90aed5cf0f1430.png)，i ∈ {0, 1, 2}。若采样点(x, y)位于三角形内部或边上，那么对所有i都必须满足![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_90aed5cf0f1430.png)(x, y) ≥ 0。
 
-图形API规范通常要求，将屏幕空间中浮点表示的顶点坐标转换成定点坐标。强制这样做，是为了以一致的方式定义边界归属规则（稍后介绍），同时也可以提高采样点内部测试的效率。例如，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_453340eada2895.png)的x和y坐标都可以按1.14.8位格式存储，即1个符号位、14个整数坐标位，以及8个表示像素内部小数位置的位。在这种情况下，像素内部沿x和y两个方向分别可以有![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_0f0dcd0fa3153b.png)个位置，整数坐标必须落在[−(![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_ac21ee6291b151.png) − 1), ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_ac21ee6291b151.png) − 1]范围内。实际处理中，这种位置吸附会在计算边方程之前进行。
+图形API规范通常要求，将屏幕空间中浮点表示的顶点坐标转换成定点坐标。强制这样做，是为了以一致的方式定义边界归属规则（稍后介绍），同时也可以提高采样点内部测试的效率。例如，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_453340eada2895.png)的x和y坐标都可以按1.14.8位格式存储，即1个符号位、14个整数坐标位，以及8个表示像素内部小数位置的位。在这种情况下，像素内部沿x和y两个方向分别可以有![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_0f0dcd0fa3153b.png)个位置，整数坐标必须落在[−(![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_ac21ee6291b151.png) − 1), ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_ac21ee6291b151.png) − 1]范围内。实际处理中，这种位置吸附会在计算边方程之前进行。
 
-边函数的另一个重要特性是增量性质。假设已经在某个像素中心(x, y) = (![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_fb3dbd2822545a.png) + 0.5, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_62bb131a10625f.png) + 0.5)计算了边函数，其中(![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_fb3dbd2822545a.png), ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_62bb131a10625f.png))是整数像素坐标，也就是说，已经求得e(x, y) = ax + by + c。例如，要计算右侧像素的值，就需要求e(x + 1, y)，它可改写为
+边函数的另一个重要特性是增量性质。假设已经在某个像素中心(x, y) = (![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_fb3dbd2822545a.png) + 0.5, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_62bb131a10625f.png) + 0.5)计算了边函数，其中(![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_fb3dbd2822545a.png), ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_62bb131a10625f.png))是整数像素坐标，也就是说，已经求得e(x, y) = ax + by + c。例如，要计算右侧像素的值，就需要求e(x + 1, y)，它可改写为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_ee949b3ed2dd25.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_ee949b3ed2dd25.png)
 
 
 也就是说，只需把当前像素的边函数值e(x, y)加上a即可。y方向也可以采用类似的推理。利用这些性质，可以快速计算一小块像素（例如8 × 8像素）的三个边方程，从而“盖印”生成覆盖掩码，其中每个像素对应一位，表示它是否位于内部。本节稍后会介绍这种层次遍历。
 
-必须考虑边或顶点恰好穿过像素中心时会发生什么。例如，假设两个三角形共享一条边，而这条边经过某个像素中心。该像素应属于第一个三角形、第二个三角形，还是同时属于两者？从效率角度看，同时属于两者是错误的答案，因为一个三角形会先写入该像素，随后另一个三角形又将其覆盖。为此，通常使用一种边界归属规则；这里介绍DirectX采用的左上规则。对所有i ∈ {0, 1, 2}都满足![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_90aed5cf0f1430.png)(x, y) > 0的像素，始终被视为位于内部。当边穿过像素时，左上规则便开始发挥作用。如果像素中心位于一条顶边或左边上，那么该像素被视为在内部。若一条边是水平的，且其余边都位于它下方，它就是顶边。若一条边不是水平的，且位于三角形左侧，它就是左边；这意味着一个三角形最多可以有两条左边。检测一条边是顶边还是左边很简单：顶边满足a = 0（水平）且b < 0，左边满足a > 0。判断采样点(x, y)是否位于三角形内部的整个测试，有时称为内部测试（inside test）。
+必须考虑边或顶点恰好穿过像素中心时会发生什么。例如，假设两个三角形共享一条边，而这条边经过某个像素中心。该像素应属于第一个三角形、第二个三角形，还是同时属于两者？从效率角度看，同时属于两者是错误的答案，因为一个三角形会先写入该像素，随后另一个三角形又将其覆盖。为此，通常使用一种边界归属规则；这里介绍DirectX采用的左上规则。对所有i ∈ {0, 1, 2}都满足![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_90aed5cf0f1430.png)(x, y) > 0的像素，始终被视为位于内部。当边穿过像素时，左上规则便开始发挥作用。如果像素中心位于一条顶边或左边上，那么该像素被视为在内部。若一条边是水平的，且其余边都位于它下方，它就是顶边。若一条边不是水平的，且位于三角形左侧，它就是左边；这意味着一个三角形最多可以有两条左边。检测一条边是顶边还是左边很简单：顶边满足a = 0（水平）且b < 0，左边满足a > 0。判断采样点(x, y)是否位于三角形内部的整个测试，有时称为内部测试（inside test）。
 
 
-![图23.2 瓦片与边的半空间测试](Real-Time_Rendering_4th_中文/assets/fig_23_1_23.2.png)
+![图23.2 瓦片与边的半空间测试](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_1_23.2.png)
 
 **图23.2** 边函数的负半空间e(x, y) < 0始终被视为三角形外部。这里将一个4 × 4像素瓦片的各个角点投影到边的法向量上。只需对带有黑色圆点的角进行这条边的测试，因为该角在n上的投影最大。由此便可判定整个瓦片位于三角形外部。
 
@@ -91,97 +91,97 @@
 有了瓦片/边相交测试，就可以按层次遍历三角形，如图23.3所示。瓦片本身也需要按一定顺序遍历，可以采用之字形顺序，也可以采用某种空间填充曲线[1159]；这两种方法通常都能增强访问的连贯性。如有需要，还可以增加层次遍历的层数。例如，可以先访问16 × 16的瓦片，再对每个与三角形重叠的瓦片测试其4 × 4子瓦片[1599]。
 
 
-![图23.3 瓦片遍历顺序](Real-Time_Rendering_4th_中文/assets/fig_23_1_23.3.png)
+![图23.3 瓦片遍历顺序](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_1_23.3.png)
 
 **图23.3** 使用4 × 4像素瓦片进行遍历时的一种可能顺序。本例从左上角开始，向右继续。上方各瓦片均与三角形重叠，尽管右上瓦片中没有位于三角形内部的像素。遍历随后进入正下方的瓦片，它完全位于外部，因此不需要逐像素执行内部测试。然后向左继续遍历，接下来的两个瓦片被发现与三角形重叠，而左下瓦片则不重叠。
 
 与按扫描线顺序遍历三角形相比，瓦片遍历的主要优点是以更连贯的方式处理像素，相应地也以更连贯的方式访问纹素。它还有一个好处：访问颜色缓冲和深度缓冲时，能更好地利用局部性。例如，考虑按扫描线顺序遍历一个大三角形的情况。纹素会被缓存，最近访问的纹素保留在缓存中以供复用。假设纹理映射使用mipmap，这会增加缓存中纹素的复用程度。如果按扫描线顺序访问像素，那么到达扫描线末端时，扫描线起点用到的纹素很可能早已被逐出缓存。复用缓存中的纹素比反复从内存获取更高效，因此三角形通常按瓦片遍历[651, 1162]。这对纹理映射[651]、深度缓冲[679]和颜色缓冲[1463]都有很大益处。事实上，纹理以及深度缓冲和颜色缓冲也采用瓦片形式存储，原因大体相同。23.4节将进一步讨论这一点。
 
-在开始遍历三角形之前，GPU通常有一个三角形设置阶段。这一阶段的目的，是计算整个三角形上保持不变的因子，以便高效遍历。例如，三角形各边方程（式（23.2））中的常数![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_91de03b8b83f7a.png)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_8fa8d9657c94c7.png)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_8c71e236159b58.png)，i ∈ {0, 1, 2}，在此只计算一次，随后用于当前三角形的整个遍历过程。三角形设置还负责计算与属性插值相关的常数（23.1.1节）。随着讨论继续，我们还会看到其他能够在三角形设置阶段一次性计算的常数。
+在开始遍历三角形之前，GPU通常有一个三角形设置阶段。这一阶段的目的，是计算整个三角形上保持不变的因子，以便高效遍历。例如，三角形各边方程（式（23.2））中的常数![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_91de03b8b83f7a.png)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_8fa8d9657c94c7.png)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_8c71e236159b58.png)，i ∈ {0, 1, 2}，在此只计算一次，随后用于当前三角形的整个遍历过程。三角形设置还负责计算与属性插值相关的常数（23.1.1节）。随着讨论继续，我们还会看到其他能够在三角形设置阶段一次性计算的常数。
 
 裁剪必须在三角形设置之前进行，因为裁剪可能产生更多三角形。在裁剪空间中，针对视景体裁剪三角形的过程代价很高，因此GPU会尽可能避免，除非确有必要。近裁剪平面的裁剪始终是必需的，可能生成一个或两个三角形。对于屏幕边界，多数GPU采用保护带裁剪（guard-band clipping），这是一种更简单的方案，可以避免更复杂的完整裁剪过程。图23.4直观展示了该算法。
 
 
-![图23.4 保护带裁剪](Real-Time_Rendering_4th_中文/assets/fig_23_1_23.4.png)
+![图23.4 保护带裁剪](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_1_23.4.png)
 
 **图23.4** 通过保护带尽量避免完整裁剪。假设保护带区域在x和y两个方向上都是±16K像素，那么中间的屏幕大约为6500 × 4900像素，这说明图中的三角形非常巨大。底部两个绿色三角形在三角形设置阶段或更早的步骤中被剔除。最常见的情况是中间的蓝色三角形：它与屏幕区域相交，并完全位于保护带内部。由于只处理可见瓦片，因此不需要执行完整裁剪。红色三角形超出了保护带，又与屏幕区域相交，因而需要裁剪。注意，右侧红色三角形被裁剪成两个三角形。
 
 ### 23.1.1 插值
 
-在22.8.1节中，重心坐标是计算射线与三角形交点时得到的副产物。任意逐顶点属性![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_91de03b8b83f7a.png)，i ∈ {0, 1, 2}，都可以使用重心坐标(u, v)进行插值：
+在22.8.1节中，重心坐标是计算射线与三角形交点时得到的副产物。任意逐顶点属性![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_91de03b8b83f7a.png)，i ∈ {0, 1, 2}，都可以使用重心坐标(u, v)进行插值：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_a7631d0bcd2cad.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_a7631d0bcd2cad.png)
 
 
 其中a(u, v)是三角形上(u, v)位置处的插值属性。重心坐标的定义为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_48f189f650e1fd.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_48f189f650e1fd.png)
 
 
-其中![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_db175bc6cb7648.png)是图23.5左图中各子三角形的面积。第三个坐标w = ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_1be24fe3c2e8cc.png)/(![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_1be24fe3c2e8cc.png) + ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_cc5c8879bf5964.png) + ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3a2cec4976a7a9.png))也是定义的一部分，因此u + v + w = 1，也就是w = 1 − u − v。这里用1 − u − v代替w。
+其中![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_db175bc6cb7648.png)是图23.5左图中各子三角形的面积。第三个坐标w = ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_1be24fe3c2e8cc.png)/(![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_1be24fe3c2e8cc.png) + ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_cc5c8879bf5964.png) + ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3a2cec4976a7a9.png))也是定义的一部分，因此u + v + w = 1，也就是w = 1 − u − v。这里用1 − u − v代替w。
 
-式（23.2）中的边方程可以用边的法向量![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_d13080baeee9f5.png) = (![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_706dcf1b6e7fee.png), ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_5e1d8fad66594b.png))表示为
-
-
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_9c775bbb02b3b8.png)
+式（23.2）中的边方程可以用边的法向量![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_d13080baeee9f5.png) = (![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_706dcf1b6e7fee.png), ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_5e1d8fad66594b.png))表示为
 
 
-![图23.5 重心坐标与子三角形面积](Real-Time_Rendering_4th_中文/assets/fig_23_1_23.5.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_9c775bbb02b3b8.png)
 
-**图23.5** 左：顶点带有标量属性(![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_0e21fdcc41c3d1.png), ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_a323819885cd5b.png), ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_706dcf1b6e7fee.png))的三角形。点p处的重心坐标与有向面积(![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_cc5c8879bf5964.png), ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3a2cec4976a7a9.png), ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_1be24fe3c2e8cc.png))成比例。中：重心坐标(u, v)在三角形上的变化示意。右：法向量![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_d13080baeee9f5.png)由边![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_c11de44d831b47.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_19aa1dc33bda1e.png)逆时针旋转90度得到，其长度与该边相同。因此面积![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3a2cec4976a7a9.png)为bh/2。
+
+![图23.5 重心坐标与子三角形面积](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_1_23.5.png)
+
+**图23.5** 左：顶点带有标量属性(![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_0e21fdcc41c3d1.png), ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_a323819885cd5b.png), ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_706dcf1b6e7fee.png))的三角形。点p处的重心坐标与有向面积(![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_cc5c8879bf5964.png), ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3a2cec4976a7a9.png), ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_1be24fe3c2e8cc.png))成比例。中：重心坐标(u, v)在三角形上的变化示意。右：法向量![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_d13080baeee9f5.png)由边![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_c11de44d831b47.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_19aa1dc33bda1e.png)逆时针旋转90度得到，其长度与该边相同。因此面积![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3a2cec4976a7a9.png)为bh/2。
 
 其中p = (x, y)。根据点积的定义，可将其改写为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_b830b9b576161e.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_b830b9b576161e.png)
 
 
-其中α是![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_d13080baeee9f5.png)与p − ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_c11de44d831b47.png)之间的夹角。注意，b = ‖![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_d13080baeee9f5.png)‖等于边![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_c11de44d831b47.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_19aa1dc33bda1e.png)的长度，因为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_d13080baeee9f5.png)就是将该边旋转90度得到的。第二项‖p − ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_c11de44d831b47.png)‖cos α的几何意义，是把p − ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_c11de44d831b47.png)投影到![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_d13080baeee9f5.png)上所得向量的长度；该长度恰好等于面积为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3a2cec4976a7a9.png)的子三角形的高h，如图23.5右图所示。于是值得注意的是，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_f92bdb6d943d5e.png)(p) = ‖![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_d13080baeee9f5.png)‖‖p − ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_c11de44d831b47.png)‖cos α = bh = ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_1f9bfc1eb6fdbf.png)。这非常有用，因为计算重心坐标正需要子三角形的面积。这意味着
+其中α是![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_d13080baeee9f5.png)与p − ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_c11de44d831b47.png)之间的夹角。注意，b = ‖![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_d13080baeee9f5.png)‖等于边![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_c11de44d831b47.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_19aa1dc33bda1e.png)的长度，因为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_d13080baeee9f5.png)就是将该边旋转90度得到的。第二项‖p − ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_c11de44d831b47.png)‖cos α的几何意义，是把p − ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_c11de44d831b47.png)投影到![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_d13080baeee9f5.png)上所得向量的长度；该长度恰好等于面积为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3a2cec4976a7a9.png)的子三角形的高h，如图23.5右图所示。于是值得注意的是，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_f92bdb6d943d5e.png)(p) = ‖![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_d13080baeee9f5.png)‖‖p − ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_c11de44d831b47.png)‖cos α = bh = ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_1f9bfc1eb6fdbf.png)。这非常有用，因为计算重心坐标正需要子三角形的面积。这意味着
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_c036c4102adfcf.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_c036c4102adfcf.png)
 
 
-三角形设置阶段通常会计算1/(![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_1be24fe3c2e8cc.png) + ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_cc5c8879bf5964.png) + ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3a2cec4976a7a9.png))，因为三角形的面积不变，而且这样还可以避免逐像素执行除法。因此，当我们使用边方程遍历三角形时，式（23.8）的所有项都会作为内部测试的副产物得到。正如稍后将看到的，它们可用于深度插值，也适用于正交投影；但对于透视投影，重心坐标并不能产生期望结果，如图23.6所示。
+三角形设置阶段通常会计算1/(![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_1be24fe3c2e8cc.png) + ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_cc5c8879bf5964.png) + ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3a2cec4976a7a9.png))，因为三角形的面积不变，而且这样还可以避免逐像素执行除法。因此，当我们使用边方程遍历三角形时，式（23.8）的所有项都会作为内部测试的副产物得到。正如稍后将看到的，它们可用于深度插值，也适用于正交投影；但对于透视投影，重心坐标并不能产生期望结果，如图23.6所示。
 
 透视校正重心坐标需要对每个像素做一次除法[163, 694]。这里省略推导[26, 1317]，只总结最重要的结果。由于线性插值的成本低，而且已经知道如何计算(u, v)，因此即使在透视校正中，我们也希望尽可能使用屏幕空间中的线性插值。有些令人意外的是，在三角形上对a/w和1/w都可以进行线性插值，其中w是顶点完成所有变换后的第四个分量。恢复插值属性a，只需使用这两个插值结果：
 
 
-![图23.6 透视投影与透视校正](Real-Time_Rendering_4th_中文/assets/fig_23_1_23.6.png)
+![图23.6 透视投影与透视校正](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_1_23.6.png)
 
 **图23.6** 左：在透视投影中，几何体的投影图像随距离增加而缩小。中：从侧面观察三角形的投影。注意，三角形上半部分在投影平面上覆盖的区域小于下半部分。右：带棋盘格纹理的四边形。上图使用重心坐标进行纹理映射，下图使用透视校正重心坐标。
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_98711512ee5e79.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_98711512ee5e79.png)
 
 
 这就是前面提到的逐像素除法。
 
-一个具体例子可以展示其效果。假设沿三角形的一条水平边插值，左端![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_0e21fdcc41c3d1.png) = 4，右端![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_a323819885cd5b.png) = 6。两端点之间的中点处，属性值是多少？对于正交投影（或端点的w值相同时），答案就是a = 5，即![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_0e21fdcc41c3d1.png)与![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_a323819885cd5b.png)的中间值。
+一个具体例子可以展示其效果。假设沿三角形的一条水平边插值，左端![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_0e21fdcc41c3d1.png) = 4，右端![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_a323819885cd5b.png) = 6。两端点之间的中点处，属性值是多少？对于正交投影（或端点的w值相同时），答案就是a = 5，即![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_0e21fdcc41c3d1.png)与![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_a323819885cd5b.png)的中间值。
 
-现在假设端点的w值分别为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3e28dbeac91a99.png) = 1和![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_50251dbe8a1da7.png) = 3。这时需要插值两次，分别得到a/w和1/w。对于a/w，左端值为4/1 = 4，右端值为6/3 = 2，所以中点值为3。对于1/w，两个端点分别为1/1和1/3，因此中点值为2/3。用3除以2/3，得到透视情况下中点处的属性值a = 4.5。
+现在假设端点的w值分别为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3e28dbeac91a99.png) = 1和![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_50251dbe8a1da7.png) = 3。这时需要插值两次，分别得到a/w和1/w。对于a/w，左端值为4/1 = 4，右端值为6/3 = 2，所以中点值为3。对于1/w，两个端点分别为1/1和1/3，因此中点值为2/3。用3除以2/3，得到透视情况下中点处的属性值a = 4.5。
 
 实践中，通常需要在三角形上对多个属性进行透视校正插值。因此，常见做法是计算透视校正重心坐标，记为(ũ, ṽ)，然后用它们进行所有属性插值。为此，引入以下辅助函数[26]：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_7883e0c78b05a4.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_7883e0c78b05a4.png)
 
 
-注意，由于![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_43270b023aa067.png)(x, y) = ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_0e21fdcc41c3d1.png)x + ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_ad0d7a1ea0a9ba.png)y + ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_0988a1f5693327.png)，三角形设置阶段可以计算并存储![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_0e21fdcc41c3d1.png)/![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3e28dbeac91a99.png)以及其他类似项，以加快逐像素求值。另一种方法是将所有![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_9d4f0c1b7b3252.png)函数乘以![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_2e3e884a113385.png)；例如，存储![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_2e3e884a113385.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_efa168eaae1490.png)(x, y)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_2e3e884a113385.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_49f2bf766aba7e.png)(x, y)和![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_59ff3812b9d05a.png)(x, y)[1159]。
+注意，由于![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_43270b023aa067.png)(x, y) = ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_0e21fdcc41c3d1.png)x + ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_ad0d7a1ea0a9ba.png)y + ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_0988a1f5693327.png)，三角形设置阶段可以计算并存储![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_0e21fdcc41c3d1.png)/![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3e28dbeac91a99.png)以及其他类似项，以加快逐像素求值。另一种方法是将所有![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_9d4f0c1b7b3252.png)函数乘以![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_2e3e884a113385.png)；例如，存储![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_2e3e884a113385.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_efa168eaae1490.png)(x, y)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_2e3e884a113385.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_49f2bf766aba7e.png)(x, y)和![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_59ff3812b9d05a.png)(x, y)[1159]。
 
-> 译注：上句示例按原书第1001页保留，存在记号疑点。按照式（23.10），若所有![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_9d4f0c1b7b3252.png)确实统一乘以![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_2e3e884a113385.png)，结果应分别为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_2e3e884a113385.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_43270b023aa067.png)(x, y)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_2e3e884a113385.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_392783cc92c86c.png)(x, y)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_f92bdb6d943d5e.png)(x, y)。原文示例却仍写![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_efa168eaae1490.png)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_49f2bf766aba7e.png)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_59ff3812b9d05a.png)，和“统一乘以![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_2e3e884a113385.png)”的叙述不一致。
+> 译注：上句示例按原书第1001页保留，存在记号疑点。按照式（23.10），若所有![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_9d4f0c1b7b3252.png)确实统一乘以![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_2e3e884a113385.png)，结果应分别为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_2e3e884a113385.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_43270b023aa067.png)(x, y)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_2e3e884a113385.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_392783cc92c86c.png)(x, y)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_f92bdb6d943d5e.png)(x, y)。原文示例却仍写![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_efa168eaae1490.png)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_49f2bf766aba7e.png)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_59ff3812b9d05a.png)，和“统一乘以![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3e28dbeac91a99.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_50251dbe8a1da7.png) ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_2e3e884a113385.png)”的叙述不一致。
 
 透视校正重心坐标为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_1eb838dd70a763.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_1eb838dd70a763.png)
 
 
 每个像素只需计算一次这些坐标，之后便可用它们插值任意属性，同时获得正确的透视缩短效果。注意，这些坐标不像(u, v)那样与子三角形面积成比例。另外，分母也不像普通重心坐标的分母那样是常数，这就是必须逐像素执行该除法的原因。
 
-最后，注意深度是z/w。从式（23.10）可知，不应使用那些方程来插值深度，因为深度已经除以w。因此，应对每个顶点计算![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_23b590f1ff977e.png)/![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_01_3e929edc96716e.png)，然后使用(u, v)进行线性插值。这有若干优点，例如有利于深度缓冲压缩（23.7节）。
+最后，注意深度是z/w。从式（23.10）可知，不应使用那些方程来插值深度，因为深度已经除以w。因此，应对每个顶点计算![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_23b590f1ff977e.png)/![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_01_3e929edc96716e.png)，然后使用(u, v)进行线性插值。这有若干优点，例如有利于深度缓冲压缩（23.7节）。
 
 ### 23.1.2 保守光栅化
 
@@ -190,7 +190,7 @@
 大致来说，OCR会访问所有与三角形重叠或位于其内部的像素，而UCR只访问完全位于三角形内部的像素。通过把瓦片大小缩小为单个像素，OCR和UCR都可以使用瓦片遍历来实现[24]。如果硬件不提供支持，可以使用几何着色器或三角形扩张来实现OCR[676]。关于CR的更多信息，请参阅各API的规范。CR可用于图像空间碰撞检测、遮挡剔除、阴影计算[1930]、抗锯齿等算法。
 
 
-![图23.7 保守光栅化](Real-Time_Rendering_4th_中文/assets/fig_23_1_23.7.png)
+![图23.7 保守光栅化](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_1_23.7.png)
 
 **图23.7** 三角形的保守光栅化。使用外保守光栅化时，所有着色像素都属于三角形。使用标准光栅化时，黄色和绿色像素位于三角形内部；使用内保守光栅化时，则只生成绿色像素。
 
@@ -206,7 +206,7 @@
 在这里，ALU 是一种经过优化、用于为单个实体（例如一个顶点或片元）执行程序的硬件。我们有时会用 SIMD 通道（SIMD lane）这一术语代替 ALU。图 23.8 左侧展示了一个典型的 GPU ALU。其主要计算单元是一个浮点（FP）单元和一个整数单元。浮点单元通常遵循 IEEE 754 浮点标准，并支持融合乘加（fused-multiply and add，FMA）指令，这是其最复杂的指令之一。除了余弦、正弦和指数等超越运算外，ALU 通常还具有移动／比较、加载／存储功能，以及一个分支单元。不过，应当注意，在某些架构中，其中一些功能可能位于独立的硬件单元中。例如，一小组超越函数硬件单元可能为数量更多的 ALU 提供服务。对于执行频率相对较低的运算，就可能采用这种方式。这些单元归入图 23.8 右侧所示的特殊单元（SU）模块。ALU 架构通常由几个硬件流水线阶段构成，也就是说，硅片上实际构建了多个并行执行的模块。例如，在当前指令进行乘法运算时，下一条指令可以读取寄存器。若有 n 个流水线阶段，理想情况下，吞吐量可提高到原来的 n 倍。这通常称为流水线并行。采用流水线的另一个重要原因是：在流水线处理器中，最慢的硬件模块决定了该模块能够运行的最高时钟频率。增加流水线阶段的数量，会减少每个流水线阶段包含的硬件模块数，通常就能够提高时钟频率。不过，为了简化设计，ALU 的流水线阶段一般较少，例如 4—10 级。
 
 
-![图 23.8 算术逻辑单元与多处理器结构](Real-Time_Rendering_4th_中文/assets/fig_23_2_23.8.png)
+![图 23.8 算术逻辑单元与多处理器结构](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_2_23.8.png)
 
 图 23.8。左：一种为每次执行一个项目而构建的算术逻辑单元示例。分派端口接收当前待执行指令的信息，操作数收集器读取该指令所需的寄存器。右：这里将 8 × 4 个 ALU 与其他若干硬件单元组装在一起，形成一个称为多处理器的模块。这 32 个 ALU 有时称为 SIMD 通道，它们以锁步方式执行相同的程序，也就是说，它们构成了一个 SIMD 引擎。此外，还有寄存器文件、L1 缓存、局部数据存储、纹理单元，以及用于处理 ALU 无法处理的各种指令的特殊单元。
 
@@ -232,16 +232,16 @@ MP 附近有一个（线程束）调度器，它接收要在该 MP 上执行的�
 隐藏延迟的一种机制是 SIMD 处理中的多线程部分，书页 33 的图 3.1 对此作了说明。一般来说，一个多处理器（MP）能够处理的线程束（warp）数量有一个上限。**活动线程束**的数量取决于寄存器的使用情况，也可能取决于纹理采样器、L1 缓存、插值量的使用情况以及其他因素。这里，我们将**占用率** o 定义为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_03_7ce8d8481efcf2.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_03_7ce8d8481efcf2.png)
 
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_03_b03010fd30ad73.png) 是一个 MP 上允许的最大线程束数，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_03_ca135ada1a14a5.png) 是当前活动线程束的数量。也就是说，o 衡量的是计算资源保持被利用的程度。例如，假设 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_03_494c3f11304823.png)，一个着色处理器具有 256 kB 的寄存器存储空间，某个着色器程序的单个线程使用 27 个 32 位浮点寄存器，另一个着色器程序则使用 150 个。此外，我们假设决定活动线程束数量的因素是寄存器使用量。假设 SIMD 宽度为 32，那么这两种情况下的活动线程束数分别可以计算为
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_03_b03010fd30ad73.png) 是一个 MP 上允许的最大线程束数，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_03_ca135ada1a14a5.png) 是当前活动线程束的数量。也就是说，o 衡量的是计算资源保持被利用的程度。例如，假设 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_03_494c3f11304823.png)，一个着色处理器具有 256 kB 的寄存器存储空间，某个着色器程序的单个线程使用 27 个 32 位浮点寄存器，另一个着色器程序则使用 150 个。此外，我们假设决定活动线程束数量的因素是寄存器使用量。假设 SIMD 宽度为 32，那么这两种情况下的活动线程束数分别可以计算为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_03_3b4203a23faa23.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_03_3b4203a23faa23.png)
 
 
-在第一种情况下，也就是使用 27 个寄存器的短程序，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_03_30bb84ce01d6a5.png)，因此占用率 o = 1。这是理想情况，因而有利于隐藏延迟。然而，在第二种情况下，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_03_0bb3950e1c8f5d.png)，所以 o ≈ 13.65/32 ≈ 0.43。由于活动线程束较少，占用率就更低，这可能不利于隐藏延迟。因此，在设计架构时，在线程束数量上限、寄存器数量上限以及其他共享资源之间取得良好平衡十分重要。
+在第一种情况下，也就是使用 27 个寄存器的短程序，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_03_30bb84ce01d6a5.png)，因此占用率 o = 1。这是理想情况，因而有利于隐藏延迟。然而，在第二种情况下，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_03_0bb3950e1c8f5d.png)，所以 o ≈ 13.65/32 ≈ 0.43。由于活动线程束较少，占用率就更低，这可能不利于隐藏延迟。因此，在设计架构时，在线程束数量上限、寄存器数量上限以及其他共享资源之间取得良好平衡十分重要。
 
 有时候，过高的占用率可能适得其反：如果着色器进行了大量内存访问，就可能导致缓存抖动 [1914]。另一种隐藏延迟的机制，是在发出内存请求后继续执行同一个线程束；只要存在不依赖该内存访问结果的指令，就可以这样做。虽然这会使用更多寄存器，但有时保持较低占用率反而可能更高效 [1914]。循环展开就是一个例子：它通常会生成更长的独立指令链，为指令级并行提供更多机会，从而能够在切换线程束之前持续执行更长时间。不过，这也会使用更多临时寄存器。一般原则仍然是争取更高的占用率。例如，着色器请求纹理访问时，占用率低就意味着能够切换到另一个线程束的可能性较小。
 
@@ -265,7 +265,7 @@ MP 附近有一个（线程束）调度器，它接收要在该 MP 上执行的�
 传统上，纹理和渲染目标存储在显存中，但显存也可以用来存储其他数据。场景中的许多物体在相邻帧之间并不会发生明显的形状变化。即使是人物角色，通常也是用一组保持不变的网格来渲染，并在关节处使用 GPU 端的顶点混合。对于这种完全通过建模矩阵和顶点着色器程序实现动画的数据，通常使用放置在显存中的**静态**顶点缓冲区和索引缓冲区。这样可以让 GPU 快速访问数据。对于每帧由 CPU 更新的顶点，则使用**动态**顶点缓冲区和索引缓冲区，并将它们放置在可以经由 PCI Express 等总线访问的系统内存中。PCIe 的一个良好特性是，查询可以采用流水线方式处理，因此能够在结果返回之前发出多个查询请求。
 
 
-![图 23.9：Intel Gen9 片上系统的内存架构](Real-Time_Rendering_4th_中文/assets/fig_23_4_23.9.png)
+![图 23.9：Intel Gen9 片上系统的内存架构](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_4_23.9.png)
 
 **图 23.9** Intel 片上系统（SoC）Gen9 图形架构的内存架构简图，该架构与 CPU 核心相连，并采用共享内存模型。注意，末级缓存（LLC）由图形处理器和 CPU 核心共享。（插图依据 Junkins [844] 绘制。）
 
@@ -279,7 +279,7 @@ MP 附近有一个（线程束）调度器，它接收要在该 MP 上执行的�
 每个 GPU 的多个不同部位都设有缓存，但不同架构的缓存有所不同，我们将在第 23.10 节看到这一点。一般来说，为架构增加缓存层次结构，是为了利用内存访问模式的局部性，降低内存访问延迟和带宽使用量。也就是说，如果 GPU 访问了某个数据项，那么它很可能很快就会再次访问同一数据项或其附近的数据项 [715]。大多数缓冲区和纹理格式都采用分块格式存储，这也有助于提高局部性 [651]。假设一条缓存行包含 512 位，即 64 字节，而当前使用的颜色格式中，每个像素占 4 B。那么，一种设计选择就是用 64 B 存储一个 4 × 4 区域内的全部像素，这样的区域也称为一个块（tile）。也就是说，整个颜色缓冲区会被划分为多个 4 × 4 块。一个块也可以跨越多条缓存行。
 
 
-![图 23.10：GPU 渲染目标的缓存后压缩与缓存前压缩硬件框图](Real-Time_Rendering_4th_中文/assets/fig_23_5_23.10.png)
+![图 23.10：GPU 渲染目标的缓存后压缩与缓存前压缩硬件框图](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_5_23.10.png)
 
 **图 23.10** GPU 中用于渲染目标压缩与缓存的硬件技术框图。左：缓存后压缩（post-cache compression），压缩器／解压缩器硬件单元位于缓存之后（下方）。右：缓存前压缩（pre-cache compression），压缩器／解压缩器硬件单元位于缓存之前（上方）。
 
@@ -307,7 +307,7 @@ MP 附近有一个（线程束）调度器，它接收要在该 MP 上执行的�
 高彩色模式有 16 位可用于颜色分辨率。通常，红、绿、蓝三个通道各分配至少 5 位，因此每个颜色通道有 32 个级别。这样还剩下一位，通常分给绿色通道，形成 5-6-5 的划分。之所以选择绿色通道，是因为它对人眼感知亮度的影响最大，因此需要更高的精度。高彩色相对于真彩色和深彩色具有速度优势，因为访问每像素 2 字节的内存通常比访问每像素 3 字节或更多字节更快。话虽如此，如今高彩色模式已经很少使用，甚至几乎不再使用。当每个通道只有 32 或 64 个颜色级别时，相邻颜色级别的差异很容易被辨认出来。这个问题有时称为**色带（banding）**或**色调分离（posterization）**。人类视觉系统还会因一种称为 **马赫带效应（Mach banding）** 的感知现象而进一步放大这些差异 [543, 653]。见图 23.11。**抖动（dithering）** [102, 539, 1081] 通过混合相邻级别，以空间分辨率换取有效颜色分辨率的提高，从而减轻这种现象。即使在 24 位显示器上，渐变中的色带也可能很明显。向帧缓冲图像添加噪声，可以掩盖这个问题 [1823]。
 
 
-![图 23.11：32 级灰度色带与马赫带错觉](Real-Time_Rendering_4th_中文/assets/fig_23_6_23.11.png)
+![图 23.11：32 级灰度色带与马赫带错觉](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_6_23.11.png)
 
 **图 23.11**　当矩形从白到黑进行着色时，会出现色带。尽管这 32 个灰度条各自都具有均一的强度级别，但由于马赫带错觉，每一条看起来都可能左侧较暗、右侧较亮。
 
@@ -336,7 +336,7 @@ MP 附近有一个（线程束）调度器，它接收要在该 MP 上执行的�
 为了避免撕裂问题，通常使用双缓冲。完整的图像显示在**前缓冲区（front buffer）**中，而一个离屏的**后缓冲区（back buffer）**包含当前正在绘制的图像。然后，图形驱动程序交换后缓冲区和前缓冲区；为避免撕裂，这通常发生在整幅图像刚刚传输给显示器之后。交换往往只需交换两个颜色缓冲区指针。对于 CRT 显示器，这个事件称为**垂直回扫（vertical retrace）**，这段时间内的视频信号称为**垂直同步脉冲（vertical synchronization pulse）**，简称 **vsync**。对于 LCD 显示器，虽然没有扫描束的物理回扫，但我们仍使用同一个术语来表示整幅图像刚刚传输到显示器的时刻。在渲染完成后立即交换前后缓冲区，有利于对渲染系统进行基准测试，也被许多应用采用，因为这样可以使帧率最大化。不在垂直同步时更新也会导致撕裂，但由于此时有两幅完整成形的图像，这种伪影不像单缓冲时那么严重。交换之后，新的后缓冲区立即开始接收图形命令，而新的前缓冲区则显示给用户。图 23.12 展示了这一过程。
 
 
-![图 23.12：单缓冲、双缓冲和三缓冲的状态轮换](Real-Time_Rendering_4th_中文/assets/fig_23_6_23.12.png)
+![图 23.12：单缓冲、双缓冲和三缓冲的状态轮换](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_6_23.12.png)
 
 **图 23.12**　对于单缓冲（上），始终显示前缓冲区。对于双缓冲（中），起初缓冲区 0 在前，缓冲区 1 在后；随后每帧它们都会交换，前者变为后者，后者变为前者。三缓冲（下）通过额外设置一个待处理缓冲区来工作。首先，清除一个缓冲区并开始向其渲染（pending，待处理）；其次，系统继续使用该缓冲区进行渲染，直到图像完成（back，后缓冲）；最后，显示该缓冲区（front，前缓冲）。图中 buffer 0、buffer 1、buffer 2 分别表示缓冲区 0、1、2。
 
@@ -359,29 +359,29 @@ MP 附近有一个（线程束）调度器，它接收要在该 MP 上执行的�
 
 深度分辨率很重要，因为它有助于避免渲染错误。例如，假设你建立了一张纸的模型，并把它放在桌子上，位置仅比桌面略高一点。由于为桌面和纸张计算的 z 深度具有精度限制，桌面可能会在若干位置穿透纸张。这种问题有时称为 **z-fighting（深度冲突）**。注意，如果纸张放置得与桌面完全等高，即纸张与桌面共面，那么在没有关于两者关系的额外信息时，就不存在正确答案。这种问题源于不良建模，无法通过提高 z 精度来解决。
 
-正如第 2.5.2 节所述，z 缓冲（也称为深度缓冲）可用于判定可见性。这类缓冲通常为每个像素（或采样点）分配 24 位或 32 位，可以采用浮点或定点表示 [1472]。对于正交观察，距离值与 z 值成正比，因此得到均匀的分布。然而，对于透视观察，分布是不均匀的，正如书页 99—102 所述。应用透视变换（式 4.74 或式 4.76）后，需要除以 w 分量（式 4.72）。此时深度分量变为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_c9619252000a31.png)，其中 **q** 是与投影矩阵相乘后得到的点。对于定点表示，数值 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_c9619252000a31.png) 从其有效范围（例如 DirectX 中的 [0, 1]）映射到整数范围 [0, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_ca58d1399ab9c7.png) − 1]，并存入 z 缓冲，其中 b 是位数。有关深度精度的更多信息，参见书页 99—102。
+正如第 2.5.2 节所述，z 缓冲（也称为深度缓冲）可用于判定可见性。这类缓冲通常为每个像素（或采样点）分配 24 位或 32 位，可以采用浮点或定点表示 [1472]。对于正交观察，距离值与 z 值成正比，因此得到均匀的分布。然而，对于透视观察，分布是不均匀的，正如书页 99—102 所述。应用透视变换（式 4.74 或式 4.76）后，需要除以 w 分量（式 4.72）。此时深度分量变为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_c9619252000a31.png)，其中 **q** 是与投影矩阵相乘后得到的点。对于定点表示，数值 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_c9619252000a31.png) 从其有效范围（例如 DirectX 中的 [0, 1]）映射到整数范围 [0, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_ca58d1399ab9c7.png) − 1]，并存入 z 缓冲，其中 b 是位数。有关深度精度的更多信息，参见书页 99—102。
 
 
-![图 23.13 深度流水线的一种可能实现](Real-Time_Rendering_4th_中文/assets/fig_23_7_23.13.png)
+![图 23.13 深度流水线的一种可能实现](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_7_23.13.png)
 
 **图 23.13** 深度流水线的一种可能实现，其中 z-interpolate 只是通过插值计算深度值。（插图据 Andersson 等人 [46] 绘制。）
 
-硬件深度流水线如图 23.13 所示。这条流水线的主要目标，是将光栅化图元时产生的每个输入深度与深度缓冲进行测试；如果片元通过深度测试，则可能将输入深度写入深度缓冲。同时，这条流水线还必须高效运行。图的左侧从粗粒度光栅化开始，也就是在图块层面进行光栅化（第 23.1 节）。此时，只有与图元重叠的图块才会被送往下一阶段，即 HiZ 单元，在那里执行 z 剔除技术。HiZ 单元以一个称为粗粒度深度测试的模块开始，这里通常执行两类测试。我们先介绍 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_66a1b8fb0c4036.png) 剔除，它是第 19.7.2 节所介绍的 Greene 分层 z 缓冲算法 [591] 的简化形式。其思想是存储每个图块内全部深度的最大值，称为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_66a1b8fb0c4036.png)。图块尺寸取决于体系结构，但常用尺寸为 8 × 8 像素 [1238]。这些 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_66a1b8fb0c4036.png) 值可以存放在固定的片上存储器中，也可以通过缓存访问。在图 23.13 中，我们将其称为 HiZ 缓存。简言之，我们要测试三角形是否在一个图块内被完全遮挡。为此，需要计算三角形在该图块内的最小 z 值 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_6c5f73fc6e4890.png)。如果 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_fa82e2f9011dcf.png)，就能保证该三角形在这个图块内被先前渲染的几何体遮挡。于是可以终止该三角形在这个图块内的处理，从而省去逐像素深度测试。注意，这并不会减少任何像素着色器执行，因为无论如何，流水线后续的逐采样点深度测试都会剔除被遮挡的片元。实际上，我们无法承担精确计算 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_6c5f73fc6e4890.png) 的开销，因此改为计算一个保守估计值。计算 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_6c5f73fc6e4890.png) 可以采用几种不同的方法，各有优缺点：
+硬件深度流水线如图 23.13 所示。这条流水线的主要目标，是将光栅化图元时产生的每个输入深度与深度缓冲进行测试；如果片元通过深度测试，则可能将输入深度写入深度缓冲。同时，这条流水线还必须高效运行。图的左侧从粗粒度光栅化开始，也就是在图块层面进行光栅化（第 23.1 节）。此时，只有与图元重叠的图块才会被送往下一阶段，即 HiZ 单元，在那里执行 z 剔除技术。HiZ 单元以一个称为粗粒度深度测试的模块开始，这里通常执行两类测试。我们先介绍 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_66a1b8fb0c4036.png) 剔除，它是第 19.7.2 节所介绍的 Greene 分层 z 缓冲算法 [591] 的简化形式。其思想是存储每个图块内全部深度的最大值，称为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_66a1b8fb0c4036.png)。图块尺寸取决于体系结构，但常用尺寸为 8 × 8 像素 [1238]。这些 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_66a1b8fb0c4036.png) 值可以存放在固定的片上存储器中，也可以通过缓存访问。在图 23.13 中，我们将其称为 HiZ 缓存。简言之，我们要测试三角形是否在一个图块内被完全遮挡。为此，需要计算三角形在该图块内的最小 z 值 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_6c5f73fc6e4890.png)。如果 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_fa82e2f9011dcf.png)，就能保证该三角形在这个图块内被先前渲染的几何体遮挡。于是可以终止该三角形在这个图块内的处理，从而省去逐像素深度测试。注意，这并不会减少任何像素着色器执行，因为无论如何，流水线后续的逐采样点深度测试都会剔除被遮挡的片元。实际上，我们无法承担精确计算 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_6c5f73fc6e4890.png) 的开销，因此改为计算一个保守估计值。计算 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_6c5f73fc6e4890.png) 可以采用几种不同的方法，各有优缺点：
 
 1. 可以使用三角形三个顶点中的最小 z 值。这并不总是准确，但额外开销很小。
 2. 利用三角形的平面方程，求出图块四个角点处的 z 值，并取其中的最小值。
 
-将这两种策略结合起来，可以获得最佳剔除性能。做法是取这两个 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_64df578b1bedb5.png) 值中较大的一个。
+将这两种策略结合起来，可以获得最佳剔除性能。做法是取这两个 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_64df578b1bedb5.png) 值中较大的一个。
 
-另一类粗粒度深度测试是 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_64df578b1bedb5.png) 剔除，其思想是存储图块中所有像素的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_64df578b1bedb5.png) [22]。它有两种用途。首先，可以用它避免读取 z 缓冲。如果正在渲染的三角形确定处于先前渲染的全部几何体前方，就没有必要进行逐像素深度测试。在某些情况下，可以完全避免读取 z 缓冲，从而进一步提高性能。其次，它可以用于支持不同类型的深度测试。对于 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_66a1b8fb0c4036.png) 剔除方法，我们假定使用标准的“小于”深度测试。不过，如果其他深度测试也能使用剔除，就会很有益；而当 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_64df578b1bedb5.png) 与 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_66a1b8fb0c4036.png) 都可用时，通过这种剔除过程就能支持所有深度测试。Andersson 的博士论文 [49] 给出了对深度流水线更详细的硬件描述。
+另一类粗粒度深度测试是 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_64df578b1bedb5.png) 剔除，其思想是存储图块中所有像素的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_64df578b1bedb5.png) [22]。它有两种用途。首先，可以用它避免读取 z 缓冲。如果正在渲染的三角形确定处于先前渲染的全部几何体前方，就没有必要进行逐像素深度测试。在某些情况下，可以完全避免读取 z 缓冲，从而进一步提高性能。其次，它可以用于支持不同类型的深度测试。对于 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_66a1b8fb0c4036.png) 剔除方法，我们假定使用标准的“小于”深度测试。不过，如果其他深度测试也能使用剔除，就会很有益；而当 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_64df578b1bedb5.png) 与 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_66a1b8fb0c4036.png) 都可用时，通过这种剔除过程就能支持所有深度测试。Andersson 的博士论文 [49] 给出了对深度流水线更详细的硬件描述。
 
-图 23.13 中的绿色方框涉及更新图块 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_66a1b8fb0c4036.png) 与 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_64df578b1bedb5.png) 值的不同方式。如果一个三角形覆盖整个图块，就可以直接在 HiZ 单元中完成更新。否则，需要读取整个图块的逐采样点深度，将其归约为最小值与最大值，再传回 HiZ 单元，这会引入一定延迟。Andersson 等人 [50] 提出了一种方法，无需代价较高的深度缓存反馈便能完成这一过程，同时仍能保留大部分剔除效率。
+图 23.13 中的绿色方框涉及更新图块 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_66a1b8fb0c4036.png) 与 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_64df578b1bedb5.png) 值的不同方式。如果一个三角形覆盖整个图块，就可以直接在 HiZ 单元中完成更新。否则，需要读取整个图块的逐采样点深度，将其归约为最小值与最大值，再传回 HiZ 单元，这会引入一定延迟。Andersson 等人 [50] 提出了一种方法，无需代价较高的深度缓存反馈便能完成这一过程，同时仍能保留大部分剔除效率。
 
 对于通过粗粒度深度测试的图块，接下来会确定像素或采样点的覆盖情况（使用第 23.1 节所述的边方程），并计算逐采样点深度（图 23.13 中称为 z-interpolate）。这些值被传送到图右侧所示的深度单元。按照 API 的描述，接下来应当执行像素着色器。不过，在下文将介绍的某些情况下，可以在不改变预期行为的前提下，执行一种额外测试，称为 **early-z** [1220, 1542] 或**提前深度测试**。实际上，early-z 就是将逐采样点深度测试放在像素着色器之前执行，并丢弃被遮挡的片元。因此，这一过程可以避免不必要的像素着色器执行。early-z 测试经常与 z 剔除混淆，但二者由完全独立的硬件执行。任何一种技术都可以在不使用另一种技术的情况下单独使用。
 
-在许多情况下，GPU 会自动使用 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_66a1b8fb0c4036.png) 剔除、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_64df578b1bedb5.png) 剔除和 early-z。然而，例如当像素着色器写入自定义深度、使用 discard 操作，或向无序访问视图写入数值时，就必须禁用这些技术 [50]。如果不能使用 early-z，则在像素着色器之后进行深度测试（称为**延后深度测试**）。
+在许多情况下，GPU 会自动使用 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_66a1b8fb0c4036.png) 剔除、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_64df578b1bedb5.png) 剔除和 early-z。然而，例如当像素着色器写入自定义深度、使用 discard 操作，或向无序访问视图写入数值时，就必须禁用这些技术 [50]。如果不能使用 early-z，则在像素着色器之后进行深度测试（称为**延后深度测试**）。
 
-在较新的硬件上，可能可以在着色器中对图像执行原子的读—改—写操作，以及加载和存储操作。在这些情况下，如果你确定这样做是安全的，就可以显式启用 early-z，并覆盖这些限制。另一项可以在像素着色器输出自定义深度时使用的功能，是**保守深度**。在这种情况下，如果程序员保证自定义深度大于三角形深度，就可以启用 early-z。对于这个例子，也可以启用 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_66a1b8fb0c4036.png) 剔除，但不能启用 early-z 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_07_64df578b1bedb5.png) 剔除。
+在较新的硬件上，可能可以在着色器中对图像执行原子的读—改—写操作，以及加载和存储操作。在这些情况下，如果你确定这样做是安全的，就可以显式启用 early-z，并覆盖这些限制。另一项可以在像素着色器输出自定义深度时使用的功能，是**保守深度**。在这种情况下，如果程序员保证自定义深度大于三角形深度，就可以启用 early-z。对于这个例子，也可以启用 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_66a1b8fb0c4036.png) 剔除，但不能启用 early-z 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_07_64df578b1bedb5.png) 剔除。
 
 > 译注：原书本段先说上述保守深度条件下可以启用 early-z，随后又说不能启用 early-z，前后陈述矛盾。此处按原文保留，未擅自改写。
 
@@ -401,14 +401,14 @@ MP 附近有一个（线程束）调度器，它接收要在该 MP 上执行的�
 一般来说，导数计算在内部自动进行，对用户不可见。实际实现通常是在一个四像素组内使用跨通道指令（shuffle/swizzle），这些指令可以由编译器插入。有些 GPU 则使用固定功能硬件来计算这些导数。关于应当如何计算导数，并没有精确的规范。图 23.14 展示了一些常见方法。OpenGL 4.5 和 DirectX 11 都支持用于计算粗导数和细导数的函数 [1368]。
 
 
-![图 23.14：粗导数与细导数的计算方式](Real-Time_Rendering_4th_中文/assets/fig_23_8_23.14.png)
+![图 23.14：粗导数与细导数的计算方式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_8_23.14.png)
 
 **图 23.14** 导数可能采用的计算方式示意图。箭头表示，以箭头终点处的像素减去起点处的像素来计算差值。例如，左上角的水平差分等于右上像素减去左上像素。对于粗导数（左），四像素组内的全部四个像素共用一个水平差分和一个垂直差分。对于细导数（右），则使用离该像素最近的差分。（插图据 Penner [1368] 绘制。）
 
-所有 GPU 都使用纹理缓存 [362, 651, 794, 795] 来减少纹理的带宽用量。有些架构使用专用纹理缓存，甚至采用两级专用纹理缓存；另一些架构则让包括纹理处理在内的各种访问共享缓存。纹理缓存通常由一小块片上存储器（一般为 SRAM）实现。这个缓存存储最近的纹理读取结果，访问速度很快。替换策略和容量取决于具体架构。如果相邻像素需要访问相同或位置接近的纹素，就很可能在缓存中找到它们。如第 23.4 节所述，存储器访问通常采用分块方式，因此纹素不是按扫描线顺序存储，而是存放在小块中，例如每块 4 × 4 个纹素。这能提高效率 [651]，因为一个块中的纹素会一起被读取。以字节计的块大小通常与缓存行大小相同，例如 64 字节。另一种存储纹理的方法是采用交错重排（swizzled）模式。假设纹理坐标已经转换为定点数 (u, v)，其中 u 和 v 各有 n 位。u 中编号为 i 的位记作 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_08_b9eca245191763.png)。那么，将 (u, v) 重映射为交错纹理地址 A 的公式为
+所有 GPU 都使用纹理缓存 [362, 651, 794, 795] 来减少纹理的带宽用量。有些架构使用专用纹理缓存，甚至采用两级专用纹理缓存；另一些架构则让包括纹理处理在内的各种访问共享缓存。纹理缓存通常由一小块片上存储器（一般为 SRAM）实现。这个缓存存储最近的纹理读取结果，访问速度很快。替换策略和容量取决于具体架构。如果相邻像素需要访问相同或位置接近的纹素，就很可能在缓存中找到它们。如第 23.4 节所述，存储器访问通常采用分块方式，因此纹素不是按扫描线顺序存储，而是存放在小块中，例如每块 4 × 4 个纹素。这能提高效率 [651]，因为一个块中的纹素会一起被读取。以字节计的块大小通常与缓存行大小相同，例如 64 字节。另一种存储纹理的方法是采用交错重排（swizzled）模式。假设纹理坐标已经转换为定点数 (u, v)，其中 u 和 v 各有 n 位。u 中编号为 i 的位记作 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_08_b9eca245191763.png)。那么，将 (u, v) 重映射为交错纹理地址 A 的公式为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_08_432bdc9abae87c.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_08_432bdc9abae87c.png)
 
 
 其中，B 是纹理的基地址，T 是一个纹素占用的字节数。这种重映射的优点是，它会产生图 23.15 所示的纹素顺序。可以看出，这是一条空间填充曲线，称为 Morton 序列 [1243]，已知它能够提高相干性 [1825]。这里的曲线是二维的，因为纹理通常也是二维的。
@@ -418,7 +418,7 @@ MP 附近有一个（线程束）调度器，它接收要在该 MP 上执行的�
 mipmapping 对纹理缓存的局部性很重要，因为它限制了纹素与像素之比的最大值。在遍历一个三角形时，每前进到一个新像素，在纹理空间中大约就前进一个纹素。mipmapping 是渲染中少数几种能够同时改善视觉效果和性能的技术之一。
 
 
-![图 23.15：纹理交错重排与 Morton 序列](Real-Time_Rendering_4th_中文/assets/fig_23_8_23.15.png)
+![图 23.15：纹理交错重排与 Morton 序列](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_8_23.15.png)
 
 **图 23.15** 纹理交错重排提高了纹素存储器访问的相干性。注意，这里的纹素大小为 4 字节，每个纹素的左上角标出了其地址。
 
@@ -430,20 +430,20 @@ mipmapping 对纹理缓存的局部性很重要，因为它限制了纹素与像
 获得更快图形处理速度的最佳办法是利用并行性，而 GPU 中几乎所有阶段都可以这样做。其思想是同时计算多个结果，然后在后续阶段将它们合并。一般而言，并行图形架构具有图 23.16 所示的形式。应用程序向 GPU 发送任务，经过一定的调度之后，多个几何单元便开始并行地进行几何处理。几何处理的结果被转发给一组光栅化单元，由它们执行光栅化。接下来，一组像素处理单元也以并行方式执行像素着色和混合。最后，将生成的图像发送到显示器上供人观看。
 
 
-![图23.16：高性能并行图形架构](Real-Time_Rendering_4th_中文/assets/fig_23_9_23.16.png)
+![图23.16：高性能并行图形架构](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_9_23.16.png)
 
 图 23.16：高性能并行计算机图形架构的一般结构，由多个几何单元（G）、光栅化单元（R）和像素处理单元（P）组成。
 
 无论对于软件还是硬件，都必须认识到：如果代码或硬件中存在串行部分，它就会限制总体性能可能获得的提升。这由阿姆达尔定律（Amdahl’s law）来表述，即：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_09_2244725f93cefb.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_09_2244725f93cefb.png)
 
 
 其中，s 是程序或硬件中串行部分所占的比例，因此 1 − s 就是能够并行化的部分所占的比例。此外，p 是通过将程序或硬件并行化所能实现的最大性能提升倍数。例如，如果原来只有一个多处理器，又增加了三个，那么 p = 4。这里，a(s, p) 是此次改进所带来的加速倍数。假设某个架构中有 10% 的部分是串行的，即 s = 0.1；我们对该架构进行改进，使剩余的非串行部分性能提升 20 倍，即 p = 20，那么就得到：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_09_e8ed6f26b13898.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_09_e8ed6f26b13898.png)
 
 
 可以看到，我们并没有得到 20 倍的加速，这是因为代码或硬件中的串行部分严重限制了性能。实际上，当 p → ∞ 时，得到 a = 10。应该把精力用于改进并行部分还是串行部分，并不总是显而易见的；但当并行部分已经得到大幅改进之后，串行部分对性能的限制会更加明显。
@@ -451,14 +451,14 @@ mipmapping 对纹理缓存的局部性很重要，因为它限制了纹素与像
 对于图形架构，多个结果虽然是并行计算的，但绘制调用中的图元应当按照 CPU 提交它们的顺序进行处理。因此，必须执行某种排序，使各个并行单元共同渲染出用户想要的图像。具体来说，需要的是从模型空间到屏幕空间的排序（第 2.3.1 节和第 2.4 节）。应当指出，几何单元和像素处理单元可以映射到相同的单元上，也就是统一的 ALU。案例研究一节中介绍的所有架构都采用统一着色器架构（第 23.10 节）。即便如此，理解这种排序发生在什么位置仍然很重要。下面介绍一种并行架构的分类方法 [417, 1236]。排序可以发生在流水线中的任何位置，由此产生了并行架构中四类不同的工作分配方式，如图 23.17 所示。它们称为前端排序（sort-first）、中间排序（sort-middle）、末端片元排序（sort-last fragment）和末端图像排序（sort-last image）。注意，这些架构会产生不同的方法，将工作分配给 GPU 中的各个并行单元。
 
 
-![图23.17：并行图形架构分类](Real-Time_Rendering_4th_中文/assets/fig_23_9_23.17.png)
+![图23.17：并行图形架构分类](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_9_23.17.png)
 
 图 23.17：并行图形架构的分类。A 是应用程序，G 是几何单元，R 是光栅化单元，P 是像素处理单元。从左到右，这些架构依次为前端排序、中间排序、末端片元排序和末端图像排序。（插图据 Eldridge 等人 [417] 绘制。）
 
 基于前端排序的架构在几何阶段之前对图元排序。其策略是将屏幕划分为一组区域，并把某一区域内的图元发送给“拥有”该区域的一条完整流水线。见图 23.18。首先，对图元进行足以确定它需要发送到哪些区域的处理；这就是排序步骤。就单台机器而言，前端排序是研究最少的一种架构 [418, 1236]。当多个屏幕或投影机组成一个大型显示系统时，这种方案确实有所应用：每个屏幕都由一台专用计算机负责 [1513]。已经开发出一种名为 Chromium [787] 的系统，它可以利用工作站集群实现任意类型的并行渲染算法。例如，它能够以很高的渲染性能实现前端排序和末端排序。
 
 
-![图23.18：前端排序示例](Real-Time_Rendering_4th_中文/assets/fig_23_9_23.18.png)
+![图23.18：前端排序示例](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_9_23.18.png)
 
 图 23.18：前端排序将屏幕划分为各个独立的图块，并为每个图块分配一个处理器，如图所示。然后，将图元发送给它所覆盖图块对应的处理器。这与中间排序架构不同；后者需要在几何处理完成之后对所有三角形进行排序。只有在所有三角形都完成排序之后，才能开始逐像素光栅化。（图片由 Marcus Roth 和 Dirk Reiners 提供。）
 
@@ -469,7 +469,7 @@ Mali 架构（第 23.10.1 节）属于中间排序类型。各几何处理单元
 最后，末端图像排序架构在像素处理之后进行排序。图 23.19 给出了直观示例。这种架构可以看作一组相互独立的流水线。图元被分配给这些流水线，每条流水线各自渲染一幅带有深度信息的图像。在最后的合成阶段，根据各幅图像的深度缓冲区将所有图像合并。应当指出，末端图像排序系统无法完整实现 OpenGL 和 DirectX 这样的 API，因为这些 API 要求图元按照提交的顺序渲染。PixelFlow [455, 1235] 是末端图像排序架构的一个例子。PixelFlow 架构还值得关注的一点是它采用了延迟着色，也就是说，它只对可见片元着色。不过应当指出，由于流水线末端的带宽消耗很大，目前没有架构采用末端图像排序。
 
 
-![图23.19：末端图像排序示例](Real-Time_Rendering_4th_中文/assets/fig_23_9_23.19.png)
+![图23.19：末端图像排序示例](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_9_23.19.png)
 
 图 23.19：在末端图像排序中，场景中的不同物体被发送给不同的处理器。合成分别渲染的图像时，透明性很难处理，因此通常会将透明物体发送给所有节点。（图片由 Marcus Roth 和 Dirk Reiners 提供。）
 
@@ -497,14 +497,14 @@ Mali 产品线涵盖 ARM 的所有 GPU 架构，Bifrost 是其 2016 年的架构
 驱动软件向 GPU 提交工作。随后，作业管理器（即调度器）将工作分配给各个着色器引擎。这些引擎通过 GPU 互连（GPU fabric）相连；它是一条总线，引擎可以通过它与 GPU 内的其他单元通信。所有内存访问都通过内存管理单元（MMU），由它把虚拟内存地址转换为物理地址。
 
 
-![图23.20 Bifrost G71 GPU架构](Real-Time_Rendering_4th_中文/assets/fig_23_10_23.20.png)
+![图23.20 Bifrost G71 GPU架构](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_10_23.20.png)
 
 图 23.20。Bifrost G71 GPU 架构，可扩展至 32 个着色器引擎，每个着色器引擎均采用图 23.21 所示的结构。（根据 Davies [326] 的插图绘制。）
 
 图 23.21 展示了着色器引擎的概貌。可以看到，它包含三个执行引擎，以执行四元组（quad）的着色为中心。因此，它们被设计成 SIMD 宽度为 4 的小型通用处理器。每个执行引擎包含四个用于 32 位浮点数的融合乘加（FMA）单元和四个 32 位加法器等。这意味着每个着色器引擎具有 3 × 4 个 ALU，即 12 条 SIMD 通道。按照本文使用的术语，四元组相当于一个线程束（warp）。为了隐藏纹理访问等操作的延迟，该架构可以让每个着色器引擎至少保有 256 个正在处理中的线程。
 
 
-![图23.21 Bifrost着色器引擎](Real-Time_Rendering_4th_中文/assets/fig_23_10_23.21.png)
+![图23.21 Bifrost着色器引擎](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_10_23.21.png)
 
 图 23.21。Bifrost 着色器引擎架构。分块内存位于芯片内部，使局部帧缓冲访问能够快速完成。（根据 Davies [326] 的插图绘制。）
 
@@ -515,7 +515,7 @@ Mali 产品线涵盖 ARM 的所有 GPU 架构，Bifrost 是其 2016 年的架构
 图 23.22 展示了几何处理与像素处理。可以看到，顶点着色器被拆分为两部分：一部分只对位置进行着色，另一部分称为插值属性着色（varying shading），在分块之后执行。与 ARM 先前的架构相比，这样可以节省内存带宽。执行分箱（binning），即确定图元与哪些分块重叠，唯一需要的信息就是顶点的位置。负责分箱的分块器单元以层次化方式工作，如图 23.23 所示。这有助于减小分箱的内存占用，并使其更加可预测，因为内存占用不再与图元大小成正比。
 
 
-![图23.22 Bifrost的几何数据流](Real-Time_Rendering_4th_中文/assets/fig_23_10_23.22.png)
+![图23.22 Bifrost的几何数据流](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_10_23.22.png)
 
 图 23.22。几何数据在 Bifrost 架构中的流动方式。顶点着色器包含供分块器使用的位置着色，以及仅在需要时、于分块之后执行的插值属性着色。（根据 Choi [264] 的插图绘制。）
 
@@ -524,7 +524,7 @@ Mali 产品线涵盖 ARM 的所有 GPU 架构，Bifrost 是其 2016 年的架构
 接下来执行光栅化、像素着色器、混合以及其他逐像素操作。分块架构最重要的单一特性是，一个分块的帧缓冲（例如包含颜色、深度和模板）可以保存在快速的片上内存中，这里称为分块内存（tile memory）。由于分块很小（16 × 16 像素），这样做在成本上是可行的。一个分块中的全部渲染完成后，将该分块所需的输出（通常是颜色，也可能包括深度）复制到与屏幕尺寸相同的片外帧缓冲中（位于外部内存）。这意味着逐像素处理期间的全部帧缓冲访问实际上几乎无需付出代价。避免使用外部总线非常有益，因为使用它们会带来很高的能耗 [22]。将片上分块内存的内容换出到片外帧缓冲时，仍可以使用帧缓冲压缩。
 
 
-![图23.23 Bifrost层次化分块器](Real-Time_Rendering_4th_中文/assets/fig_23_10_23.23.png)
+![图23.23 Bifrost层次化分块器](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_10_23.23.png)
 
 图 23.23。Bifrost 架构的层次化分块器。本例在三个不同层级上进行分箱，每个三角形被分配到它只与一个方格重叠的那个层级。（根据 Bratt [191] 的插图绘制。）
 
@@ -551,7 +551,7 @@ Pascal 图形架构采用的统一 ALU，在 NVIDIA 术语中称为 CUDA 核心�
 每个处理块，即宽度为 32 的 SIMT 引擎，还具有 8 个加载／存储（LD/ST）单元和 8 个特殊函数单元（SFU）。加载／存储单元负责读取和写入寄存器文件中的寄存器值。每个处理块的寄存器文件容量为 16,384 × 4 字节，即 64 kB，合计每个 SM 为 256 kB。SFU 处理超越函数指令，例如正弦、余弦、以 2 为底的指数、以 2 为底的对数、倒数以及平方根的倒数。它们还支持属性插值 [1050]。
 
 
-![图23.24 Pascal流式多处理器](Real-Time_Rendering_4th_中文/assets/fig_23_10_23.24.png)
+![图23.24 Pascal流式多处理器](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_10_23.24.png)
 
 图 23.24。Pascal 流式多处理器（SM）具有 32 × 2 × 2 个统一 ALU，SM 与一个多形体引擎（polymorph engine）封装在一起，共同构成纹理处理簇（TPC）。请注意，上方的深灰色方框在紧下方重复了一次，但重复部分中的一些内容被省略了。（根据 NVIDIA 白皮书 [1297] 的插图绘制。）
 
@@ -566,7 +566,7 @@ SM 与多形体引擎（polymorph engine，PM）协同工作。该单元的最�
 一个流式处理器与一个多形体引擎结合，称为纹理处理簇（texture processing cluster，TPC）。在更高层级上，五个 TPC 组成一个图形处理簇（graphics processing cluster，GPC），由一个光栅引擎为这五个 TPC 提供服务。GPC 可以看作一个小型 GPU，其目标是提供一组相互平衡的图形硬件单元，例如顶点、几何、光栅、纹理、像素和 ROP 单元。如本小节末尾将看到的，把功能划分为独立单元后，设计人员可以更容易地创建一个能力各不相同的 GPU 芯片家族。
 
 
-![图23.25 GTX1080配置的Pascal GPU](Real-Time_Rendering_4th_中文/assets/fig_23_10_23.25.png)
+![图23.25 GTX1080配置的Pascal GPU](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_10_23.25.png)
 
 图 23.25。采用 GTX 1080 配置的 Pascal GPU：包含 20 个 SM、20 个多形体引擎、4 个光栅引擎、8 × 20 = 160 个纹理单元（峰值速率为 277.3 Gtexels/s）、总容量为 256 × 20 = 5120 kB 的寄存器文件，以及总计 20 × 128 = 2560 个统一 ALU。（根据 NVIDIA 白皮书 [1297] 的插图绘制。）
 
@@ -575,7 +575,7 @@ SM 与多形体引擎（polymorph engine，PM）协同工作。该单元的最�
 图 23.25 还展示了光栅操作单元，不过位置不太显眼。它们紧邻图中央 L2 缓存的上方和下方。每个蓝色块代表一个 ROP 单元，共有 8 组，每组 8 个，总计 64 个。ROP 单元的主要任务是将输出写入像素及其他缓冲，并执行混合等操作。从图的左右两侧可以看到，总共有八个 32 位内存控制器，合计为 256 位。八个 ROP 单元与一个内存控制器及 256 kB 的 L2 缓存绑定。这使整颗芯片的 L2 缓存总容量达到 2 MB。每个 ROP 都绑定到特定的内存分区，因此负责缓冲中某个特定像素子集。ROP 单元还处理无损压缩。除支持未压缩形式和快速清除外，还有三种不同的压缩模式 [1297]。对于 2∶1 压缩（例如从 256 B 压缩到 128 B），每个分块存储一个参考颜色值，并对像素间的差值进行编码；每个差值使用的位数少于其未压缩形式。4∶1 压缩是 2∶1 模式的扩展，但只有在差值能用更少位数编码时才能启用，因此只适用于内容平滑变化的分块。还有一种 8∶1 模式，它将 2 × 2 像素块的 4∶1 恒定颜色压缩与上述 2∶1 模式结合。8∶1 模式优先于 4∶1，后者又优先于 2∶1，也就是说，始终使用能够成功压缩该分块的最高压缩率模式。如果所有压缩尝试均失败，分块就必须以未压缩形式传输并存入内存。图 23.26 展示了 Pascal 压缩系统的效率。
 
 
-![图23.26 Maxwell与Pascal缓冲压缩](Real-Time_Rendering_4th_中文/assets/fig_23_10_23.26.png)
+![图23.26 Maxwell与Pascal缓冲压缩](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_10_23.26.png)
 
 图 23.26。左侧为渲染图像，中间和右侧分别可视化了 Pascal 的上一代架构 Maxwell，以及 Pascal 的压缩结果。图像中的紫色越多，缓冲压缩的成功率越高。（图片来自 NVIDIA 白皮书 [1297]。）
 
@@ -586,15 +586,15 @@ SM 与多形体引擎（polymorph engine，PM）协同工作。该单元的最�
 芯片的基础时钟频率为 1607 MHz，功率预算充足时可运行于加速模式（1733 MHz）。峰值计算能力为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_10_4869f058d47adb.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_10_4869f058d47adb.png)
 
 
-其中，系数 2 来自融合乘加通常被计为两次浮点运算这一事实；从 MFLOPS 换算到 TFLOPS 时，我们除以了 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_23_10_7dd53e0e87e793.png)。GTX 1080 Ti 具有 3584 个 ALU，计算能力为 12.3 TFLOPS。
+其中，系数 2 来自融合乘加通常被计为两次浮点运算这一事实；从 MFLOPS 换算到 TFLOPS 时，我们除以了 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_10_7dd53e0e87e793.png)。GTX 1080 Ti 具有 3584 个 ALU，计算能力为 12.3 TFLOPS。
 
 NVIDIA 长期以来一直开发末端片元排序（sort-last fragment）架构。不过，自 Maxwell 起，它们还支持一种称为分块缓存（tiled caching）的新渲染方式，某种程度上介于中间排序与末端片元排序之间。图 23.27 展示了该架构。其思想是利用局部性和 L2 缓存。几何数据被分成足够小的批块进行处理，使输出能留在这一缓存内。此外，只要与当前分块重叠的几何数据还未完成像素着色，该分块的帧缓冲也保留在 L2 中。
 
 
-![图23.27 分块缓存架构](Real-Time_Rendering_4th_中文/assets/fig_23_10_23.27.png)
+![图23.27 分块缓存架构](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_10_23.27.png)
 
 图 23.27。分块缓存引入一个分箱器，将几何数据分类到分块中，并使变换后的几何数据保留在 L2 缓存内。当前处理的分块也保留在 L2 中，直到当前几何批块中落入该分块的几何数据处理完毕。
 
@@ -613,7 +613,7 @@ AMD 的 Graphics Core Next（GCN）架构被用于多款 AMD 显卡，以及 Xbo
 GCN 架构的一个核心组成模块是计算单元（compute unit，CU），如图 23.28 所示。CU 具有四个 SIMD 单元，每个单元有 16 条 SIMD 通道，即 16 个统一 ALU（采用第 23.2 节的术语）。每个 SIMD 单元为 64 个线程执行指令，这组线程称为波前（wavefront）。每个 SIMD 单元每个时钟周期可以发射一条单精度浮点指令。由于该架构让每个 SIMD 单元处理含 64 个线程的波前，需要 4 个时钟周期才能完成一个波前的全部发射 [1103]。还应注意，一个 CU 可以同时运行不同内核的代码。由于每个 SIMD 单元具有 16 条通道，每个时钟周期可以发射一条指令，整个 CU 的最大吞吐量为：每个 CU 的 4 个 SIMD 单元 × 每个单元的 16 条 SIMD 通道 = 每时钟周期 64 次单精度浮点运算。CU 执行半精度（16 位浮点）指令的数量还可以达到单精度的两倍，这对于精度要求较低的情形很有用，例如机器学习和着色器计算。请注意，两个 16 位浮点值被打包到一个 32 位浮点寄存器中。每个 SIMD 单元具有 64 kB 的寄存器文件，折合每个线程 65,536 ÷ (4 × 64) = 256 个寄存器，因为单精度浮点数占 4 字节，而每个波前有 64 个线程。ALU 具有四级硬件流水线 [35]。
 
 
-![图23.28 Vega的GCN计算单元](Real-Time_Rendering_4th_中文/assets/fig_23_10_23.28.png)
+![图23.28 Vega的GCN计算单元](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_10_23.28.png)
 
 图 23.28。Vega 架构的 GCN 计算单元。每个向量寄存器文件的容量为 64 kB，标量寄存器文件（RF）为 12.5 kB，局部数据共享存储为 64 kB。请注意，每个 CU 中有四个用于计算的单元，各具有 16 条 32 位浮点 SIMD 通道（浅绿色）。（根据 Mah [1103] 和 AMD 白皮书 [35] 的插图绘制。）
 
@@ -626,7 +626,7 @@ GCN 架构的一个核心组成模块是计算单元（compute unit，CU），�
 > 译注：上一段原文两次使用缩写“GPC”指代图形命令处理器；这与上一小节表示图形处理簇的 GPC 含义不同，且与“graphics command processor”的词首顺序不一致。此处保留原文缩写。
 
 
-![图23.29 Vega10 GPU架构](Real-Time_Rendering_4th_中文/assets/fig_23_10_23.29.png)
+![图23.29 Vega10 GPU架构](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_10_23.29.png)
 
 图 23.29。由 64 个 CU 构成的 Vega 10 GPU。请注意，每个 CU 都包含图 23.28 所示的硬件。（根据 AMD 白皮书 [35] 的插图绘制。）
 
@@ -637,7 +637,7 @@ GCN 架构的一个核心组成模块是计算单元（compute unit，CU），�
 光栅器每个时钟周期最多可以光栅化四个图元。与图形流水线和计算引擎连接的 CDB 每时钟周期能够写入 16 个像素。也就是说，小于 16 像素的三角形会降低效率。光栅器还处理粗粒度深度测试（HiZ）和层次化模板测试。HiZ 使用的缓冲称为 HTILE，开发人员可以对它编程，例如用它向 GPU 提供遮挡信息。
 
 
-![图23.30 Vega缓存层次结构](Real-Time_Rendering_4th_中文/assets/fig_23_10_23.30.png)
+![图23.30 Vega缓存层次结构](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_23_10_23.30.png)
 
 图 23.30。Vega 架构的缓存层次结构。
 
@@ -648,7 +648,7 @@ Vega 的缓存层次结构如图 23.30 所示。层次结构的顶端（图中�
 芯片的基础时钟频率为 1677 MHz，因此其峰值计算能力为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_23_10_fc737adb692c56.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_23_10_fc737adb692c56.png)
 
 
 其中，FMA 与 TFLOPS 的计算方式与式（23.16）相同。该架构灵活且可扩展，因此预计还会出现更多配置。

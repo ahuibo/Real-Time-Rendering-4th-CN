@@ -44,7 +44,7 @@
 帧率、分辨率与着色总能变得更复杂，但提高其中任何一项，都多少存在收益递减的问题。然而，场景复杂度并没有真正的上限。一个用于渲染的波音777模型包含132,500种独立零件和超过3,000,000个紧固件，由此形成的多边形模型拥有超过500,000,000个多边形[310]。见图19.1。即使其中大多数物体因尺寸太小或所在位置而不可见，也必须做一些工作才能确定这一点。如果不采用减少庞大计算量的技术，z缓冲和光线追踪都无法处理这类模型。我们的结论是：加速算法永远都是必需的。
 
 
-![图19.1 波音777模型](Real-Time_Rendering_4th_中文/assets/fig_19_1_19.1.png)
+![图19.1 波音777模型](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_1_19.1.png)
 
 图19.1　一个经过“精简”、仅含3.5亿个三角形的波音模型，使用光线追踪渲染。通过用户定义的裁剪平面进行剖切。（图片由萨尔大学计算机图形学组提供。原始三维数据由波音公司提供，并经其许可使用。）
 
@@ -70,15 +70,15 @@
 在三维场景的实时渲染中，包围体层次结构经常用于层次式视锥体剔除（19.4节）。场景被组织成由一组相互连接的节点构成的层次树结构。最上面的节点称为根节点，没有父节点。内部节点具有指向其子节点的指针，子节点也是节点。因此，除非根节点是树中唯一的节点，否则它也是内部节点。叶节点保存实际需要渲染的几何体，没有任何子节点。树中的每个节点，包括叶节点，都有一个包围体，包住其整个子树中的几何体。也可以决定不在叶节点中保存BV，而将BV放到每个叶节点正上方的内部节点中。这种组织方式就是“包围体层次结构”这个名称的由来。每个节点的BV都包住其子树中所有叶节点的几何体。这意味着，根节点的BV包含整个场景。图19.2给出了BVH的例子。注意，图中某些较大的包围圆还可以收得更紧，因为每个节点只需包含其子树中的几何体，不必包含后代节点的BV。对于包围圆或包围球，形成这样更紧的节点可能成本较高，因为每个节点都必须检查其子树中的全部几何体。实际中，通常沿树“自底向上”构造节点的BV：创建一个能包含所有子节点BV的BV。
 
 
-![图19.2 包围体层次结构](Real-Time_Rendering_4th_中文/assets/fig_19_1_19.2.png)
+![图19.2 包围体层次结构](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_1_19.2.png)
 
 图19.2　左图展示一个包含五个物体的简单场景，以及右侧包围体层次结构所使用的包围圆。一个圆包住所有物体，随后以递归方式在大圆内包含更小的圆。右图展示用于表示左侧物体层次关系的包围体层次结构（树）。
 
 BVH的底层结构是一棵树，而计算机科学领域关于树形数据结构的文献极为丰富。这里只提及几个重要结果。更多信息可参阅Cormen等人的《算法导论》[292]等书籍。
 
-考虑一棵k叉树，即每个内部节点都有k个子节点的树。只有一个节点（根节点）的树被称为高度为0的树。根节点的叶子子节点位于高度1，依此类推。平衡树是指所有叶节点都位于高度h或h−1的树。一般而言，平衡树的高度h为⌊![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_f48c984fa24277.png) n⌋，其中n是树中节点的总数，包括内部节点和叶节点。注意，k越大，树的高度越低，这意味着遍历树所需的步数越少，但每个节点所需的工作也更多。二叉树通常是最简单的选择，并能提供合理的性能。不过，有证据表明，对某些应用而言，更大的k值，例如k＝4或k＝8，会带来更好的性能[980, 1829]。使用k＝2、k＝4或k＝8时，树的构造很简单：k＝2时只沿最长轴细分，k＝4时沿最长的两个轴细分，k＝8时沿所有轴细分。对于其他k值，构造良好的树要困难一些。从性能角度看，每个节点拥有较多子节点，例如k＝8，的树往往更受青睐，因为它们降低了平均树深度，也减少了需要跟随的间接引用次数，即从父节点到子节点的指针跳转次数。
+考虑一棵k叉树，即每个内部节点都有k个子节点的树。只有一个节点（根节点）的树被称为高度为0的树。根节点的叶子子节点位于高度1，依此类推。平衡树是指所有叶节点都位于高度h或h−1的树。一般而言，平衡树的高度h为⌊![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_f48c984fa24277.png) n⌋，其中n是树中节点的总数，包括内部节点和叶节点。注意，k越大，树的高度越低，这意味着遍历树所需的步数越少，但每个节点所需的工作也更多。二叉树通常是最简单的选择，并能提供合理的性能。不过，有证据表明，对某些应用而言，更大的k值，例如k＝4或k＝8，会带来更好的性能[980, 1829]。使用k＝2、k＝4或k＝8时，树的构造很简单：k＝2时只沿最长轴细分，k＝4时沿最长的两个轴细分，k＝8时沿所有轴细分。对于其他k值，构造良好的树要困难一些。从性能角度看，每个节点拥有较多子节点，例如k＝8，的树往往更受青睐，因为它们降低了平均树深度，也减少了需要跟随的间接引用次数，即从父节点到子节点的指针跳转次数。
 
-> 译注：原文将此处平衡k叉树的一般高度写为⌊![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_f48c984fa24277.png) n⌋，并将n定义为全部节点数。按紧邻文字所给的平衡树定义，该等式并非对任意k及任意平衡形态都成立；这里忠实保留原式。
+> 译注：原文将此处平衡k叉树的一般高度写为⌊![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_f48c984fa24277.png) n⌋，并将n定义为全部节点数。按紧邻文字所给的平衡树定义，该等式并非对任意k及任意平衡形态都成立；这里忠实保留原式。
 
 BVH非常适合执行各种查询。例如，假设要让一条射线与场景求交，并返回找到的第一个交点，阴影射线就是这种情况。使用BVH时，测试从根节点开始。如果射线没有击中其BV，那么它也不会击中BVH中包含的任何几何体。否则，递归继续测试，即测试根节点各子节点的BV。一旦射线没有击中某个BV，就可以终止对该BVH子树的测试。如果射线击中叶节点的BV，则进一步用射线测试该节点的几何体。性能收益部分来自射线与BV之间的测试很快。这也是使用球体和盒体等简单物体作为BV的原因。另一个原因是BV的嵌套使我们能够提前终止树的遍历，从而避免测试大片空间区域。
 
@@ -101,7 +101,7 @@ BVH也可用于动态场景[1465]。当BV内的一个物体移动时，只需检
 粗略的从前向后排序是轴对齐BSP树的一种用途。它可用于遮挡剔除算法（19.7节和23.7节），也可以通过尽量减少像素的重复绘制，普遍降低像素着色器成本。假设当前遍历到一个名为N的节点；在遍历开始时，N是根节点。检查N的划分平面，然后在观察者所在的平面一侧递归继续遍历。这样，只有遍历完树的这一整半边之后，才会开始遍历另一边。由于叶节点中的内容没有排序，而且物体可能出现在树的多个节点中，因此这种遍历不能给出精确的从前向后排序。不过，它能够提供一种通常很有用的粗略排序。如果从节点平面相对于观察者的另一侧开始遍历，就能得到粗略的从后向前排序。这对透明物体排序很有用。BSP遍历也可用于测试射线与场景几何体的相交情况，只需用射线原点替代观察者位置。
 
 
-![图19.3 轴对齐BSP树](Real-Time_Rendering_4th_中文/assets/fig_19_1_19.3.png)
+![图19.3 轴对齐BSP树](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_1_19.3.png)
 
 图19.3　轴对齐BSP树。在此例中，空间划分可以位于轴上的任意位置，而不限于中点。形成的空间区域标记为A至E。右侧的树展示底层BSP数据结构。每个叶节点代表一个区域，该区域的内容显示在其下方。注意，三角形同时出现在C和E两个区域的物体列表中，因为它与这两个区域都重叠。
 
@@ -114,7 +114,7 @@ BVH也可用于动态场景[1465]。当BV内的一个物体移动时，只需检
 在这种方案中，选择一个多边形作为分割者，将空间划分为两个半空间。也就是说，在根节点处选取一个多边形，用该多边形所在的平面将场景中其余多边形分成两组。任何与划分平面相交的多边形，都沿交线切成两个独立部分。然后，在划分平面的每个半空间中，再选择一个多边形作为分割者，只划分该半空间中的多边形。递归进行，直至所有多边形都进入BSP树。创建高效的多边形对齐BSP树是一个耗时过程，因此通常只计算一次并存储下来供重复使用。图19.4展示这种BSP树。一般最好构造平衡树，即所有叶节点深度相同，或最多相差1。
 
 
-![图19.4 多边形对齐BSP树](Real-Time_Rendering_4th_中文/assets/fig_19_1_19.4.png)
+![图19.4 多边形对齐BSP树](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_1_19.4.png)
 
 图19.4　多边形对齐BSP树。图中从上方观察多边形A至G。先用多边形A划分空间，再分别用B和C划分两个半空间。由多边形B形成的划分平面与左下角的多边形相交，将其切成独立的多边形D和E。右侧展示形成的BSP树。
 
@@ -127,7 +127,7 @@ BVH也可用于动态场景[1465]。当BV内的一个物体移动时，只需检
 八叉树与轴对齐BSP树相似。它同时沿全部三个轴划分盒子，而且划分点必须是盒子的中心。这会创建八个新盒子，因此称为八叉树。这使得结构具有规则性，可以让某些查询更高效。
 
 
-![图19.5 四叉树的构建](Real-Time_Rendering_4th_中文/assets/fig_19_1_19.5.png)
+![图19.5 四叉树的构建](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_1_19.5.png)
 
 图19.5　四叉树的构建。从左侧开始，先用一个包围盒包住全部物体。然后递归地把盒子划分为四个大小相同的盒子，直至每个盒子在本例中为空，或只包含一个物体。
 
@@ -136,7 +136,7 @@ BVH也可用于动态场景[1465]。当BV内的一个物体移动时，只需检
 八叉树可以像轴对齐BSP树一样使用，因此能够处理相同类型的查询。事实上，BSP树可以给出与八叉树相同的空间划分。例如，先沿x轴中点划分一个单元，再沿y轴中点划分两个子单元，最后沿z轴中点划分这些子单元，就会形成八个大小相同的单元，与执行一次八叉树划分所得的结果相同。八叉树的一个效率来源是：它无需存储更灵活的BSP树结构所需要的信息。例如，划分平面的位置是已知的，因此不必显式描述。这种更紧凑的存储方式还通过减少遍历时访问的内存位置数量来节省时间。不过，轴对齐BSP树仍可能更高效，因为更好的平面位置带来的节省，可能超过读取划分平面位置所需的额外内存成本和遍历时间。没有一种方案在所有情况下效率最高；影响因素包括底层几何体的性质、访问结构的使用模式，以及运行代码的硬件架构等。通常，内存布局的局部性和缓存友好程度是最重要的因素，下一节将重点讨论这一点。
 
 
-![图19.6 普通八叉树与松散八叉树](Real-Time_Rendering_4th_中文/assets/fig_19_1_19.6.png)
+![图19.6 普通八叉树与松散八叉树](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_1_19.6.png)
 
 图19.6　普通八叉树与松散八叉树的比较。圆点表示第一次细分后各盒子的中心。左图中，星形穿过普通八叉树的一个划分平面，因此一种选择是把星形放入最大的盒子，即根节点的盒子。右图展示k＝1.5的松散八叉树，即盒子增大50%。为便于辨认，各盒子略有错开。现在，星形可以完整放入左上方的红色盒子。
 
@@ -154,20 +154,20 @@ Ulrich提出了第三种解决方案：松散八叉树[1796]。其基本思想�
 
 要创建缓存感知数据结构，首先必须确定目标架构的缓存块大小，例如64字节。然后尽量缩小数据结构。例如，Ericson[435]展示了如何仅用32位表示一个k-d树节点。其做法之一是借用节点32位数值中最低的两位。这两位可表示四种类型：叶节点，或分别沿三个轴之一划分的内部节点。对于叶节点，高30位保存指向物体列表的指针；对于内部节点，则表示精度略低的浮点划分值。这样，就能在一个64字节缓存块中存放一棵具有15个节点、深四层的二叉树。第16个节点用来指示哪些子节点存在，以及它们的位置。细节请参阅他的著作。关键思想是：确保结构能够整齐地装入缓存边界以内，可以显著改善数据访问。
 
-一种常见而简单的树节点缓存无关排序是van Emde Boas布局[68, 422, 435]。假设有一棵高度为h的树![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_0f01c10e5fc7ad.png)，目标是计算树中节点的缓存无关布局或排列顺序。关键思想在于：递归地将层次结构拆成越来越小的块，那么在某一层级，一组块就能装入缓存。这些块在树中彼此接近，因此与简单地从最高层向下逐层列出全部节点相比，缓存中的数据能在更长时间内保持有效。那种朴素的排列方式会造成内存位置之间的大幅跳转。
+一种常见而简单的树节点缓存无关排序是van Emde Boas布局[68, 422, 435]。假设有一棵高度为h的树![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_0f01c10e5fc7ad.png)，目标是计算树中节点的缓存无关布局或排列顺序。关键思想在于：递归地将层次结构拆成越来越小的块，那么在某一层级，一组块就能装入缓存。这些块在树中彼此接近，因此与简单地从最高层向下逐层列出全部节点相比，缓存中的数据能在更长时间内保持有效。那种朴素的排列方式会造成内存位置之间的大幅跳转。
 
-把树![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_0f01c10e5fc7ad.png)的van Emde Boas布局记为v(![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_0f01c10e5fc7ad.png))。该结构以递归方式定义，一棵只有一个节点的树的布局就是节点本身。如果![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_0f01c10e5fc7ad.png)中有多个节点，就在高度的一半，即⌊h/2⌋处划分树。最上面的⌊h/2⌋层放入记为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_287f7ccd3a3a1b.png)的树中，从![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_287f7ccd3a3a1b.png)叶节点处开始的子树记为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_33cda8a275d063.png)、…、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_b9343208352a6c.png)。树的递归性质描述如下：
-
-
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_478b380ffb188b.png)
+把树![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_0f01c10e5fc7ad.png)的van Emde Boas布局记为v(![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_0f01c10e5fc7ad.png))。该结构以递归方式定义，一棵只有一个节点的树的布局就是节点本身。如果![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_0f01c10e5fc7ad.png)中有多个节点，就在高度的一半，即⌊h/2⌋处划分树。最上面的⌊h/2⌋层放入记为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_287f7ccd3a3a1b.png)的树中，从![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_287f7ccd3a3a1b.png)叶节点处开始的子树记为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_33cda8a275d063.png)、…、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_b9343208352a6c.png)。树的递归性质描述如下：
 
 
-注意，所有子树![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_a55d199dc66051.png)（0≤i≤n）也由上述递归定义。例如，这意味着![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_33cda8a275d063.png)也必须在其高度的一半处分割，依此类推。图19.7给出了一个例子。
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_478b380ffb188b.png)
 
 
-![图19.7 van Emde Boas布局](Real-Time_Rendering_4th_中文/assets/fig_19_1_19.7.png)
+注意，所有子树![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_a55d199dc66051.png)（0≤i≤n）也由上述递归定义。例如，这意味着![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_33cda8a275d063.png)也必须在其高度的一半处分割，依此类推。图19.7给出了一个例子。
 
-图19.7　树![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_0f01c10e5fc7ad.png)的van Emde Boas布局通过将树的高度h一分为二来构造。这会生成子树![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_287f7ccd3a3a1b.png)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_33cda8a275d063.png)、…、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_01_b9343208352a6c.png)；再以相同方式递归划分每棵子树，直至每棵子树只剩一个节点。
+
+![图19.7 van Emde Boas布局](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_1_19.7.png)
+
+图19.7　树![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_0f01c10e5fc7ad.png)的van Emde Boas布局通过将树的高度h一分为二来构造。这会生成子树![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_287f7ccd3a3a1b.png)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_33cda8a275d063.png)、…、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_01_b9343208352a6c.png)；再以相同方式递归划分每棵子树，直至每棵子树只剩一个节点。
 
 一般来说，创建缓存无关布局包括两个步骤：聚类，以及对簇排序。对于van Emde Boas布局，聚类由子树给出，排序则隐含在创建顺序中。Yoon等人[1948, 1949]开发了专门面向高效包围体层次结构和BSP树的技术。他们建立了一个概率模型，同时考虑父节点与子节点之间的局部性以及空间局部性。其思想是确保访问子节点的成本很低，从而在父节点已被访问的情况下尽量减少缓存未命中。此外，彼此接近的节点在排序中也被放得更近。他们开发了一种贪心算法，将概率最高的节点聚为一簇。不改变底层算法，仅改变BVH中节点的排列顺序，就取得了大幅性能提升。
 
@@ -176,7 +176,7 @@ Ulrich提出了第三种解决方案：松散八叉树[1796]。其基本思想�
 BVH、BSP树和八叉树都以某种树作为基本数据结构，区别在于如何划分空间以及存储几何体。它们也都以层次方式存储几何物体，而不存储其他东西。然而，渲染三维场景所涉及的远不止几何体。动画、可见性以及其他元素的控制，通常通过场景图完成；它在glTF中称为节点层次结构。这是一种面向用户的树结构，加入了纹理、变换、细节层次、渲染状态（例如材质属性）、光源以及其他适用内容。它用树来表示，并按某种顺序遍历这棵树，以渲染场景。例如，可以把一个光源放在内部节点中，使其只影响该节点子树中的内容。另一个例子是在遍历树时遇到材质：该材质可以应用于该节点子树中的全部几何体，也可能被子节点的设置覆盖。有关如何在场景图中支持不同细节层次，另见书页861的图19.34。从某种意义上说，每个图形应用都会使用某种形式的场景图，即使它只是一个根节点加上一张待显示子节点列表。
 
 
-![图19.8 具有变换与共享对象的场景图](Real-Time_Rendering_4th_中文/assets/fig_19_1_19.8.png)
+![图19.8 具有变换与共享对象的场景图](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_1_19.8.png)
 
 图19.8　一个场景图，将不同变换M和N应用于内部节点及其各自的子树。注意，这两个内部节点还指向同一个物体，但由于变换不同，会出现两个不同的物体，其中一个经过旋转和缩放。
 
@@ -198,11 +198,11 @@ BVH、BSP树和八叉树都以某种树作为基本数据结构，区别在于�
 理论上，实际的剔除可以发生在渲染流水线的任何阶段；对于某些遮挡剔除算法，甚至可以预先计算。对于在 GPU 上实现的剔除算法，我们有时只能启用或禁用剔除功能，或者设置其中的某些参数。渲染速度最快的三角形，就是根本没有送到 GPU 的三角形。其次，在流水线中越早进行剔除越好。剔除通常通过几何计算实现，但绝不限于这种方式。例如，算法也可以利用帧缓冲区中的内容。
 
 
-![图 19.9：不同的剔除技术](Real-Time_Rendering_4th_中文/assets/fig_19_2_19.9.png)
+![图 19.9：不同的剔除技术](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_2_19.9.png)
 
 图 19.9　不同的剔除技术。被剔除的几何体以虚线表示。（插图参照 Cohen-Or 等人 [277] 绘制。）图内标签：eye 为视点，view frustum 为视锥体，backface 为背面，occlusion 为遮挡。
 
-理想的剔除算法只会将图元的精确可见集（exact visible set，EVS）送入流水线。本书将 EVS 定义为所有部分可见或完全可见的图元。其中一种能够实现理想剔除的数据结构是视相图（aspect graph）：给定任意视点，都可以从中提取 EVS [532]。建立这类数据结构在理论上是可行的，但在实践中却不可行，因为其最坏时间复杂度可能高达 O(![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_02_75ef30e6849e72.png)) [277]。实际算法转而尝试寻找一个称为潜在可见集（potentially visible set，PVS）的集合，用它来预测 EVS。如果 PVS 完全包含 EVS，也就是说，只丢弃不可见的几何体，那么这个 PVS 就称为保守的。PVS 也可以是近似的，此时它并不完全包含 EVS。因此，这种 PVS 可能生成错误的图像，目标是让这些错误尽可能小。由于保守的 PVS 总能生成正确图像，因此通常认为它更有用。对 EVS 进行高估或近似的出发点，是希望能快得多地计算出 PVS。难点在于，应当如何进行这些估计，才能提升整体性能。例如，算法可以按不同的粒度处理几何体，即三角形、整个物体或物体组。找到 PVS 后，就使用 z 缓冲区进行渲染，由它确定最终逐像素的可见性。
+理想的剔除算法只会将图元的精确可见集（exact visible set，EVS）送入流水线。本书将 EVS 定义为所有部分可见或完全可见的图元。其中一种能够实现理想剔除的数据结构是视相图（aspect graph）：给定任意视点，都可以从中提取 EVS [532]。建立这类数据结构在理论上是可行的，但在实践中却不可行，因为其最坏时间复杂度可能高达 O(![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_02_75ef30e6849e72.png)) [277]。实际算法转而尝试寻找一个称为潜在可见集（potentially visible set，PVS）的集合，用它来预测 EVS。如果 PVS 完全包含 EVS，也就是说，只丢弃不可见的几何体，那么这个 PVS 就称为保守的。PVS 也可以是近似的，此时它并不完全包含 EVS。因此，这种 PVS 可能生成错误的图像，目标是让这些错误尽可能小。由于保守的 PVS 总能生成正确图像，因此通常认为它更有用。对 EVS 进行高估或近似的出发点，是希望能快得多地计算出 PVS。难点在于，应当如何进行这些估计，才能提升整体性能。例如，算法可以按不同的粒度处理几何体，即三角形、整个物体或物体组。找到 PVS 后，就使用 z 缓冲区进行渲染，由它确定最终逐像素的可见性。
 
 请注意，有些算法会对网格中的三角形重新排序，以便在提供更好的遮挡剔除效果（即减少过度绘制）的同时，改善顶点缓存局部性。虽然这些算法与剔除有一定关系，但这里请感兴趣的读者参阅文献 [256, 659]。
 
@@ -218,18 +218,18 @@ BVH、BSP树和八叉树都以某种树作为基本数据结构，区别在于�
 假设摄像机位于物体之外，而且没有穿入物体（即近裁剪面没有切入物体），那么，属于实体不透明物体的所有背向三角形都可以剔除，不再进行后续处理。对于朝向一致的三角形（第 16.3 节），如果已知其投影后的三角形在屏幕空间中呈现例如顺时针的顶点绕序，就可以判定它背向观察者。这项测试可以通过计算三角形在二维屏幕空间中的有符号面积来实现。有符号面积为负，意味着应当剔除该三角形。这项测试可以紧接在屏幕映射过程之后执行。
 
 
-![图19.10 两种背面测试](Real-Time_Rendering_4th_中文/assets/fig_19_3_19.10.png)
+![图19.10 两种背面测试](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_3_19.10.png)
 
 图 19.10. 判断三角形是否背向观察者的两种不同测试。左图展示如何在屏幕空间中测试。左侧两个三角形朝向观察者，右侧三角形背向观察者，可以省去后续处理。右图展示如何在观察空间中进行背面测试。三角形 A 和 B 朝向观察者，C 背向观察者。
 
-判断三角形是否背向观察者的另一种方法，是从三角形所在平面上的任意一点（最简单的选择是其中一个顶点），构造一个指向观察者位置的向量。对于正交投影，用观察方向的反方向代替指向视点的向量；对整个场景而言，这一向量是常量。计算该向量与三角形法线的点积。点积为负，意味着两个向量的夹角大于 π/2 弧度，因此三角形没有朝向观察者。这项测试等价于计算从观察者位置到三角形所在平面的有符号距离。若符号为正，三角形便朝向观察者。注意，只有法线经过归一化，得到的值才是距离；不过这里并不重要，因为我们只关心符号。另一种做法是在应用投影矩阵之后，在裁剪空间中构造顶点 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_03_4904057837a360.png)，并计算行列式 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_03_d116b5053e540c.png) [1317]。如果 d ≤ 0，就可以剔除该三角形。这些剔除技术如图 19.10 所示。
+判断三角形是否背向观察者的另一种方法，是从三角形所在平面上的任意一点（最简单的选择是其中一个顶点），构造一个指向观察者位置的向量。对于正交投影，用观察方向的反方向代替指向视点的向量；对整个场景而言，这一向量是常量。计算该向量与三角形法线的点积。点积为负，意味着两个向量的夹角大于 π/2 弧度，因此三角形没有朝向观察者。这项测试等价于计算从观察者位置到三角形所在平面的有符号距离。若符号为正，三角形便朝向观察者。注意，只有法线经过归一化，得到的值才是距离；不过这里并不重要，因为我们只关心符号。另一种做法是在应用投影矩阵之后，在裁剪空间中构造顶点 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_03_4904057837a360.png)，并计算行列式 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_03_d116b5053e540c.png) [1317]。如果 d ≤ 0，就可以剔除该三角形。这些剔除技术如图 19.10 所示。
 
 Blinn 指出，这两种测试在几何上是相同的 [165]。理论上，二者的唯一区别只是执行测试的空间。实践中，屏幕空间测试通常更稳妥，因为那些几乎以侧边朝向观察者、在观察空间中看起来略微背向观察者的三角形，在屏幕空间中可能变成略微朝向观察者。这是由于观察空间坐标在转换为屏幕空间的亚像素坐标时发生了舍入。
 
 使用 OpenGL 或 DirectX 这样的 API 时，通常通过几个函数控制背面剔除：启用背面剔除、启用正面剔除，或者禁用所有剔除。要注意，镜像变换（即负缩放操作）会把背向三角形变成正向三角形，反之亦然 [165]（第 4.1.3 节）。最后，还可以在像素着色器中判断三角形是否正向。在 OpenGL 中，这通过测试 `gl_FrontFacing` 完成；在 DirectX 中，它称为 `SV_IsFrontFace`。在加入这一功能之前，正确显示双面物体的主要方法是渲染两遍：先剔除背面，然后剔除正面并反转法线。
 
 
-![图19.11 法线锥](Real-Time_Rendering_4th_中文/assets/fig_19_3_19.11.png)
+![图19.11 法线锥](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_3_19.11.png)
 
 图 19.11. 左：一组三角形及其法线。中左：将法线集中到一起（上），并构造一个由法线 **n** 和半角 α 定义的最小圆锥（下）。中右：将圆锥锚定在点 **c**，并将其截断，使它同时包含三角形上的所有点。右：截断圆锥的剖面。上方浅灰色区域是正向锥，下方浅灰色区域是背向锥。点 **f** 和 **b** 分别是正向锥和背向锥的顶点。
 
@@ -240,26 +240,26 @@ Blinn 指出，这两种测试在几何上是相同的 [165]。理论上，二�
 对于静态网格，Haar 和 Aaltonen [625] 建议在 n 个三角形周围计算一个最小立方体，并把立方体每个面划分成 r × r 个“像素”，每个像素编码一个 n 位掩码，用来指示各个对应三角形是否在该“像素”范围内可见。如图 19.12 所示。如果摄像机位于立方体外部，找出摄像机所在的相应视锥，就可以立即查找其位掩码，保守地判断哪些三角形背向观察者。如果摄像机位于立方体内部，则认为所有三角形都可见（除非希望进行进一步计算）。Haar 和 Aaltonen 对立方体每个面只使用一个位掩码，每次编码 n = 64 个三角形。统计位掩码中已置位的位数，就能高效地为未被剔除的三角形分配内存。这项工作已经用于《刺客信条：大革命》（Assassin’s Creed Unity）。
 
 
-![图19.12 静态三角形的保守背面测试](Real-Time_Rendering_4th_中文/assets/fig_19_3_19.12.png)
+![图19.12 静态三角形的保守背面测试](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_3_19.12.png)
 
 图 19.12. 在二维中，用正方形包围一组从侧边观察的五个静态三角形。正方形左侧的边分成了 4 个“像素”，这里关注从上往下数第二个像素；它在方框外对应的视锥被涂成蓝色。三角形所在平面形成的正半空间用半圆表示（红色和绿色）。对于某个三角形，如果蓝色视锥的任何部分都不在它的正半空间中，那么从视锥中的所有点观察，它都可以被保守地判定为背向（标为红色）。绿色表示正向的三角形。
 
 接下来，与图 19.11 不同，我们使用一个未截断的法线锥，因此只需中心点 **c**、法线 **n** 和角度 α 来定义它。要为若干三角形计算这样的法线锥，先取所有三角形平面的法线，把它们放到同一个位置，然后在单位球面上计算包含所有这些法线的最小圆 [101]。首先，假设要从点 **e** 对锥内所有共用原点 **c** 的法线进行背面测试。当下式成立时，法线锥从 **e** 看是背向的 [1883, 1884]：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_19_03_f63a3d5744b161.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_03_f63a3d5744b161.png)
 
 
 不过，这项测试只有在所有几何体都位于 **c** 时才有效。接下来，我们假设所有几何体都位于一个中心点为 **c**、半径为 r 的球体内。测试于是变为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_19_03_640623d6f0dd29.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_03_640623d6f0dd29.png)
 
 
-其中 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_03_1acf8d0ee53447.png)。推导这项测试所涉及的几何关系如图 19.13 所示。量化后的法线可以存储在 8 × 4 位中，这对于某些应用可能已经足够。
+其中 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_03_1acf8d0ee53447.png)。推导这项测试所涉及的几何关系如图 19.13 所示。量化后的法线可以存储在 8 × 4 位中，这对于某些应用可能已经足够。
 
 
-![图19.13 包围球与法线锥的临界可见情形](Real-Time_Rendering_4th_中文/assets/fig_19_3_19.13.png)
+![图19.13 包围球与法线锥的临界可见情形](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_3_19.13.png)
 
 图 19.13. 图中展示一种临界情形：从以 **c** 为中心、半径为 r 的圆内最关键的点出发，由 **c**、**n** 和 α 定义的法线锥即将对 **e** 变得可见。当从 **e** 指向圆上一点的向量与圆相切，且这一向量与法线锥侧边之间的夹角为 π/2 弧度时，就会出现这种情况。注意，法线锥已从 **c** 向下平移，使其原点与球体边界重合。
 
@@ -277,7 +277,7 @@ Blinn 指出，这两种测试在几何上是相同的 [165]。理论上，二�
 利用空间数据结构，可以按层次执行这种剔除 [272]。对于包围体层次结构（BVH），从根节点开始进行先序遍历 [292] 即可。对每个带有包围体的节点，都将其包围体与视锥体进行测试。如果节点的包围体位于视锥体之外，就不再进一步处理该节点。由于这个包围体的内容及其子节点都位于视野之外，因此可以对树进行剪枝。如果包围体完全位于视锥体之内，那么其中的内容也必然全部位于视锥体之内。遍历仍继续进行，但对这棵子树的其余部分，不再需要做任何视锥体测试。如果包围体与视锥体相交，则继续遍历，并测试其子节点。当发现叶节点相交时，就把它的内容（即几何体）送入流水线。叶节点中的图元并不保证位于视锥体之内。图 19.14 展示了一个视锥体剔除的例子。还可以对一个物体或单元进行多种包围体测试。例如，如果发现包围某个单元的球形包围体与视锥体重叠，而又已知该单元的有向包围盒（OBB）比这个球小得多，那么进一步执行更精确（但开销也更大）的 OBB 与视锥体测试，可能是值得的 [1600]。
 
 
-![图 19.14 视锥体剔除与包围体层次结构](Real-Time_Rendering_4th_中文/assets/fig_19_4_19.14.png)
+![图 19.14 视锥体剔除与包围体层次结构](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_4_19.14.png)
 
 **图 19.14。** 左图显示了一组几何体及其包围体（球）。从眼睛所在的位置观察，使用视锥体剔除来渲染这个场景。右图显示了相应的 BVH。根节点的包围体与视锥体相交，因此遍历继续，测试其子节点的包围体。左子树的包围体与视锥体相交，该子树的一个子节点的包围体也与视锥体相交（因而会被渲染），另一个子节点的包围体则位于视锥体之外，因此不会送入流水线。根节点中间子树的包围体完全位于视锥体之内，所以立即渲染。根节点右子树的包围体也完全位于视锥体之内，因此无需进一步测试，就可以渲染整棵子树。
 
@@ -299,7 +299,7 @@ Blinn 指出，这两种测试在几何上是相同的 [165]。理论上，二�
 门户剔除方法会以某种方式预处理场景。场景被划分为若干**单元**（cell），通常对应建筑物中的房间和走廊。连接相邻房间的门和窗称为**门户**（portal）。单元中的每个物体以及单元的墙壁，都存储在与该单元关联的数据结构中。此外，我们还用邻接图存储相邻单元以及连接这些单元的门户信息。Teller 给出了计算这种图的算法 [1756]。虽然这项技术在 1992 年提出时可以奏效，但对于现代复杂场景，要使这个过程自动化极其困难。因此，目前仍采用手工方式定义单元并创建这张图。
 
 
-![图 19.15 门户剔除示意图](Real-Time_Rendering_4th_中文/assets/fig_19_5_19.15.png)
+![图 19.15 门户剔除示意图](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_5_19.15.png)
 
 **图 19.15** 门户剔除：单元从 A 到 H 编号，门户是连接各单元的开口。只渲染通过门户能够看到的几何体。例如，单元 F 中的星形物体会被剔除。（图内 eye 表示视点。）
 
@@ -310,7 +310,7 @@ Luebke 与 Georges [1090] 采用了一种简单方法，只需要少量预处理
 每个物体渲染之后都可以加上标记，以避免被重复渲染。例如，如果有两扇窗户通向同一个房间，就要分别用两个视锥体对房间的内容进行剔除。如果不加标记，一个透过两扇窗户都可见的物体就会被渲染两次。这既低效，也可能造成渲染错误，例如物体是透明的情况。为了避免每帧都清空这组标记，可以在访问物体时，用当前帧编号标记该物体。只有存储着当前帧编号的物体，才是已经访问过的物体。
 
 
-![图 19.16 建筑与镜面中的门户剔除](Real-Time_Rendering_4th_中文/assets/fig_19_5_19.16.png)
+![图 19.16 建筑与镜面中的门户剔除](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_5_19.16.png)
 
 **图 19.16** 门户剔除。左图是 Brooks House 的俯视图，右图是从主卧室中看到的视图。门户的剔除框以白色表示，镜面的剔除框以红色表示。（图片由北卡罗来纳大学教堂山分校的 David Luebke 与 Chris Georges 提供。）
 
@@ -328,13 +328,13 @@ Luebke 与 Georges [1090] 采用了一种简单方法，只需要少量预处理
 当每个像素的中心只有一个采样点时，小三角形很有可能落在采样点之间。此外，小三角形的光栅化效率也很低。有些图形硬件实际上会剔除落在采样点之间的三角形，不过，当通过 GPU 上的代码执行剔除时（第 19.8 节），加入一些剔除小三角形的代码可能仍然有益。Wihlidal [1883, 1884] 提出了一种简单的方法：首先计算三角形的轴对齐包围盒（AABB）。如果下式为真，就可以在着色器中剔除这个三角形：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_19_06_2381d39ff03726.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_06_2381d39ff03726.png)
 
 
 其中，min 和 max 表示包围三角形的二维 AABB 的最小、最大坐标。只要向量的任意一个分量为真，函数 any 就返回真。还应记住，像素中心位于 (x + 0.5, y + 0.5)，这意味着，只要 x 坐标或 y 坐标中的任意一组，或者两组，都分别舍入为相同的坐标，式（19.4）就为真。图 19.17 给出了一些例子。
 
 
-![图 19.17 小三角形剔除示例](Real-Time_Rendering_4th_中文/assets/fig_19_6_19.17.png)
+![图 19.17 小三角形剔除示例](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_6_19.17.png)
 
 **图 19.17** 使用 any(round(min) == round(max)) 进行小三角形剔除。红色三角形被剔除，而绿色三角形需要渲染。左：绿色三角形覆盖了一个采样点，因此不能剔除。对于两个红色三角形，各自 AABB 的所有坐标经舍入后都落到同一个像素角点。右：红色三角形可以被剔除，因为 AABB 在某一个坐标轴上的最小、最大坐标被舍入为相同的整数。绿色三角形没有覆盖任何采样点，但不能通过这个测试将其剔除。
 
@@ -346,30 +346,30 @@ Luebke 与 Georges [1090] 采用了一种简单方法，只需要少量预处理
 正如前面所见，可见性可以通过 z 缓冲来解决。虽然 z 缓冲能够正确解决可见性问题，但它是一种相对简单的蛮力方法，因此并非总是最高效的解决方案。例如，设想观察者沿着一条直线观看，而这条直线上放着 10 个球体，如图 19.18 所示。从这一视点渲染出的图像只会显示一个球体，但全部 10 个球体仍然都要进行光栅化，与 z 缓冲比较，然后还可能写入颜色缓冲和 z 缓冲。图 19.18 中间部分显示了这一场景从给定视点看去的深度复杂度。深度复杂度是一个像素所覆盖的表面数量。对于这 10 个球体，假设已开启背面剔除，中央像素的深度复杂度就是 10，因为全部 10 个球体都位于该像素处。如果按照从后向前的顺序渲染场景，中央像素就会执行 10 次像素着色，也就是说有 9 次不必要的像素着色器执行。即使按照从前向后的顺序渲染，全部 10 个球体的三角形仍然都要光栅化，计算深度并与 z 缓冲中的深度比较，而最终生成的却只有一个球体的图像。现实中不太可能出现这样一个乏味的场景，但它描述了一个从给定视点看去十分密集的模型。雨林、发动机、城市以及摩天大楼内部等真实场景中，都存在此类情况。图 19.19 给出了一个例子。
 
 
-![图19.18 遮挡剔除与深度复杂度](Real-Time_Rendering_4th_中文/assets/fig_19_7_19.18.png)
+![图19.18 遮挡剔除与深度复杂度](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_7_19.18.png)
 
 图 19.18：说明遮挡剔除为何有用。10 个球体沿一条直线摆放，观察者沿这条直线以透视方式观看（左）。中间的深度复杂度图显示，某些像素被写入了多次，尽管最终图像（右）只显示一个球体。
 
 从上一段的例子可以看出，采用算法来避免这类低效工作，很可能带来性能收益。这些方法统称为遮挡剔除算法，因为它们试图剔除被遮挡的物体，也就是被场景中其他物体隐藏起来的物体。理想的遮挡剔除算法应当只选择可见物体。从某种意义上说，z 缓冲也只选择并渲染可见物体，但它仍然必须把视锥体内的所有物体送过流水线的大部分阶段。高效遮挡剔除算法的思想，是尽早执行一些简单测试，以剔除成组的隐藏物体。从某种意义上说，背面剔除就是一种简单的遮挡剔除。如果预先知道物体是实心且不透明的，那么它的背面会被正面遮挡，因而无须渲染。
 
 
-![图19.19 Minecraft场景中的遮挡剔除](Real-Time_Rendering_4th_中文/assets/fig_19_7_19.19.png)
+![图19.19 Minecraft场景中的遮挡剔除](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_7_19.19.png)
 
 图 19.19：名为 Neu Rungholt 的 Minecraft 场景，以及遮挡剔除的可视化，观察者位于右下角。浅色几何体被剔除，较深色几何体则被渲染。最终图像显示在左下角。（经 Jon Hasselgren、Magnus Andersson、Tomas Akenine-Möller 和 Intel Corporation 许可转载，版权归 Intel Corporation 所有，2016 年。Neu Rungholt 地图由 kescha 提供。）
 
 遮挡剔除算法主要有两种形式，即基于点和基于单元的算法，如图 19.20 所示。基于点的可见性就是渲染中通常使用的可见性：从单个观察位置能够看见什么。另一方面，基于单元的可见性针对的是一个单元，即包含一组观察位置的空间区域，通常是一个盒体或球体。在基于单元的可见性中，一个不可见物体必须从该单元内部的所有点看去都不可见。基于单元的可见性的优点是：一旦针对某个单元计算完成，只要观察者仍处于该单元内部，通常就可以连续使用若干帧。不过，它通常比基于点的可见性更耗时，因此往往作为预处理步骤执行。基于点和基于单元的可见性，在性质上类似于点光源和面光源，可以把光源想象成正在观察场景。物体不可见，相当于它处于本影区域中，即完全位于阴影之内。
 
 
-![图19.20 基于点与基于单元的可见性](Real-Time_Rendering_4th_中文/assets/fig_19_7_19.20.png)
+![图19.20 基于点与基于单元的可见性](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_7_19.20.png)
 
 图 19.20：左图显示基于点的可见性，右图显示基于单元的可见性，其中单元是一个盒体。可以看到，左图中的圆形从该视点看去被遮挡；但在右图中，这些圆形是可见的，因为可以从单元内部的某些位置向圆形发出射线，而不与任何遮挡物相交。
 
 还可以根据算法工作的空间，将遮挡剔除算法分为图像空间、物体空间和射线空间算法。图像空间算法在某种投影之后，以二维方式进行可见性测试；物体空间算法则使用原始三维物体。射线空间方法 [150, 151, 923] 在对偶空间中执行测试。每个感兴趣的点（通常是二维点）都转换为该对偶空间中的一条射线。对于实时图形，这三种方法中使用最广泛的是图像空间遮挡剔除算法。
 
-一种遮挡剔除算法的伪代码见图 19.21。其中，函数 isOccluded 检查一个物体是否被遮挡，这通常称为可见性测试。G 是要渲染的几何物体集合，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_cb99febadc088e.png) 是遮挡表示，P 是可以合并到 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_cb99febadc088e.png) 中的一组潜在遮挡物。根据具体算法的不同，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_cb99febadc088e.png) 表示某种遮挡信息。开始时将 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_cb99febadc088e.png) 设为空，之后处理所有通过视锥体剔除测试的物体。
+一种遮挡剔除算法的伪代码见图 19.21。其中，函数 isOccluded 检查一个物体是否被遮挡，这通常称为可见性测试。G 是要渲染的几何物体集合，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_cb99febadc088e.png) 是遮挡表示，P 是可以合并到 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_cb99febadc088e.png) 中的一组潜在遮挡物。根据具体算法的不同，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_cb99febadc088e.png) 表示某种遮挡信息。开始时将 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_cb99febadc088e.png) 设为空，之后处理所有通过视锥体剔除测试的物体。
 
 
-![图19.21 通用遮挡剔除算法原始伪代码](Real-Time_Rendering_4th_中文/assets/fig_19_7_19.21.png)
+![图19.21 通用遮挡剔除算法原始伪代码](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_7_19.21.png)
 
 ```text
 遮挡剔除算法(G)
@@ -389,9 +389,9 @@ Luebke 与 Georges [1090] 采用了一种简单方法，只需要少量预处理
 14: 结束循环
 ```
 
-图 19.21：通用遮挡剔除算法的伪代码。G 包含场景中的所有物体，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_cb99febadc088e.png) 是遮挡表示。P 是一组潜在遮挡物，当它包含足够多的物体时，就将它们合并到 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_cb99febadc088e.png) 中。（据 Zhang [1965]。）译注：可复制伪代码中的 OR 对应原图中 O 加下标大写 R 的遮挡表示变量。
+图 19.21：通用遮挡剔除算法的伪代码。G 包含场景中的所有物体，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_cb99febadc088e.png) 是遮挡表示。P 是一组潜在遮挡物，当它包含足够多的物体时，就将它们合并到 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_cb99febadc088e.png) 中。（据 Zhang [1965]。）译注：可复制伪代码中的 OR 对应原图中 O 加下标大写 R 的遮挡表示变量。
 
-考虑某个具体物体。首先，我们根据遮挡表示 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_cb99febadc088e.png) 测试该物体是否被遮挡。如果被遮挡，就不再进一步处理，因为我们已经知道它不会对图像产生贡献。如果无法确定该物体被遮挡，就必须渲染它，因为在渲染过程的当前时刻，它可能对图像有所贡献。随后将该物体加入 P；如果 P 中的物体数量足够多，就值得把这些物体的遮挡能力合并到 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_cb99febadc088e.png) 中。因此，P 中的每个物体都可以用作遮挡物。
+考虑某个具体物体。首先，我们根据遮挡表示 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_cb99febadc088e.png) 测试该物体是否被遮挡。如果被遮挡，就不再进一步处理，因为我们已经知道它不会对图像产生贡献。如果无法确定该物体被遮挡，就必须渲染它，因为在渲染过程的当前时刻，它可能对图像有所贡献。随后将该物体加入 P；如果 P 中的物体数量足够多，就值得把这些物体的遮挡能力合并到 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_cb99febadc088e.png) 中。因此，P 中的每个物体都可以用作遮挡物。
 
 注意，对于大多数遮挡剔除算法，性能取决于物体的绘制顺序。例如，考虑一辆内部装有发动机的汽车。如果先绘制汽车的发动机罩，那么发动机很可能就会被剔除。反之，如果先绘制发动机，就不会剔除任何东西。按大致从前向后的顺序排序并渲染，可以带来可观的性能提升。还要注意，小物体也可能是出色的遮挡物，因为与遮挡物的距离决定了它能够遮挡多大范围。例如，只要观察者离火柴盒足够近，一个火柴盒就可以遮住金门大桥。
 
@@ -419,15 +419,15 @@ GPU 通过一种特殊的渲染模式来支持遮挡剔除。用户可以查询 
 
 z 金字塔最精细、分辨率最高的一层，就是标准的 z 缓冲。在其他各层，每个 z 值都是相邻更精细一层中相应 2 × 2 窗口内最远的 z 值。因此，每个 z 值表示屏幕上某个正方形区域内最远的 z。每当 z 缓冲中的某个 z 值被覆盖时，就把它向 z 金字塔的更粗层级传播。这个过程递归进行，直到到达图像金字塔顶部，那里只剩一个 z 值。图 19.23 展示了金字塔的形成过程。
 
-八叉树节点的层次剔除过程如下。按大致从前向后的顺序遍历八叉树节点，使用扩展的遮挡查询（19.7.1 节）将八叉树的包围盒与 z 金字塔进行测试。测试从能够包住盒体屏幕投影的最粗 z 金字塔单元开始。随后把盒体在该单元内的最近深度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_edb8f20817a552.png) 与 z 金字塔值比较；如果 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_edb8f20817a552.png) 更远，就知道盒体被遮挡。测试沿 z 金字塔递归向下进行，直到发现盒体被遮挡，或到达 z 金字塔的最底层，此时便知道盒体可见。对于可见的八叉树盒体，继续沿八叉树递归向下测试，最终把潜在可见的几何体渲染到层次 z 缓冲中。这样，后续测试就可以利用此前已渲染物体的遮挡能力。
+八叉树节点的层次剔除过程如下。按大致从前向后的顺序遍历八叉树节点，使用扩展的遮挡查询（19.7.1 节）将八叉树的包围盒与 z 金字塔进行测试。测试从能够包住盒体屏幕投影的最粗 z 金字塔单元开始。随后把盒体在该单元内的最近深度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_edb8f20817a552.png) 与 z 金字塔值比较；如果 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_edb8f20817a552.png) 更远，就知道盒体被遮挡。测试沿 z 金字塔递归向下进行，直到发现盒体被遮挡，或到达 z 金字塔的最底层，此时便知道盒体可见。对于可见的八叉树盒体，继续沿八叉树递归向下测试，最终把潜在可见的几何体渲染到层次 z 缓冲中。这样，后续测试就可以利用此前已渲染物体的遮挡能力。
 
 
-![图19.22 层次z缓冲的遮挡剔除](Real-Time_Rendering_4th_中文/assets/fig_19_7_19.22.png)
+![图19.22 层次z缓冲的遮挡剔除](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_7_19.22.png)
 
 图 19.22：使用 HZB 算法 [591, 593] 进行遮挡剔除的示例，展示了一个深度复杂度较高的场景（右下），以及相应的 z 金字塔（左）和八叉树划分（右上）。通过从前向后遍历八叉树，并在遇到被遮挡节点时将其剔除，该算法只访问可见的八叉树节点及其子节点（右上所画出的节点），而且只渲染可见盒体中的三角形。在此例中，剔除被遮挡的八叉树节点使深度复杂度从 84 降至 2.5。（图片由 Ned Greene／Apple Computer 提供。）
 
 
-![图19.23 z金字塔构建](Real-Time_Rendering_4th_中文/assets/fig_19_7_19.23.png)
+![图19.23 z金字塔构建](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_7_19.23.png)
 
 图 19.23：左侧显示 z 缓冲中的一个 4 × 4 区块，其中的数值就是实际 z 值。将它下采样为一个 2 × 2 区域，每个值取自左侧四个 2 × 2 区域中对应区域的最远值，即最大值。最后，求出剩下四个 z 值中的最远值。这三幅图组成一个图像金字塔，称为层次 z 缓冲。
 
@@ -444,22 +444,22 @@ z 金字塔最精细、分辨率最高的一层，就是标准的 z 缓冲。在
 第 2 步把物体的包围体投影到屏幕空间。常用包围体包括球体、轴对齐包围盒（AABB）和有向包围盒（OBB）。使用投影后包围体的最长边 l（以像素为单位）来计算 mip 层级 λ [738, 1637, 1883, 1884]：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_efb78c28aaa910.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_efb78c28aaa910.png)
 
 
 其中，n 是 z 金字塔中 mip 层级的最大数量。max 运算用来避免得到负的 mip 层级，min 则避免访问不存在的 mip 层级。公式（19.5）选择满足以下条件的最小整数 mip 层级：投影后的包围体最多覆盖 2 × 2 个深度值。如此选择是为了使代价可预测，最多只需读取并测试四个深度值。此外，Hill 和 Collin [738] 认为，这种测试在某种意义上可以视为“概率式”的：大物体比小物体更有可能可见，因此在这些情况下没有理由读取更多深度值。
 
-到达第 3 步时，我们知道投影后的包围体被该 mip 层级上某组至多 2 × 2 个深度值所包围。对于一个给定大小的包围体，它可能完全落在该 mip 层级的一个深度纹素内部；不过，根据它与网格的相对位置，也可能覆盖全部四个纹素。需要精确或保守地计算包围体的最小深度。对于观察空间中的 AABB，这就是盒体的最小深度；对于 OBB，可以把所有顶点投影到观察向量上，并选择最小距离。对于球体，Shopf 等人 [1637] 将球体上的最近点计算为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_b09632719a89b5.png)，其中 c 是观察空间中的球心向量，r 是球体半径。注意，如果相机位于包围体内部，则包围体覆盖整个屏幕，此时会渲染该物体。把包围体的最小深度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_64df578b1bedb5.png) 与层次 z 缓冲中至多 2 × 2 个深度值比较；如果 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_64df578b1bedb5.png) 始终更大，则包围体被遮挡。可以到这里就停止测试；只要没有检测出被遮挡，就直接渲染该物体。
+到达第 3 步时，我们知道投影后的包围体被该 mip 层级上某组至多 2 × 2 个深度值所包围。对于一个给定大小的包围体，它可能完全落在该 mip 层级的一个深度纹素内部；不过，根据它与网格的相对位置，也可能覆盖全部四个纹素。需要精确或保守地计算包围体的最小深度。对于观察空间中的 AABB，这就是盒体的最小深度；对于 OBB，可以把所有顶点投影到观察向量上，并选择最小距离。对于球体，Shopf 等人 [1637] 将球体上的最近点计算为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_b09632719a89b5.png)，其中 c 是观察空间中的球心向量，r 是球体半径。注意，如果相机位于包围体内部，则包围体覆盖整个屏幕，此时会渲染该物体。把包围体的最小深度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_64df578b1bedb5.png) 与层次 z 缓冲中至多 2 × 2 个深度值比较；如果 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_64df578b1bedb5.png) 始终更大，则包围体被遮挡。可以到这里就停止测试；只要没有检测出被遮挡，就直接渲染该物体。
 
-也可以继续针对金字塔下一层、分辨率更高的层级进行测试。可以利用另一个存储最小深度的 z 金字塔，判断是否值得继续测试。把到包围体的最大距离 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_66a1b8fb0c4036.png) 与这个新缓冲中的对应深度进行比较。如果 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_66a1b8fb0c4036.png) 小于所有这些深度，那么包围体肯定可见，可以立即渲染。否则，包围体的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_64df578b1bedb5.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_66a1b8fb0c4036.png) 与两个层次 z 缓冲的深度范围相重叠，在这种情况下，Kaplanyan [856] 建议在分辨率更高的 mip 层级继续测试。注意，将层次 z 缓冲中的 2 × 2 个纹素与单个深度进行比较，非常类似于百分比渐近滤波（percentage-closer filtering，PCF，见 7.5 节）。实际上，可以采用带双线性滤波的 PCF 完成这项测试；如果测试返回正值，就表示至少有一个纹素可见。
+也可以继续针对金字塔下一层、分辨率更高的层级进行测试。可以利用另一个存储最小深度的 z 金字塔，判断是否值得继续测试。把到包围体的最大距离 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_66a1b8fb0c4036.png) 与这个新缓冲中的对应深度进行比较。如果 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_66a1b8fb0c4036.png) 小于所有这些深度，那么包围体肯定可见，可以立即渲染。否则，包围体的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_64df578b1bedb5.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_66a1b8fb0c4036.png) 与两个层次 z 缓冲的深度范围相重叠，在这种情况下，Kaplanyan [856] 建议在分辨率更高的 mip 层级继续测试。注意，将层次 z 缓冲中的 2 × 2 个纹素与单个深度进行比较，非常类似于百分比渐近滤波（percentage-closer filtering，PCF，见 7.5 节）。实际上，可以采用带双线性滤波的 PCF 完成这项测试；如果测试返回正值，就表示至少有一个纹素可见。
 
 Haar 和 Altonen [625] 还提出了一种双通道方法，保证至少渲染所有可见物体。首先，根据上一帧的 z 金字塔对所有物体进行遮挡剔除，并渲染那些“可见”物体。也可以使用上一帧的可见性列表来直接渲染 z 金字塔。虽然这是近似方法，但所有已渲染的物体都能很好地估计当前帧的“最佳”遮挡物，尤其是在帧间相干性较高的场景中。第二个通道获取这些已渲染物体的深度缓冲，并创建新的 z 金字塔。随后，对第一个通道中被遮挡剔除的物体再次进行遮挡测试，如果没有被剔除，就渲染它们。即使相机快速移动，或物体在屏幕上快速运动，这种方法仍能生成完全正确的图像。Kubisch 和 Tavenrath [944] 使用了类似方法。
 
 Doghramachi 和 Bucci [363] 将待遮挡测试物体的有向包围盒进行光栅化，与经过下采样及重投影的上一帧深度缓冲比较。他们强制着色器使用 early-z（23.7 节）；对于每个盒体，可见片元会在缓冲中的某个位置将该物体标记为可见，这个位置由物体 ID 唯一确定 [944]。这种方法使用有向盒体并执行逐像素测试，而不是使用公式（19.5）针对某个 mip 层级执行自定义测试，因此能够达到更高的剔除率。
 
-Collin [283] 使用一个 256 × 144 的浮点 z 缓冲（不是层次缓冲），并对美术人员生成的低复杂度遮挡物进行光栅化。这通过高度优化的 SIMD 代码在软件中完成，执行设备可以是 CPU，也可以是 PLAYSTATION 3 上的 SPU。为进行遮挡测试，先计算物体的屏幕空间 AABB，再把其 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_64df578b1bedb5.png) 与这个小型 z 缓冲中所有相关深度比较。只有未被剔除的物体才会送往 GPU。这种方法可以奏效，但并不保证保守正确，因为它采用的分辨率低于最终帧缓冲的分辨率。Wihlidal [1883] 建议还可以利用这个低分辨率 z 缓冲，将 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_66a1b8fb0c4036.png) 值载入 GPU 的 HiZ（23.7 节），例如预先填充 AMD GCN 的 HTILE 结构。或者，如果使用 HZB 进行计算通道剔除，也可以使用软件 z 缓冲来生成 z 金字塔。这样，算法就能利用软件生成的全部信息。
+Collin [283] 使用一个 256 × 144 的浮点 z 缓冲（不是层次缓冲），并对美术人员生成的低复杂度遮挡物进行光栅化。这通过高度优化的 SIMD 代码在软件中完成，执行设备可以是 CPU，也可以是 PLAYSTATION 3 上的 SPU。为进行遮挡测试，先计算物体的屏幕空间 AABB，再把其 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_64df578b1bedb5.png) 与这个小型 z 缓冲中所有相关深度比较。只有未被剔除的物体才会送往 GPU。这种方法可以奏效，但并不保证保守正确，因为它采用的分辨率低于最终帧缓冲的分辨率。Wihlidal [1883] 建议还可以利用这个低分辨率 z 缓冲，将 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_66a1b8fb0c4036.png) 值载入 GPU 的 HiZ（23.7 节），例如预先填充 AMD GCN 的 HTILE 结构。或者，如果使用 HZB 进行计算通道剔除，也可以使用软件 z 缓冲来生成 z 金字塔。这样，算法就能利用软件生成的全部信息。
 
-Hasselgren 等人 [683] 提出了另一种方法，其中每个 8 × 4 图块为每个像素保存 1 位，并保存两个 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_66a1b8fb0c4036.png) 值 [50]，总开销为每像素 3 位。使用两个 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_66a1b8fb0c4036.png) 值可以更好地处理深度不连续，因为背景物体可以使用其中一个 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_66a1b8fb0c4036.png) 值，而前景物体使用另一个。这种表示称为掩码层次深度缓冲（masked hierarchical depth buffer，MHDB），它是保守的，也可以用于 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_07_66a1b8fb0c4036.png) 剔除。在软件三角形光栅化期间，每个图块只生成覆盖掩码和单个最大深度值，因此向 MHDB 光栅化既快速又高效。将三角形光栅化到 MDHB 的同时，也可以根据 MDHB 对三角形执行遮挡测试，从而优化光栅器。MDHB 会针对每个三角形更新，这是其他方法很少具备的优点。作者评估了两种使用模式。第一种使用专门的遮挡网格，通过软件光栅器将其渲染到 MDHB 中。随后遍历待遮挡测试物体的 AABB 树，并以层次方式对照 MDHB 进行测试。这可能非常有效，特别是场景中有许多小物体时。第二种方法将整个场景存储在 AABB 树中，利用堆按大致从前向后的顺序遍历场景。每一步都执行视锥体剔除，并针对 MDHB 执行遮挡查询。每当渲染一个物体时，MDHB 也会更新。图 19.19 中的场景就是采用这种方法渲染的。其开源代码针对 AVX2 做了大量优化 [683]。
+Hasselgren 等人 [683] 提出了另一种方法，其中每个 8 × 4 图块为每个像素保存 1 位，并保存两个 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_66a1b8fb0c4036.png) 值 [50]，总开销为每像素 3 位。使用两个 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_66a1b8fb0c4036.png) 值可以更好地处理深度不连续，因为背景物体可以使用其中一个 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_66a1b8fb0c4036.png) 值，而前景物体使用另一个。这种表示称为掩码层次深度缓冲（masked hierarchical depth buffer，MHDB），它是保守的，也可以用于 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_07_66a1b8fb0c4036.png) 剔除。在软件三角形光栅化期间，每个图块只生成覆盖掩码和单个最大深度值，因此向 MHDB 光栅化既快速又高效。将三角形光栅化到 MDHB 的同时，也可以根据 MDHB 对三角形执行遮挡测试，从而优化光栅器。MDHB 会针对每个三角形更新，这是其他方法很少具备的优点。作者评估了两种使用模式。第一种使用专门的遮挡网格，通过软件光栅器将其渲染到 MDHB 中。随后遍历待遮挡测试物体的 AABB 树，并以层次方式对照 MDHB 进行测试。这可能非常有效，特别是场景中有许多小物体时。第二种方法将整个场景存储在 AABB 树中，利用堆按大致从前向后的顺序遍历场景。每一步都执行视锥体剔除，并针对 MDHB 执行遮挡查询。每当渲染一个物体时，MDHB 也会更新。图 19.19 中的场景就是采用这种方法渲染的。其开源代码针对 AVX2 做了大量优化 [683]。
 
 还有一些专门用于剔除，尤其是遮挡剔除的中间件包。Umbra 就是这样一种框架，它已与多种游戏引擎进行了广泛集成 [13, 1789]。
 
@@ -475,14 +475,14 @@ Hasselgren 等人 [683] 提出了另一种方法，其中每个 8 × 4 图块为
 典型的剔除系统会在多种粒度上工作，如图 19.24 所示。物体的一个簇（cluster）或块（chunk），就是该物体三角形集合的一个子集。例如，可以采用包含 64 个顶点的三角形带 [625]，或者由 256 个三角形组成的分组 [1884]。在每个步骤中，都可以组合使用多种剔除技术。El Mansouri [415] 对物体采用小三角形剔除、细节剔除、视锥体剔除和遮挡剔除。由于簇的几何范围小于物体，更有可能被剔除，因此对簇同样采用这些剔除技术是合理的。例如，可以对簇采用细节剔除、视锥体剔除、成簇背面剔除和遮挡剔除。
 
 
-![图 19.24：物体／实例剔除、簇／块剔除、三角形剔除的三级流程](Real-Time_Rendering_4th_中文/assets/fig_19_8_19.24.png)
+![图 19.24：物体／实例剔除、簇／块剔除、三角形剔除的三级流程](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_8_19.24.png)
 
 **图 19.24** 一个在三种不同粒度上工作的剔除系统示例。首先，在逐物体层级进行剔除。然后，对未被剔除的物体在逐簇层级进行剔除。最后，进行三角形剔除，图 19.25 对此作了进一步说明。
 
 图内标签：object/instance culling＝物体／实例剔除；cluster/chunk culling＝簇／块剔除；triangle culling＝三角形剔除。
 
 
-![图 19.25：三角形剔除、紧缩及间接绘制流程](Real-Time_Rendering_4th_中文/assets/fig_19_8_19.25.png)
+![图 19.25：三角形剔除、紧缩及间接绘制流程](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_8_19.25.png)
 
 **图 19.25** 三角形剔除系统。首先，对所有单独的三角形应用一系列剔除算法。为了能够使用间接绘制，也就是无需在 GPU 与 CPU 之间往返传递数据，随后将未被剔除的三角形紧缩为一个更短的列表。GPU 使用间接绘制来渲染这个列表。
 
@@ -500,7 +500,7 @@ Hasselgren 等人 [683] 提出了另一种方法，其中每个 8 × 4 图块为
 细节层次（levels of detail，LOD）的基本思想是：当一个物体对渲染图像的贡献越来越小时，使用它的更简单版本。例如，考虑一辆可能包含100万个三角形的精细汽车。当观察者靠近汽车时，可以使用这种表示。当物体较远，例如只覆盖200个像素时，就不需要全部100万个三角形了。我们可以改用一个简化模型，例如只包含1000个三角形。由于距离较远，简化版本看起来与更精细的版本基本相同。见图19.26。这样就有望显著提高性能。为了减少应用LOD技术所涉及的总工作量，最好在剔除技术之后应用LOD技术。例如，只对视锥体内的物体计算LOD选择。
 
 
-![图19.26](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.26.png)
+![图19.26](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.26.png)
 
 图19.26：这里展示C4炸药模型（上）和Hunter模型（下）的三个不同细节层次。较低的细节层次会简化元素，或者完全删除它们。小插图按简化模型可能使用时的相对尺寸显示它们。（上排图片由Crytek提供；下排由Valve Corp.提供。）
 
@@ -517,14 +517,14 @@ LOD技术还可以让应用程序在性能不同的一系列设备上以期望�
 当静态物体相对较远时，公告板和替身图像（第13.6.4节）是以很小开销表示它们的自然选择[1097]。其他表面渲染方法，例如凹凸映射或浮雕映射，也可以用来简化模型的表示。图19.27给出了一个例子。Teixeira [1754]讨论了如何使用GPU将法线贴图烘焙到表面上。这种简化技术最明显的缺陷是轮廓会失去曲率。Loviscach [1085]给出了一种沿轮廓边挤出鳍片、从而生成弯曲轮廓的方法。
 
 
-![图19.27](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.27.png)
+![图19.27](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.27.png)
 
 图19.27：左边的原始模型包含150万个三角形。右边的模型包含1100个三角形，表面细节存储为高度场纹理，并使用浮雕映射渲染。（图片由ATI Research, Inc.的Natalya Tatarchuk提供。）
 
 Lengyel等人[1030, 1031]的研究展示了可以用于表示物体的一系列技术。在这项研究中，极近距离的毛皮使用几何表示；稍远时使用经过alpha混合的折线；再远时与体纹理“壳层”混合；最后在远处使用纹理贴图。见图19.28。如何判断何时以及怎样最好地从一组建模和渲染技术切换到另一组，以最大限度提高帧率和质量，仍然是一门艺术，也是有待探索的开放领域。
 
 
-![图19.28](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.28.png)
+![图19.28](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.28.png)
 
 图19.28：从远处看，兔子的毛皮使用体纹理渲染。当兔子靠近时，毛发使用经过alpha混合的折线渲染。在近距离，沿轮廓的毛皮使用graftal鳍片渲染。（图片由Microsoft Research的Jed Lengyel和Michael Cohen提供。）
 
@@ -537,7 +537,7 @@ Lengyel等人[1030, 1031]的研究展示了可以用于表示物体的一系列�
 最简单的一类LOD算法中，各种表示是同一物体的模型，它们包含不同数量的图元。这种算法非常适合现代图形硬件[1092]，因为这些独立的静态网格可以存储在GPU内存中并重复使用（第16.4.5节）。细节更多的LOD具有更多图元。图19.26和图19.29展示了物体的三个LOD。前一幅图还展示了这些LOD处于距观察者不同距离时的样子。
 
 
-![图19.29](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.29.png)
+![图19.29](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.29.png)
 
 图19.29：一部分悬崖的三个不同细节层次，从左到右分别包含72,200、13,719和7,713个三角形。（图片由Quixel Megascans提供。）
 
@@ -556,12 +556,12 @@ Scherzer和Wimmer [1557]通过每帧只更新一个LOD、重用上一帧的另�
 某些物体适合其他切换技术。例如，SpeedTree软件包[887]会平滑移动或缩放树木LOD模型的部分结构，以避免跳变。图19.30给出了一个例子。图19.31展示了一组LOD，以及用于远处树木的公告板LOD技术。
 
 
-![图19.30](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.30.png)
+![图19.30](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.30.png)
 
 图19.30：当观察者远离树木模型时，树枝（以及未画出的树叶）先缩小，然后被移除。（图片由SpeedTree提供。）
 
 
-![图19.31](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.31.png)
+![图19.31](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.31.png)
 
 图19.31：从近到远的树木LOD模型，依次为16,000、9,000、5,000个三角形以及公告板。当树木位于远处时，用右侧所示一组公告板中的一张表示它。每张公告板都是从不同视角渲染树木得到的，由颜色贴图和法线贴图组成。选择最朝向观察者的公告板。实际中会生成8到12张公告板（这里显示6张），并裁掉透明部分，避免花费时间丢弃完全透明的像素（第13.6.2节）。（图片由SpeedTree提供。）
 
@@ -570,7 +570,7 @@ Scherzer和Wimmer [1557]通过每帧只更新一个LOD、重用上一帧的另�
 一种可以完全避免跳变的简单方法是使用我们所称的alpha LOD。这种技术可以单独使用，也可以与其他LOD切换技术结合。它应用于最简单的可见LOD；如果只有一个LOD，也可以直接应用于原始模型。随着LOD选择所用度量（例如到该物体的距离）增大，物体整体透明度增加（α减小），并最终在完全透明时（α = 0.0）消失。当度量值大于用户定义的不可见阈值时，就会出现这种情况。一旦达到不可见阈值，只要度量值保持在阈值以上，物体就完全不必送入渲染流水线。当一个原本不可见的物体，其度量值降到不可见阈值以下时，它会降低透明度并开始重新显现。另一种选择是使用第19.9.2节介绍的滞回方法。
 
 
-![图19.32](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.32.png)
+![图19.32](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.32.png)
 
 图19.32：中间的圆锥使用alpha LOD渲染。随着与它的距离增加，圆锥的透明度增加，最后消失。为方便观察，左侧图像均以相同距离显示，而分隔线右侧图像以不同大小显示。
 
@@ -589,7 +589,7 @@ Scherzer和Wimmer [1557]通过每帧只更新一个LOD、重用上一帧的另�
 顶点分裂将一个顶点变成两个。这意味着，复杂模型的每个顶点都源自某个更简单版本上的顶点。几何变形LOD（geomorph LOD）[768]是一组通过简化生成的离散模型，同时保留顶点之间的关联关系。从复杂模型切换到简单模型时，将复杂模型的顶点在原始位置与简单版本的对应位置之间插值。过渡完成后，就使用较简单的细节层次模型表示物体。图19.33展示了过渡的例子。几何变形有几个优点。可以预先挑选质量高的独立静态模型，也容易将它们组织成三角形网格。与CLOD一样，平滑过渡还可以避免跳变。主要缺点是每个顶点都需要插值；CLOD技术通常不使用插值，因此顶点位置集合本身始终不变。另一个缺点是物体看起来总在变化，可能分散注意力，对于带纹理的物体尤其如此。Sander和Mitchell [1543]描述了一个将几何变形与驻留GPU的静态顶点缓冲区、索引缓冲区结合的系统。还可以将前面介绍的Mittring [1227]纱门透明方法与几何变形结合，获得更平滑的过渡。
 
 
-![图19.33](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.33.png)
+![图19.33](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.33.png)
 
 图19.33：左图和右图分别显示低细节模型和较高细节模型。中间图像显示一个几何变形模型，约位于左右两个模型之间插值的一半位置。注意，中间的牛与右侧模型具有相同数量的顶点和三角形。（图像使用Melax的“Polychop”简化演示程序生成[1196]。）
 
@@ -603,24 +603,24 @@ GPU支持一种相关思想，称为分数曲面细分。在此类方案中，�
 
 #### 基于距离范围
 
-一种常见的LOD选择方法，是把物体的不同LOD与不同距离范围关联起来。细节最多的LOD对应从零到某个用户定义值![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_be46b08bd75436.png)的范围，这意味着当物体距离小于![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_be46b08bd75436.png)时，该LOD可见。下一个LOD的范围为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_be46b08bd75436.png)到![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_205c22a77e4893.png)，其中![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_205c22a77e4893.png) > ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_be46b08bd75436.png)。如果到物体的距离大于或等于![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_be46b08bd75436.png)而小于![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_205c22a77e4893.png)，就使用该LOD，依此类推。图19.34展示了四个不同LOD及其范围的例子，以及场景图中使用的对应LOD节点。
+一种常见的LOD选择方法，是把物体的不同LOD与不同距离范围关联起来。细节最多的LOD对应从零到某个用户定义值![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_be46b08bd75436.png)的范围，这意味着当物体距离小于![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_be46b08bd75436.png)时，该LOD可见。下一个LOD的范围为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_be46b08bd75436.png)到![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_205c22a77e4893.png)，其中![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_205c22a77e4893.png) > ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_be46b08bd75436.png)。如果到物体的距离大于或等于![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_be46b08bd75436.png)而小于![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_205c22a77e4893.png)，就使用该LOD，依此类推。图19.34展示了四个不同LOD及其范围的例子，以及场景图中使用的对应LOD节点。
 
 
-![图19.34](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.34.png)
+![图19.34](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.34.png)
 
-图19.34：左侧展示基于距离范围的LOD如何工作。注意，第四个LOD是一个空物体，因此当物体距离大于![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_c156c5c5e5dbb6.png)时，什么也不绘制，因为它对图像的贡献不足以值得付出渲染成本。右侧展示场景图中的LOD节点。依据r，只会向下遍历LOD节点的一个子节点。
+图19.34：左侧展示基于距离范围的LOD如何工作。注意，第四个LOD是一个空物体，因此当物体距离大于![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_c156c5c5e5dbb6.png)时，什么也不绘制，因为它对图像的贡献不足以值得付出渲染成本。右侧展示场景图中的LOD节点。依据r，只会向下遍历LOD节点的一个子节点。
 
-如果决定使用哪个LOD的度量在相邻帧中围绕某个值![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_cd67df66efa831.png)波动，就可能产生不必要的跳变，细节层次可能快速来回切换。可以通过在![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_cd67df66efa831.png)附近引入一定滞回解决这一问题[898, 1508]。图19.35以基于距离范围的LOD展示了这种方法，但它适用于任何类型。这里，只有当r增加时才使用上排LOD范围；当r减小时，使用下排范围。
+如果决定使用哪个LOD的度量在相邻帧中围绕某个值![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_cd67df66efa831.png)波动，就可能产生不必要的跳变，细节层次可能快速来回切换。可以通过在![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_cd67df66efa831.png)附近引入一定滞回解决这一问题[898, 1508]。图19.35以基于距离范围的LOD展示了这种方法，但它适用于任何类型。这里，只有当r增加时才使用上排LOD范围；当r减小时，使用下排范围。
 
 
-![图19.35](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.35.png)
+![图19.35](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.35.png)
 
 图19.35：着色区域表示LOD技术中的滞回区间。
 
 图19.36展示了在过渡区间混合两个LOD的做法。不过，这并不理想，因为物体的距离可能长时间停留在过渡区间内，使混合两个LOD带来的渲染负担持续增加。Mittring [1227]则在物体到达某个过渡区间时，在有限的一段时间内完成LOD切换。为获得最佳结果，应将其与上述滞回方法结合。
 
 
-![图19.36](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.36.png)
+![图19.36](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.36.png)
 
 图19.36：着色区域表示在两个最邻近LOD之间进行混合的距离范围。例如，b01表示LOD0与LOD1之间的混合，LOD k则表示在相应范围内仅渲染LOD k。
 
@@ -631,15 +631,15 @@ GPU支持一种相关思想，称为分数曲面细分。在此类方案中，�
 先从球体开始。估计基于这样一个事实：物体沿观察方向到观察者的距离越大，其投影尺寸越小。图19.37展示了这一点：距离加倍时，投影尺寸减半，这对正对观察者的平面物体成立。我们用中心点**c**和半径r定义一个球体。观察者位于**v**，沿单位方向向量**d**观察。沿观察方向从**c**到**v**的距离，就是球心在观察向量上的投影：**d** · (**v** − **c**)。还假设观察者到视锥体近平面的距离为n。估计中使用近平面，是为了让位于近平面上的物体返回其原始尺寸。球体投影半径的估计值于是为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_f42195dfbaf9a0.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_f42195dfbaf9a0.png)
 
 
-因此，以像素计的投影面积为![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_a69f7a00f4ba29.png)wh，其中w × h是屏幕分辨率。较大的值会选择细节更多的LOD。这只是近似。实际上，三维球体的投影是椭圆，Mara和McGuire [1122]对此作了展示。他们还推导出一种计算保守包围多边形的方法，即使球体与近平面相交也能使用。
+因此，以像素计的投影面积为![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_a69f7a00f4ba29.png)wh，其中w × h是屏幕分辨率。较大的值会选择细节更多的LOD。这只是近似。实际上，三维球体的投影是椭圆，Mara和McGuire [1122]对此作了展示。他们还推导出一种计算保守包围多边形的方法，即使球体与近平面相交也能使用。
 
 > 译注：原文将**d**定义为观察方向，却将投影距离写成**d** · (**v** − **c**)。按通常“从观察者指向前方”的方向约定，前方球心的正距离应为**d** · (**c** − **v**)。本译文保留原文及式（19.6）的符号，不作暗改；投影面积的尺度归一化也照原文保留。
 
 
-![图19.37](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.37.png)
+![图19.37](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.37.png)
 
 图19.37：这幅图展示了没有厚度的物体在距离加倍时，投影尺寸如何减半。
 
@@ -648,17 +648,17 @@ GPU支持一种相关思想，称为分数曲面细分。在此类方案中，�
 Schmalstieg和Tobler [1569]给出了一个快速计算盒体投影面积的程序。其思想是根据相机视点相对于盒体的位置进行分类，并利用分类结果确定哪些投影顶点属于盒体投影的轮廓。这通过查找表完成。利用这些顶点，就可以计算视野中的面积。分类主要分为三种情况，如图19.38所示。实际操作中，通过判断视点位于包围盒各平面的哪一侧来分类。为提高效率，将视点变换到盒体坐标系中，这样分类只需要比较操作。比较结果放入一个位掩码，并用它作为查找表（LUT）的索引。这个LUT确定从视点看去，轮廓中有多少个顶点。然后再进行一次查找，得到实际的轮廓顶点。将它们投影到屏幕后，就可以计算轮廓面积。为避免有时相当严重的估计误差，值得将形成的多边形裁剪到视锥体侧面之内。网上可以获得源代码。Lengyel [1026]给出了这种方案的一项优化，使用更紧凑的LUT。
 
 
-![图19.38](Real-Time_Rendering_4th_中文/assets/fig_19_9_19.38.png)
+![图19.38](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_9_19.38.png)
 
 图19.38：立方体投影的三种情况，从左到右分别显示一个、两个和三个正面。轮廓分别由四个、六个和六个顶点构成，对所形成的每个多边形计算其轮廓面积。（示意图依据Schmalstieg和Tobler [1569]。）
 
 仅依据距离或投影来选择LOD并不总是好主意。例如，一个物体具有某个轴对齐包围盒（AABB），其中既有一些大三角形，也有一些小三角形；小三角形可能产生严重走样，并因四像素组过度着色而降低性能。如果另一个物体具有完全相同的AABB，但包含的是中等和较大的三角形，那么基于距离范围和基于投影的选择方法都会选出相同的LOD。为避免这种情况，Schulz和Mader [1590]使用几何平均数g辅助选择LOD：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_9988076655c5cd.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_9988076655c5cd.png)
 
 
-其中![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_7707b04bd963ba.png)是物体各三角形的大小。使用几何平均数而不是算术平均数（平均值）的原因是，即使存在少数大三角形，大量小三角形也会使g变小。这个值针对最高分辨率模型离线计算，并用于预先计算第一次切换应发生的距离。后续切换距离是第一次距离的简单函数。这使他们的系统能够更频繁地使用较低LOD，从而提高性能。
+其中![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_7707b04bd963ba.png)是物体各三角形的大小。使用几何平均数而不是算术平均数（平均值）的原因是，即使存在少数大三角形，大量小三角形也会使g变小。这个值针对最高分辨率模型离线计算，并用于预先计算第一次切换应发生的距离。后续切换距离是第一次距离的简单函数。这使他们的系统能够更频繁地使用较低LOD，从而提高性能。
 
 另一种方法是计算每个离散LOD的几何误差，即估计简化模型相对于原始模型的最大偏离有多少米。然后将这一距离投影，以确定使用该LOD在屏幕空间中的影响。接着选择满足用户定义屏幕空间误差要求的最低LOD。
 
@@ -681,13 +681,13 @@ Funkhouser和Séquin [508]提出了一种启发式算法，通过调整场景中
 假设位于视锥体内部或与之相交的物体集合记为S。算法的核心思想是利用启发式选取的函数，优化S中物体的LOD选择。具体来说，我们希望最大化
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_430ef6b13b04f8.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_430ef6b13b04f8.png)
 
 
 同时满足约束
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_19_09_785633c88bf389.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_09_785633c88bf389.png)
 
 
 其中T为目标帧时间。
@@ -720,7 +720,7 @@ Funkhouser和Séquin [508]提出了一种启发式算法，通过调整场景中
 对于使用 mipmapping 的高效纹理系统，关键观察是：理想情况下，所需纹素数量应正比于最终渲染图像的分辨率，而与纹理自身的分辨率无关。因此，我们只要求可见纹素位于物理 GPU 内存中。与整个游戏世界的全部纹素相比，这个集合相当有限。图 19.39 展示了主要概念：整个 mipmap 链在虚拟内存和物理内存中都被划分成图块。这些结构有时称为虚拟 mipmap 或 clipmap [1739]，后一个术语表示从较大的 mipmap 中裁出较小部分供使用。物理内存远小于虚拟内存，因此只能容纳虚拟纹理图块中的一小部分。几何体通过全局 uv 参数化映射到虚拟纹理。在像素着色器使用这样的 uv 坐标之前，必须先将其转换为指向物理纹理内存的纹理坐标。这一转换可以通过 GPU 支持的页表（图 19.39）完成；若以 GPU 上的软件方式实现，则使用间接寻址纹理。任天堂 GameCube 的 GPU 已支持虚拟纹理。较近时期的 PLAYSTATION 4、Xbox One 以及许多其他 GPU，也支持硬件虚拟纹理。图块映射到物理内存或解除映射时，需要用正确的偏移量更新间接寻址纹理。使用巨大虚拟纹理和小型物理纹理之所以有效，是因为远处几何体只需将少量较高层级的 mipmap 图块载入物理内存，而靠近相机的几何体可以载入少量较低层级的 mipmap 图块。注意，虚拟纹理不仅可用于从磁盘流式传输巨大纹理，还可用于稀疏阴影映射 [241] 等。
 
 
-![图19.39 虚拟纹理页表与物理纹理](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.39.png)
+![图19.39 虚拟纹理页表与物理纹理](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.39.png)
 
 图 19.39：在虚拟纹理技术中，大型虚拟纹理及其 mipmap 层次结构被划分为图块（左），例如每块 128 × 128 像素。物理内存（右）只能容纳其中很少一部分，本例为 3 × 3 个图块。要找到虚拟纹理图块的位置，必须将虚拟地址转换成物理地址；这里通过页表完成。注意，为减少图面杂乱，并未给物理内存中的所有图块都画出来自虚拟纹理的箭头。（纹理图像为伊朗巴兹曼火山，来自 NASA 的“Visible Earth”项目。）
 
@@ -729,7 +729,7 @@ Funkhouser和Séquin [508]提出了一种启发式算法，通过调整场景中
 当 GPU 支持虚拟纹理时，驱动程序负责创建和销毁资源、映射和解除映射图块，并确保物理分配具有对应的虚拟分配作为支撑 [1605]。在 GPU 硬件虚拟纹理中，一次 `sparseTexture` 查询除了返回过滤后的数值（对于驻留图块），还返回一个代码，表明相应图块是否驻留 [1605]。对于软件支持的虚拟纹理，这些任务都由开发者负责。有关该主题的更多信息，可参阅 van Waveren 的报告 [1856]。
 
 
-![图19.40 DOOM中的纹理流式传输](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.40.png)
+![图19.40 DOOM中的纹理流式传输](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.40.png)
 
 图 19.40：《DOOM》（2016）利用纹理流式传输访问庞大图像数据库，实现高分辨率纹理映射。（图像来自游戏《DOOM》，由 id Software 提供。）
 
@@ -742,7 +742,7 @@ Widmark [1881] 描述了如何将流式传输与程序化纹理生成相结合�
 ### 19.10.2 纹理转码
 
 
-![图19.41 带转码的虚拟纹理流式系统](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.41.png)
+![图19.41 带转码的虚拟纹理流式系统](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.41.png)
 
 图 19.41：一个使用虚拟纹理和转码的纹理流式传输系统。（示意图依据 van Waveren 和 Hart [1855]。）
 
@@ -751,7 +751,7 @@ Widmark [1881] 描述了如何将流式传输与程序化纹理生成相结合�
 转码的优点在于：纹理数据存储在磁盘上时可采用更高的压缩比，而通过纹理采样器访问纹理数据时，使用的是 GPU 支持的纹理压缩格式。这要求可变码率压缩格式能够快速解压，也要求能够快速压缩为 GPU 支持的格式 [1851]。也可以对已经压缩的纹理再压缩，以进一步缩小文件 [1717]。这样做的优点是，从磁盘读入纹理并解压后，它已经处于 GPU 可以直接使用的纹理压缩格式。提供免费源代码的 crunch 库 [523] 使用类似方法，能够达到每纹素 1—2 位。图 19.42 给出示例。其后继者 basis 是一种对块使用可变位数压缩的专有格式，能够快速转码为纹理压缩格式 [792]。目前已有在 GPU 上快速压缩为 BC1/BC4 [1376]、BC6H/BC7 [933, 935, 1259] 和 PVRTC [934] 的方法。Sugden 和 Iwanicki [1721] 使用 Malvar 压缩方案 [1113] 的一种变体，在磁盘上实现可变码率压缩。对于法线，他们达到 40∶1 的压缩比；对于反照率纹理，借助 YCoCg 变换（书页 197 的公式 6.6）达到 60∶1。Khronos 正在制定标准的通用纹理压缩文件格式。
 
 
-![图19.42 纹理转码质量比较](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.42.png)
+![图19.42 纹理转码质量比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.42.png)
 
 图 19.42：转码质量示例。从左至右：原始鹦鹉图像的一部分、原图眼睛部位的放大图（每像素 24 位）、ETC 压缩图像（每像素 4 位），以及经 crunch 压缩的 ETC 图像（每像素 1.21 位）。（图像由 Unity 压缩。）
 
@@ -762,11 +762,11 @@ Widmark [1881] 描述了如何将流式传输与程序化纹理生成相结合�
 在游戏或其他实时渲染应用中，如果模型大于物理内存，那么实际几何体、脚本、粒子以及 AI 等也需要流式传输系统。使用正凸多边形铺满一个平面时，可以选择正三角形、正方形或正六边形。因此，它们也是流式传输系统常用的构建单元，每个多边形与其内部的全部资源关联。图 19.43 展示了这一点。需要指出，正方形和正六边形最常用 [134, 1522]，可能是因为它们的直接邻居比三角形少。观察者位于图 19.43 中深蓝色多边形内，流式传输系统确保直接相邻的多边形（浅蓝色和绿色）已载入内存。这样既能确保周围几何体可供渲染，也能保证观察者进入相邻多边形时，数据已经存在。注意，三角形和正方形有两类邻居：共用一条边的邻居，以及仅共用一个顶点的邻居。
 
 
-![图19.43 平面的正多边形铺砌](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.43.png)
+![图19.43 平面的正多边形铺砌](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.43.png)
 
 图 19.43：使用正三角形（左）、正方形（中）和正六边形（右）铺满二维平面。铺砌通常叠加在游戏世界的俯视图上，多边形内所有资源均与该多边形关联。假设观察者位于深蓝色多边形内，相邻多边形的资源也会被加载。
 
-Ruskin [1522] 使用六边形，每个六边形都有一个低分辨率和一个高分辨率几何 LOD。由于低分辨率 LOD 占用内存很少，整个世界的低分辨率 LOD 始终全部保持加载。因此，只有高分辨率 LOD 和纹理在内存中流式载入与移出。Bentley [134] 使用正方形，每个正方形覆盖 100 × 100 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_10_ffbbe823ae3e15.png) 的区域。高分辨率 mipmap 与其他资源分开进行流式传输。该系统在近距离至中距离使用 1—3 个 LOD，而远距离使用烘焙的替身图像。对于赛车游戏，Tector [1753] 则随着车辆前进沿赛道加载数据。他使用 zip 格式将数据压缩后存储在磁盘上，再将数据块加载至一个保存压缩数据的软件缓存。之后按需解压这些块，供 CPU 和 GPU 的存储层次使用。
+Ruskin [1522] 使用六边形，每个六边形都有一个低分辨率和一个高分辨率几何 LOD。由于低分辨率 LOD 占用内存很少，整个世界的低分辨率 LOD 始终全部保持加载。因此，只有高分辨率 LOD 和纹理在内存中流式载入与移出。Bentley [134] 使用正方形，每个正方形覆盖 100 × 100 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_10_ffbbe823ae3e15.png) 的区域。高分辨率 mipmap 与其他资源分开进行流式传输。该系统在近距离至中距离使用 1—3 个 LOD，而远距离使用烘焙的替身图像。对于赛车游戏，Tector [1753] 则随着车辆前进沿赛道加载数据。他使用 zip 格式将数据压缩后存储在磁盘上，再将数据块加载至一个保存压缩数据的软件缓存。之后按需解压这些块，供 CPU 和 GPU 的存储层次使用。
 
 在某些应用中，可能需要铺满三维空间，而不能只采用上面描述的二维铺砌。注意，立方体是唯一也能铺满三维空间的正多面体，因此是这类应用的自然选择。
 
@@ -775,19 +775,19 @@ Ruskin [1522] 使用六边形，每个六边形都有一个低分辨率和一个
 地形渲染是许多游戏和应用的重要组成部分，例如 Google Earth，以及用于大世界渲染的开源引擎 Cesium [299, 300]。图 19.44 给出一个示例。我们将介绍几种在当前 GPU 上表现良好的常用方法。注意，这些方法都可以加入分形噪声，从而在放大地形时提供丰富细节。此外，许多系统会在加载游戏或关卡时，即时以程序化方式生成地形。
 
 
-![图19.44 钱伯林山地形](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.44.png)
+![图19.44 钱伯林山地形](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.44.png)
 
 图 19.44：通过航空摄影测量采集的钱伯林山地形，地形分辨率为 50 cm，影像分辨率为 25 cm。（图像由 Cesium 和 Fairbanks Fodar 提供。）
 
 其中一种方法是几何 clipmap [1078]。它与纹理 clipmap [1739] 类似，使用与 mipmapping 相关的层次结构，即将几何体过滤成一个金字塔，越靠近顶部，层级越粗。图 19.45 展示了这一结构。渲染巨大地形数据集时，每个层级只在内存中缓存观察者周围 n × n 个样本，即高度值。观察者移动时，图 19.45 中的窗口随之移动，加载新数据，并可能逐出旧数据。为了避免层级之间出现裂缝，每两个相邻层级之间都设置一个过渡区域。在这样的过渡区域中，几何体和纹理都平滑插值到下一个更粗层级。这通过顶点着色器和像素着色器实现。Asirvatham 和 Hoppe [82] 提出了一种高效的 GPU 实现，将地形数据存储为顶点纹理。顶点着色器访问这些纹理，以获取地形高度。可以使用法线贴图增强地形的视觉细节；在近距离放大时，Losasso 和 Hoppe [1078] 还加入分形噪声位移，以补充更多细节。图 19.46 给出示例。Gollent 在《巫师 3》中使用了几何 clipmap 的一种变体 [555]。Pangerl [1348] 和 Torchelsen 等人 [1777] 提供了相关的几何 clipmap 方法，它们同样适合 GPU 的能力。
 
 
-![图19.45 几何clipmap的层次结构](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.45.png)
+![图19.45 几何clipmap的层次结构](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.45.png)
 
 图 19.45：左：几何 clipmap 结构，在每个分辨率层级缓存大小相同的正方形窗口。右：几何体的俯视图，观察者位于中央的紫色区域。注意，最精细的层级渲染其整个正方形，而其他层级内部是空的。（示意图依据 Asirvatham 和 Hoppe [82]。）
 
 
-![图19.46 几何clipmap的线框与过渡区域](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.46.png)
+![图19.46 几何clipmap的线框与过渡区域](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.46.png)
 
 图 19.46：几何 clipmapping。左：线框渲染，不同 mipmap 层级清晰可见。右：蓝色过渡区域表明层级之间发生插值的位置。（图像由 Microsoft 的“Rendering of Terrains Using Geometry Clipmaps”程序生成。）
 
@@ -798,31 +798,31 @@ Ruskin [1522] 使用六边形，每个六边形都有一个低分辨率和一个
 另一种在 GPU 上快速渲染大型地形的方法称为分块 LOD（chunked LOD）[1797]。其思想是用 n 个离散细节层次表示地形，每个更精细的 LOD 相对于父级分成 4 块，如图 19.47 所示。随后将此结构编码为四叉树，并从根节点开始遍历以进行渲染。访问一个节点时，如果其屏幕空间误差（下面介绍）低于某个像素误差阈值 τ，就渲染该节点；否则，递归访问四个子节点。由此可在需要的地方，例如观察者附近，获得更高分辨率。在更高级的变体中，地形四边形块按需从磁盘加载 [1605, 1797]。遍历与上述方法类似，但只有子节点已经从磁盘加载到内存时，才递归访问它们。如果尚未加载，就将它们加入加载队列，同时渲染当前节点。
 
 
-![图19.47 地形的分块LOD表示](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.47.png)
+![图19.47 地形的分块LOD表示](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.47.png)
 
 图 19.47：地形的分块 LOD 表示。（图像由 Thatcher Ulrich 提供。）
 
 Ulrich [1797] 将屏幕空间误差计算为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_19_10_924da0120cc009.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_10_924da0120cc009.png)
 
 
-其中 w 为屏幕宽度，d 为相机到地形图块的距离，θ 为以弧度表示的水平视场角，ε 为与 d 使用相同单位的几何误差。几何误差项通常使用两个网格之间的 Hausdorff 距离 [906, 1605]。对于原始网格上的每个点，找到简化网格上距离它最近的点，并将这些距离中的最小值记为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_10_91161464ddb7fa.png)。然后对简化网格上的每个点执行相同步骤，找出原始网格上距离它最近的点，并将这些距离的最小值记为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_10_b06800dc11fac8.png)。Hausdorff 距离为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_10_59cf1a2fadbcc3.png)。图 19.48 展示了这一点。注意，简化网格上距离 o 最近的点为 s，而原始网格上距离 s 最近的点为 a；这就是必须按两个方向测量的原因，即从原始网格到简化网格，以及反方向。直观地说，Hausdorff 距离就是用简化网格替代原始网格时产生的误差。如果应用无法承担计算 Hausdorff 距离的开销，可以为每种简化手动调整一个常量，或者在简化过程中求出误差 [1605]。
+其中 w 为屏幕宽度，d 为相机到地形图块的距离，θ 为以弧度表示的水平视场角，ε 为与 d 使用相同单位的几何误差。几何误差项通常使用两个网格之间的 Hausdorff 距离 [906, 1605]。对于原始网格上的每个点，找到简化网格上距离它最近的点，并将这些距离中的最小值记为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_10_91161464ddb7fa.png)。然后对简化网格上的每个点执行相同步骤，找出原始网格上距离它最近的点，并将这些距离的最小值记为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_10_b06800dc11fac8.png)。Hausdorff 距离为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_10_59cf1a2fadbcc3.png)。图 19.48 展示了这一点。注意，简化网格上距离 o 最近的点为 s，而原始网格上距离 s 最近的点为 a；这就是必须按两个方向测量的原因，即从原始网格到简化网格，以及反方向。直观地说，Hausdorff 距离就是用简化网格替代原始网格时产生的误差。如果应用无法承担计算 Hausdorff 距离的开销，可以为每种简化手动调整一个常量，或者在简化过程中求出误差 [1605]。
 
-> 译注：原文上述两处确实写作“smallest”（最小值），与 Hausdorff 距离定义不符。应先对每个点求到另一网格的最短距离，再在这些最短距离中取最大值，分别得到两个方向的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_10_91161464ddb7fa.png)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_19_10_b06800dc11fac8.png)，最后取二者最大值。正文保留原文措辞，供与原页核对。
+> 译注：原文上述两处确实写作“smallest”（最小值），与 Hausdorff 距离定义不符。应先对每个点求到另一网格的最短距离，再在这些最短距离中取最大值，分别得到两个方向的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_10_91161464ddb7fa.png)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_19_10_b06800dc11fac8.png)，最后取二者最大值。正文保留原文措辞，供与原页核对。
 
 为了避免从一个 LOD 切换到另一个时发生跳变，Ulrich [1797] 提出一种简单的变形技术：将高分辨率图块中的顶点 (x, y, z)，与从父图块近似得到的顶点 (x, y′, z) 进行线性插值；该近似可使用双线性插值等方法。线性插值因子计算为 2sτ − 1，并钳制到 [0, 1]。注意，变形期间只需要较高分辨率图块，因为下一较低分辨率图块的顶点也包含在较高分辨率图块中。
 
 > 译注：原页插值因子印为 2sτ − 1，正文照录。若按前文 s 为屏幕像素误差、τ 为像素误差阈值，且希望在 s 从 τ/2 到 τ 时将因子从 0 变为 1，则应使用 2s/τ − 1；原式疑有排印错误。
 
 
-![图19.48 Hausdorff距离](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.48.png)
+![图19.48 Hausdorff距离](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.48.png)
 
 图 19.48：原始网格与简化网格之间的 Hausdorff 距离。（示意图依据 Sellers 等人 [1605]。）
 
 
-![图19.49 分块LOD中的裂缝避免](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.49.png)
+![图19.49 分块LOD中的裂缝避免](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.49.png)
 
 图 19.49：使用 Strugar [1720] 的分块 LOD 系统避免裂缝。左上为较高分辨率图块，它逐渐变形为右上的较低分辨率地形图块。中间展示了两个经过插值和变形的中间状态。实际过程中，随着 LOD 改变，这一变化平滑发生，如下方截图所示。（下图由 Filip Strugar 的程序 [1720] 生成。）
 
@@ -835,19 +835,19 @@ Ulrich [1797] 将屏幕空间误差计算为
 Andersson [40] 使用受限四叉树连接间隙，并减少大型地形所需的绘制调用总数。他使用图块四叉树，替代以不同分辨率渲染的均匀图块网格。每个图块都有相同的基础分辨率 33 × 33，但覆盖的面积可以不同。受限四叉树的思想是，每个图块与其邻居的细节层次之差不能超过一级。见图 19.50。这一限制意味着，相邻图块分辨率不同的情形只有有限种。该方法不先产生间隙、再用额外索引缓冲进行绘制来填补，而是存储所有可能的索引缓冲组合，使构成图块的三角形已经包含间隙过渡三角形。每个索引缓冲由全分辨率边（每边 33 个顶点）和较低细节层次的边构成；由于四叉树受限，后者每边只有 17 个顶点。图 19.51 给出了这种现代地形渲染的示例。Widmark [1881] 描述了 Frostbite 2 引擎使用的完整地形渲染系统。它具有许多实用功能，例如贴花、水体、地形装饰、使用美术人员生成或程序化生成的遮罩来组合不同材质着色器 [40]，以及程序化地形位移。
 
 
-![图19.50 受限四叉树的边缘连接](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.50.png)
+![图19.50 受限四叉树的边缘连接](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.50.png)
 
 图 19.50：地形图块的受限四叉树，其中每个图块只能与细节层次最多高一级或低一级的图块相邻。每个图块有 5 × 5 个顶点；左上角则由 2 × 2 个较高分辨率图块组成。其余地形由三个较低分辨率图块填充。左图中，左上方图块边缘上的一些顶点，与相邻较低分辨率图块的顶点不匹配，会造成裂缝。右图修改了较高细节图块的边缘，避免这一问题。每个图块都通过一次绘制调用渲染。（示意图依据 Andersson [40]。）
 
 
-![图19.51 多细节层次地形渲染](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.51.png)
+![图19.51 多细节层次地形渲染](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.51.png)
 
 图 19.51：实际运行中的多细节层次地形渲染。（由 DICE 提供，© 2016 Electronic Arts Inc.）
 
 一种可用于海洋渲染的简单技术是使用均匀网格，每帧将其变换到相机空间 [749]，如图 19.52 所示。Bowles [186] 提供了许多克服某些质量问题的技巧。
 
 
-![图19.52 变换到相机空间的均匀网格](Real-Time_Rendering_4th_中文/assets/fig_19_10_19.52.png)
+![图19.52 变换到相机空间的均匀网格](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_19_10_19.52.png)
 
 图 19.52：左：均匀网格。右：变换到相机空间后的网格。注意，变换后的网格能够在靠近观察者的位置提供更高细节。
 

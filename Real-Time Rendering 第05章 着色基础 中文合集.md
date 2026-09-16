@@ -30,7 +30,7 @@
 本章将讨论对真实感渲染和风格化渲染同样适用的着色内容。第 15 章专门讨论风格化渲染；本书相当大的一部分，即第 9—14 章，则重点讨论真实感渲染中常用的基于物理的方法。
 
 
-![图 5.1：真实感与风格化渲染示例](Real-Time_Rendering_4th_中文/assets/fig_5_1_5.1.png)
+![图 5.1：真实感与风格化渲染示例](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_1_5.1.png)
 
 **图 5.1** 上图来自使用虚幻引擎渲染的真实感景观场景。下图来自 Campo Santo 的游戏《看火人》（Firewatch），该游戏采用插画式美术风格进行设计。（上图由 Gökhan Karadayı 提供，下图由 Campo Santo 提供。）
 
@@ -48,34 +48,34 @@ Gooch 着色的基本思想，是比较表面法线与光源位置的关系。�
 着色模型通常具有一些用于控制外观变化的属性。设置这些属性的值，是确定物体外观的下一步。我们的示例模型只有一个属性，即表面颜色，如图 5.2 下图所示。
 
 
-![图 5.2：结合 Gooch 着色与高光效果的模型](Real-Time_Rendering_4th_中文/assets/fig_5_1_5.2.png)
+![图 5.2：结合 Gooch 着色与高光效果的模型](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_1_5.2.png)
 
 **图 5.2** 一种将 Gooch 着色与高光效果相结合的风格化着色模型。上图展示了一个表面颜色为中性色的复杂物体。下图展示了具有各种不同表面颜色的球体。（中国龙网格来自 Computer Graphics Archive [1172]，原始模型来自 Stanford 3D Scanning Repository，即斯坦福三维扫描模型库。）
 
 与大多数着色模型一样，这个示例也受到表面相对于观察方向和光照方向的朝向影响。用于着色时，这些方向通常表示为归一化的（单位长度）向量，如图 5.3 所示。
 
 
-![图 5.3：着色模型的单位向量输入](Real-Time_Rendering_4th_中文/assets/fig_5_1_5.3.png)
+![图 5.3：着色模型的单位向量输入](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_1_5.3.png)
 
 **图 5.3** 示例着色模型（以及大多数其他着色模型）的单位长度向量输入：表面法线 **n**、观察向量 **v** 和光照方向 **l**。
 
 现在，我们已经定义了着色模型的所有输入，可以看看模型本身的数学定义了：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_01_be5356e037feab.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_01_be5356e037feab.png)
 
 
 在这个方程中，我们使用了以下中间计算：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_01_78a2f2d5bc75a9.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_01_78a2f2d5bc75a9.png)
 
 
-这一定义中的若干数学表达式，也经常出现在其他着色模型中。钳制操作在着色中很常见，通常是将数值的下限钳制为 0，或者将数值钳制在 0 与 1 之间。这里，我们使用第 1.2 节介绍的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_01_a1d5680b19c40a.png) 记号，表示计算高光混合因子 s 时所用的、将数值钳制在 0 与 1 之间的操作。点积运算符出现了三次，每次都是对两个单位长度向量求点积；这是一种极其常见的模式。两个向量的点积等于它们的长度乘积，再乘以它们夹角的余弦。因此，两个单位长度向量的点积就是夹角的余弦，可以用来有效衡量两个向量方向一致的程度。在着色模型中，为了描述两个方向之间的关系，例如光照方向与表面法线之间的关系，由余弦构成的简单函数往往是效果最令人满意、也最准确的数学表达式。
+这一定义中的若干数学表达式，也经常出现在其他着色模型中。钳制操作在着色中很常见，通常是将数值的下限钳制为 0，或者将数值钳制在 0 与 1 之间。这里，我们使用第 1.2 节介绍的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_01_a1d5680b19c40a.png) 记号，表示计算高光混合因子 s 时所用的、将数值钳制在 0 与 1 之间的操作。点积运算符出现了三次，每次都是对两个单位长度向量求点积；这是一种极其常见的模式。两个向量的点积等于它们的长度乘积，再乘以它们夹角的余弦。因此，两个单位长度向量的点积就是夹角的余弦，可以用来有效衡量两个向量方向一致的程度。在着色模型中，为了描述两个方向之间的关系，例如光照方向与表面法线之间的关系，由余弦构成的简单函数往往是效果最令人满意、也最准确的数学表达式。
 
-另一种常见的着色操作，是根据一个介于 0 与 1 之间的标量值，在两种颜色之间进行线性插值。这种操作的形式为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_01_311816376389f2.png)：当 t 的值从 1 变到 0 时，结果相应地从 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_01_4ee4ffca08d941.png) 插值到 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_01_4c92dfa5297c2a.png)。这种模式在本着色模型中出现了两次：第一次在 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_01_4ef0d5da85ddbd.png) 与 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_01_501ea49e56ce89.png) 之间插值；第二次则在前一次插值的结果与 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_01_ad848f17ccad06.png) 之间插值。线性插值在着色器中出现得如此频繁，以至于我们见过的每一种着色语言，都将它作为名为 `lerp` 或 `mix` 的内置函数。
+另一种常见的着色操作，是根据一个介于 0 与 1 之间的标量值，在两种颜色之间进行线性插值。这种操作的形式为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_01_311816376389f2.png)：当 t 的值从 1 变到 0 时，结果相应地从 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_01_4ee4ffca08d941.png) 插值到 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_01_4c92dfa5297c2a.png)。这种模式在本着色模型中出现了两次：第一次在 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_01_4ef0d5da85ddbd.png) 与 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_01_501ea49e56ce89.png) 之间插值；第二次则在前一次插值的结果与 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_01_ad848f17ccad06.png) 之间插值。线性插值在着色器中出现得如此频繁，以至于我们见过的每一种着色语言，都将它作为名为 `lerp` 或 `mix` 的内置函数。
 
-“![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_01_d7fd2e01569473.png)”这一行计算反射光向量，也就是将 **l** 关于 **n** 反射。虽然它不像前两种操作那样常见，但使用频率也足够高，因此大多数着色语言同样提供了内置的 `reflect` 函数。
+“![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_01_d7fd2e01569473.png)”这一行计算反射光向量，也就是将 **l** 关于 **n** 反射。虽然它不像前两种操作那样常见，但使用频率也足够高，因此大多数着色语言同样提供了内置的 `reflect` 函数。
 
 通过以不同方式组合这些操作，并配合各种数学表达式和着色参数，就能定义出产生极其丰富的风格化外观与真实感外观的着色模型。
 
@@ -90,30 +90,30 @@ Gooch 着色的基本思想，是比较表面法线与光源位置的关系。�
 
 光照复杂度的下一步，是让着色模型以二元方式对有光或无光作出反应。使用这种模型着色的表面，在受到光照时具有一种外观，在不受光照影响时则具有另一种外观。这意味着需要某些标准来区分这两种情况：与光源的距离、阴影遮挡（将在第7章讨论）、表面是否背向光源（即表面法线 **n** 与光照向量 **l** 之间的夹角是否大于90°），或者这些因素的某种组合。
 
-从有光或无光的二元状态，进一步过渡到连续的光强尺度，只需很小的一步。可以将其表示为完全无光与完全有光之间的简单插值，这意味着光强具有一个有界范围，例如0到1；也可以将其表示为一个无界量，以其他方式影响着色。对于后一种情况，一种常见做法是把着色模型分成受光部分与未受光部分，并用光强 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_048dbb18c70c09.png) 对受光部分进行线性缩放：
+从有光或无光的二元状态，进一步过渡到连续的光强尺度，只需很小的一步。可以将其表示为完全无光与完全有光之间的简单插值，这意味着光强具有一个有界范围，例如0到1；也可以将其表示为一个无界量，以其他方式影响着色。对于后一种情况，一种常见做法是把着色模型分成受光部分与未受光部分，并用光强 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_048dbb18c70c09.png) 对受光部分进行线性缩放：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_205620ff983aae.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_205620ff983aae.png)
 
 
-这很容易扩展到RGB光源颜色 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png)：
+这很容易扩展到RGB光源颜色 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png)：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_9d9b9c24448333.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_9d9b9c24448333.png)
 
 
 还可以扩展到多个光源：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_de595086ebb2b6.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_de595086ebb2b6.png)
 
 
-未受光部分 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_1f659294ae78c8.png) 对应于把光照视作二元状态的着色模型中“不受光照影响时的外观”。根据所需的视觉风格和应用需求，它可以具有各种形式。例如，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_7fc623d0577198.png) 会使任何不受光源影响的表面呈现为纯黑色。或者，未受光部分也可以表达未受光物体的某种风格化外观，类似于Gooch模型为背向光源的表面赋予冷色。通常，着色模型的这一部分表达的是某种并非直接来自显式放置光源的光照，例如来自天空的光，或由周围物体反弹的光。这些其他形式的光照将在第10章和第11章讨论。
+未受光部分 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_1f659294ae78c8.png) 对应于把光照视作二元状态的着色模型中“不受光照影响时的外观”。根据所需的视觉风格和应用需求，它可以具有各种形式。例如，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_7fc623d0577198.png) 会使任何不受光源影响的表面呈现为纯黑色。或者，未受光部分也可以表达未受光物体的某种风格化外观，类似于Gooch模型为背向光源的表面赋予冷色。通常，着色模型的这一部分表达的是某种并非直接来自显式放置光源的光照，例如来自天空的光，或由周围物体反弹的光。这些其他形式的光照将在第10章和第11章讨论。
 
 前面提到，如果光照方向 **l** 与表面法线 **n** 的夹角超过90°，光源便不会影响该表面点，实际上这相当于光从表面下方照来。这可以看作一种更普遍关系的特殊情况：光相对于表面的方向，与它对着色的影响之间存在关系。虽然这一关系具有物理依据，但它可以由简单的几何原理推导出来，而且也适用于许多非物理的风格化着色模型。
 
 
-![图5.4 光线入射角与表面光线密度](Real-Time_Rendering_4th_中文/assets/fig_5_2_5.4.png)
+![图5.4 光线入射角与表面光线密度](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_2_5.4.png)
 
 图5.4　上排图示给出了光照射到表面时的剖面视图。左图中光线正面垂直射向表面，中图中光线斜着射向表面，右图展示如何利用向量点积计算夹角的余弦。下图展示了剖面平面（其中包含光照向量和视线向量）相对于完整表面的位置关系。
 
@@ -121,151 +121,151 @@ Gooch 着色的基本思想，是比较表面法线与光源位置的关系。�
 
 光对表面的作用可以可视化为一组光线，照到表面上的光线密度对应于表面着色所使用的光强。图5.4展示了一个受光表面的剖面。沿着该剖面，入射光线在表面上的间距与 **l** 和 **n** 夹角的余弦成反比。因此，照到表面上的总体光线密度与 **l** 和 **n** 夹角的余弦成正比；前面已经看到，这个余弦等于这两个单位长度向量的点积。这也说明了为什么把光照向量 **l** 定义为与光传播方向相反会很方便；否则，在计算点积之前，我们还必须先对它取负。
 
-更准确地说，当点积为正时，光线密度（因而也包括该光对着色的贡献）与点积成正比。负值对应于从表面背后射来的光线，它们不产生影响。因此，在把光的着色贡献乘以光照点积之前，需要先将点积的下限钳制为0。使用第1.2节介绍的记号 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_b9875aa6a4d8ef.png)，即把负值钳制为零，可得：
+更准确地说，当点积为正时，光线密度（因而也包括该光对着色的贡献）与点积成正比。负值对应于从表面背后射来的光线，它们不产生影响。因此，在把光的着色贡献乘以光照点积之前，需要先将点积的下限钳制为0。使用第1.2节介绍的记号 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_b9875aa6a4d8ef.png)，即把负值钳制为零，可得：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c5964b20e09f01.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c5964b20e09f01.png)
 
 
 支持多个光源的着色模型通常采用式（5.5）或式（5.6）中的一种结构：前者更一般，后者则是基于物理的模型所必需的。式（5.6）也可能有利于风格化模型，因为它有助于确保光照在整体上保持一致，尤其是对于背向光源或处于阴影中的表面。不过，某些模型并不适合这种结构；这些模型会使用式（5.5）的结构。
 
-函数 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_ec12a5c6777df5.png) 最简单的选择是令其为一个恒定颜色：
+函数 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_ec12a5c6777df5.png) 最简单的选择是令其为一个恒定颜色：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_af23a1f25d4dd7.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_af23a1f25d4dd7.png)
 
 
 这样就得到以下着色模型：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_807808ebe710da.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_807808ebe710da.png)
 
 
 这个模型的受光部分对应于朗伯着色模型（Lambertian shading model），该模型以约翰·海因里希·朗伯（Johann Heinrich Lambert）[967]命名，他早在1760年就发表了它！这个模型适用于理想漫反射表面，也就是完全哑光的表面。我们在这里对朗伯模型作了略为简化的解释，第9章将对它进行更严格的讨论。朗伯模型既可以单独用于简单着色，也是许多着色模型的重要组成部分。
 
-从式（5.3）—（5.6）可以看出，光源通过两个参数与着色模型发生联系：指向光源的向量 **l**，以及光源颜色 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png)。光源有多种不同类型，它们的主要区别在于这两个参数如何随场景中的位置变化。
+从式（5.3）—（5.6）可以看出，光源通过两个参数与着色模型发生联系：指向光源的向量 **l**，以及光源颜色 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png)。光源有多种不同类型，它们的主要区别在于这两个参数如何随场景中的位置变化。
 
 接下来我们将讨论几种常用的光源类型，它们具有一个共同点：在给定的表面位置，每个光源都只从一个方向 **l** 照亮表面。换言之，从正在着色的表面位置看去，光源是一个无穷小的点。对于现实世界中的光源，这并不严格成立，但大多数光源的尺寸相对于它们与受光表面的距离都很小，因此这是一种合理的近似。在第7.1.2节和第10.1节，我们将讨论从一系列方向照亮同一表面位置的光源，也就是“面光源”。
 
 ### 5.2.1 方向光
 
-方向光是最简单的光源模型。**l** 与 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png) 在整个场景中都保持不变，唯一的例外是 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png) 可能因阴影遮挡而衰减。方向光没有位置。当然，实际光源在空间中都有特定位置。方向光是一种抽象，当光源距离相对于场景尺寸很大时，这种抽象就能很好地工作。例如，距离20英尺、照亮一个小型桌面立体模型的泛光灯，可以表示为方向光。另一个例子几乎就是所有由太阳照亮的场景，除非所讨论的场景大到类似太阳系内侧行星区域的尺度。
+方向光是最简单的光源模型。**l** 与 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png) 在整个场景中都保持不变，唯一的例外是 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png) 可能因阴影遮挡而衰减。方向光没有位置。当然，实际光源在空间中都有特定位置。方向光是一种抽象，当光源距离相对于场景尺寸很大时，这种抽象就能很好地工作。例如，距离20英尺、照亮一个小型桌面立体模型的泛光灯，可以表示为方向光。另一个例子几乎就是所有由太阳照亮的场景，除非所讨论的场景大到类似太阳系内侧行星区域的尺度。
 
-方向光的概念可以作一定扩展：让光照方向 **l** 保持不变，同时允许 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png) 的值变化。这样做通常出于性能或创作方面的原因，以便把光的影响限制在场景的某个特定部分。例如，可以用两个嵌套的盒状体积（一个位于另一个内部）定义一个区域：在外层盒子之外，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png) 等于(0, 0, 0)，即纯黑色；在内层盒子之内，它等于某个恒定值；而在两个盒子之间的区域内，则在这两个极值之间平滑插值。
+方向光的概念可以作一定扩展：让光照方向 **l** 保持不变，同时允许 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png) 的值变化。这样做通常出于性能或创作方面的原因，以便把光的影响限制在场景的某个特定部分。例如，可以用两个嵌套的盒状体积（一个位于另一个内部）定义一个区域：在外层盒子之外，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png) 等于(0, 0, 0)，即纯黑色；在内层盒子之内，它等于某个恒定值；而在两个盒子之间的区域内，则在这两个极值之间平滑插值。
 
 ### 5.2.2 局部点状光源
 
-“Punctual light”并不是说光源赴约很准时，而是说这种光源与方向光不同，它具有位置。这类光源也没有几何尺寸，没有形状或大小，与现实世界中的光源不同。这里使用“punctual”一词，其词源是意为“点”的拉丁语 punctus，用它来指代所有从单一局部位置发出的光源构成的类别。我们用“点光源”（point light）一词表示其中一种特定的发光体：它向所有方向均匀发光。因此，点光源和聚光灯是局部点状光源的两种不同形式。光照方向向量 **l** 随当前着色表面点 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_263cc1e7cb1a71.png) 相对于局部点状光源位置 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_1bd49f56d1bde6.png) 的位置而变化：
+“Punctual light”并不是说光源赴约很准时，而是说这种光源与方向光不同，它具有位置。这类光源也没有几何尺寸，没有形状或大小，与现实世界中的光源不同。这里使用“punctual”一词，其词源是意为“点”的拉丁语 punctus，用它来指代所有从单一局部位置发出的光源构成的类别。我们用“点光源”（point light）一词表示其中一种特定的发光体：它向所有方向均匀发光。因此，点光源和聚光灯是局部点状光源的两种不同形式。光照方向向量 **l** 随当前着色表面点 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_263cc1e7cb1a71.png) 相对于局部点状光源位置 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_1bd49f56d1bde6.png) 的位置而变化：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_0c0ea92df91ab7.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_0c0ea92df91ab7.png)
 
 
 这个等式是向量归一化的一个例子：将向量除以它的长度，得到一个指向相同方向的单位长度向量。这也是一种常见的着色运算；与上一节介绍的着色运算一样，大多数着色语言都将它作为内置函数提供。不过，有时我们需要这一运算中的某个中间结果，这就要求使用更基本的运算，分多个步骤显式执行归一化。将这种做法应用于局部点状光源方向的计算，可得：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_664ed477a6b59d.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_664ed477a6b59d.png)
 
 
 由于两个向量的点积等于它们的长度之积乘以夹角余弦，而0°的余弦为1.0，因此一个向量与自身的点积就是其长度的平方。所以，要计算任意向量的长度，只需计算它与自身的点积，再对结果开平方。
 
-我们需要的中间值是 r，即局部点状光源与当前着色点之间的距离。除了用于归一化光照向量以外，r 还用于计算光源颜色 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png) 随距离变化的衰减（变暗）。下一部分将进一步讨论这一点。
+我们需要的中间值是 r，即局部点状光源与当前着色点之间的距离。除了用于归一化光照向量以外，r 还用于计算光源颜色 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png) 随距离变化的衰减（变暗）。下一部分将进一步讨论这一点。
 
 #### 点光源／全向光源
 
-向所有方向均匀发光的局部点状光源称为点光源或全向光源（omni light）。对于点光源，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png) 是距离 r 的函数，唯一的变化来源就是前面提到的距离衰减。图5.5用与图5.4中说明余弦因子类似的几何推理，展示了这种变暗现象为何发生。在给定表面上，来自点光源的光线间距与表面到光源的距离成正比。与图5.4中的余弦因子不同，这种间距增大在表面的两个维度上都会发生，因此光线密度（以及光源颜色 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png)）与距离的平方倒数1/![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_730f558bb648d5.png)成正比。这样，我们就可以用单个光源属性 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_e5ae74246baada.png) 来指定 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png) 的空间变化；它被定义为在固定参考距离 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_01af0170b4ebbf.png) 处的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png) 值：
+向所有方向均匀发光的局部点状光源称为点光源或全向光源（omni light）。对于点光源，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png) 是距离 r 的函数，唯一的变化来源就是前面提到的距离衰减。图5.5用与图5.4中说明余弦因子类似的几何推理，展示了这种变暗现象为何发生。在给定表面上，来自点光源的光线间距与表面到光源的距离成正比。与图5.4中的余弦因子不同，这种间距增大在表面的两个维度上都会发生，因此光线密度（以及光源颜色 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png)）与距离的平方倒数1/![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_730f558bb648d5.png)成正比。这样，我们就可以用单个光源属性 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_e5ae74246baada.png) 来指定 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png) 的空间变化；它被定义为在固定参考距离 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_01af0170b4ebbf.png) 处的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png) 值：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_2777690a9920f2.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_2777690a9920f2.png)
 
 
 式（5.11）通常称为光照的平方反比衰减。虽然从技术上说，这是点光源正确的距离衰减规律，但有一些问题使这个等式在实际着色中不够理想。
 
-第一个问题发生在距离较小时。当 r 趋近于0，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png) 的值就会无界增大。当 r 达到0时，会出现除以零的奇点。为了解决这个问题，一种常见的修改是在分母中加入一个小值 ε [861]：
+第一个问题发生在距离较小时。当 r 趋近于0，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png) 的值就会无界增大。当 r 达到0时，会出现除以零的奇点。为了解决这个问题，一种常见的修改是在分母中加入一个小值 ε [861]：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_f021007bc56f03.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_f021007bc56f03.png)
 
 
 ε 的具体取值取决于应用；例如，Unreal游戏引擎使用 ε = 1 cm [861]。
 
-> 译注：原书此处确实写作“ε = 1 cm”。按式（5.12）中 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_730f558bb648d5.png) + ε 的量纲，ε 应与距离平方具有相同量纲。这里保留原文单位，不擅自更正。
+> 译注：原书此处确实写作“ε = 1 cm”。按式（5.12）中 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_730f558bb648d5.png) + ε 的量纲，ε 应与距离平方具有相同量纲。这里保留原文单位，不擅自更正。
 
-CryEngine [1591]和Frostbite [960]游戏引擎采用另一种修改方式：将 r 的下限钳制为最小值 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_fab91b715d9593.png)：
-
-
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_5fba38e1aa3e9f.png)
+CryEngine [1591]和Frostbite [960]游戏引擎采用另一种修改方式：将 r 的下限钳制为最小值 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_fab91b715d9593.png)：
 
 
-前一种方法中 ε 的取值带有一定任意性，与之不同，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_fab91b715d9593.png) 有明确的物理解释：它是发光实体的半径。r 小于 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_fab91b715d9593.png) 意味着着色表面穿入了实体光源内部，这是不可能的。
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_5fba38e1aa3e9f.png)
 
 
-![图5.5 点光源的距离平方反比衰减](Real-Time_Rendering_4th_中文/assets/fig_5_2_5.5.png)
+前一种方法中 ε 的取值带有一定任意性，与之不同，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_fab91b715d9593.png) 有明确的物理解释：它是发光实体的半径。r 小于 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_fab91b715d9593.png) 意味着着色表面穿入了实体光源内部，这是不可能的。
 
-图5.5　来自点光源的光线间距随距离 r 成比例增大。由于这种间距增大发生在两个维度上，光线密度（因而也包括光强）便按1/![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_730f558bb648d5.png)的比例减小。
+
+![图5.5 点光源的距离平方反比衰减](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_2_5.5.png)
+
+图5.5　来自点光源的光线间距随距离 r 成比例增大。由于这种间距增大发生在两个维度上，光线密度（因而也包括光强）便按1/![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_730f558bb648d5.png)的比例减小。
 
 相比之下，平方反比衰减的第二个问题发生在距离较大时。问题不在视觉效果，而在性能。虽然光强随距离不断减小，但它永远不会降到0。为了高效渲染，我们希望光强在某个有限距离处达到0（第20章）。有许多方法可以修改平方反比等式来实现这一目标。理想情况下，这种修改应尽可能少地改变原来的规律。为了避免光源影响范围的边界出现突兀的截断，最好让修改后函数的导数和函数值在同一距离处都达到0。一种解决方案是将平方反比等式乘以一个具有所需性质的窗函数。Unreal Engine [861]和Frostbite [960]游戏引擎都使用下面这样的函数[860]：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_ab921fd267e0ac.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_ab921fd267e0ac.png)
 
 
 上标 +2 表示：如果括号内的值为负，先将其钳制为0，然后再平方。图5.6展示了一条平方反比曲线、式（5.14）中的窗函数，以及两者相乘后的结果。
 
 
-![图5.6 平方反比曲线与窗函数](Real-Time_Rendering_4th_中文/assets/fig_5_2_5.6.png)
+![图5.6 平方反比曲线与窗函数](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_2_5.6.png)
 
-图5.6　此图展示了一条平方反比曲线（采用 ε 方法避免奇点，ε 的取值为1）、式（5.14）描述的窗函数（将 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_5dccbae88d09d7.png) 设为3），以及加窗后的曲线。
+图5.6　此图展示了一条平方反比曲线（采用 ε 方法避免奇点，ε 的取值为1）、式（5.14）描述的窗函数（将 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_5dccbae88d09d7.png) 设为3），以及加窗后的曲线。
 
-应用需求会影响方法的选择。例如，当距离衰减函数以较低的空间频率采样时（例如在光照贴图中，或逐顶点计算时），让导数在 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_5dccbae88d09d7.png) 处等于0尤为重要。CryEngine不使用光照贴图或顶点光照，所以它采用了更简单的调整：在 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_08c8e98732ddd0.png) 到 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_5dccbae88d09d7.png) 的范围内，切换为线性衰减[1591]。
+应用需求会影响方法的选择。例如，当距离衰减函数以较低的空间频率采样时（例如在光照贴图中，或逐顶点计算时），让导数在 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_5dccbae88d09d7.png) 处等于0尤为重要。CryEngine不使用光照贴图或顶点光照，所以它采用了更简单的调整：在 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_08c8e98732ddd0.png) 到 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_5dccbae88d09d7.png) 的范围内，切换为线性衰减[1591]。
 
 对于某些应用，匹配平方反比曲线并不是优先事项，因此它们会使用完全不同的函数。实际上，这相当于将式（5.11）—（5.14）推广为：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_2afa4425136b26.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_2afa4425136b26.png)
 
 
-其中 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_ceb740e60ad75b.png) 是某个距离函数。这类函数称为距离衰减函数。在某些情况下，采用非平方反比衰减函数是出于性能限制。例如，游戏《正当防卫2》（Just Cause 2）需要计算成本极低的光源。因此，其衰减函数既要计算简单，又必须足够平滑，以避免逐顶点光照产生伪影[1379]：
+其中 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_ceb740e60ad75b.png) 是某个距离函数。这类函数称为距离衰减函数。在某些情况下，采用非平方反比衰减函数是出于性能限制。例如，游戏《正当防卫2》（Just Cause 2）需要计算成本极低的光源。因此，其衰减函数既要计算简单，又必须足够平滑，以避免逐顶点光照产生伪影[1379]：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_a65be8ee425800.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_a65be8ee425800.png)
 
 
 在其他情况下，衰减函数的选择可能由创作上的考虑决定。例如，既用于写实游戏也用于风格化游戏的Unreal Engine提供了两种光照衰减模式：一种是式（5.12）所描述的平方反比模式；另一种是指数衰减模式，可以通过调整得到多种衰减曲线[1802]。游戏《古墓丽影》（Tomb Raider，2013）的开发者使用样条编辑工具制作衰减曲线[953]，从而对曲线形状获得更大的控制力。
 
 #### 聚光灯
 
-与点光源不同，现实世界中几乎所有光源的光照都会同时随方向和距离变化。这种方向变化可以表示为方向衰减函数 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_a34adc6f65bdc9.png)；它与距离衰减函数相结合，定义光强的总体空间变化：
+与点光源不同，现实世界中几乎所有光源的光照都会同时随方向和距离变化。这种方向变化可以表示为方向衰减函数 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_a34adc6f65bdc9.png)；它与距离衰减函数相结合，定义光强的总体空间变化：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_5e4243b5c01d3a.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_5e4243b5c01d3a.png)
 
 
-为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_a34adc6f65bdc9.png) 选择不同形式，可以产生各种光照效果。其中一种重要效果是聚光灯，它在一个圆锥体内投射光。聚光灯的方向衰减函数绕其方向向量 **s** 旋转对称，因此可以表示为角度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_3f63d90bc8b861.png) 的函数；![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_3f63d90bc8b861.png) 是 **s** 与指向表面的反向光照向量 −**l** 之间的夹角。之所以要反转光照向量，是因为我们将表面处的 **l** 定义为指向光源，而这里需要的是背离光源的向量。
+为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_a34adc6f65bdc9.png) 选择不同形式，可以产生各种光照效果。其中一种重要效果是聚光灯，它在一个圆锥体内投射光。聚光灯的方向衰减函数绕其方向向量 **s** 旋转对称，因此可以表示为角度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_3f63d90bc8b861.png) 的函数；![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_3f63d90bc8b861.png) 是 **s** 与指向表面的反向光照向量 −**l** 之间的夹角。之所以要反转光照向量，是因为我们将表面处的 **l** 定义为指向光源，而这里需要的是背离光源的向量。
 
-大多数聚光灯函数采用由 cos ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_3f63d90bc8b861.png) 组成的表达式；如前所述，这也是着色中表示角度最常见的形式。聚光灯通常具有本影角 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_5b3b02e204183e.png)，它限定光的范围，使得对所有 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_3f63d90bc8b861.png) ≥ ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_5b3b02e204183e.png) 都有 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_cfcb98da0677c6.png)。这个角度可以用于剔除，其方式类似于前面介绍的最大衰减距离 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_5dccbae88d09d7.png)。聚光灯通常还具有半影角 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_b2d6a486bbd943.png)，它定义了一个光照保持全强度的内锥体。见图5.7。
-
-
-![图5.7 聚光灯及其角度](Real-Time_Rendering_4th_中文/assets/fig_5_2_5.7.png)
-
-图5.7　一个聚光灯：![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_3f63d90bc8b861.png) 是光源所定义的方向 **s** 与向量 −**l**（指向表面的方向）之间的夹角；![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_b2d6a486bbd943.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_5b3b02e204183e.png) 分别表示为光源定义的半影角与本影角。
-
-聚光灯使用的方向衰减函数有许多种，但往往大致相似。例如，Frostbite游戏引擎[960]使用函数 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_2ee1a05ecad938.png)，而three.js浏览器图形库[218]使用函数 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_5390beeb968ba3.png)：
+大多数聚光灯函数采用由 cos ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_3f63d90bc8b861.png) 组成的表达式；如前所述，这也是着色中表示角度最常见的形式。聚光灯通常具有本影角 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_5b3b02e204183e.png)，它限定光的范围，使得对所有 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_3f63d90bc8b861.png) ≥ ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_5b3b02e204183e.png) 都有 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_cfcb98da0677c6.png)。这个角度可以用于剔除，其方式类似于前面介绍的最大衰减距离 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_5dccbae88d09d7.png)。聚光灯通常还具有半影角 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_b2d6a486bbd943.png)，它定义了一个光照保持全强度的内锥体。见图5.7。
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_4ac68f01a02f12.png)
+![图5.7 聚光灯及其角度](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_2_5.7.png)
+
+图5.7　一个聚光灯：![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_3f63d90bc8b861.png) 是光源所定义的方向 **s** 与向量 −**l**（指向表面的方向）之间的夹角；![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_b2d6a486bbd943.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_5b3b02e204183e.png) 分别表示为光源定义的半影角与本影角。
+
+聚光灯使用的方向衰减函数有许多种，但往往大致相似。例如，Frostbite游戏引擎[960]使用函数 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_2ee1a05ecad938.png)，而three.js浏览器图形库[218]使用函数 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_5390beeb968ba3.png)：
 
 
-回顾第1.2节介绍的记号 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_a1d5680b19c40a.png)，它表示把 x 钳制在0与1之间。smoothstep函数是一个三次多项式，常用于着色中的平滑插值。大多数着色语言都将它作为内置函数提供。图5.8展示了目前为止我们讨论过的几种光源类型。
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_4ac68f01a02f12.png)
 
 
-![图5.8 不同光源的照明效果](Real-Time_Rendering_4th_中文/assets/fig_5_2_5.8.png)
+回顾第1.2节介绍的记号 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_a1d5680b19c40a.png)，它表示把 x 钳制在0与1之间。smoothstep函数是一个三次多项式，常用于着色中的平滑插值。大多数着色语言都将它作为内置函数提供。图5.8展示了目前为止我们讨论过的几种光源类型。
+
+
+![图5.8 不同光源的照明效果](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_2_5.8.png)
 
 图5.8　几种光源类型。从左到右：方向光、没有衰减的点光源，以及具有平滑过渡的聚光灯。注意，由于光照方向与表面之间的夹角发生变化，点光源照明在靠近边缘时会变暗。
 
 #### 其他局部点状光源
 
-局部点状光源的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png) 值还可以通过许多其他方式变化。![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_a34adc6f65bdc9.png) 函数并不限于前面讨论的简单聚光灯衰减函数；它可以表示任何类型的方向变化，包括从现实世界光源测量得到、以复杂表格记录的分布模式。照明工程学会（Illuminating Engineering Society，IES）为这类测量定义了一种标准文件格式。许多灯具制造商都提供IES光度配置文件，它们已被用于游戏《杀戮地带：暗影坠落》（Killzone: Shadow Fall）[379, 380]，以及Unreal [861]和Frostbite [960]等游戏引擎。Lagarde对解析和使用这种文件格式的相关问题给出了很好的总结[961]。
+局部点状光源的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png) 值还可以通过许多其他方式变化。![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_a34adc6f65bdc9.png) 函数并不限于前面讨论的简单聚光灯衰减函数；它可以表示任何类型的方向变化，包括从现实世界光源测量得到、以复杂表格记录的分布模式。照明工程学会（Illuminating Engineering Society，IES）为这类测量定义了一种标准文件格式。许多灯具制造商都提供IES光度配置文件，它们已被用于游戏《杀戮地带：暗影坠落》（Killzone: Shadow Fall）[379, 380]，以及Unreal [861]和Frostbite [960]等游戏引擎。Lagarde对解析和使用这种文件格式的相关问题给出了很好的总结[961]。
 
 游戏《古墓丽影》（2013）[953]有一种局部点状光源，沿世界坐标系的 x、y 和 z 轴分别对距离应用独立的衰减函数。在《古墓丽影》中，还可以应用曲线让光强随时间变化，例如生成闪烁的火炬效果。
 
@@ -275,7 +275,7 @@ CryEngine [1591]和Frostbite [960]游戏引擎采用另一种修改方式：将 
 
 方向光和局部点状光源的主要特征是光照方向 **l** 的计算方式。采用其他方式计算光照方向，就可以定义不同类型的光源。例如，除了前面提到的光源类型，《古墓丽影》还有胶囊光源，它使用线段而不是点作为光源[953]。对于每个着色像素，取指向该线段上最近点的方向作为光照方向 **l**。
 
-只要着色器拥有可用于计算着色方程的 **l** 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_02_c53c80de5096d9.png) 值，就可以用任何方法来计算这些值。
+只要着色器拥有可用于计算着色方程的 **l** 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_02_c53c80de5096d9.png) 值，就可以用任何方法来计算这些值。
 
 到目前为止讨论的光源类型都是抽象模型。现实中的光源具有大小和形状，并从多个方向照亮表面点。在渲染中，这类光源称为面光源，它们在实时应用中的使用正在稳步增加。面光源渲染技术分为两类：一类模拟面光源被部分遮挡时产生的阴影边缘软化（第7.1.2节）；另一类模拟面光源对表面着色的影响（第10.1节）。第二类光照效果在平滑、类似镜面的表面上最为显著，因为可以在反射中清楚辨认光源的形状和大小。虽然方向光和局部点状光源不像过去那样无处不在，但它们不太可能被弃用。人们已经开发出一些考虑光源面积、实现成本又相对较低的近似方法，因此这些方法正得到更广泛的应用。GPU性能的提高，也使得采用比过去更精细的技术成为可能。
 
@@ -305,7 +305,7 @@ CryEngine [1591]和Frostbite [960]游戏引擎采用另一种修改方式：将 
 - 像素着色器：对每个像素求值。
 
 
-![逐像素与逐顶点着色对比](Real-Time_Rendering_4th_中文/assets/fig_5_3_5.9.png)
+![逐像素与逐顶点着色对比](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_3_5.9.png)
 
 图 5.9。对三个顶点密度不同的模型，比较式 5.19 所示示例着色模型的逐像素求值与逐顶点求值。左列显示逐像素求值的结果，中列显示逐顶点求值的结果，右列则给出各模型的线框渲染，以展示顶点密度。（中国龙网格来自 Computer Graphics Archive [1172]，原始模型来自 Stanford 3D Scanning Repository。）
 
@@ -314,7 +314,7 @@ CryEngine [1591]和Frostbite [960]游戏引擎采用另一种修改方式：将 
 图 5.9 展示了在顶点密度相差很大的模型上，逐像素与逐顶点着色的结果。龙模型的网格极为密集，因此两者差别很小。但是，在茶壶模型上，逐顶点着色求值会产生棱角分明的高光等明显错误；在仅由两个三角形构成的平面上，逐顶点着色版本显然是错误的。这些错误的原因在于，着色方程中的某些部分，尤其是高光，其数值在网格表面上呈非线性变化。因此它们不适合放在顶点着色器中计算，因为顶点着色器的结果会先在三角形上进行线性插值，再送入像素着色器。
 
 
-![法线插值的长度与方向问题](Real-Time_Rendering_4th_中文/assets/fig_5_3_5.10.png)
+![法线插值的长度与方向问题](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_3_5.10.png)
 
 图 5.10。左图表明，在表面上对单位法线进行线性插值，得到的插值向量长度会小于 1。右图表明，对长度差异显著的法线进行线性插值，会使插值后的方向偏向两条法线中较长的一条。
 
@@ -327,7 +327,7 @@ CryEngine [1591]和Frostbite [960]游戏引擎采用另一种修改方式：将 
 与表面法线不同，指向特定位置的向量，例如观察向量、点状光源的光照向量，通常不进行插值。相反，像素着色器使用插值后的表面位置来计算这些向量。除归一化以外，每个向量只需要一次很快的向量减法；而我们已经看到，无论如何都必须在像素着色器中进行归一化。如果出于某种原因必须对这些向量进行插值，不要事先将它们归一化，否则会得到错误结果，如图 5.11 所示。
 
 
-![光照向量插值](Real-Time_Rendering_4th_中文/assets/fig_5_3_5.11.png)
+![光照向量插值](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_3_5.11.png)
 
 图 5.11。两个光照向量之间的插值。左图中，在插值前将它们归一化，导致插值后的方向错误。右图中，对未经归一化的向量进行插值，得到正确结果。
 
@@ -338,7 +338,7 @@ CryEngine [1591]和Frostbite [960]游戏引擎采用另一种修改方式：将 
 原则上，平面着色可以在几何着色器中完成，但近来的实现通常使用顶点着色器。具体做法是将每个图元的属性关联到其第一个顶点，并禁用顶点值的插值。禁用插值可以分别针对每一个顶点值进行设置；这样，第一个顶点的值就会传递到该图元内的所有像素。
 
 
-![采用平面着色的游戏](Real-Time_Rendering_4th_中文/assets/fig_5_3_5.12.png)
+![采用平面着色的游戏](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_3_5.12.png)
 
 图 5.12。两款将平面着色作为风格选择的游戏：上图是《Kentucky Route Zero》，下图是《That Dragon, Cancer》。（上图由 Cardboard Computer 提供，下图由 Numinous Games 提供。）
 
@@ -347,30 +347,30 @@ CryEngine [1591]和Frostbite [960]游戏引擎采用另一种修改方式：将 
 现在介绍一个着色模型的实现示例。如前所述，我们要实现的着色模型类似于式 5.1 中的扩展 Gooch 模型，但经过修改以支持多个光源。其表达式为：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_03_ee5da842b54ca8.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_03_ee5da842b54ca8.png)
 
 
 其中包含以下中间计算：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_03_6f0d73fef78b83.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_03_6f0d73fef78b83.png)
 
 
 这一表达式符合式 5.6 的多光源结构，为方便起见，在此重列：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_03_26f448e418350b.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_03_26f448e418350b.png)
 
 
 此时，受光项和不受光项为：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_03_8a54a196abf47c.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_03_8a54a196abf47c.png)
 
 
 这里调整了冷色的不受光贡献，使结果在外观上更接近原始方程。
 
-在大多数典型渲染应用程序中，表面颜色 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_03_9b0b16be612ab5.png) 等材质属性的可变值存储在顶点数据中，或者更常见地存储在纹理中，见第 6 章。不过，为了使这个实现示例保持简单，我们假定 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_03_9b0b16be612ab5.png) 在整个模型上恒定。
+在大多数典型渲染应用程序中，表面颜色 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_03_9b0b16be612ab5.png) 等材质属性的可变值存储在顶点数据中，或者更常见地存储在纹理中，见第 6 章。不过，为了使这个实现示例保持简单，我们假定 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_03_9b0b16be612ab5.png) 在整个模型上恒定。
 
 这个实现将使用着色器的动态分支能力，循环遍历所有光源。对于相当简单的场景，这种直接的方法能够很好地工作；但它不能很好地扩展到包含大量光源、几何复杂的大场景。第 20 章将介绍高效处理大量光源的渲染技术。另外，为简单起见，我们只支持一种光源：点光源。虽然实现很简单，但仍遵循前面介绍的最佳实践。
 
@@ -422,7 +422,7 @@ void main() {
 }
 ```
 
-这里定义了一个计算受光项的函数，由 `main()` 调用。总体而言，这是式 5.20 和式 5.21 的直接 GLSL 实现。注意，不受光函数 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_03_1267c5be6815dd.png) 的值和暖色 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_03_4ef0d5da85ddbd.png) 通过 uniform 变量传入。由于它们在整个绘制调用中恒定，可以由应用程序计算，从而节省一些 GPU 周期。
+这里定义了一个计算受光项的函数，由 `main()` 调用。总体而言，这是式 5.20 和式 5.21 的直接 GLSL 实现。注意，不受光函数 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_03_1267c5be6815dd.png) 的值和暖色 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_03_4ef0d5da85ddbd.png) 通过 uniform 变量传入。由于它们在整个绘制调用中恒定，可以由应用程序计算，从而节省一些 GPU 周期。
 
 该像素着色器使用了几个 GLSL 内置函数。`reflect()` 将一个向量相对于由第二个向量定义的平面进行反射；本例中，前者是光照向量，后者是表面法线。由于我们希望光照向量和反射向量都指向远离表面的方向，必须在传入 `reflect()` 之前将光照向量取负。`clamp()` 有三个输入，其中两个定义一个范围，将另一个输入限制在这个范围内。在大多数 GPU 上，将数值限制到 0—1 范围这一特殊情况，对应 HLSL 的 `saturate()` 函数，执行很快，往往实际上没有额外代价。因此我们在这里使用它，尽管对于已知不会超过 1 的值，只需限制下限为 0。`mix()` 也有三个输入：它根据第三个输入，也就是 0—1 之间的混合参数，对另外两个输入进行线性插值；本例中，被插值的是暖色和高光颜色。在 HLSL 中，此函数称为 `lerp()`，即“线性插值”的缩写。最后，`normalize()` 将向量除以其长度，使其长度缩放为 1。
 
@@ -483,7 +483,7 @@ gl.compileShader(fragmentShader);
 - 将表面着色与像素丢弃、混合等合成操作组合。这对移动 GPU 尤其相关，因为它们通常在像素着色器中执行混合。通常希望能够独立于表面着色所用的材质来选择这些操作。
 - 将计算着色模型参数的操作与着色模型本身的计算组合。这样只需编写一次着色模型实现，就可以将它与各种不同的着色模型参数计算方法组合使用。
 - 将可以单独选择的材质功能彼此组合，并与选择逻辑及着色器其余部分组合。这样就可以分别编写各项功能的实现。
-- 将着色模型及其参数计算与光源求值组合，也就是在着色点为每个光源计算光照颜色 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_03_c53c80de5096d9.png) 和光照方向 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_03_6129e5f9e9210f.png)。延迟渲染等技术，见第 20 章，会改变这种组合的结构。在支持多种此类技术的渲染框架中，这又增加了一层复杂性。
+- 将着色模型及其参数计算与光源求值组合，也就是在着色点为每个光源计算光照颜色 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_03_c53c80de5096d9.png) 和光照方向 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_03_6129e5f9e9210f.png)。延迟渲染等技术，见第 20 章，会改变这种组合的结构。在支持多种此类技术的渲染框架中，这又增加了一层复杂性。
 
 如果图形 API 能把这种着色器代码模块化作为核心功能提供，事情就会很方便。遗憾的是，与 CPU 代码不同，GPU 着色器不允许在编译之后链接代码片段。每个着色器阶段的程序都作为一个整体编译。不同着色器阶段之间的分离确实提供了有限的模块化，在一定程度上符合上述列表的第一项：将通常在像素着色器中执行的表面着色，与通常在其他着色器阶段执行的几何处理组合起来。但这种对应并不完美，因为每个着色器还执行其他操作，而其他类型的组合仍需要处理。鉴于这些限制，材质系统要实现所有这些组合类型，唯一的方法就是在源码层面完成。这主要涉及连接、替换等字符串操作，往往通过 C 风格的预处理指令执行，例如 `#include`、`#if` 和 `#define`。
 
@@ -502,10 +502,10 @@ gl.compileShader(fragmentShader);
 - **代码复用**：在共享文件中实现函数，使用 `#include` 预处理指令，让任何需要这些函数的着色器都能访问它们。
 - **减法式**：用一个常被称为 übershader 或 supershader，即超级着色器的着色器 [1170, 1784]，汇集大量功能，再结合编译时预处理条件和动态分支，去掉不使用的部分，并在相互排斥的选项之间切换。
 - **加法式**：将各种功能片段定义为具有输入、输出连接端口的节点，再将这些节点组合起来。这类似于代码复用策略，但结构更明确。可以通过文本 [342] 或可视化图编辑器组合节点。后者旨在让技术美术等非工程人员更容易创建新的材质模板 [1750, 1802]。通常只有着色器的一部分允许通过可视化图编写。例如，在 Unreal Engine 中，图编辑器只能影响着色模型输入的计算 [1802]，见图 5.13。
-- **基于模板**：定义一个接口，只要符合接口，就可以接入不同的实现。这比加法式策略更加正式一些，通常用于较大的功能块。一个常见的接口例子，是将着色模型参数的计算与着色模型本身的计算分离。Unreal Engine [1802] 有不同的“材质域”，包括用于计算着色模型参数的 Surface 域，以及 Light Function 域；后者计算一个标量，用于调制给定光源的光照颜色 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_03_c53c80de5096d9.png)。Unity 中也存在类似的“表面着色器”结构 [1437]。注意，第 20 章讨论的延迟着色技术强制采用类似结构，其中 G 缓冲区充当接口。
+- **基于模板**：定义一个接口，只要符合接口，就可以接入不同的实现。这比加法式策略更加正式一些，通常用于较大的功能块。一个常见的接口例子，是将着色模型参数的计算与着色模型本身的计算分离。Unreal Engine [1802] 有不同的“材质域”，包括用于计算着色模型参数的 Surface 域，以及 Light Function 域；后者计算一个标量，用于调制给定光源的光照颜色 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_03_c53c80de5096d9.png)。Unity 中也存在类似的“表面着色器”结构 [1437]。注意，第 20 章讨论的延迟着色技术强制采用类似结构，其中 G 缓冲区充当接口。
 
 
-![Unreal Engine 材质编辑器](Real-Time_Rendering_4th_中文/assets/fig_5_3_5.13.png)
+![Unreal Engine 材质编辑器](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_3_5.13.png)
 
 图 5.13。Unreal Engine 材质编辑器。请注意节点图右侧那个高大的节点。该节点的输入连接端口对应渲染引擎使用的各种着色输入，其中包括全部着色模型参数。（材质示例由 Epic Games 提供。）
 
@@ -527,7 +527,7 @@ gl.compileShader(fragmentShader);
 采样理论与数字滤波的内容足以单独写成一本书 [559, 1447, 1729]。由于这是渲染中的一个关键领域，我们将介绍采样与滤波的基本理论，然后着重讨论当前能够实时执行、用于减轻走样伪影的方法。
 
 
-![图5.14 不同采样数的抗锯齿效果](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.14.png)
+![图5.14 不同采样数的抗锯齿效果](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.14.png)
 
 **图 5.14** 上排显示三角形、一条线以及一些点在三种不同抗锯齿程度下的图像。下排是上排图像的放大版本。最左列每个像素仅使用一个样本，也就是没有使用抗锯齿。中间一列每个像素使用四个样本，以网格模式排列；最右列每个像素使用八个样本，采用 4 × 4 棋盘格，在其中一半格子内采样。
 
@@ -538,14 +538,14 @@ gl.compileShader(fragmentShader);
 图 5.15 显示了如何以均匀间隔对连续信号采样，也就是将其离散化。这一采样过程的目标是以数字形式表示信息。在此过程中，信息量会减少。不过，为了恢复原始信号，必须对采样后的信号进行**重建**。这是通过对采样信号进行**滤波**实现的。
 
 
-![图5.15 采样与重建](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.15.png)
+![图5.15 采样与重建](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.15.png)
 
 **图 5.15** 对连续信号（左）进行采样（中），然后通过重建恢复原始信号（右）。
 
 只要进行采样，就可能发生走样。这是不希望出现的伪影，我们必须抑制走样，才能生成赏心悦目的图像。老西部片中一个经典例子，是电影摄影机拍摄旋转的车轮。由于辐条运动速度远高于摄影机记录图像的速度，车轮可能看起来在缓慢旋转，方向或向后、或向前，甚至看起来完全没有转动。图 5.16 展示了这一现象。这种效应源于车轮图像是在一系列离散时间步上拍摄的，称为**时间走样**（temporal aliasing）。
 
 
-![图5.16 旋转车轮的时间走样](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.16.png)
+![图5.16 旋转车轮的时间走样](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.16.png)
 
 **图 5.16** 第一排显示旋转的车轮，即原始信号。第二排对它的采样不足，使车轮看起来沿相反方向运动，这是采样率过低造成走样的一个例子。第三排的采样率恰好是每转两次采样，我们无法确定车轮朝哪个方向旋转。这就是奈奎斯特极限。第四排的采样率高于每转两次采样，于是我们突然能够看出车轮正沿正确方向旋转。
 
@@ -554,7 +554,7 @@ gl.compileShader(fragmentShader);
 当信号以过低的频率采样时，就会发生走样。此时，采样后的信号看起来像是一个比原信号频率更低的信号，图 5.17 对此作了说明。为了正确采样一个信号，也就是说，能够从样本中重建原始信号，采样频率必须高于被采样信号最高频率的两倍。这通常称为**采样定理**，这一采样频率称为**奈奎斯特率** [1447] 或**奈奎斯特极限**，以瑞典科学家 Harry Nyquist（1889—1976）的名字命名；他于 1928 年发现了这一规律。图 5.16 也展示了奈奎斯特极限。定理中使用“最高频率”一词，意味着信号必须是**带限的**，也就是不存在高于某个界限的频率。换句话说，相对于相邻样本之间的间距，信号必须足够平滑。
 
 
-![图5.17 信号的欠采样](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.17.png)
+![图5.17 信号的欠采样](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.17.png)
 
 **图 5.17** 蓝色实线是原始信号，红色圆点是均匀分布的采样点，绿色虚线是重建信号。上图的采样率过低，因此重建信号看起来具有更低的频率，也就是原始信号的一个混叠信号。下图的采样率恰好为原始信号频率的两倍，此时重建信号是一条水平线。可以证明，只要再把采样率提高哪怕一点点，就能够进行完美重建。
 
@@ -565,28 +565,28 @@ gl.compileShader(fragmentShader);
 给定一个带限的采样信号，我们现在讨论如何从采样信号重建原始信号。为此必须使用滤波器。图 5.18 展示了三种常用滤波器。注意，滤波器的面积应始终为 1，否则重建信号的幅值可能会增大或缩小。
 
 
-![图5.18 三种重建滤波器](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.18.png)
+![图5.18 三种重建滤波器](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.18.png)
 
 **图 5.18** 左上是盒式滤波器，右上是帐篷滤波器。下方是 sinc 滤波器，此处沿 x 轴截取了有限的显示范围。
 
 图 5.19 使用盒式滤波器，即最近邻滤波器，重建采样信号。这是效果最差的滤波器，因为生成的信号是不连续的阶梯形。尽管如此，它因简单而经常用于计算机图形学。如图所示，将盒式滤波器放到每个采样点上，再进行缩放，使滤波器顶部与采样点重合。所有这些经过缩放、平移的盒函数相加，就得到右侧的重建信号。
 
 
-![图5.19 盒式滤波器重建](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.19.png)
+![图5.19 盒式滤波器重建](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.19.png)
 
 **图 5.19** 使用盒式滤波器重建采样信号（左）。方法是在每个采样点处放置盒式滤波器，并沿 y 方向缩放，使滤波器高度与该采样点相同。求和后得到重建信号（右）。
 
 盒式滤波器可以替换为其他任何滤波器。图 5.20 使用帐篷滤波器，也称三角形滤波器，重建采样信号。注意，这个滤波器在相邻采样点之间实现线性插值，因此优于盒式滤波器，因为此时重建信号是连续的。
 
 
-![图5.20 帐篷滤波器重建](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.20.png)
+![图5.20 帐篷滤波器重建](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.20.png)
 
 **图 5.20** 使用帐篷滤波器重建采样信号（左），重建结果显示在右侧。
 
 然而，帐篷滤波器重建信号的平滑性仍然较差；在采样点处，斜率会突然变化。这是因为帐篷滤波器并不是完美的重建滤波器。要实现完美重建，必须使用**理想低通滤波器**。信号的一个频率分量是一条正弦波 sin(2πf)，其中 f 是该分量的频率。由此，低通滤波器会去除频率高于滤波器所定义某一频率的所有分量。直观而言，低通滤波器会移除信号中的尖锐特征，也就是对其进行模糊。理想低通滤波器就是 sinc 滤波器（图 5.18 下方）：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_04_b205ea489bf320.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_04_b205ea489bf320.png)
 
 
 > 译注：上文正弦波的写法 sin(2πf) 忠实保留原文，原书此处未显式写出时间或空间自变量。式（5.22）在 x = 0 处按连续延拓取值 1。
@@ -594,11 +594,11 @@ gl.compileShader(fragmentShader);
 傅里叶分析理论 [1447] 解释了为什么 sinc 滤波器是理想低通滤波器。简而言之，理由如下：理想低通滤波器在频域中是一个盒式滤波器；将它与信号相乘，就能去除超出滤波器宽度的所有频率。把这个盒式滤波器从频域变换到空间域，就会得到 sinc 函数。与此同时，乘法运算变换成卷积运算；本节一直在使用这种运算，只是尚未正式介绍“卷积”这个术语。
 
 
-![图5.21 sinc滤波器重建](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.21.png)
+![图5.21 sinc滤波器重建](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.21.png)
 
 **图 5.21** 此处使用 sinc 滤波器重建信号。sinc 滤波器是理想低通滤波器。
 
-使用 sinc 滤波器重建信号会得到更平滑的结果，如图 5.21 所示。采样过程向信号中引入高频分量，即突变，而低通滤波器的任务就是将其去除。实际上，sinc 滤波器会消除频率高于采样率一半的所有正弦波。当采样频率为 1.0 时，式（5.22）给出的 sinc 函数是完美重建滤波器，也就是说，被采样信号的最高频率必须小于 ½。更一般地，假设采样频率为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_04_148dc48c180755.png)，也就是相邻样本之间的间隔为 1/![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_04_148dc48c180755.png)。在这种情况下，完美重建滤波器为 sinc(![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_04_148dc48c180755.png)x)，它会消除高于 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_04_148dc48c180755.png)/2 的所有频率。这在对信号重新采样时很有用，下一部分会讨论。然而，sinc 的滤波器宽度是无限的，而且某些区间内取负值，因此在实践中很少能直接使用。
+使用 sinc 滤波器重建信号会得到更平滑的结果，如图 5.21 所示。采样过程向信号中引入高频分量，即突变，而低通滤波器的任务就是将其去除。实际上，sinc 滤波器会消除频率高于采样率一半的所有正弦波。当采样频率为 1.0 时，式（5.22）给出的 sinc 函数是完美重建滤波器，也就是说，被采样信号的最高频率必须小于 ½。更一般地，假设采样频率为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_04_148dc48c180755.png)，也就是相邻样本之间的间隔为 1/![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_04_148dc48c180755.png)。在这种情况下，完美重建滤波器为 sinc(![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_04_148dc48c180755.png)x)，它会消除高于 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_04_148dc48c180755.png)/2 的所有频率。这在对信号重新采样时很有用，下一部分会讨论。然而，sinc 的滤波器宽度是无限的，而且某些区间内取负值，因此在实践中很少能直接使用。
 
 在低质量的盒式、帐篷滤波器与不切实际的 sinc 滤波器之间，存在有用的折中。大多数广泛使用的滤波函数 [1214, 1289, 1413, 1793] 都处于这两个极端之间。这些滤波函数在某种程度上近似 sinc 函数，但限制了其影响的像素数量。最接近 sinc 函数的滤波器，在其定义域的一部分上会取负值。对于不希望出现负滤波值、或无法实际处理负值的应用，通常使用没有负瓣的滤波器；这些滤波器常被统称为高斯滤波器，因为它们或由高斯曲线推导而来，或与其形状相似 [1402]。12.1 节将更详细地讨论滤波函数及其使用。
 
@@ -611,14 +611,14 @@ gl.compileShader(fragmentShader);
 两种情况中，放大较简单，所以先从它开始。假设按照上一部分介绍的方法重建采样信号。直观而言，既然现在信号已经被完美重建并且连续，只需按所需间隔对重建信号重新采样即可。图 5.22 展示了这一过程。
 
 
-![图5.22 放大与重采样](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.22.png)
+![图5.22 放大与重采样](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.22.png)
 
 **图 5.22** 左侧为采样信号及其重建信号。右侧以两倍采样率对重建信号重新采样，也就是进行了放大。
 
 然而，缩小时这种技术不适用。相对于新的采样率，原始信号的频率过高，无法避免走样。已有研究表明，此时应使用 sinc(x/a) 滤波器，将采样信号转为连续信号 [1447, 1661]，然后才能按所需间隔重新采样，见图 5.23。换句话说，此处使用 sinc(x/a) 作为滤波器，相当于增大低通滤波器的宽度，从而去除更多高频内容。如图所示，各个 sinc 滤波器的宽度加倍，以便将重采样率降为原采样率的一半。对应到数字图像，这类似于先将图像模糊以移除高频，再以较低分辨率对图像重新采样。
 
 
-![图5.23 缩小前加宽滤波器](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.23.png)
+![图5.23 缩小前加宽滤波器](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.23.png)
 
 **图 5.23** 左侧为采样信号及其重建信号。右侧将滤波器宽度加倍，以便把样本间隔加倍，也就是进行了缩小。
 
@@ -631,19 +631,19 @@ gl.compileShader(fragmentShader);
 在图 5.14 的黑色三角形例子中，一个问题就是采样率低。每个像素网格单元仅在中心取得一个样本，因此，对该单元所掌握的信息，最多只是其中心是否被三角形覆盖。通过在每个屏幕网格单元内使用更多样本，并以某种方式混合它们，就能计算出更好的像素颜色。图 5.24 对此作了说明。
 
 
-![图5.24 多样本估计覆盖率](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.24.png)
+![图5.24 多样本估计覆盖率](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.24.png)
 
 **图 5.24** 左侧在像素中心使用一个样本渲染红色三角形。由于三角形没有覆盖该样本，像素会是白色，尽管像素的相当一部分已被红色三角形覆盖。右侧每个像素使用四个样本，其中两个被红色三角形覆盖，因此得到粉红色像素。
 
 基于屏幕的抗锯齿方案，其一般策略是为屏幕选择一种采样模式，再对样本加权求和，生成像素颜色 **p**：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_04_e3b9e34c425df4.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_04_e3b9e34c425df4.png)
 
 
-其中 n 是为一个像素取得的样本数。函数 **c**(i, x, y) 是样本颜色；![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_04_3e929edc96716e.png) 是一个位于 [0, 1] 范围内的权重，表示该样本对最终像素颜色的贡献。采样位置取决于它在序列 1、……、n 中是第几个样本；函数还可以选择使用像素位置 (x, y) 的整数部分。换句话说，每个样本在屏幕网格上的采样位置不同，采样模式还可以因像素而异。在实时渲染系统中，样本通常是点样本；实际上，大多数其他渲染系统也是如此。因此，可以把函数 **c** 看成两个函数。首先，函数 **f**(i, n) 获取屏幕上需要采样的浮点位置 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_04_cedb8fedde4bd2.png)。然后，对屏幕上的这个位置采样，也就是取得该精确位置的颜色。选择采样方案并配置渲染流水线之后，便可在特定亚像素位置计算样本；这通常依据每帧或每个应用的设置进行。
+其中 n 是为一个像素取得的样本数。函数 **c**(i, x, y) 是样本颜色；![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_04_3e929edc96716e.png) 是一个位于 [0, 1] 范围内的权重，表示该样本对最终像素颜色的贡献。采样位置取决于它在序列 1、……、n 中是第几个样本；函数还可以选择使用像素位置 (x, y) 的整数部分。换句话说，每个样本在屏幕网格上的采样位置不同，采样模式还可以因像素而异。在实时渲染系统中，样本通常是点样本；实际上，大多数其他渲染系统也是如此。因此，可以把函数 **c** 看成两个函数。首先，函数 **f**(i, n) 获取屏幕上需要采样的浮点位置 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_04_cedb8fedde4bd2.png)。然后，对屏幕上的这个位置采样，也就是取得该精确位置的颜色。选择采样方案并配置渲染流水线之后，便可在特定亚像素位置计算样本；这通常依据每帧或每个应用的设置进行。
 
-抗锯齿中的另一个变量是每个样本的权重 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_04_3e929edc96716e.png)。这些权重之和为 1。实时渲染系统中的大多数方法为样本赋予均匀权重，即 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_04_710bb69d130300.png)。图形硬件的默认模式是在像素中心取一个样本，它是上述抗锯齿方程最简单的情况：只有一项，该项的权重为 1，采样函数 **f** 始终返回待采样像素的中心。
+抗锯齿中的另一个变量是每个样本的权重 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_04_3e929edc96716e.png)。这些权重之和为 1。实时渲染系统中的大多数方法为样本赋予均匀权重，即 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_04_710bb69d130300.png)。图形硬件的默认模式是在像素中心取一个样本，它是上述抗锯齿方程最简单的情况：只有一项，该项的权重为 1，采样函数 **f** 始终返回待采样像素的中心。
 
 每个像素计算多个完整样本的抗锯齿算法，称为**超采样**（supersampling，或 oversampling）方法。概念上最简单的**全场景抗锯齿**（FSAA），也称**超采样抗锯齿**（SSAA），先以更高分辨率渲染场景，再对相邻样本滤波，生成图像。例如，希望得到一幅 1280 × 1024 像素的图像，可以先在屏幕外渲染 2560 × 2048 图像，再对每个 2 × 2 像素区域求平均，得到所需图像。这样，每个最终像素使用四个样本，并采用盒式滤波器滤波。注意，这对应于图 5.25 中的 2 × 2 网格采样。这种方法成本很高，因为所有子样本都必须完成完整的着色和填充，而且每个样本都要保存一个 z 缓冲深度。FSAA 的主要优点是简单。这种方法还有一些质量较低的版本，只在屏幕一个轴向上采用两倍采样率，因而称为 1 × 2 或 2 × 1 超采样。为了简单起见，通常采用二的幂次分辨率缩放及盒式滤波器。NVIDIA 的动态超级分辨率功能是一种更复杂的超采样形式：以某个更高分辨率渲染场景，再使用一个 13 样本的高斯滤波器生成显示图像 [1848]。
 
@@ -654,14 +654,14 @@ gl.compileShader(fragmentShader);
 超采样、累积缓冲等技术会生成具有完整信息的样本，每个样本都单独计算着色结果与深度。总体收益相对有限，而成本很高，因为每个样本都必须执行像素着色器。
 
 
-![图5.25 像素采样方案比较](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.25.png)
+![图5.25 像素采样方案比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.25.png)
 
 **图 5.25** 一些像素采样方案的比较，按每个像素的样本数由少到多排列。Quincunx 共享角点样本，并使中心样本占最终像素颜色的一半权重。对于近乎水平的边缘，2 × 2 旋转网格比常规 2 × 2 网格能够捕捉更多灰度级。同样，对于这类线条，8 车模式虽然样本更少，却比 4 × 4 网格能捕捉更多灰度级。
 
 **多重采样抗锯齿**（MSAA）通过对每个像素只计算一次表面着色，并在样本之间共享结果，减轻高昂的计算成本。例如，一个片元在某个像素中可以具有四个 (x, y) 采样位置，每个位置有自己的颜色和 z 深度，但对作用于该像素的每个物体片元，像素着色器只执行一次。如果所有 MSAA 位置样本都被片元覆盖，则在像素中心计算着色样本。如果片元覆盖的位置样本较少，可以移动着色样本的位置，以更好地代表被覆盖的位置。例如，这样能够避免在纹理边缘之外进行着色采样。这种位置调整称为**质心采样**或**质心插值**；启用后，由 GPU 自动完成。质心采样避免了采样点落在三角形外的问题，但可能使导数计算返回错误结果 [530, 1041]。见图 5.26。
 
 
-![图5.26 MSAA与EQAA的样本存储](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.26.png)
+![图5.26 MSAA与EQAA的样本存储](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.26.png)
 
 **图 5.26** 中间显示两个物体与同一个像素重叠。红色物体覆盖三个样本，蓝色物体仅覆盖一个。像素着色器的求值位置用绿色表示。由于红色三角形覆盖像素中心，因此在中心计算着色器。蓝色物体的像素着色器在其样本位置求值。对于 MSAA，四个位置都分别存储颜色与深度。右侧显示 EQAA 的 2f4x 模式。现在，四个样本各有一个 ID 值，用于索引存有两组颜色与深度的表。
 
@@ -688,7 +688,7 @@ RGSS 模式是**拉丁超立方体采样**或 **N 车采样**（N-rooks sampling
 N 车采样是创建良好采样模式的起点，但还不充分。例如，所有样本都可以沿亚像素网格的一条对角线排列；对于几乎平行于该对角线的边缘，这样的结果就很差。见图 5.27。
 
 
-![图5.27 N车采样的分布差异](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.27.png)
+![图5.27 N车采样的分布差异](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.27.png)
 
 **图 5.27** N 车采样。左侧是合法的 N 车模式，但在捕捉沿样本连线方向的对角三角形边缘时表现不佳，因为当三角形移动时，所有采样位置会一起位于三角形内部或一起位于外部。右侧的模式能够更有效地捕捉这条边缘及其他方向的边缘。
 
@@ -697,7 +697,7 @@ N 车采样是创建良好采样模式的起点，但还不充分。例如，所
 实际中，GPU 厂商通常把这类采样模式固定实现于多重采样抗锯齿硬件中。图 5.28 展示了一些实际使用的 MSAA 模式。对于时间抗锯齿，程序员可以任意选择覆盖采样模式，因为采样位置能够逐帧变化。例如，Karis [862] 发现，一个基本的 Halton 序列就比 GPU 提供的任何 MSAA 模式更好。Halton 序列生成的空间样本看似随机，却具有**低差异性**，也就是说，它们在空间中分布良好，不会聚集成团 [1413, 1938]。
 
 
-![图5.28 GPU中的MSAA采样模式](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.28.png)
+![图5.28 GPU中的MSAA采样模式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.28.png)
 
 **图 5.28** AMD 与 NVIDIA 图形加速器的 MSAA 采样模式。绿色方块是着色样本的位置，红色方块是计算并保存的位置样本。从左至右分别是 2×、4×、6×（AMD）和 8×（NVIDIA）采样。（由 D3D FSAA Viewer 生成。）
 
@@ -716,7 +716,7 @@ Quincunx 采样也可以在每个像素只取一个样本的条件下，用于�
 在单帧中使用时，Quincunx 借助像素边界上的样本共享，将成本降低到每像素仅两个样本。而 RGSS 模式更擅长捕捉近水平、近垂直边缘上的更多渐变级。最初为移动图形开发的 FLIPQUAD 模式，将这两个优点结合起来 [22]。它的优势是每个像素只需两个样本，而质量接近每像素四个样本的 RGSS。图 5.29 展示了这一采样模式。Hasselgren 等人 [677] 还研究了其他利用样本共享的低成本采样模式。
 
 
-![图5.29 FLIPQUAD样本共享](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.29.png)
+![图5.29 FLIPQUAD样本共享](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.29.png)
 
 **图 5.29** 左侧显示 RGSS 采样模式，其成本为每个像素四个样本。把这些位置移到像素边缘后，就能跨边缘共享样本。不过，为了实现共享，必须让交替相邻的像素采用镜像反射后的采样模式，如右图所示。得到的采样模式称为 FLIPQUAD，成本为每像素两个样本。
 
@@ -733,7 +733,7 @@ Quincunx 采样也可以在每个像素只取一个样本的条件下，用于�
 更复杂的边缘检测方法试图找到可能含有任意角度边缘的像素，并确定其覆盖率。它们检查潜在边缘周围的邻域，尽可能重建原始边缘的位置。随后，利用该边缘对像素的影响，将相邻像素的颜色混合进来。图 5.30 展示了这一过程的概念。
 
 
-![图5.30 形态学抗锯齿原理](Real-Time_Rendering_4th_中文/assets/fig_5_4_5.30.png)
+![图5.30 形态学抗锯齿原理](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_4_5.30.png)
 
 **图 5.30** 形态学抗锯齿。左侧是有走样的图像，目标是确定形成它的边缘可能具有的方向。中间，算法检查相邻像素，判断存在边缘的可能性；根据已有样本，图中显示两个可能的边缘位置。右侧使用最可能的边缘估计，按估算覆盖率将相邻颜色混入中心像素。对图像中的每个像素重复这一过程。
 
@@ -761,7 +761,7 @@ Iourcha 等人 [798] 通过检查像素内的 MSAA 样本改善边缘搜索，�
 Enderton 等人 [423] 提出的**随机透明**（stochastic transparency）把亚像素纱门掩码与随机采样结合起来。它使用随机点画图案表示片元的 Alpha 覆盖率，从而生成虽然带有噪声、但还算合理的图像。见图 5.31。为了使结果看起来合理，每个像素需要大量采样点，也需要相当大的内存来保存全部亚像素样本。这种方法吸引人的地方在于不需要混合：抗锯齿、透明度以及任何其他产生部分覆盖像素的现象，都由同一种机制处理。
 
 
-![图 5.31 随机透明](Real-Time_Rendering_4th_中文/assets/fig_5_5_5.31.png)
+![图 5.31 随机透明](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_5_5.31.png)
 
 **图 5.31** 随机透明。放大区域展示了产生的噪声。（图像取自 NVIDIA SDK 11 [1301] 示例，由 NVIDIA Corporation 提供。）
 
@@ -774,15 +774,15 @@ Enderton 等人 [423] 提出的**随机透明**（stochastic transparency）把�
 要让一个物体看起来透明，就以小于 1.0 的 Alpha 将其渲染到已有场景上方。物体覆盖的每个像素都会从像素着色器接收一个 RGBα（也称为 RGBA）结果。通常使用 **over 运算符**将这个片元的值与原有像素颜色混合：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_a086ef398cc6c1.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_a086ef398cc6c1.png)
 
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_2ce4c3f8e5a5ae.png) 是透明物体的颜色，称为**源**（source）；![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_9d279bf9dd1d56.png) 是该物体的 Alpha；![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_10e90fea1452e8.png) 是混合前的像素颜色，称为**目标**（destination）；![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_9c1542bf5c49c0.png) 是把透明物体放在已有场景上方之后得到的颜色。当渲染流水线传入 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_2ce4c3f8e5a5ae.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_9d279bf9dd1d56.png) 时，像素原有的颜色 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_10e90fea1452e8.png) 会被结果 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_9c1542bf5c49c0.png) 替换。如果传入的 RGBα 实际上是不透明的（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_9d279bf9dd1d56.png) = 1.0），这个公式就简化为用物体颜色完全替换像素颜色。
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_2ce4c3f8e5a5ae.png) 是透明物体的颜色，称为**源**（source）；![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_9d279bf9dd1d56.png) 是该物体的 Alpha；![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_10e90fea1452e8.png) 是混合前的像素颜色，称为**目标**（destination）；![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_9c1542bf5c49c0.png) 是把透明物体放在已有场景上方之后得到的颜色。当渲染流水线传入 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_2ce4c3f8e5a5ae.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_9d279bf9dd1d56.png) 时，像素原有的颜色 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_10e90fea1452e8.png) 会被结果 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_9c1542bf5c49c0.png) 替换。如果传入的 RGBα 实际上是不透明的（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_9d279bf9dd1d56.png) = 1.0），这个公式就简化为用物体颜色完全替换像素颜色。
 
 **示例：混合。** 将一个红色半透明物体渲染到蓝色背景上。假设在某个像素处，物体的 RGB 颜色为 (0.9, 0.2, 0.1)，背景为 (0.1, 0.1, 0.9)，物体不透明度设为 0.6。两种颜色的混合为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_7dc12c42c9ebf4.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_7dc12c42c9ebf4.png)
 
 
 得到颜色 (0.58, 0.16, 0.42)。□
@@ -790,7 +790,7 @@ Enderton 等人 [423] 提出的**随机透明**（stochastic transparency）把�
 over 运算符使正在渲染的物体呈现半透明外观。这样实现的透明效果是有效的，因为只要能透过某个东西看见其后方的物体，我们就会把它感知为透明的 [754]。使用 over 模拟的是现实中薄纱织物的效果。织物后方物体的视图有一部分被遮住，因为织物的纱线是不透明的。在实际情况中，疏松织物的 Alpha 覆盖率会随角度变化 [386]。这里要强调的是：Alpha 模拟的是材料覆盖像素的程度。
 
 
-![图 5.32 薄纱与塑料滤光片](Real-Time_Rendering_4th_中文/assets/fig_5_5_5.32.png)
+![图 5.32 薄纱与塑料滤光片](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_5_5.32.png)
 
 **图 5.32** 一块红色薄纱方巾和一片红色塑料滤光片，产生了不同的透明效果。注意它们的阴影也不相同。（照片由 Morgan McGuire 提供。）
 
@@ -799,7 +799,7 @@ over 运算符在模拟其他透明效果时就不那么令人信服了，最典
 在混合阶段的基本运算符中，over 是通常用来实现透明效果的运算符 [199, 1429]。另一种也有应用的操作是**加法混合**（additive blending），它直接把像素值相加，即
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_be2eb63e4cbfa4.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_be2eb63e4cbfa4.png)
 
 
 这种混合模式很适合闪电或火花等发光效果：它们不衰减后方像素，只使后方像素变亮 [1813]。但是，这种模式用于透明效果时看起来并不正确，因为不透明表面看起来没有经过滤光 [1192]。对于烟雾或火焰等由若干层半透明表面构成的现象，加法混合会使其颜色趋于饱和 [1273]。
@@ -809,7 +809,7 @@ over 运算符在模拟其他透明效果时就不那么令人信服了，最典
 z 缓冲的一个限制是每个像素只能存储一个物体。如果多个透明物体在同一像素处重叠，单靠 z 缓冲无法保存全部可见物体的影响并在之后进行解析。使用 over 时，在任意给定像素处，透明表面通常需要按从后到前的顺序渲染。否则可能产生错误的感知线索。一种实现这种顺序的方法是对各个物体排序，例如按照其质心沿观察方向的距离排序。这种粗略排序可以取得相当不错的效果，但在各种情况下仍有不少问题。首先，这个顺序只是近似值，因此被归为更远的物体实际上可能处于被认为更近的物体前方。对于彼此穿插的物体，除非将各个网格拆分成独立部分，否则不可能仅以网格为单位，在所有观察角度下正确处理。图 5.33 左图给出了一个例子。即使只有单个带凹陷的网格，在某些观察方向上，其投影在屏幕上与自身重叠时，也会出现排序问题。
 
 
-![图 5.33 透明网格排序与深度剥离](Real-Time_Rendering_4th_中文/assets/fig_5_5_5.33.png)
+![图 5.33 透明网格排序与深度剥离](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_5_5.33.png)
 
 **图 5.33** 左图使用 z 缓冲，以透明方式渲染模型。按任意顺序渲染网格会造成严重错误。右图使用深度剥离，以增加渲染遍数为代价获得正确的外观。（图像由 NVIDIA Corporation 提供。）
 
@@ -818,17 +818,17 @@ z 缓冲的一个限制是每个像素只能存储一个物体。如果多个透
 也可以修改 over 公式，使从前到后的混合得到相同结果。这种混合模式称为 **under 运算符**：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_54d9cbd3eb48dc.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_54d9cbd3eb48dc.png)
 
 
 注意，under 要求目标保存一个 Alpha 值，而 over 没有这个要求。换句话说，目标是那个较近的透明表面，新表面要混合到它的下方；目标本身具有透明性，因而必须具有 Alpha 值。under 的表达形式类似于 over，只是交换了源和目标。另外请注意，Alpha 的计算公式与顺序无关：源 Alpha 与目标 Alpha 可以互换，最终 Alpha 仍然相同。
 
-Alpha 公式来自把片元 Alpha 看作覆盖率的思路。Porter 和 Duff [1429] 指出，由于我们不知道两个片元各自覆盖区域的形状，因此假设每个片元都按自身 Alpha 的比例覆盖另一个片元。例如，如果 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_9d279bf9dd1d56.png) = 0.7，那么像素就以某种方式划分为两个区域，其中 0.7 被源片元覆盖，0.3 未被覆盖。在没有其他信息的情况下，假如目标片元的覆盖率为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_3b5bf9af75e2d7.png) = 0.6，那么它也会按相应比例被源片元覆盖。这个公式具有图 5.34 所示的几何解释。
+Alpha 公式来自把片元 Alpha 看作覆盖率的思路。Porter 和 Duff [1429] 指出，由于我们不知道两个片元各自覆盖区域的形状，因此假设每个片元都按自身 Alpha 的比例覆盖另一个片元。例如，如果 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_9d279bf9dd1d56.png) = 0.7，那么像素就以某种方式划分为两个区域，其中 0.7 被源片元覆盖，0.3 未被覆盖。在没有其他信息的情况下，假如目标片元的覆盖率为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_3b5bf9af75e2d7.png) = 0.6，那么它也会按相应比例被源片元覆盖。这个公式具有图 5.34 所示的几何解释。
 
 
-![图 5.34 两个片元的覆盖面积](Real-Time_Rendering_4th_中文/assets/fig_5_5_5.34.png)
+![图 5.34 两个片元的覆盖面积](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_5_5.34.png)
 
-**图 5.34** 一个像素以及两个片元 s 和 d。通过使两个片元沿不同的轴对齐，每个片元都按比例覆盖另一个片元，也就是说，它们彼此不相关。两个片元覆盖的面积等于 under 的输出 Alpha 值 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_9d279bf9dd1d56.png) − ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_9d279bf9dd1d56.png)![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_3b5bf9af75e2d7.png) + ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_3b5bf9af75e2d7.png)。这相当于将两个面积相加，再减去它们重叠的面积。
+**图 5.34** 一个像素以及两个片元 s 和 d。通过使两个片元沿不同的轴对齐，每个片元都按比例覆盖另一个片元，也就是说，它们彼此不相关。两个片元覆盖的面积等于 under 的输出 Alpha 值 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_9d279bf9dd1d56.png) − ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_9d279bf9dd1d56.png)![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_3b5bf9af75e2d7.png) + ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_3b5bf9af75e2d7.png)。这相当于将两个面积相加，再减去它们重叠的面积。
 
 图内文字：片元 s，面积 = 0.7；片元 d，面积 = 0.6；重叠面积 = 0.7 × 0.6。给定两个面积（Alpha）分别为 0.7 和 0.6 的片元，总覆盖面积 = 0.7 − 0.7 × 0.6 + 0.6 = 0.88。
 
@@ -837,7 +837,7 @@ Alpha 公式来自把片元 Alpha 看作覆盖率的思路。Porter 和 Duff [14
 使用 under 公式时，先将全部透明物体绘制到单独的颜色缓冲中，再使用 over，将该颜色缓冲叠加到场景的不透明视图上。under 运算符的另一种用途，是实现一种称为**深度剥离**（depth peeling）的**顺序无关透明**（order-independent transparency，OIT）算法 [449, 1115]。顺序无关意味着应用程序不需要执行排序。深度剥离的思路是使用两个 z 缓冲和多遍渲染。首先执行一遍渲染，将所有表面（包括透明表面）的 z 深度写入第一个 z 缓冲。第二遍渲染全部透明物体。如果某物体的 z 深度与第一个 z 缓冲中的值相同，就知道它是最近的透明物体，并将其 RGBα 保存到独立的颜色缓冲中。同时，我们还会“剥去”这一层：在比第一个 z 深度更远的透明物体中，找出最近者（如果存在），保存其 z 深度。这个 z 深度就是第二近的透明物体的距离。后续各遍继续剥离，并使用 under 加入透明层。在执行一定遍数后停止，再将透明图像混合到不透明图像上方。见图 5.35。
 
 
-![图 5.35 深度剥离的各层](Real-Time_Rendering_4th_中文/assets/fig_5_5_5.35.png)
+![图 5.35 深度剥离的各层](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_5_5.35.png)
 
 **图 5.35** 每一遍深度剥离都绘制其中一个透明层。左图为第一遍，显示眼睛直接可见的那一层。中图为第二层，显示每个像素处第二近的透明表面，在此例中就是物体的背面。右图的第三层是第三近的透明表面的集合。最终结果见书页 624 的图 14.33。（图像由 Louis Bavoil 提供。）
 
@@ -852,7 +852,7 @@ DirectX 11 提供的新功能使在 GPU 上创建片元链表的设想成为可�
 A 缓冲的优点是只为各个像素分配实际需要的片元，GPU 上的链表实现也是如此。从某种意义上说，这也可能是缺点，因为在开始渲染一帧之前，不知道所需的存储量。包含毛发、烟雾或其他可能出现大量透明表面重叠的物体的场景，会产生数量巨大的片元。Andersson [46] 指出，在复杂游戏场景中，枝叶等物体的透明网格最多可能有 50 个相互重叠，半透明粒子则最多可能有 200 个相互重叠。
 
 
-![图 5.36 多层 Alpha 混合](Real-Time_Rendering_4th_中文/assets/fig_5_5_5.36.png)
+![图 5.36 多层 Alpha 混合](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_5_5.36.png)
 
 **图 5.36** 左上采用传统的从后到前 Alpha 混合，排序错误导致渲染错误。右上使用 A 缓冲，得到完美但无法达到交互速度的结果。左下是多层 Alpha 混合的渲染结果。右下显示 A 缓冲图像与多层图像之间的差异，为便于观察放大了 4 倍 [1532]。（图像由 Intel Corporation 的 Marco Salvi 和 Karthik Vaidyanathan 提供。）
 
@@ -861,32 +861,32 @@ GPU 通常预先分配缓冲和数组等内存资源，基于链表的方法也�
 这种方法建立在 Bavoil 等人 [115] 提出的 **k 缓冲**思想之上：保存最前面的几个可见层，并尽可能排序；更深层则尽可能丢弃或合并。Maule 等人 [1142] 使用 k 缓冲，并通过**加权平均**计入这些更远的深层。**加权求和** [1202] 与**加权平均** [118] 透明技术都是顺序无关的，只需一遍渲染，而且几乎能在所有 GPU 上运行。问题在于，它们没有考虑物体的顺序。例如，使用 Alpha 表示覆盖率时，薄纱红围巾位于薄纱蓝围巾上方会得到紫色，而正确的外观应该是一条红围巾，透出少量蓝色。虽然对接近不透明的物体效果较差，但这类算法对可视化很有用，也适合高度透明的表面和粒子。见图 5.37。
 
 
-![图 5.37 不透明度与顺序的重要性](Real-Time_Rendering_4th_中文/assets/fig_5_5_5.37.png)
+![图 5.37 不透明度与顺序的重要性](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_5_5.37.png)
 
 **图 5.37** 随着不透明度增大，物体顺序变得更加重要。（图像据 Dunn [394] 绘制。）图中不透明度从左到右依次为 10%、40%、70%、100%。
 
 加权求和透明的公式为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_5bb242740a232f.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_5bb242740a232f.png)
 
 
-其中，n 是透明表面的数量，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_c884fba8655644.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_af38c6e2ba07c4.png) 表示这一组透明值，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_10e90fea1452e8.png) 是场景中不透明部分的颜色。渲染透明表面时，分别累积并存储这两个和；透明渲染遍结束后，在每个像素处计算这个公式。这种方法的问题是：第一项求和会饱和，也就是产生大于 (1.0, 1.0, 1.0) 的颜色值；另外，由于 Alpha 之和可能超过 1.0，背景颜色也可能产生负向贡献。
+其中，n 是透明表面的数量，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_c884fba8655644.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_af38c6e2ba07c4.png) 表示这一组透明值，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_10e90fea1452e8.png) 是场景中不透明部分的颜色。渲染透明表面时，分别累积并存储这两个和；透明渲染遍结束后，在每个像素处计算这个公式。这种方法的问题是：第一项求和会饱和，也就是产生大于 (1.0, 1.0, 1.0) 的颜色值；另外，由于 Alpha 之和可能超过 1.0，背景颜色也可能产生负向贡献。
 
 通常更倾向于使用加权平均公式，因为它避免了上述问题：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_51e1fc6cd93e4f.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_51e1fc6cd93e4f.png)
 
 
-第一行表示透明渲染过程中生成的两个独立缓冲中的结果。对 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_987620811bbba3.png) 有贡献的每个表面，都按自身 Alpha 加权其影响；接近不透明的表面贡献更多自身颜色，接近透明的表面影响则很小。将 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_987620811bbba3.png) 除以 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_1471a0ee7ceb40.png)，就得到加权平均的透明颜色。![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_364aaf59aef254.png) 是全部 Alpha 值的平均值。u 是对 n 个透明表面应用 n 次这个平均 Alpha 后，目标（不透明场景）的估计可见程度。最后一行实际上就是 over 运算符，其中 (1 − u) 表示源 Alpha。
+第一行表示透明渲染过程中生成的两个独立缓冲中的结果。对 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_987620811bbba3.png) 有贡献的每个表面，都按自身 Alpha 加权其影响；接近不透明的表面贡献更多自身颜色，接近透明的表面影响则很小。将 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_987620811bbba3.png) 除以 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_1471a0ee7ceb40.png)，就得到加权平均的透明颜色。![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_364aaf59aef254.png) 是全部 Alpha 值的平均值。u 是对 n 个透明表面应用 n 次这个平均 Alpha 后，目标（不透明场景）的估计可见程度。最后一行实际上就是 over 运算符，其中 (1 − u) 表示源 Alpha。
 
-加权平均的一个限制是：当各个 Alpha 相同时，无论顺序如何，它都会把所有颜色等量混合。McGuire 和 Bavoil [1176, 1180] 引入了**加权混合顺序无关透明**（weighted blended order-independent transparency），以获得更令人信服的结果。在他们的表达式中，到表面的距离也影响权重，较近的表面具有更大的影响。此外，不再对 Alpha 求平均，而是将各项 (1 − ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_af38c6e2ba07c4.png)) 相乘，再用 1 减去所得乘积来计算 u，从而得到这组表面的真实 Alpha 覆盖率。这种方法可以产生视觉上更令人信服的结果，如图 5.38 所示。
+加权平均的一个限制是：当各个 Alpha 相同时，无论顺序如何，它都会把所有颜色等量混合。McGuire 和 Bavoil [1176, 1180] 引入了**加权混合顺序无关透明**（weighted blended order-independent transparency），以获得更令人信服的结果。在他们的表达式中，到表面的距离也影响权重，较近的表面具有更大的影响。此外，不再对 Alpha 求平均，而是将各项 (1 − ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_af38c6e2ba07c4.png)) 相乘，再用 1 减去所得乘积来计算 u，从而得到这组表面的真实 Alpha 覆盖率。这种方法可以产生视觉上更令人信服的结果，如图 5.38 所示。
 
-> **译注（原文符号疑点）：** 原书此句确实将“各项相乘再用 1 减去”的结果称为 u，并称其为总 Alpha 覆盖率；但式（5.28）及上段把 u 定义为背景的剩余可见程度。沿用式（5.28）的定义时，剩余可见程度应为各项 (1 − ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_af38c6e2ba07c4.png)) 的乘积，而总 Alpha 覆盖率应为 1 减去该乘积。正文忠实保留原文表述，此处指出两者的区别。
+> **译注（原文符号疑点）：** 原书此句确实将“各项相乘再用 1 减去”的结果称为 u，并称其为总 Alpha 覆盖率；但式（5.28）及上段把 u 定义为背景的剩余可见程度。沿用式（5.28）的定义时，剩余可见程度应为各项 (1 − ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_af38c6e2ba07c4.png)) 的乘积，而总 Alpha 覆盖率应为 1 减去该乘积。正文忠实保留原文表述，此处指出两者的区别。
 
 
-![图 5.38 加权混合顺序无关透明](Real-Time_Rendering_4th_中文/assets/fig_5_5_5.38.png)
+![图 5.38 加权混合顺序无关透明](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_5_5.38.png)
 
 **图 5.38** 从两个不同的相机位置观察同一个引擎模型，两幅图都采用加权混合顺序无关透明渲染。按距离加权有助于分辨哪些表面更接近观察者 [1185]。（图像由 Morgan McGuire 提供。）
 
@@ -905,10 +905,10 @@ over 运算符也用于将照片或物体的合成渲染图混合到一起。这
 使用合成 RGBα 数据的一种方式是采用**预乘 Alpha**（premultiplied alpha，也称为**关联 Alpha**，associated alpha）。也就是说，在使用 RGB 值之前，先将其乘以 Alpha 值。这使合成的 over 公式更高效：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_3391e7ddc49c84.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_3391e7ddc49c84.png)
 
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_e1fb0820272ea8.png) 是预乘后的源通道，替代式（5.25）中的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_05_7d3dc70b586357.png)。预乘 Alpha 还使得无需改变混合状态就能使用 over 和加法混合，因为此时源颜色是在混合过程中直接相加的 [394]。注意，对于预乘的 RGBα 值，RGB 分量通常不大于 Alpha 值，不过也可以让它们大于 Alpha，以产生特别明亮的半透明值。
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_e1fb0820272ea8.png) 是预乘后的源通道，替代式（5.25）中的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_05_7d3dc70b586357.png)。预乘 Alpha 还使得无需改变混合状态就能使用 over 和加法混合，因为此时源颜色是在混合过程中直接相加的 [394]。注意，对于预乘的 RGBα 值，RGB 分量通常不大于 Alpha 值，不过也可以让它们大于 Alpha，以产生特别明亮的半透明值。
 
 > **译注（原文交叉引用疑点）：** 原书此处写的是“式（5.25）”。式（5.25）为加法混合，而式（5.29）的完整结构对应于将式（5.24）的 over 公式中的源颜色项预乘。这里保留原书引用，不作无标记的更改。
 
@@ -927,7 +927,7 @@ over 运算符也用于将照片或物体的合成渲染图混合到一起。这
 
 当我们计算光照、纹理映射或其他操作的效果时，所使用的数值都被假定为**线性**的。非正式地说，这意味着加法和乘法会按预期工作。然而，为了避免各种视觉伪影，显示缓冲区和纹理使用了非线性编码，我们必须将其考虑在内。一个简短而粗略的回答是：取着色器输出的、位于 [0, 1] 范围内的颜色值，对其求 1/2.2 次幂，执行所谓的 **伽马校正**（gamma correction）。对输入的纹理和颜色则执行相反操作。在大多数情况下，可以让 GPU 替你完成这些事情。本节将解释这段简述中的做法及其原因。
 
-我们从**阴极射线管**（cathode-ray tube，CRT）说起。在数字成像的早期，CRT 显示器是主流。这些设备的输入电压与显示辐亮度之间呈幂律关系。随着施加到像素上的能量水平提高，发出的辐亮度并不线性增长，而是出人意料地与该水平的大于 1 次幂成正比。例如，假定指数为 2。一个设置为 50% 的像素，发出的光只有设置为 1.0 的像素的四分之一，即 0.![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_05_06_b91b7e37e15334.png) = 0.25 [607]。虽然 LCD 和其他显示技术具有不同于 CRT 的固有色调响应曲线，但它们在制造时都配有转换电路，使其模拟 CRT 的响应。
+我们从**阴极射线管**（cathode-ray tube，CRT）说起。在数字成像的早期，CRT 显示器是主流。这些设备的输入电压与显示辐亮度之间呈幂律关系。随着施加到像素上的能量水平提高，发出的辐亮度并不线性增长，而是出人意料地与该水平的大于 1 次幂成正比。例如，假定指数为 2。一个设置为 50% 的像素，发出的光只有设置为 1.0 的像素的四分之一，即 0.![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_06_b91b7e37e15334.png) = 0.25 [607]。虽然 LCD 和其他显示技术具有不同于 CRT 的固有色调响应曲线，但它们在制造时都配有转换电路，使其模拟 CRT 的响应。
 
 这个幂函数几乎与人类视觉明度敏感性的反函数相吻合 [1431]。这一幸运的巧合，使得这种编码大致具有**感知均匀性**。也就是说，在整个可显示范围内，一对编码值 N 与 N + 1 之间的感知差异大致保持不变。以**阈值对比度**衡量，在很广泛的条件下，我们能够察觉约 1% 的明度差异。当颜色存储在精度有限的显示缓冲区中时，这种近乎最优的数值分布能最大限度地减少**色带伪影**（第 23.6 节）。同样的好处也适用于通常采用相同编码的纹理。
 
@@ -936,7 +936,7 @@ over 运算符也用于将照片或物体的合成渲染图混合到一起。这
 对线性颜色值进行编码以供显示时，我们的目标是抵消显示传递函数的影响，使计算得到的任何数值都能产生与之对应的辐亮度水平。例如，如果计算值加倍，我们希望输出辐亮度也加倍。为了保持这种联系，我们应用显示传递函数的反函数，以抵消其非线性影响。这种消除显示器响应曲线影响的过程也叫作伽马校正，其命名原因很快就会说明。解码纹理值时，则需要应用显示传递函数，以生成可用于着色的线性值。图 5.39 展示了解码和编码在显示过程中的应用。
 
 
-![图 5.39 显示过程中的解码、编码与显示传递函数](Real-Time_Rendering_4th_中文/assets/fig_5_6_5.39.png)
+![图 5.39 显示过程中的解码、编码与显示传递函数](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_6_5.39.png)
 
 **图 5.39** 左侧，GPU 着色器访问一张 PNG 颜色纹理，将其非线性编码值转换为线性值（蓝色）。经过着色和色调映射（第 8.2.2 节）之后，最终计算值经过编码（绿色），存入帧缓冲区。该值与显示传递函数共同决定发出的辐亮度大小（红色）。绿色和红色函数组合起来会相互抵消，因此发出的辐亮度与计算得到的线性值成正比。
 
@@ -947,7 +947,7 @@ over 运算符也用于将照片或物体的合成渲染图混合到一起。这
 如果确实需要手动应用 sRGB，可以使用标准转换公式，也可以使用几个简化版本之一。实际而言，显示器由每个颜色通道的一定数量的位来控制，例如消费级显示器通常为 8 位，给出 [0, 255] 范围内的一组等级。这里忽略位数，将显示编码后的等级表示为 [0.0, 1.0] 范围。线性值也位于 [0.0, 1.0] 范围内，表示浮点数。我们以 x 表示这些线性值，以 y 表示帧缓冲区中存储的非线性编码值。为了将线性值转换为 sRGB 非线性编码值，我们应用 sRGB 显示传递函数的反函数：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_06_0f7c3a2b311946.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_06_0f7c3a2b311946.png)
 
 
 其中 x 代表线性 RGB 三元组的一个通道。这个公式应用于每个通道，生成的三个数值用于驱动显示器。手动应用转换函数时要小心。一种错误来源是使用了编码后的颜色，而非其线性形式；另一种则是对同一个颜色解码或编码两次。
@@ -955,7 +955,7 @@ over 运算符也用于将照片或物体的合成渲染图混合到一起。这
 这两个变换表达式中，下面一个是简单的乘法，它来自数字硬件对变换完全可逆的要求 [1431]。上面一个表达式包含求幂运算，适用于输入值 x 的几乎整个 [0.0, 1.0] 范围。考虑偏移和缩放之后，这个函数可以由一个更简单的公式很好地近似 [491]：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_06_17100fe2114042.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_06_17100fe2114042.png)
 
 
 其中 γ = 2.2。希腊字母 γ 正是“伽马校正”这一名称的由来。
@@ -963,7 +963,7 @@ over 运算符也用于将照片或物体的合成渲染图混合到一起。这
 正如计算值必须经过编码才能显示，静态相机或摄像机捕获的图像也必须先转换为线性值，才能用于计算。你在显示器或电视上看到的任何颜色，都有一个显示编码后的 RGB 三元组，可以通过屏幕截图或取色器获得。这些值就是 PNG、JPEG 和 GIF 等文件格式中存储的数值，这些格式无需转换便可直接送入帧缓冲区，在屏幕上显示。换句话说，按照定义，你在屏幕上看到的任何内容都是显示编码后的数据。在着色计算中使用这些颜色之前，必须将它们从这种编码形式转换回线性值。从显示编码到线性值所需的 sRGB 变换为：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_06_dc48107d44ccba.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_06_dc48107d44ccba.png)
 
 
 其中 y 表示归一化后的显示通道值，也就是图像或帧缓冲区中存储的值，以 [0.0, 1.0] 范围内的数值表示。这个解码函数是前述 sRGB 公式的反函数。这意味着，如果着色器访问一张纹理并原样输出，它看起来就会与处理之前相同，符合预期。解码函数与显示传递函数相同，是因为纹理中存储的值已经过编码，以便正确显示。这里进行转换的目的，是得到线性值，而非得到线性响应的显示。
@@ -971,19 +971,19 @@ over 运算符也用于将照片或物体的合成渲染图混合到一起。这
 更简单的伽马显示传递函数是公式（5.31）的反函数：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_06_b2ef6460c3e145.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_06_b2ef6460c3e145.png)
 
 
 有时你还会见到一对更简单的转换，尤其是在移动端和浏览器应用中 [1666]：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_05_06_87209c4c1b3e4d.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_05_06_87209c4c1b3e4d.png)
 
 
 也就是说，为显示而转换时，对线性值取平方根；执行逆变换时，只需将数值与其自身相乘。虽然这只是粗略近似，但仍比完全忽略这个问题要好。
 
 
-![图 5.40 两束重叠聚光灯的伽马校正对比](Real-Time_Rendering_4th_中文/assets/fig_5_6_5.40.png)
+![图 5.40 两束重叠聚光灯的伽马校正对比](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_6_5.40.png)
 
 **图 5.40** 两束相互重叠的聚光灯照亮一个平面。左图中，将 0.6 和 0.4 这两个光照值相加后，并未执行伽马校正。加法实际上作用于非线性值，因此产生错误。注意，左侧光束看起来明显比右侧亮，而重叠区域显得不真实地明亮。右图中，数值相加后执行了伽马校正。光束本身按比例变亮，并在重叠处正确地组合。
 
@@ -994,12 +994,12 @@ over 运算符也用于将照片或物体的合成渲染图混合到一起。这
 忽略伽马校正也会影响抗锯齿边缘的质量。例如，假设一个三角形的边缘覆盖了四个屏幕网格单元（图 5.41）。三角形的归一化辐亮度为 1（白色），背景则为 0（黑色）。从左到右，各单元的覆盖比例分别为 ⅛、⅜、⅝ 和 ⅞。因此，如果采用盒式滤波器，我们希望将各像素的归一化线性辐亮度表示为 0.125、0.375、0.625 和 0.875。正确做法是在各线性值上执行抗锯齿，再对得到的四个结果值应用编码函数。如果不这样做，各像素所表示的辐亮度就会过暗，使人感觉边缘发生了变形，如图的右侧所示。这种伪影叫作 **绳索效应**（roping），因为边缘看起来有些像扭绞的绳子 [167, 1265]。图 5.42 展示了这种效果。
 
 
-![图 5.41 覆盖比例及未经伽马校正的边缘变形](Real-Time_Rendering_4th_中文/assets/fig_5_6_5.41.png)
+![图 5.41 覆盖比例及未经伽马校正的边缘变形](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_6_5.41.png)
 
 **图 5.41** 左侧，黑色背景（图中以灰色表示）上一个白色三角形的边缘覆盖了四个像素，图示为真实的面积覆盖情况。如果不执行伽马校正，中间色调会变暗，导致感知到的边缘形状失真，如右侧所示。
 
 
-![图 5.42 抗锯齿线条的伽马校正程度对比](Real-Time_Rendering_4th_中文/assets/fig_5_6_5.42.png)
+![图 5.42 抗锯齿线条的伽马校正程度对比](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_5_6_5.42.png)
 
 **图 5.42** 左侧，一组抗锯齿线条经过了伽马校正；中间，只进行了部分校正；右侧，未进行伽马校正。（图片由 Scott R. Nelson 惠允提供。）
 

@@ -118,7 +118,7 @@
 
 **[57]** Annen, Thomas, Zhao Dong, Tom Mertens, Philippe Bekaert, Hans-Peter Seidel, 和 Jan Kautz，《动态场景中的实时全频率阴影》（原题：Real-Time, All-Frequency Shadows in Dynamic Scenes）。ACM Transactions on Graphics, 第27卷, 第3期, 文章编号34, 2008年8月. 本书引用页：257。
 
-**[58]** Ansari, Marwan Y.，《使用 DirectX 9 像素着色器实现图像特效》（原题：Image Effects with DirectX 9 Pixel Shaders）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B01_6137f40531a8aa.png): Shader Programming Tips and Tricks with DirectX 9, 第481–518页, Wordware, 2004. 本书引用页：521, 665。
+**[58]** Ansari, Marwan Y.，《使用 DirectX 9 像素着色器实现图像特效》（原题：Image Effects with DirectX 9 Pixel Shaders）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B01_6137f40531a8aa.png): Shader Programming Tips and Tricks with DirectX 9, 第481–518页, Wordware, 2004. 本书引用页：521, 665。
 
 **[59]** Answer, James，《快速而灵活：《The Unknown》的技术美术与渲染》（原题：Fast and Flexible: Technical Art and Rendering for The Unknown）。Game Developers Conference, 2016年3月. 本书引用页：710, 787, 805, 931, 934, 936, 938。
 
@@ -140,7 +140,7 @@
 
 **[68]** Arge, L., G. S. Brodal, 和 R. Fagerberg，《缓存无关数据结构》（原题：Cache-Oblivious Data Structures）。收录于 Handbook of Data Structures, CRC Press, 第34章, 2005. 本书引用页：827。
 
-**[69]** ARM Limited，《ARM Mali 应用开发者最佳实践，1.0 版》（原题：![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B01_f71177c905af08.png) Application Developer Best Practices, Version 1.0）。ARM 文档, 2017年2月27日. 本书引用页：48, 798, 1029。
+**[69]** ARM Limited，《ARM Mali 应用开发者最佳实践，1.0 版》（原题：![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B01_f71177c905af08.png) Application Developer Best Practices, Version 1.0）。ARM 文档, 2017年2月27日. 本书引用页：48, 798, 1029。
 
 **[70]** Arvo, James，《包围盒与球体相交测试的简单方法》（原题：A Simple Method for Box-Sphere Intersection Testing）。收录于 Andrew S. Glassner, 编， Graphics Gems, Academic Press, 第335–339页, 1990. 本书引用页：977, 984。
 
@@ -182,7 +182,7 @@
 
 **[89]** Bahar, E., 和 S. Chakrabarti，《全波理论在三维物体计算机辅助图形中的应用》（原题：Full-Wave Theory Applied to Computer-Aided Graphics for 3D Objects）。IEEE Computer Graphics and Applications, 第7卷, 第7期, 第46–60页, 1987年7月. 本书引用页：361。
 
-**[90]** Bahnassi, Homam, 和 Wessam Bahnassi，《体积云与巨粒子》（原题：Volumetric Clouds and Mega-Particles）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B01_81da322d36d743.png), Charles River Media, 第295–302页, 2006. 本书引用页：521, 556。
+**[90]** Bahnassi, Homam, 和 Wessam Bahnassi，《体积云与巨粒子》（原题：Volumetric Clouds and Mega-Particles）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B01_81da322d36d743.png), Charles River Media, 第295–302页, 2006. 本书引用页：521, 556。
 
 **[91]** Baker, Dan，《高级光照技术》（原题：Advanced Lighting Techniques）。Meltdown 2005, 2005年7月. 本书引用页：369。
 
@@ -282,7 +282,7 @@
 
 **[139]** Bezrati, Abdul，《通过光源链表实现实时光照》（原题：Real-Time Lighting via Light Linked List）。SIGGRAPH Advances in Real-Time Rendering in Games 课程, 2014年8月. 本书引用页：893, 903。
 
-**[140]** Bezrati, Abdul，《通过光源链表实现实时光照》（原题：Real-Time Lighting via Light Linked List）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B01_62af897d8661a1.png), CRC Press, 第183–193页, 2015. 本书引用页：893, 903。
+**[140]** Bezrati, Abdul，《通过光源链表实现实时光照》（原题：Real-Time Lighting via Light Linked List）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B01_62af897d8661a1.png), CRC Press, 第183–193页, 2015. 本书引用页：893, 903。
 
 **[141]** Bier, Eric A., 和 Kenneth R. Sloan, Jr.，《两部分纹理映射》（原题：Two-Part Texture Mapping）。IEEE Computer Graphics and Applications, 第6卷, 第9期, 第40–53页, 1986年9月. 本书引用页：170。
 
@@ -290,7 +290,7 @@
 
 **[143]** Billeter, Markus, Erik Sintorn, 和 Ulf Assarsson，《使用光传播体实现实时多次散射》（原题：Real-Time Multiple Scattering Using Light Propagation Volumes）。收录于 Proceedings of the ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games, ACM, 第119–126页, 2012. 本书引用页：611。
 
-**[144]** Billeter, Markus, Ola Olsson, 和 Ulf Assarsson，《分块前向着色》（原题：Tiled Forward Shading）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B01_b023f79a54f1ee.png), CRC Press, 第99–114页, 2013. 本书引用页：895, 896, 914。
+**[144]** Billeter, Markus, Ola Olsson, 和 Ulf Assarsson，《分块前向着色》（原题：Tiled Forward Shading）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B01_b023f79a54f1ee.png), CRC Press, 第99–114页, 2013. 本书引用页：895, 896, 914。
 
 **[145]** Billeter, Markus，《移动硬件上的多光源渲染》（原题：Many-Light Rendering on Mobile Hardware）。SIGGRAPH Real-Time Many-Light Management and Shadows with Clustered Shading 课程, 2015年8月. 本书引用页：893, 900, 903, 914。
 
@@ -386,7 +386,7 @@
 
 **[191]** Bratt, I.，《ARM Mali T880 移动 GPU》（原题：The ARM Mali T880 Mobile GPU）。Hot Chips 网站, 2015. 本书引用页：1027。
 
-**[192]** Brawley, Zoe, 和 Natalya Tatarchuk，《视差遮挡映射：利用反向高度图追踪实现自阴影、透视正确的凹凸映射》（原题：Parallax Occlusion Mapping: Self-Shadowing, Perspective-Correct Bump Mapping Using Reverse Height Map Tracing）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B01_a83a09be91f80b.png), Charles River Media, 第135–154页, 2004年11月. 本书引用页：217。
+**[192]** Brawley, Zoe, 和 Natalya Tatarchuk，《视差遮挡映射：利用反向高度图追踪实现自阴影、透视正确的凹凸映射》（原题：Parallax Occlusion Mapping: Self-Shadowing, Perspective-Correct Bump Mapping Using Reverse Height Map Tracing）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B01_a83a09be91f80b.png), Charles River Media, 第135–154页, 2004年11月. 本书引用页：217。
 
 **[193]** Bredow, Rob，《《精灵鼠小弟》中的毛发》（原题：Fur in Stuart Little）。SIGGRAPH Advanced RenderMan 2: To RI INFINITY and Beyond 课程, 2000年7月. 本书引用页：382, 633。
 
@@ -422,7 +422,7 @@
 
 **[208]** Bukowski, Mike, Padraic Hennessy, Brian Osman, and Morgan McGuire, 《可扩展的高质量运动模糊与环境光遮蔽》（原题：Scalable High Quality Motion Blur and Ambient Occlusion），SIGGRAPH“三维图形与游戏中的实时渲染进展”课程（SIGGRAPH Advances in Real-Time Rendering in 3D Graphics and Games）， 2012年8月. 本书引用页：540, 542, 543。
 
-**[209]** Bukowski, Mike, Padraic Hennessy, Brian Osman, and Morgan McGuire, 《〈Skylanders SWAP Force〉的景深着色器》（原题：The Skylanders SWAP Force Depth-of-Field Shader），收录于 Wolfgang Engel, 主编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B02_b023f79a54f1ee.png), CRC Press, 第175–184页, 2013. 本书引用页：529, 530, 532, 533。
+**[209]** Bukowski, Mike, Padraic Hennessy, Brian Osman, and Morgan McGuire, 《〈Skylanders SWAP Force〉的景深着色器》（原题：The Skylanders SWAP Force Depth-of-Field Shader），收录于 Wolfgang Engel, 主编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B02_b023f79a54f1ee.png), CRC Press, 第175–184页, 2013. 本书引用页：529, 530, 532, 533。
 
 **[210]** Bunnell, Michael, 《动态环境光遮蔽与间接光照》（原题：Dynamic Ambient Occlusion and Indirect Lighting），收录于 Matt Pharr, 主编， GPU Gems 2, Addison-Wesley, 第223–233页, 2005. 本书引用页：454, 497。
 
@@ -450,9 +450,9 @@
 
 **[222]** Calver, Dean, 《照片级逼真的延迟光照》（原题：Photo-Realistic Deferred Lighting），Beyond3D.com 网站, 2003年7月30日. 本书引用页：883, 884, 886。
 
-**[223]** Calver, Dean, 《在GPU上访问与修改拓扑》（原题：Accessing and Modifying Topology on the GPU），收录于 Wolfgang Engel, 主编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B02_a83a09be91f80b.png), Charles River Media, 第5–19页, 2004. 本书引用页：703。
+**[223]** Calver, Dean, 《在GPU上访问与修改拓扑》（原题：Accessing and Modifying Topology on the GPU），收录于 Wolfgang Engel, 主编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B02_a83a09be91f80b.png), Charles River Media, 第5–19页, 2004. 本书引用页：703。
 
-**[224]** Calver, Dean, 《在PS 3.0上实现高动态范围延迟光照》（原题：Deferred Lighting on PS 3.0 with High Dynamic Range），收录于 Wolfgang Engel, 主编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B02_a83a09be91f80b.png), Charles River Media, 第97–105页, 2004. 本书引用页：288。
+**[224]** Calver, Dean, 《在PS 3.0上实现高动态范围延迟光照》（原题：Deferred Lighting on PS 3.0 with High Dynamic Range），收录于 Wolfgang Engel, 主编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B02_a83a09be91f80b.png), Charles River Media, 第97–105页, 2004. 本书引用页：288。
 
 **[225]** Cantlay, Iain, and Andrei Tatarinov, 《从地形到耶稣光：更好地利用DX11》（原题：From Terrain to Godrays: Better Use of DX11），游戏开发者大会（Game Developers Conference）， 2014年3月. 本书引用页：44, 569。
 
@@ -512,7 +512,7 @@
 
 **[253]** Chandrasekhar, Subrahmanyan, 《辐射传输》（原题：Radiative Transfer）， Oxford University Press, 1950. 本书引用页：352。
 
-**[254]** Chang, Chia-Tche, Bastien Gorissen, and Samuel Melchior, 《在旋转群![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B02_2dd754664fb70a.png)上快速优化有向包围盒》（原题：Fast Oriented Bounding Box Optimization on the Rotation Group ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B02_2dd754664fb70a.png)），ACM Transactions on Graphics, 第30卷, 第5期, 第122:1–122:16页, 2011年10月. 本书引用页：951。
+**[254]** Chang, Chia-Tche, Bastien Gorissen, and Samuel Melchior, 《在旋转群![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B02_2dd754664fb70a.png)上快速优化有向包围盒》（原题：Fast Oriented Bounding Box Optimization on the Rotation Group ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B02_2dd754664fb70a.png)），ACM Transactions on Graphics, 第30卷, 第5期, 第122:1–122:16页, 2011年10月. 本书引用页：951。
 
 **[255]** Chang, Chun-Fa, Gary Bishop, and Anselmo Lastra, 《LDI树：用于基于图像渲染的层次表示》（原题：LDI Tree: A Hierarchical Representation for Image-Based Rendering），收录于 SIGGRAPH ’99: Proceedings of the 26th Annual Conference on Computer Graphics and Interactive Techniques, ACM Press/Addison-Wesley Publishing Co., 第291–298页, 1999年8月. 本书引用页：565。
 
@@ -526,7 +526,7 @@
 
 **[260]** Chen, Pei-Ju, Hiroko Awata, Atsuko Matsushita, En-Cheng Yang, and Kentaro Arikawa, 《青凤蝶Graphium sarpedon眼睛中极为丰富的光谱感知能力》（原题：Extreme Spectral Richness in the Eye of the Common Bluebottle Butterfly, Graphium sarpedon），Frontiers in Ecology and Evolution, 第4卷, 第18页, 2016年3月8日. 本书引用页：272。
 
-**[261]** Chi, Yung-feng, 《利用当今GPU实现栩栩如生的实时浅水动画》（原题：True-to-Life Real-Time Animation of Shallow Water on Todays GPUs），收录于 Wolfgang Engel, 主编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B02_21361f65e26b5d.png), Charles River Media, 第467–480页, 2005. 本书引用页：602, 626。
+**[261]** Chi, Yung-feng, 《利用当今GPU实现栩栩如生的实时浅水动画》（原题：True-to-Life Real-Time Animation of Shallow Water on Todays GPUs），收录于 Wolfgang Engel, 主编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B02_21361f65e26b5d.png), Charles River Media, 第467–480页, 2005. 本书引用页：602, 626。
 
 **[262]** Chiang, Matt Jen-Yuan, Benedikt Bitterli, Chuck Tappan, and Brent Burley, 《面向生产路径追踪的实用、可控毛发与皮毛模型》（原题：A Practical and Controllable Hair and Fur Model for Production Path Tracing），Computer Graphics Forum (Eurographics 2016), 第35卷, 第2期, 第275–283页, 2016. 本书引用页：643。
 
@@ -604,7 +604,7 @@
 
 **[299]** Cozzi, Patrick, and Kevin Ring, 《虚拟地球的三维引擎设计》（原题：3D Engine Design for Virtual Globes）， A K Peters/CRC Press, 2011. 本书引用页：668, 715, 872, 879。
 
-**[300]** Cozzi, P., and D. Bagnell, 《WebGL地球渲染流水线》（原题：A WebGL Globe Rendering Pipeline），收录于 Wolfgang Engel, 主编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B02_b023f79a54f1ee.png), CRC Press, 第39–48页, 2013. 本书引用页：872, 876。
+**[300]** Cozzi, P., and D. Bagnell, 《WebGL地球渲染流水线》（原题：A WebGL Globe Rendering Pipeline），收录于 Wolfgang Engel, 主编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B02_b023f79a54f1ee.png), CRC Press, 第39–48页, 2013. 本书引用页：872, 876。
 
 **[301]** Cozzi, Patrick, 主编， 《WebGL精粹》（原题：WebGL Insights）， CRC Press, 2015. 本书引用页：129, 1048。
 
@@ -688,7 +688,7 @@
 
 **[341]** Delalandre, Cyril, Pascal Gautron, Jean-Eudes Marvie, and Guillaume François, 《透射率函数映射》（原题：Transmittance Function Mapping），Symposium on Interactive 3D Graphics and Games, 2011. 本书引用页：570, 612, 620。
 
-**[342]** Delva, Michael, Julien Hamaide, and Ramses Ladlani, 《使用Shader Shaker进行基于语义的着色器生成》（原题：Semantic Based Shader Generation Using Shader Shaker），收录于 Wolfgang Engel, 主编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B02_62af897d8661a1.png), CRC Press, 第505–520页, 2015. 本书引用页：128。
+**[342]** Delva, Michael, Julien Hamaide, and Ramses Ladlani, 《使用Shader Shaker进行基于语义的着色器生成》（原题：Semantic Based Shader Generation Using Shader Shaker），收录于 Wolfgang Engel, 主编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B02_62af897d8661a1.png), CRC Press, 第505–520页, 2015. 本书引用页：128。
 
 **[343]** Demers, Joe, 《景深：技术综述》（原题：Depth of Field: A Survey of Techniques），收录于 Randima Fernando, 主编， GPU Gems, Addison-Wesley, 第375–390页, 2004. 本书引用页：531。
 
@@ -764,13 +764,13 @@
 
 **[379]** Drobot, Michal, 《〈杀戮地带：暗影坠落〉的光照》（原题：Lighting of Killzone: Shadow Fall），Digital Dragons 会议, 2013年4月. 本书引用页：116。
 
-**[380]** Drobot, Michal, 《基于物理的面光源》（原题：Physically Based Area Lights），收录于 Wolfgang Engel, 主编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B02_fc0f8c0e268d00.png), CRC Press, 第67–100页, 2014. 本书引用页：116, 388。
+**[380]** Drobot, Michal, 《基于物理的面光源》（原题：Physically Based Area Lights），收录于 Wolfgang Engel, 主编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B02_fc0f8c0e268d00.png), CRC Press, 第67–100页, 2014. 本书引用页：116, 388。
 
 **[381]** Drobot, Michal, 《全屏渲染阶段中的GCN执行模式》（原题：GCN Execution Patterns in Full Screen Passes），Michal Drobot 博客, 2014年4月1日. 本书引用页：514。
 
 **[382]** Drobot, Michał, 《混合重建抗锯齿》（原题：Hybrid Reconstruction Anti Aliasing），SIGGRAPH“游戏中的实时渲染进展”课程（SIGGRAPH Advances in Real-Time Rendering in Games）， 2014年8月. 本书引用页：141, 142, 146, 165。
 
-**[383]** Drobot, Michał, 《混合重建抗锯齿》（原题：Hybrid Reconstruction Antialiasing），收录于 Wolfgang Engel, 主编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B02_62af897d8661a1.png), CRC Press, 第101–139页, 2015. 本书引用页：141, 146, 165。
+**[383]** Drobot, Michał, 《混合重建抗锯齿》（原题：Hybrid Reconstruction Antialiasing），收录于 Wolfgang Engel, 主编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B02_62af897d8661a1.png), CRC Press, 第101–139页, 2015. 本书引用页：141, 146, 165。
 
 **[384]** Drobot, Michal, 《〈使命召唤：无限战争〉的渲染》（原题：Rendering of Call of Duty Infinite Warfare），Digital Dragons 会议, 2017年5月. 本书引用页：262, 325, 371, 420, 502, 503, 509, 569。
 
@@ -860,15 +860,15 @@
 
 **[426]** Engel, Wolfgang，编，《Direct3D ShaderX：顶点与像素着色器技巧和技术》（原题：Direct3D ShaderX: Vertex & Pixel Shader Tips and Techniques），Wordware, 2002. 本书引用页：xvii。
 
-**[427]** Engel, Wolfgang，编，《ShaderX 第二卷：DirectX 9 入门与教程》（原题：![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_6137f40531a8aa.png): Introduction & Tutorials with DirectX 9），Wordware, 2004. 本书引用页：xvi。
+**[427]** Engel, Wolfgang，编，《ShaderX 第二卷：DirectX 9 入门与教程》（原题：![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_6137f40531a8aa.png): Introduction & Tutorials with DirectX 9），Wordware, 2004. 本书引用页：xvi。
 
-**[428]** Engel, Wolfgang，编，《ShaderX 第二卷：DirectX 9 着色器编程技巧与诀窍》（原题：![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_6137f40531a8aa.png): Shader Programming Tips & Tricks with DirectX 9），Wordware, 2004. 本书引用页：xvi。
+**[428]** Engel, Wolfgang，编，《ShaderX 第二卷：DirectX 9 着色器编程技巧与诀窍》（原题：![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_6137f40531a8aa.png): Shader Programming Tips & Tricks with DirectX 9），Wordware, 2004. 本书引用页：xvi。
 
-**[429]** Engel, Wolfgang，编，《ShaderX 第三卷》（原题：![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_a83a09be91f80b.png)），Charles River Media, 2004. 本书引用页：1148。
+**[429]** Engel, Wolfgang，编，《ShaderX 第三卷》（原题：![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_a83a09be91f80b.png)），Charles River Media, 2004. 本书引用页：1148。
 
-**[430]** Engel, Wolfgang，《级联阴影贴图》（原题：Cascaded Shadow Maps），载于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_81da322d36d743.png), Charles River Media, 第197–206页, 2006. 本书引用页：242, 243。
+**[430]** Engel, Wolfgang，《级联阴影贴图》（原题：Cascaded Shadow Maps），载于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_81da322d36d743.png), Charles River Media, 第197–206页, 2006. 本书引用页：242, 243。
 
-**[431]** Engel, Wolfgang，《为多个光源设计渲染器：光照预通道渲染器》（原题：Designing a Renderer for Multiple Lights: The Light Pre-Pass Renderer），载于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_d2e9c37cce63da.png), Charles River Media, 第655–666页, 2009. 本书引用页：892。
+**[431]** Engel, Wolfgang，《为多个光源设计渲染器：光照预通道渲染器》（原题：Designing a Renderer for Multiple Lights: The Light Pre-Pass Renderer），载于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_d2e9c37cce63da.png), Charles River Media, 第655–666页, 2009. 本书引用页：892。
 
 **[432]** Engel, Wolfgang，《光照预通道；延迟光照：最新进展》（原题：Light Pre-Pass; Deferred Lighting: Latest Development），SIGGRAPH 游戏实时渲染进展课程（SIGGRAPH Advances in Real-Time Rendering in Games course）, 2009年8月. 本书引用页：892, 901。
 
@@ -950,7 +950,7 @@
 
 **[471]** Filion, Dominic, and Rob McNaughton，《〈星际争霸II〉：特效与技术》（原题：Starcraft II: Effects and Techniques），SIGGRAPH 三维图形与游戏实时渲染进展课程（SIGGRAPH Advances in Real-Time Rendering in 3D Graphics and Games course）, 2008年8月. 本书引用页：257, 459, 885。
 
-**[472]** Fisher, F., and A. Woo，《镜面高光：![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_b12d7937f5dcad.png) 与 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_92d3d804a6db72.png) 的比较》（原题：![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_b12d7937f5dcad.png) versus ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_92d3d804a6db72.png) Specular Highlights），载于 Paul S. Heckbert，编， Graphics Gems IV, Academic Press, 第388–400页, 1994. 本书引用页：421。
+**[472]** Fisher, F., and A. Woo，《镜面高光：![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_b12d7937f5dcad.png) 与 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_92d3d804a6db72.png) 的比较》（原题：![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_b12d7937f5dcad.png) versus ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_92d3d804a6db72.png) Specular Highlights），载于 Paul S. Heckbert，编， Graphics Gems IV, Academic Press, 第388–400页, 1994. 本书引用页：421。
 
 **[473]** Flavell, Andrew，《运行时 Mip 贴图过滤》（原题：Run Time Mip-Map Filtering），Game Developer, 第5卷, 第11期, 第34–43页, 1998年11月. 本书引用页：185, 186。
 
@@ -972,7 +972,7 @@
 
 **[482]** Forsyth, Tom，《替身：添加场景杂物》（原题：Impostors: Adding Clutter），载于 Mark DeLoura，编， Game Programming Gems 2, Charles River Media, 第488–496页, 2001. 本书引用页：561, 562。
 
-**[483]** Forsyth, Tom，《使用多个动态视锥体提高阴影缓冲区的稳健性》（原题：Making Shadow Buffers Robust Using Multiple Dynamic Frustums），载于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_21361f65e26b5d.png), Charles River Media, 第331–346页, 2005. 本书引用页：242。
+**[483]** Forsyth, Tom，《使用多个动态视锥体提高阴影缓冲区的稳健性》（原题：Making Shadow Buffers Robust Using Multiple Dynamic Frustums），载于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_21361f65e26b5d.png), Charles River Media, 第331–346页, 2005. 本书引用页：242。
 
 **[484]** Forsyth, Tom，《极其实用的阴影》（原题：Extremely Practical Shadows），游戏开发者大会（Game Developers Conference）, 2006年3月. 本书引用页：234, 241, 242。
 
@@ -992,7 +992,7 @@
 
 **[492]** Fowles, Grant R.，《现代光学导论》（原题：Introduction to Modern Optics），第2版, Holt, Reinhart, and Winston, 1975. 本书引用页：373。
 
-**[493]** Franklin, Dustin，《基于硬件的环境光遮蔽》（原题：Hardware-Based Ambient Occlusion），载于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_21361f65e26b5d.png), Charles River Media, 第91–100页, 2005. 本书引用页：452。
+**[493]** Franklin, Dustin，《基于硬件的环境光遮蔽》（原题：Hardware-Based Ambient Occlusion），载于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_21361f65e26b5d.png), Charles River Media, 第91–100页, 2005. 本书引用页：452。
 
 **[494]** Frey, Ivo Zoltan，《使用双四元数与 QTangents 进行球面蒙皮》（原题：Spherical Skinning with Dual-Quaternions and QTangents），载于 ACM SIGGRAPH 2011 Talks, 文章编号 11, 2011年8月. 本书引用页：209, 210, 715。
 
@@ -1024,9 +1024,9 @@
 
 **[508]** Funkhouser, Thomas A., and Carlo H. Séquin，《复杂虚拟环境可视化中维持交互帧率的自适应显示算法》（原题：Adaptive Display Algorithm for Interactive Frame Rates During Visualization of Complex Virtual Environments），载于 SIGGRAPH ’93：第20届计算机图形学与交互技术年会论文集（SIGGRAPH ’93: Proceedings of the 20th Annual Conference on Computer Graphics and Interactive Techniques）, ACM, 第247–254页, 1993年8月. 本书引用页：710, 864, 865, 866。
 
-**[509]** Fürst, René, Oliver Mattausch, and Daniel Scherzer，《实时深度阴影贴图》（原题：Real-Time Deep Shadow Maps），载于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_b023f79a54f1ee.png), CRC Press, 第253–264页, 2013. 本书引用页：258。
+**[509]** Fürst, René, Oliver Mattausch, and Daniel Scherzer，《实时深度阴影贴图》（原题：Real-Time Deep Shadow Maps），载于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_b023f79a54f1ee.png), CRC Press, 第253–264页, 2013. 本书引用页：258。
 
-**[510]** Gaitatzes, Athanasios, and Georgios Papaioannou，《渐进式屏幕空间多通道表面体素化》（原题：Progressive Screen-Space Multichannel Surface Voxelization），载于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_b023f79a54f1ee.png), CRC Press, 第137–154页, 2013. 本书引用页：582。
+**[510]** Gaitatzes, Athanasios, and Georgios Papaioannou，《渐进式屏幕空间多通道表面体素化》（原题：Progressive Screen-Space Multichannel Surface Voxelization），载于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_b023f79a54f1ee.png), CRC Press, 第137–154页, 2013. 本书引用页：582。
 
 **[511]** Galeano, David，《Turbulenz 引擎中的渲染优化》（原题：Rendering Optimizations in the Turbulenz Engine），载于 Patrick Cozzi，编， WebGL Insights, CRC Press, 第157–171页, 2015. 本书引用页：795, 796, 802, 803。
 
@@ -1142,7 +1142,7 @@
 
 **[567]** Gortler, Steven J., Radek Grzeszczuk, Richard Szeliski, and Michael F. Cohen，《Lumigraph 光场图》（原题：The Lumigraph），载于 SIGGRAPH ’96：第23届计算机图形学与交互技术年会论文集（SIGGRAPH ’96: Proceedings of the 23rd Annual Conference on Computer Graphics and Interactive Techniques）, ACM, 第43–54页, 1996年8月. 本书引用页：549。
 
-**[568]** Gosselin, David R., Pedro V. Sander, and Jason L. Mitchell，《实时纹理空间皮肤渲染》（原题：Real-Time Texture-Space Skin Rendering），载于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B03_a83a09be91f80b.png), Charles River Media, 第171–183页, 2004. 本书引用页：635。
+**[568]** Gosselin, David R., Pedro V. Sander, and Jason L. Mitchell，《实时纹理空间皮肤渲染》（原题：Real-Time Texture-Space Skin Rendering），载于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B03_a83a09be91f80b.png), Charles River Media, 第171–183页, 2004. 本书引用页：635。
 
 **[569]** Gosselin, David R.，《实时皮肤渲染》（原题：Real Time Skin Rendering），游戏开发者大会（Game Developers Conference）, 2004年3月. 本书引用页：634, 635。
 
@@ -1212,7 +1212,7 @@
 
 **[601]** Griffin, Wesley, and Marc Olano, 《纹理压缩的客观图像质量评估》（Objective Image Quality Assessment of Texture Compression），收录于 Proceedings of the 18th Meeting of the ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games, ACM, 第119–126页, 1999年3月. 本书引用页：第198页。
 
-**[602]** Griffiths, Andrew, 《实时细胞纹理生成》（Real-Time Cellular Texturing），收录于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B04_81da322d36d743.png), Charles River Media, 第519–532页, 2006年. 本书引用页：第199页。
+**[602]** Griffiths, Andrew, 《实时细胞纹理生成》（Real-Time Cellular Texturing），收录于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B04_81da322d36d743.png), Charles River Media, 第519–532页, 2006年. 本书引用页：第199页。
 
 **[603]** Grimes, Bronwen, 《为更大、更好的续作着色：《求生之路2》中的技术》（Shading a Bigger, Better Sequel: Techniques in Left 4 Dead 2 ） Game Developers Conference（游戏开发者大会）, 2010年3月. 本书引用页：第366页。
 
@@ -1236,7 +1236,7 @@
 
 **[613]** Gruen, Holger, 《使用常量缓冲区而不再持续烦恼》（Constant Buffers without Constant Pain） NVIDIA GameWorks 博客, 2015年1月14日. 本书引用页：第795页。
 
-**[614]** Grün, Holger, 《平滑N面片》（Smoothed N-Patches），收录于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B04_81da322d36d743.png), Charles River Media, 第5–22页, 2006年. 本书引用页：第747页。
+**[614]** Grün, Holger, 《平滑N面片》（Smoothed N-Patches），收录于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B04_81da322d36d743.png), Charles River Media, 第5–22页, 2006年. 本书引用页：第747页。
 
 **[615]** Grün, Holger, 《实现快速DDOF求解器》（Implementing a Fast DDOF Solver） Eric Lengyel，编， Game Engine Gems 2, A K Peters, Ltd., 第119–133页, 2011年. 本书引用页：第535页。
 
@@ -1342,7 +1342,7 @@
 
 **[666]** Harada, T., 《Forward+的2.5D剔除》（A 2.5D culling for Forward+），收录于 SIGGRAPH Asia 2012技术简报集（SIGGRAPH Asia 2012 Technical Briefs）, ACM, 第18:1–18:4页, 2012年12月. 本书引用页：第897页。
 
-**[667]** Harada, Takahiro, Jay McKee, and Jason C. Yang, 《Forward+：迈向实时电影风格着色的一步》（Forward+: A Step Toward Film-Style Shading in Real Time），收录于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B04_b023f79a54f1ee.png), CRC Press, 第115–135页, 2013年. 本书引用页：第887、895、896、897、904页。
+**[667]** Harada, Takahiro, Jay McKee, and Jason C. Yang, 《Forward+：迈向实时电影风格着色的一步》（Forward+: A Step Toward Film-Style Shading in Real Time），收录于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B04_b023f79a54f1ee.png), CRC Press, 第115–135页, 2013年. 本书引用页：第887、895、896、897、904页。
 
 **[668]** Hargreaves, Shawn, 《延迟着色》（Deferred Shading） Game Developers Conference（游戏开发者大会）, 2004年3月. 本书引用页：第882、884、886页。
 
@@ -1444,7 +1444,7 @@
 
 **[717]** Hennessy, Padraic, 《《Skylanders: SuperChargers》中的混合分辨率渲染》（Mixed Resolution Rendering in Skylanders: SuperChargers ） Game Developers Conference（游戏开发者大会）, 2016年3月. 本书引用页：第520页。
 
-**[718]** Hensley, Justin, and Thorsten Scheuermann, 《使用区域求和表实现动态光泽环境反射》（Dynamic Glossy Environment Reflections Using Summed-Area Tables），收录于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B04_21361f65e26b5d.png), Charles River Media, 第187–200页, 2005年. 本书引用页：第188、419页。
+**[718]** Hensley, Justin, and Thorsten Scheuermann, 《使用区域求和表实现动态光泽环境反射》（Dynamic Glossy Environment Reflections Using Summed-Area Tables），收录于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B04_21361f65e26b5d.png), Charles River Media, 第187–200页, 2005年. 本书引用页：第188、419页。
 
 **[719]** Hensley, Justin, Thorsten Scheuermann, Greg Coombe, Montek Singh, and Anselmo Lastra, 《快速生成区域求和表及其应用》（Fast Summed-Area Table Generation and Its Applications） Computer Graphics Forum, 第24卷, 第3期, 第547–555页, 2005年. 本书引用页：第188、419页。
 
@@ -1476,7 +1476,7 @@
 
 **[733]** Herzog, Robert, Elmar Eisemann, Karol Myszkowski, and H.-P. Seidel, 《GPU上的时空上采样》（Spatio-Temporal Upsampling on the GPU），收录于 Proceedings of the 2010 ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games, ACM, 第91–98页, 2010年. 本书引用页：第520页。
 
-**[734]** Hicks, Odell, 《热成像模拟》（A Simulation of Thermal Imaging），收录于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B04_a83a09be91f80b.png), Charles River Media, 第169–170页, 2004年. 本书引用页：第521页。
+**[734]** Hicks, Odell, 《热成像模拟》（A Simulation of Thermal Imaging），收录于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B04_a83a09be91f80b.png), Charles River Media, 第169–170页, 2004年. 本书引用页：第521页。
 
 **[735]** Hill, F. S., Jr., 《“垂直点积”的乐趣》（The Pleasures of ‘Perp Dot’ Products），收录于 Paul S. Heckbert，编， Graphics Gems IV, Academic Press, 第138–148页, 1994年. 本书引用页：第6、987页。
 
@@ -1484,7 +1484,7 @@
 
 **[737]** Hill, Stephen, 《《断罪》中的渲染》（Rendering with Conviction） Game Developers Conference（游戏开发者大会）, 2010年3月. 本书引用页：第452、457页。
 
-**[738]** Hill, Stephen, and Daniel Collin, 《游戏中实用的动态可见性》（Practical, Dynamic Visibility for Games），收录于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B04_d705a2aca1d3b9.png), A K Peters/CRC Press, 第329–348页, 2011年. 本书引用页：第848页。
+**[738]** Hill, Stephen, and Daniel Collin, 《游戏中实用的动态可见性》（Practical, Dynamic Visibility for Games），收录于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B04_d705a2aca1d3b9.png), A K Peters/CRC Press, 第329–348页, 2011年. 本书引用页：第848页。
 
 **[739]** Hill, Stephen, 《狂野西部的镜面反射对决》（Specular Showdown in the Wild West） Self-Shadow 博客, 2011年7月22日. 本书引用页：第370页。
 
@@ -1500,7 +1500,7 @@
 
 **[745]** Hillaire, Sébastien, 《用于Frostbite交互式全局光照工作流程的实时光线追踪》（Real-Time Raytracing for Interactive Global Illumination Workflows in Frostbite） Game Developers Conference（游戏开发者大会）, 2018年3月. 本书引用页：第1044页。
 
-**[746]** Hillesland, Karl, 《实时Ptex与向量位移》（Real-Time Ptex and Vector Displacement），收录于 Wolfgang Engel，编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B04_b023f79a54f1ee.png), CRC Press, 第69–80页, 2013年. 本书引用页：第191页。
+**[746]** Hillesland, Karl, 《实时Ptex与向量位移》（Real-Time Ptex and Vector Displacement），收录于 Wolfgang Engel，编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B04_b023f79a54f1ee.png), CRC Press, 第69–80页, 2013年. 本书引用页：第191页。
 
 **[747]** Hillesland, K. E., and J. C. Yang, 《纹素着色》（Texel Shading），收录于 Eurographics 2016短论文集（Eurographics 2016—Short Papers） , Eurographics Association, 第73–76页, 2016年5月. 本书引用页：第911页。
 
@@ -1666,7 +1666,7 @@
 
 **[827]** Jiménez, J. J., David Whelan, Veronica Sundstedt，以及 Diego Gutierrez, 《实时真实感皮肤半透明性》（Real-Time Realistic Skin Translucency），计算机图形学与应用（Computer Graphics and Applications） , 第30卷, 第4期, 第32–41页, 2010. 本书引用页：637。
 
-**[828]** Jimenez, Jorge, Belen Masia, Jose I. Echevarria, Fernando Navarro，以及 Diego Gutierrez, 《实用形态学抗锯齿》（Practical Morphological Antialiasing），载于 Wolfgang Engel（编）， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B05_d705a2aca1d3b9.png), A K Peters/CRC Press, 第95–113页, 2011. 本书引用页：148。
+**[828]** Jimenez, Jorge, Belen Masia, Jose I. Echevarria, Fernando Navarro，以及 Diego Gutierrez, 《实用形态学抗锯齿》（Practical Morphological Antialiasing），载于 Wolfgang Engel（编）， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B05_d705a2aca1d3b9.png), A K Peters/CRC Press, 第95–113页, 2011. 本书引用页：148。
 
 **[829]** Jimenez, Jorge, Diego Gutierrez, 等, 《实时抗锯齿的滤波方法》（SIGGRAPH实时抗锯齿的滤波方法（SIGGRAPH Filtering Approaches for Real-Time Anti-Aliasing），课程）, 2011年8月. 本书引用页：147, 165。
 
@@ -1692,7 +1692,7 @@
 
 **[840]** Johnsson, Björn, Per Ganestam, Michael Doggett，以及 Tomas Akenine-Möller, 《图形处理器上运行的软件算法的能效》（Power Efficiency for Software Algorithms Running on Graphics Processors），载于 第四届ACM SIGGRAPH／Eurographics高性能图形学会议论文集（Proceedings of the Fourth ACM SIGGRAPH / Eurographics Conference on High-Performance Graphics） , Eurographics Association, 第67–75页, 2012年6月. 本书引用页：790。
 
-**[841]** Jones, James L., 《使用OpenGL ES 3.0实现高效变形目标动画》（Efficient Morph Target Animation Using OpenGL ES 3.0），载于 Wolfgang Engel（编）， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B05_fc0f8c0e268d00.png), CRC Press, 第289–295页, 2014. 本书引用页：90。
+**[841]** Jones, James L., 《使用OpenGL ES 3.0实现高效变形目标动画》（Efficient Morph Target Animation Using OpenGL ES 3.0），载于 Wolfgang Engel（编）， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B05_fc0f8c0e268d00.png), CRC Press, 第289–295页, 2014. 本书引用页：90。
 
 **[842]** Jönsson, Daniel, Erik Sundén, Anders Ynnerman，以及 Timo Ropinski, 《交互式体渲染的体积光照技术综述》（A Survey of Volumetric Illumination Techniques for Interactive Volume Rendering），计算机图形学论坛（Computer Graphics Forum）, 第33卷, 第1期, 第27–51页, 2014. 本书引用页：605。
 
@@ -1800,7 +1800,7 @@
 
 **[894]** Kim, Tae-Yong，以及 Ulrich Neumann, 《不透明度阴影贴图》（Opacity Shadow Maps），载于 渲染技术2001（Rendering Techniques 2001）, Springer, 第177–182页, 2001. 本书引用页：257, 570, 571, 612。
 
-**[895]** King, Gary，以及 William Newhall, 《高效全向阴影贴图》（Efficient Omnidirectional Shadow Maps），载于 Wolfgang Engel（编）， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B05_a83a09be91f80b.png), Charles River Media, 第435–448页, 2004. 本书引用页：234。
+**[895]** King, Gary，以及 William Newhall, 《高效全向阴影贴图》（Efficient Omnidirectional Shadow Maps），载于 Wolfgang Engel（编）， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B05_a83a09be91f80b.png), Charles River Media, 第435–448页, 2004. 本书引用页：234。
 
 **[896]** King, Gary, 《阴影映射算法》（Shadow Mapping Algorithms），GPU Jackpot 报告, 2004年10月. 本书引用页：235, 240。
 
@@ -1824,7 +1824,7 @@
 
 **[906]** Klein, R., G. Liebich，以及 W. Strasser, 《带误差控制的网格简化》（Mesh Reduction with Error Control），载于 第七届可视化会议（Visualization ’96）论文集（Proceedings of the 7th Conference on Visualization ’96）, IEEE Computer Society, 第311–318页, 1996. 本书引用页：875。
 
-**[907]** Kleinhuis, Christian, 《使用DirectX实现变形目标动画》（Morph Target Animation Using DirectX），载于 Wolfgang Engel（编）， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B05_21361f65e26b5d.png), Charles River Media, 第39–45页, 2005. 本书引用页：89。
+**[907]** Kleinhuis, Christian, 《使用DirectX实现变形目标动画》（Morph Target Animation Using DirectX），载于 Wolfgang Engel（编）， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B05_21361f65e26b5d.png), Charles River Media, 第39–45页, 2005. 本书引用页：89。
 
 **[908]** Klint, Josh, 《Leadwerks游戏引擎4中的植被管理》（Vegetation Management in Leadwerks Game Engine 4），载于 Eric Lengyel（编）， 游戏引擎宝石3（Game Engine Gems 3）, CRC Press, 第53–71页, 2016. 本书引用页：560。
 
@@ -1840,7 +1840,7 @@
 
 **[914]** Knowles, Pyarelal, Geoff Leach，以及 Fabio Zambetta, 《高效分层片元缓冲技术》（Efficient Layered Fragment Buffer Techniques），载于 Patrick Cozzi & Christophe Riccio（编）， OpenGL Insights, CRC Press, 第279–292页, 2012. 本书引用页：155。
 
-**[915]** Kobbelt, Leif, 《根号3细分》（ ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B05_7c0c3f1156da0d.png)-Subdivision），载于 SIGGRAPH ’00：第27届计算机图形学与交互技术年会论文集（SIGGRAPH ’00: Proceedings of the 27th Annual Conference on Computer Graphics and Interactive Techniques）, ACM Press/Addison-Wesley Publishing Co., 第103–112页, 2000年7月. 本书引用页：756, 761。
+**[915]** Kobbelt, Leif, 《根号3细分》（ ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B05_7c0c3f1156da0d.png)-Subdivision），载于 SIGGRAPH ’00：第27届计算机图形学与交互技术年会论文集（SIGGRAPH ’00: Proceedings of the 27th Annual Conference on Computer Graphics and Interactive Techniques）, ACM Press/Addison-Wesley Publishing Co., 第103–112页, 2000年7月. 本书引用页：756, 761。
 
 **[916]** Kobbelt, Leif，以及 Mario Botsch, 《计算机图形学中基于点的技术综述》（A Survey of Point-Based Techniques in Computer Graphics），计算机与图形学（Computers & Graphics） , 第28卷, 第6期, 第801–814页, 2004年12月. 本书引用页：578。
 
@@ -1858,7 +1858,7 @@
 
 **[923]** Koltun, Vladlen, Yiorgos Chrysanthou，以及 Daniel Cohen-Or, 《利用对偶射线空间实现硬件加速的区域可见性计算》（Hardware-Accelerated From-Region Visibility Using a Dual Ray Space），载于 渲染技术2001（Rendering Techniques 2001）, Springer, 第204–214页, 2001年6月. 本书引用页：843。
 
-**[924]** Kontkanen, Janne，以及 Samuli Laine, 《环境光遮蔽场》（Ambient Occlusion Fields），载于 Wolfgang Engel（编）， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B05_21361f65e26b5d.png), Charles River Media, 第101–108页, 2005. 本书引用页：452。
+**[924]** Kontkanen, Janne，以及 Samuli Laine, 《环境光遮蔽场》（Ambient Occlusion Fields），载于 Wolfgang Engel（编）， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B05_21361f65e26b5d.png), Charles River Media, 第101–108页, 2005. 本书引用页：452。
 
 **[925]** Kontkanen, Janne，以及 Samuli Laine, 《环境光遮蔽场》（Ambient Occlusion Fields），载于 2005年交互式三维图形与游戏研讨会论文集（Proceedings of the 2005 Symposium on Interactive 3D Graphics and Games） , ACM, 第41–48页, 2005年4月. 本书引用页：452。
 
@@ -1870,7 +1870,7 @@
 
 **[929]** Kopta, D., K. Shkurko, J. Spjut, E. Brunvand，以及 A. Davis, 《节能且节省带宽的光线追踪架构》（An Energy and Bandwidth Efficient Ray Tracing Architecture），第五届高性能图形学会议论文集（Proceedings of the 5th High-Performance Graphics Conference）, ACM, 第121–128页, 2013年7月. 本书引用页：1039。
 
-**[930]** Kotfis, Dave，以及 Patrick Cozzi, 《利用深度相机进行八叉树映射》（Octree Mapping from a Depth Camera），载于 Wolfgang Engel（编）， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B05_cc3c385a1f353c.png), CRC Press, 第257–273页, 2016. 本书引用页：573, 580, 919。
+**[930]** Kotfis, Dave，以及 Patrick Cozzi, 《利用深度相机进行八叉树映射》（Octree Mapping from a Depth Camera），载于 Wolfgang Engel（编）， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B05_cc3c385a1f353c.png), CRC Press, 第257–273页, 2016. 本书引用页：573, 580, 919。
 
 **[931]** Kovacs, D., J. Mitchell, S. Drone，以及 D. Zorin, 《具有位移的实时带折痕近似细分曲面》（Real-Time Creased Approximate Subdivision Surfaces with Displacements），IEEE可视化与计算机图形学汇刊（IEEE Transactions on Visualization and Computer Graphics） , 第16卷, 第5期, 第742–751页, 2010. 本书引用页：777。
 
@@ -1964,7 +1964,7 @@
 
 **[976]** Lanman, Douglas，以及 David Luebke, 《近眼光场显示器》（Near-Eye Light Field Displays），ACM图形学汇刊（ACM Transactions on Graphics）, 第32卷, 第6期, 第220:1–220:10页, 2013年11月. 本书引用页：549, 923。
 
-**[977]** Lanza, Stefano, 《水下上帝光的动画与渲染》（Animation and Rendering of Underwater God Rays），载于 Wolfgang Engel（编）， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B05_81da322d36d743.png), Charles River Media, 第315–327页, 2006. 本书引用页：626, 631。
+**[977]** Lanza, Stefano, 《水下上帝光的动画与渲染》（Animation and Rendering of Underwater God Rays），载于 Wolfgang Engel（编）， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B05_81da322d36d743.png), Charles River Media, 第315–327页, 2006. 本书引用页：626, 631。
 
 **[978]** Lapidous, Eugene，以及 Guofang Jiao, 《低成本图形硬件的最优深度缓冲》（Optimal Depth Buffer for Low-Cost Graphics Hardware），载于 ACM SIGGRAPH／EUROGRAPHICS图形硬件研讨会论文集（Proceedings of the ACM SIGGRAPH/EUROGRAPHICS Workshop on Graphics Hardware）, ACM, 第67–73页, 1999年8月. 本书引用页：100。
 
@@ -1982,7 +1982,7 @@
 
 **[985]** Lathrop, Olin, David Kirk，以及 Doug Voorhies, 《通过亚像素寻址实现精确渲染》（Accurate Rendering by Subpixel Addressing），IEEE计算机图形学与应用（IEEE Computer Graphics and Applications）, 第10卷, 第5期, 第45–53页, 1990年9月. 本书引用页：689。
 
-**[986]** Latta, Lutz, 《GPU上的大规模并行粒子系统》（Massively Parallel Particle Systems on the GPU），载于 Wolfgang Engel（编）， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B05_a83a09be91f80b.png), Charles River Media, 第119–133页, 2004. 亦在GDC 2004上发表，并以《构建百万粒子系统》（Building a Million-Particle System）为题刊载于 Gamasutra, 2004年7月28日. 本书引用页：568, 571。
+**[986]** Latta, Lutz, 《GPU上的大规模并行粒子系统》（Massively Parallel Particle Systems on the GPU），载于 Wolfgang Engel（编）， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B05_a83a09be91f80b.png), Charles River Media, 第119–133页, 2004. 亦在GDC 2004上发表，并以《构建百万粒子系统》（Building a Million-Particle System）为题刊载于 Gamasutra, 2004年7月28日. 本书引用页：568, 571。
 
 **[987]** Latta, Lutz, 《关于粒子特效的一切》（Everything about Particle Effects），游戏开发者大会（Game Developers Conference） , 2007年3月. 本书引用页：568, 569, 571。
 
@@ -2098,7 +2098,7 @@
 
 **[1042]** Liktor, Gábor、Carsten Dachsbacher。《用于硬件光栅化的解耦延迟着色》（Decoupled Deferred Shading for Hardware Rasterization）。收录于 Proceedings of the ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games, ACM, 第143–150页, 2012年。 本书引用页：910。
 
-**[1043]** Liktor, Gábor、Carsten Dachsbacher。《GPU上的解耦延迟着色》（Decoupled Deferred Shading on the GPU）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B06_b023f79a54f1ee.png), CRC Press, 第81–98页, 2013年。 本书引用页：910。
+**[1043]** Liktor, Gábor、Carsten Dachsbacher。《GPU上的解耦延迟着色》（Decoupled Deferred Shading on the GPU）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B06_b023f79a54f1ee.png), CRC Press, 第81–98页, 2013年。 本书引用页：910。
 
 **[1044]** Liktor, G., M. Pan、C. Dachsbacher。《用于连续细节层次的分数式Reyes风格自适应曲面细分》（Fractional Reyes-Style Adaptive Tessellation for Continuous Level of Detail）。Computer Graphics Forum, 第33卷， 第7期， 第191–198页, 2014年。 本书引用页：774, 775。
 
@@ -2182,9 +2182,9 @@
 
 **[1084]** Lottes, Timothy。《FXAA像素宽度对比度降低》（FXAA Pixel Width Contrast Reduction）。Timothy Lottes 博客, 2016年10月27日。 本书引用页：148。
 
-**[1085]** Loviscach, Jörn。《轮廓几何着色器》（Silhouette Geometry Shaders）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B06_a83a09be91f80b.png), Charles River Media, 第49–56页, 2004年。 本书引用页：853。
+**[1085]** Loviscach, Jörn。《轮廓几何着色器》（Silhouette Geometry Shaders）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B06_a83a09be91f80b.png), Charles River Media, 第49–56页, 2004年。 本书引用页：853。
 
-**[1086]** Loviscach, Jörn。《法线向量的维护与运用》（Care and Feeding of Normal Vectors）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B06_f94f170a8f3474.png), Charles River Media, 第45–56页, 2008年。 本书引用页：366。
+**[1086]** Loviscach, Jörn。《法线向量的维护与运用》（Care and Feeding of Normal Vectors）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B06_f94f170a8f3474.png), Charles River Media, 第45–56页, 2008年。 本书引用页：366。
 
 **[1087]** Loviscach, Jörn。《法线向量的维护与运用》（Care and Feeding of Normal Vectors）。游戏开发者大会（Game Developers Conference）, 2008年3月。 本书引用页：366。
 
@@ -2226,11 +2226,11 @@
 
 **[1106]** Maillot, Jérôme、Jos Stam。《用于多边形建模的统一细分方案》（A Unified Subdivision Scheme for Polygonal Modeling）。Computer Graphics Forum, 第20卷， 第3期， 第471–479页, 2001年。 本书引用页：761。
 
-**[1107]** Maïm, Jonathan、Daniel Thalmann。《提高几何实例化的外观多样性》（Improved Appearance Variety for Geometry Instancing）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B06_f94f170a8f3474.png), Charles River Media, 第17–28页, 2008年。 本书引用页：798, 800。
+**[1107]** Maïm, Jonathan、Daniel Thalmann。《提高几何实例化的外观多样性》（Improved Appearance Variety for Geometry Instancing）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B06_f94f170a8f3474.png), Charles River Media, 第17–28页, 2008年。 本书引用页：798, 800。
 
 **[1108]** Maïm, Jonathan, Barbara Yersin、Daniel Thalmann。《用于人群的独特实例》（Unique Instances for Crowds）。IEEE Computer Graphics & Applications, 第29卷， 第6期， 第82–90页, 2009年。 本书引用页：798, 800。
 
-**[1109]** Malan, Hugh。《〈除暴战警〉中的图形技术》（Graphics Techniques in Crackdown）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B06_d2e9c37cce63da.png), Charles River Media, 第189–215页, 2009年。 本书引用页：561。
+**[1109]** Malan, Hugh。《〈除暴战警〉中的图形技术》（Graphics Techniques in Crackdown）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B06_d2e9c37cce63da.png), Charles River Media, 第189–215页, 2009年。 本书引用页：561。
 
 **[1110]** Malan, Hugh。《〈尘埃514〉中的实时全局光照与反射》（Real-Time Global Illumination and Reflections in Dust 514）。SIGGRAPH游戏中的实时渲染进展（SIGGRAPH Advances in Real-Time Rendering in Games） 课程, 2012年8月。 本书引用页：142, 143, 493。
 
@@ -2240,7 +2240,7 @@
 
 **[1113]** Malvar, R.。《不使用小波的快速渐进式图像编码》（Fast Progressive Image Coding Without Wavelets）。数据压缩会议（Data Compression Conference）, 2000年3月。 本书引用页：870。
 
-**[1114]** Malyshau, Dzmitry。《基于四元数的渲染管线》（A Quaternion-Based Rendering Pipeline）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B06_0f88d86ae08ff9.png), CRC Press, 第265–273页, 2012年。 本书引用页：82, 210, 715。
+**[1114]** Malyshau, Dzmitry。《基于四元数的渲染管线》（A Quaternion-Based Rendering Pipeline）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B06_0f88d86ae08ff9.png), CRC Press, 第265–273页, 2012年。 本书引用页：82, 210, 715。
 
 **[1115]** Mammen, Abraham。《采用虚拟像素映射技术实现的透明与抗锯齿算法》（Transparency and Antialiasing Algorithms Implemented with the Virtual Pixel Maps Technique）。IEEE Computer Graphics & Applications, 第9卷， 第4期， 第43–55页, 1989年7月。 本书引用页：139, 154。
 
@@ -2286,7 +2286,7 @@
 
 **[1136]** Mattausch, Oliver, Jiří Bittner、Michael Wimmer。《CHC++：重新审视相干层次剔除》（CHC++: Coherent Hierarchical Culling Revisited）。Computer Graphics Forum, 第27卷， 第2期， 第221–230页, 2008年。 本书引用页：845。
 
-**[1137]** Mattausch, Oliver, Jiří Bittner, Ari Silvennoinen, Daniel Scherzer、Michael Wimmer。《阴影贴图的高效在线可见性》（Efficient Online Visibility for Shadow Maps）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B06_0f88d86ae08ff9.png), CRC Press, 第233–242页, 2012年。 本书引用页：247。
+**[1137]** Mattausch, Oliver, Jiří Bittner, Ari Silvennoinen, Daniel Scherzer、Michael Wimmer。《阴影贴图的高效在线可见性》（Efficient Online Visibility for Shadow Maps）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B06_0f88d86ae08ff9.png), CRC Press, 第233–242页, 2012年。 本书引用页：247。
 
 **[1138]** Mattes, Ben、Jean-Francois St-Amour。《〈波斯王子〉的插画式渲染》（Illustrative Rendering of Prince of Persia）。游戏开发者大会（Game Developers Conference）, 2009年3月。 本书引用页：658, 662。
 
@@ -2352,7 +2352,7 @@
 
 **[1169]** McGuire, Morgan、John F. Hughes。《由硬件确定的特征边》（Hardware-Determined Feature Edges）。收录于 Proceedings of the 3rd International Symposium on Non-Photorealistic Animation and Rendering, ACM, 第35–47页, 2004年6月。 本书引用页：668。
 
-**[1170]** McGuire, Morgan。《超级着色器》（The SuperShader）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B06_21361f65e26b5d.png), Charles River Media, 第485–498页, 2005年。 本书引用页：128。
+**[1170]** McGuire, Morgan。《超级着色器》（The SuperShader）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B06_21361f65e26b5d.png), Charles River Media, 第485–498页, 2005年。 本书引用页：128。
 
 **[1171]** McGuire, Morgan、Max McGuire。《陡峭视差映射》（Steep Parallax Mapping）。Symposium on Interactive 3D Graphics and Games 海报, 2005年4月。 本书引用页：215, 216, 217, 218, 933。
 
@@ -2394,7 +2394,7 @@
 
 **[1190]** McLaren, James。《〈明日之子〉的技术》（The Technology of The Tomorrow Children）。游戏开发者大会（Game Developers Conference）, 2015年3月。 本书引用页：496, 504, 569。
 
-**[1191]** McNabb, Doug。《稀疏程序化体渲染》（Sparse Procedural Volume Rendering）。收录于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B06_62af897d8661a1.png), CRC Press, 第167–180页, 2015年。 本书引用页：611, 934。
+**[1191]** McNabb, Doug。《稀疏程序化体渲染》（Sparse Procedural Volume Rendering）。收录于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B06_62af897d8661a1.png), CRC Press, 第167–180页, 2015年。 本书引用页：611, 934。
 
 **[1192]** McReynolds, Tom、David Blythe。《使用OpenGL进行高级图形编程》（Advanced Graphics Programming Using OpenGL）。Morgan Kaufmann, 2005年。 本书引用页：152, 153, 199, 200, 221, 222, 229, 538, 551, 674, 675, 678。
 
@@ -2434,7 +2434,7 @@
 
 **[1209]** Mikkelsen, Morten S., 《在 GPU 上对未参数化曲面进行凹凸映射》（原题：Bump Mapping Unparametrized Surfaces on the GPU）；技术报告, Naughty Dog, 2010. 本书引用页：210。
 
-**[1210]** Mikkelsen, Morten S., 《精细裁剪的分块光源列表》（原题：Fine Pruned Tiled Light Lists）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_cc3c385a1f353c.png), CRC Press, 第69–81页, 2016. 本书引用页：897, 914。
+**[1210]** Mikkelsen, Morten S., 《精细裁剪的分块光源列表》（原题：Fine Pruned Tiled Light Lists）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_cc3c385a1f353c.png), CRC Press, 第69–81页, 2016. 本书引用页：897, 914。
 
 **[1211]** Miller, Gavin, 《局部与全局可达性着色的高效算法》（原题：Efficient Algorithms for Local and Global Accessibility Shading）；载于 SIGGRAPH ’94: Proceedings of the 21st Annual Conference on Computer Graphics and Interactive Techniques, ACM, 第319–326页, 1994年7月. 本书引用页：449。
 
@@ -2450,13 +2450,13 @@
 
 **[1217]** Mitchell, Jason L., 《在 Direct3D 中利用 1.4 版像素着色器处理图像》（原题：Image Processing with 1.4 Pixel Shaders in Direct3D）；载于 Wolfgang Engel, 编， Direct3D ShaderX: Vertex & Pixel Shader Tips and Techniques, Wordware, 第258–269页, 2002. 本书引用页：521, 662。
 
-**[1218]** Mitchell, Jason L., Marwan Y. Ansari, 和 Evan Hart, 《利用 DirectX 9 像素着色器进行高级图像处理》（原题：Advanced Image Processing with DirectX 9 Pixel Shaders）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_6137f40531a8aa.png): Shader Programming Tips and Tricks with DirectX 9, Wordware, 第439–468页, 2004. 本书引用页：515, 517, 521。
+**[1218]** Mitchell, Jason L., Marwan Y. Ansari, 和 Evan Hart, 《利用 DirectX 9 像素着色器进行高级图像处理》（原题：Advanced Image Processing with DirectX 9 Pixel Shaders）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_6137f40531a8aa.png): Shader Programming Tips and Tricks with DirectX 9, Wordware, 第439–468页, 2004. 本书引用页：515, 517, 521。
 
-**[1219]** Mitchell, Jason L., 《光束渲染》（原题：Light Shaft Rendering）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_a83a09be91f80b.png), Charles River Media, 第573–588页, 2004. 本书引用页：604。
+**[1219]** Mitchell, Jason L., 《光束渲染》（原题：Light Shaft Rendering）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_a83a09be91f80b.png), Charles River Media, 第573–588页, 2004. 本书引用页：604。
 
 **[1220]** Mitchell, Jason L., 和 Pedro V. Sander, 《显式 Early-Z 剔除的应用》（原题：Applications of Explicit Early-Z Culling）；SIGGRAPH“实时着色”课程（SIGGRAPH Real-Time Shading course）, 2004年8月. 本书引用页：53, 1016。
 
-**[1221]** Mitchell, Jason, 《环境贴图的运动模糊》（原题：Motion Blurring Environment Maps）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_21361f65e26b5d.png), Charles River Media, 第263–268页, 2005. 本书引用页：538。
+**[1221]** Mitchell, Jason, 《环境贴图的运动模糊》（原题：Motion Blurring Environment Maps）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_21361f65e26b5d.png), Charles River Media, 第263–268页, 2005. 本书引用页：538。
 
 **[1222]** Mitchell, Jason, Gary McTaggart, 和 Chris Green, 《Valve 的 Source 引擎中的着色》（原题：Shading in Valve’s Source Engine）；SIGGRAPH“三维图形与游戏中的高级实时渲染”课程（SIGGRAPH Advanced Real-Time Rendering in 3D Graphics and Games course）, 2006年8月. 本书引用页：289, 382, 402, 499。
 
@@ -2466,7 +2466,7 @@
 
 **[1225]** Mitchell, Kenny, 《作为后处理的体积光散射》（原题：Volumetric Light Scattering as a Post-Process）；载于 Hubert Nguyen, 编， GPU Gems 3, Addison-Wesley, 第275–285页, 2007. 本书引用页：604。
 
-**[1226]** Mittring, Martin, 《三角网格切线空间计算》（原题：Triangle Mesh Tangent Space Calculation）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_21361f65e26b5d.png), Charles River Media, 第77–89页, 2005. 本书引用页：210。
+**[1226]** Mittring, Martin, 《三角网格切线空间计算》（原题：Triangle Mesh Tangent Space Calculation）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_21361f65e26b5d.png), Charles River Media, 第77–89页, 2005. 本书引用页：210。
 
 **[1227]** Mittring, Martin, 《探寻下一代——CryEngine 2》（原题：Finding Next Gen—CryEngine 2）；SIGGRAPH“三维图形与游戏中的高级实时渲染”课程（SIGGRAPH Advanced Real-Time Rendering in 3D Graphics and Games course）, 2007年8月. 本书引用页：43, 195, 239, 242, 255, 457, 476, 559, 856, 860, 861。
 
@@ -2514,7 +2514,7 @@
 
 **[1249]** Museth, Ken, 《VDB：具有动态拓扑的高分辨率稀疏体数据》（原题：VDB: High-Resolution Sparse Volumes with Dynamic Topology）；ACM Transactions on Graphics, 第32卷, 第2期, 文章编号 27, 2013年6月. 本书引用页：578, 584。
 
-**[1250]** Myers, Kevin, 《深入理解 Alpha 到覆盖率转换》（原题：Alpha-to-Coverage in Depth）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_81da322d36d743.png), Charles River Media, 第69–74页, 2006. 本书引用页：207。
+**[1250]** Myers, Kevin, 《深入理解 Alpha 到覆盖率转换》（原题：Alpha-to-Coverage in Depth）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_81da322d36d743.png), Charles River Media, 第69–74页, 2006. 本书引用页：207。
 
 **[1251]** Myers, Kevin, 《方差阴影映射》（原题：Variance Shadow Mapping）；NVIDIA 白皮书, 2007. 本书引用页：253。
 
@@ -2532,7 +2532,7 @@
 
 **[1258]** Narasimhan, Srinivasa G., Mohit Gupta, Craig Donner, Ravi Ramamoorthi, Shree K. Nayar, 和 Henrik Wann Jensen, 《通过稀释获取参与介质的散射性质》（原题：Acquiring Scattering Properties of Participating Media by Dilution）；ACM Transactions on Graphics (SIGGRAPH 2006), 第25卷, 第3期, 第1003–1012页, 2006年8月. 本书引用页：591, 592。
 
-**[1259]** Narkowicz, Krzysztof, 《GPU 上的实时 BC6H 压缩》（原题：Real-Time BC6H Compression on GPU）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_fc0f8c0e268d00.png), CRC Press, 第219–230页, 2014. 本书引用页：503, 870。
+**[1259]** Narkowicz, Krzysztof, 《GPU 上的实时 BC6H 压缩》（原题：Real-Time BC6H Compression on GPU）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_fc0f8c0e268d00.png), CRC Press, 第219–230页, 2014. 本书引用页：503, 870。
 
 **[1260]** Narkowicz, Krzysztof, 《ACES 电影式色调映射曲线》（原题：ACES Filmic Tone Mapping Curve）；Krzysztof Narkowicz 博客, 2016年1月6日. 本书引用页：287。
 
@@ -2596,7 +2596,7 @@
 
 **[1290]** Nowrouzezahrai, Derek, Patricio Simari, 和 Eugene Fiume, 《用于高效球谐旋转的稀疏带状谐波分解》（原题：Sparse Zonal Harmonic Factorization for Efficient SH Rotation）；ACM Transactions on Graphics, 第31卷, 第3期, 文章编号 23, 2012. 本书引用页：401。
 
-**[1291]** Nuebel, Markus, 《硬件加速的炭笔画渲染》（原题：Hardware-Accelerated Charcoal Rendering）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_a83a09be91f80b.png), Charles River Media, 第195–204页, 2004. 本书引用页：671。
+**[1291]** Nuebel, Markus, 《硬件加速的炭笔画渲染》（原题：Hardware-Accelerated Charcoal Rendering）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_a83a09be91f80b.png), Charles River Media, 第195–204页, 2004. 本书引用页：671。
 
 **[1292]** Nummelin, Niklas, 《移动平台上的 Frostbite》（原题：Frostbite on Mobile）；SIGGRAPH“推动移动图形发展”课程（SIGGRAPH Moving Mobile Graphics course）, 2015年8月. 本书引用页：903。
 
@@ -2620,17 +2620,17 @@
 
 **[1302]** Nystad, J., A. Lassen, A. Pomianowski, S. Ellis, 和 T. Olson, 《自适应可伸缩纹理压缩》（原题：Adaptive Scalable Texture Compression）；载于 Proceedings of the Fourth ACM SIGGRAPH / Eurographics Conference on High-Performance Graphics, Eurographics Association, 第105–114页, 2012年6月. 本书引用页：196。
 
-**[1303]** Oat, Chris, 《可转向的条纹滤波器》（原题：A Steerable Streak Filter）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_a83a09be91f80b.png), Charles River Media, 第341–348页, 2004. 本书引用页：520, 524, 525。
+**[1303]** Oat, Chris, 《可转向的条纹滤波器》（原题：A Steerable Streak Filter）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_a83a09be91f80b.png), Charles River Media, 第341–348页, 2004. 本书引用页：520, 524, 525。
 
 **[1304]** Oat, Chris, 《用于游戏的辐照度体积》（原题：Irradiance Volumes for Games）；游戏开发者大会（Game Developers Conference）, 2005年3月. 本书引用页：487。
 
-**[1305]** Oat, Chris, 《用于实时渲染的辐照度体积》（原题：Irradiance Volumes for Real-Time Rendering）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_81da322d36d743.png), Charles River Media, 第333–344页, 2006. 本书引用页：487。
+**[1305]** Oat, Chris, 《用于实时渲染的辐照度体积》（原题：Irradiance Volumes for Real-Time Rendering）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_81da322d36d743.png), Charles River Media, 第333–344页, 2006. 本书引用页：487。
 
 **[1306]** Oat, Christopher, 和 Pedro V. Sander, 《环境孔径光照》（原题：Ambient Aperture Lighting）；SIGGRAPH“三维图形与游戏中的高级实时渲染”课程（SIGGRAPH Advanced Real-Time Rendering in 3D Graphics and Games course）, 2006年8月. 本书引用页：466。
 
 **[1307]** Oat, Christopher, 和 Pedro V. Sander, 《环境孔径光照》（原题：Ambient Aperture Lighting）；载于 Proceedings of the 2007 Symposium on Interactive 3D Graphics and Games, ACM, 第61–64页, 2007年4—5月. 本书引用页：466, 467, 470。
 
-**[1308]** Oat, Christopher, 和 Thorsten Scheuermann, 《在单次渲染通道中计算逐像素物体厚度》（原题：Computing Per-Pixel Object Thickness in a Single Render Pass）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_f94f170a8f3474.png), Charles River Media, 第57–62页, 2008. 本书引用页：602。
+**[1308]** Oat, Christopher, 和 Thorsten Scheuermann, 《在单次渲染通道中计算逐像素物体厚度》（原题：Computing Per-Pixel Object Thickness in a Single Render Pass）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_f94f170a8f3474.png), Charles River Media, 第57–62页, 2008. 本书引用页：602。
 
 **[1309]** Obert, Juraj, J. M. P. van Waveren, 和 Graham Sellers, SIGGRAPH“软件与硬件中的虚拟纹理”课程（原题：SIGGRAPH Virtual Texturing in Software and Hardware course）；2012年8月. 本书引用页：867。
 
@@ -2694,7 +2694,7 @@
 
 **[1339]** O’Rourke, Joseph, 《C 语言计算几何》（原题：Computational Geometry in C）；第2版, Cambridge University Press, 1998. 本书引用页：685, 686, 967。
 
-**[1340]** Örtegren, Kevin, 和 Emil Persson, 《聚类着色：在 DirectX 12 中利用保守光栅化分配光源》（原题：Clustered Shading: Assigning Lights Using Conservative Rasterization in DirectX 12）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_cc3c385a1f353c.png), CRC Press, 第43–68页, 2016. 本书引用页：901, 914。
+**[1340]** Örtegren, Kevin, 和 Emil Persson, 《聚类着色：在 DirectX 12 中利用保守光栅化分配光源》（原题：Clustered Shading: Assigning Lights Using Conservative Rasterization in DirectX 12）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_cc3c385a1f353c.png), CRC Press, 第43–68页, 2016. 本书引用页：901, 914。
 
 **[1341]** van Overveld, C. V. A. M., 和 B. Wyvill, 《基于顶点法线的多边形细分算法》（原题：An Algorithm for Polygon Subdivision Based on Vertex Normals）；载于 Computer Graphics International ’97, IEEE Computer Society, 第3–12页, 1997年6月. 本书引用页：744。
 
@@ -2710,7 +2710,7 @@
 
 **[1347]** Pallister, Kim, 《利用三维硬件生成程序化云》（原题：Generating Procedural Clouds Using 3D Hardware）；载于 Mark DeLoura, 编， Game Programming Gems 2, Charles River Media, 第463–473页, 2001. 本书引用页：556。
 
-**[1348]** Pangerl, David, 《量化环裁剪》（原题：Quantized Ring Clipping）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_f94f170a8f3474.png), Charles River Media, 第133–140页, 2008. 本书引用页：873。
+**[1348]** Pangerl, David, 《量化环裁剪》（原题：Quantized Ring Clipping）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_f94f170a8f3474.png), Charles River Media, 第133–140页, 2008. 本书引用页：873。
 
 **[1349]** Pangerl, David, 《DirectX 9 的实用线程渲染》（原题：Practical Thread Rendering for DirectX 9）；载于 Wolfgang Engel, 编， GPU Pro, A K Peters, Ltd., 第541–546页, 2010. 本书引用页：814。
 
@@ -2750,7 +2750,7 @@
 
 **[1367]** Pelzer, Kurt, 《渲染无数摇曳的草叶》（原题：Rendering Countless Blades of Waving Grass）；载于 Randima Fernando, 编， GPU Gems, Addison-Wesley, 第107–121页, 2004. 本书引用页：202。
 
-**[1368]** Penner, E., 《利用像素四元组消息传递摊销着色器开销》（原题：Shader Amortization Using Pixel Quad Message Passing）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_d705a2aca1d3b9.png), A K Peters/CRC Press, 第349–367页, 2011. 本书引用页：1017, 1018。
+**[1368]** Penner, E., 《利用像素四元组消息传递摊销着色器开销》（原题：Shader Amortization Using Pixel Quad Message Passing）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_d705a2aca1d3b9.png), A K Peters/CRC Press, 第349–367页, 2011. 本书引用页：1017, 1018。
 
 **[1369]** Penner, E., 《预积分皮肤着色》（原题：Pre-Integrated Skin Shading）；SIGGRAPH“游戏中的实时渲染进展”课程（SIGGRAPH Advances in Real-Time Rendering in Games course）, 2011年8月. 本书引用页：634。
 
@@ -2764,7 +2764,7 @@
 
 **[1374]** Persson, Emil, 《Alpha 到覆盖率转换》（原题：Alpha to Coverage）；Humus 博客, 2005年6月23日. 本书引用页：204。
 
-**[1375]** Persson, Emil, 《在 D3D10 中通过色调映射后解析实现高质量 HDR 抗锯齿》（原题：Post-Tonemapping Resolve for High-Quality HDR Anti-aliasing in D3D10）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_f94f170a8f3474.png), Charles River Media, 第161–164页, 2008. 本书引用页：142。
+**[1375]** Persson, Emil, 《在 D3D10 中通过色调映射后解析实现高质量 HDR 抗锯齿》（原题：Post-Tonemapping Resolve for High-Quality HDR Anti-aliasing in D3D10）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_f94f170a8f3474.png), Charles River Media, 第161–164页, 2008. 本书引用页：142。
 
 **[1376]** Persson, Emil, 《GPU 纹理压缩》（原题：GPU Texture Compression）；Humus 博客, 2008年4月12日. 本书引用页：870。
 
@@ -2774,7 +2774,7 @@
 
 **[1379]** Persson, Emil, 《兼顾规模、美观、速度与一致性：开发〈正当防卫2〉的经验》（原题：Making It Large, Beautiful, Fast, and Consistent: Lessons Learned Developing Just Cause 2）；载于 Wolfgang Engel, 编， GPU Pro, A K Peters, Ltd., 第571–596页, 2010. 本书引用页：114, 556, 558, 715, 882。
 
-**[1380]** Persson, Emil, 《体积贴花》（原题：Volume Decals）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_d705a2aca1d3b9.png), A K Peters/CRC Press, 第115–120页, 2011. 本书引用页：889, 890。
+**[1380]** Persson, Emil, 《体积贴花》（原题：Volume Decals）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_d705a2aca1d3b9.png), A K Peters/CRC Press, 第115–120页, 2011. 本书引用页：889, 890。
 
 **[1381]** Persson, Emil, 《创建广阔游戏世界：Avalanche 工作室的经验》（原题：Creating Vast Game Worlds: Experiences from Avalanche Studios）；载于 ACM SIGGRAPH 2012 Talks, ACM, 文章编号 32, 2012年8月. 本书引用页：69, 210, 245, 714, 715, 796, 797。
 
@@ -2782,7 +2782,7 @@
 
 **[1383]** Persson, Emil, 《在高级着色语言中进行底层思考》（原题：Low-Level Thinking in High-Level Shading Languages）；游戏开发者大会（Game Developers Conference）, 2013年3月. 本书引用页：788。
 
-**[1384]** Persson, Emil, 《线丝抗锯齿》（原题：Wire Antialiasing）；载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B07_fc0f8c0e268d00.png), CRC Press, 第211–218页, 2014. 本书引用页：139。
+**[1384]** Persson, Emil, 《线丝抗锯齿》（原题：Wire Antialiasing）；载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B07_fc0f8c0e268d00.png), CRC Press, 第211–218页, 2014. 本书引用页：139。
 
 **[1385]** Persson, Emil, 《面向下一代平台与 DX11 的底层着色器优化》（原题：Low-Level Shader Optimization for Next-Gen and DX11）；游戏开发者大会（Game Developers Conference）, 2014年3月. 本书引用页：788。
 
@@ -2856,7 +2856,7 @@
 
 **[1419]** Piponi, Dan, and George Borshukov，《通过模型剥皮展开与纹理混合实现细分曲面的无缝纹理映射》（Seamless Texture Mapping of Subdivision Surfaces by Model Pelting and Texture Blending），载于 SIGGRAPH ’00: Proceedings of the 27th Annual Conference on Computer Graphics and Interactive Techniques, ACM Press/Addison-Wesley Publishing Co., 第 471–478 页, 2000 年 7 月。本书引用页：767。
 
-**[1420]** Placeres, Frank Puig，《克服延迟着色的缺点》（Overcoming Deferred Shading Drawbacks），载于 Wolfgang Engel, 编, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_81da322d36d743.png), Charles River Media, 第 115–130 页, 2006。本书引用页：886, 887。
+**[1420]** Placeres, Frank Puig，《克服延迟着色的缺点》（Overcoming Deferred Shading Drawbacks），载于 Wolfgang Engel, 编, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_81da322d36d743.png), Charles River Media, 第 115–130 页, 2006。本书引用页：886, 887。
 
 **[1421]** Pletinckx, Daniel，《作为计算机图形学基本工具的四元数演算》（Quaternion Calculus as a Basic Tool in Computer Graphics），The Visual Computer, 第 5 卷, 第 1 期, 第 2–13 页, 1989。本书引用页：102。
 
@@ -2978,7 +2978,7 @@
 
 **[1480]** Reinhard, Erik, Erum Arif Khan, Ahmet Oguz Akyüz, and Garrett Johnson，《彩色成像：基础与应用》（Color Imaging: Fundamentals and Applications），A K Peters, Ltd., 2008。本书引用页：291。
 
-**[1481]** Reis, Aurelio，《具有逐像素光照和光散射的烟雾》（Per-Pixel Lit, Light Scattering Smoke），载于 Wolfgang Engel, 编, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_81da322d36d743.png), Charles River Media, 第 287–294 页, 2006。本书引用页：569。
+**[1481]** Reis, Aurelio，《具有逐像素光照和光散射的烟雾》（Per-Pixel Lit, Light Scattering Smoke），载于 Wolfgang Engel, 编, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_81da322d36d743.png), Charles River Media, 第 287–294 页, 2006。本书引用页：569。
 
 **[1482]** Ren, Zhong Ren, Rui Wang, John Snyder, Kun Zhou, Xinguo Liu, Bo Sun, Peter-Pike Sloan, Hujun Bao, Qunsheng Peng, and Baining Guo，《利用球谐指数运算实现动态场景中的实时软阴影》（Real-Time Soft Shadows in Dynamic Scenes Using Spherical Harmonic Exponentiation），ACM Transactions on Graphics (SIGGRAPH 2006), 第 25 卷, 第 3 期, 第 977–986 页, 2006 年 7 月。本书引用页：456, 458, 467。
 
@@ -2994,7 +2994,7 @@
 
 **[1488]** Revet, Burke, and Jon Riva，《庞大僵尸群的多样性与切割》（Immense Zombie Horde Variety and Slicing），游戏开发者大会（Game Developers Conference）, 2014 年 3 月。本书引用页：366。
 
-**[1489]** Revie, Donald，《利用延迟着色实现毛皮》（Implementing Fur Using Deferred Shading），载于 Wolfgang Engel, 编, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_d705a2aca1d3b9.png), A K Peters/CRC Press, 第 57–75 页, 2011。本书引用页：424。
+**[1489]** Revie, Donald，《利用延迟着色实现毛皮》（Implementing Fur Using Deferred Shading），载于 Wolfgang Engel, 编, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_d705a2aca1d3b9.png), A K Peters/CRC Press, 第 57–75 页, 2011。本书引用页：424。
 
 **[1490]** Rhodes, Graham，《三维线段的快速稳健求交》（Fast, Robust Intersection of 3D Line Segments），载于 Mark DeLoura, 编, Game Programming Gems 2, Charles River Media, 第 191–204 页, 2001。本书引用页：990。
 
@@ -3006,7 +3006,7 @@
 
 **[1494]** Riguer, Guennadi，《使用 DirectX 9.0 的 ATI 图形硬件性能优化技术》（Performance Optimization Techniques for ATI Graphics Hardware with DirectX 9.0），ATI 白皮书, 2002。本书引用页：702。
 
-**[1495]** Riguer, Guennadi，《LiquidVR 的今天与明天》（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_90a3e593ba5db8.png) Today and Tomorrow），游戏开发者大会（Game Developers Conference）, 2016 年 3 月。本书引用页：928。
+**[1495]** Riguer, Guennadi，《LiquidVR 的今天与明天》（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_90a3e593ba5db8.png) Today and Tomorrow），游戏开发者大会（Game Developers Conference）, 2016 年 3 月。本书引用页：928。
 
 **[1496]** Ring, Kevin，《在万维网上渲染整个广阔世界》（Rendering the Whole Wide World on the World Wide Web），在 Analytical Graphics, Inc. 的讲座, 2013 年 12 月。本书引用页：708。
 
@@ -3030,7 +3030,7 @@
 
 **[1506]** Rogers, David F.，《NURBS 导论：兼论历史沿革》（An Introduction to NURBS: With Historical Perspective），Morgan Kaufmann, 2000。本书引用页：781。
 
-**[1507]** Rohleder, Pawel, and Maciej Jamrozik，《带有体积光线的阳光》（Sunlight with Volumetric Light Rays），载于 Wolfgang Engel, 编, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_f94f170a8f3474.png), Charles River Media, 第 325–330 页, 2008。本书引用页：604。
+**[1507]** Rohleder, Pawel, and Maciej Jamrozik，《带有体积光线的阳光》（Sunlight with Volumetric Light Rays），载于 Wolfgang Engel, 编, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_f94f170a8f3474.png), Charles River Media, 第 325–330 页, 2008。本书引用页：604。
 
 **[1508]** Rohlf, J., and J. Helman，《IRIS Performer：面向实时三维图形的高性能多处理工具包》（IRIS Performer: A High Performance Multiprocessing Toolkit for Real-Time 3D Graphics），载于 SIGGRAPH ’94: Proceedings of the 21st Annual Conference on Computer Graphics and Interactive Techniques, ACM, 第 381–394 页, 1994 年 7 月。本书引用页：807, 809, 861。
 
@@ -3074,7 +3074,7 @@
 
 **[1528]** Saito, Takafumi, and Tokiichiro Takahashi，《易于理解的三维形状渲染》（Comprehensible Rendering of 3-D Shapes），Computer Graphics (SIGGRAPH ’90 Proceedings), 第 24 卷, 第 4 期, 第 197–206 页, 1990 年 8 月。本书引用页：661, 883, 884。
 
-**[1529]** Salvi, Marco，《利用指数阴影贴图渲染经过滤波的阴影》（Rendering Filtered Shadows with Exponential Shadow Maps），载于 Wolfgang Engel, 编, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_f94f170a8f3474.png), Charles River Media, 第 257–274 页, 2008。本书引用页：256。
+**[1529]** Salvi, Marco，《利用指数阴影贴图渲染经过滤波的阴影》（Rendering Filtered Shadows with Exponential Shadow Maps），载于 Wolfgang Engel, 编, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_f94f170a8f3474.png), Charles River Media, 第 257–274 页, 2008。本书引用页：256。
 
 **[1530]** Salvi, Marco，《阴影贴图滤波的概率方法》（Probabilistic Approaches to Shadow Maps Filtering），游戏开发者大会（Game Developers Conference）, 2008 年 2 月。本书引用页：256。
 
@@ -3100,7 +3100,7 @@
 
 **[1541]** Sander, Pedro V., David Gosselin, and Jason L. Mitchell，《图形硬件上的实时皮肤渲染》（Real-Time Skin Rendering on Graphics Hardware），载于 ACM SIGGRAPH 2004 短篇报告集（ACM SIGGRAPH 2004 Sketches）, ACM, 第 148 页, 2004 年 8 月。本书引用页：635。
 
-**[1542]** Sander, Pedro V., Natalya Tatarchuk, and Jason L. Mitchell，《用于高效流体流动模拟的显式 Early-Z 剔除》（Explicit Early-Z Culling for Efficient Fluid Flow Simulation），载于 Wolfgang Engel, 编, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_81da322d36d743.png), Charles River Media, 第 553–564 页, 2006。本书引用页：53, 1016。
+**[1542]** Sander, Pedro V., Natalya Tatarchuk, and Jason L. Mitchell，《用于高效流体流动模拟的显式 Early-Z 剔除》（Explicit Early-Z Culling for Efficient Fluid Flow Simulation），载于 Wolfgang Engel, 编, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_81da322d36d743.png), Charles River Media, 第 553–564 页, 2006。本书引用页：53, 1016。
 
 **[1543]** Sander, Pedro V., and Jason L. Mitchell，《渐进缓冲区：与视点相关的几何和纹理 LOD 渲染》（Progressive Buffers: View-Dependent Geometry and Texture LOD Rendering），SIGGRAPH 三维图形与游戏中的高级实时渲染课程（SIGGRAPH Advanced Real-Time Rendering in 3D Graphics and Games）, 2006 年 8 月。本书引用页：860。
 
@@ -3140,7 +3140,7 @@
 
 **[1561]** Schied, Christoph, and Carsten Dachsbacher，《利用延迟属性插值实现节省内存的延迟着色》（Deferred Attribute Interpolation for Memory-Efficient Deferred Shading），载于 Proceedings of the 7th Conference on High-Performance Graphics, ACM, 第 43–49 页, 2015 年 8 月。本书引用页：907。
 
-**[1562]** Schied, Christoph, and Carsten Dachsbacher，《延迟属性插值着色》（Deferred Attribute Interpolation Shading），载于 Wolfgang Engel, 编, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_cc3c385a1f353c.png), CRC Press, 第 83–96 页, 2016。本书引用页：907。
+**[1562]** Schied, Christoph, and Carsten Dachsbacher，《延迟属性插值着色》（Deferred Attribute Interpolation Shading），载于 Wolfgang Engel, 编, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_cc3c385a1f353c.png), CRC Press, 第 83–96 页, 2016。本书引用页：907。
 
 **[1563]** Schied, Christoph, Anton Kaplanyan, Chris Wyman, Anjul Patney, Chakravarty R. Alla Chaitanya, John Burgess, Shiqiu Liu, Carsten Dachsbacher, and Aaron Lefohn，《时空方差引导滤波：路径追踪全局光照的实时重建》（Spatiotemporal Variance-Guided Filtering: Real-Time Reconstruction for Path-Traced Global Illumination），High Performance Graphics, 2017 年 7 月。本书引用页：511。
 
@@ -3184,13 +3184,13 @@
 
 **[1583]** Schuetz, Markus，《Potree：在 Web 浏览器中渲染大型点云》（Potree: Rendering Large Point Clouds in Web Browsers），可视计算专业毕业论文，维也纳工业大学（Vienna University of Technology）, 2016。本书引用页：574, 575, 576。
 
-**[1584]** Schüler, Christian，《无需预计算切线的法线映射》（Normal Mapping without Precomputed Tangents），载于 Wolfgang Engel, 编, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_81da322d36d743.png), Charles River Media, 第 131–140 页, 2006。本书引用页：210。
+**[1584]** Schüler, Christian，《无需预计算切线的法线映射》（Normal Mapping without Precomputed Tangents），载于 Wolfgang Engel, 编, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_81da322d36d743.png), Charles River Media, 第 131–140 页, 2006。本书引用页：210。
 
-**[1585]** Schüler, Christian，《梯度阴影贴图的多重采样扩展》（Multisampling Extension for Gradient Shadow Maps），载于 Wolfgang Engel, 编, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_81da322d36d743.png), Charles River Media, 第 207–218 页, 2006。本书引用页：250。
+**[1585]** Schüler, Christian，《梯度阴影贴图的多重采样扩展》（Multisampling Extension for Gradient Shadow Maps），载于 Wolfgang Engel, 编, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_81da322d36d743.png), Charles River Media, 第 207–218 页, 2006。本书引用页：250。
 
-**[1586]** Schüler, Christian，《高效且物理上合理的实时着色模型》（An Efficient and Physically Plausible Real Time Shading Model），载于 Wolfgang Engel, 编, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_d2e9c37cce63da.png), Charles River Media, 第 175–187 页, 2009。本书引用页：325。
+**[1586]** Schüler, Christian，《高效且物理上合理的实时着色模型》（An Efficient and Physically Plausible Real Time Shading Model），载于 Wolfgang Engel, 编, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_d2e9c37cce63da.png), Charles River Media, 第 175–187 页, 2009。本书引用页：325。
 
-**[1587]** Schüler, Christian，《用于大气散射的 Chapman 掠入射函数近似》（An Approximation to the Chapman Grazing-Incidence Function for Atmospheric Scattering），载于 Wolfgang Engel, 编, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_0f88d86ae08ff9.png), CRC Press, 第 105–118 页, 2012。本书引用页：616。
+**[1587]** Schüler, Christian，《用于大气散射的 Chapman 掠入射函数近似》（An Approximation to the Chapman Grazing-Incidence Function for Atmospheric Scattering），载于 Wolfgang Engel, 编, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_0f88d86ae08ff9.png), CRC Press, 第 105–118 页, 2012。本书引用页：616。
 
 **[1588]** Schüler, Christian，《无分支的矩阵到四元数转换》（Branchless Matrix to Quaternion Conversion），The Tenth Planet 博客, 2012 年 8 月 7 日。本书引用页：81。
 
@@ -3206,7 +3206,7 @@
 
 **[1594]** Schwarz, Michael, and Hans-Peter Seidel，《GPU 上快速并行的表面与实体体素化》（Fast Parallel Surface and Solid Voxelization on GPUs），ACM Transactions on Graphics, 第 29 卷, 第 6 期, 第 179:1–179:10 页, 2010 年 12 月。本书引用页：581。
 
-**[1595]** Schwarz, Michael，《使用 Direct3D 11 的实用二值表面与实体体素化》（Practical Binary Surface and Solid Voxelization with Direct3D 11），载于 Wolfgang Engel, 编, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B08_0f88d86ae08ff9.png), CRC Press, 第 337–352 页, 2012。本书引用页：581, 582。
+**[1595]** Schwarz, Michael，《使用 Direct3D 11 的实用二值表面与实体体素化》（Practical Binary Surface and Solid Voxelization with Direct3D 11），载于 Wolfgang Engel, 编, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B08_0f88d86ae08ff9.png), CRC Press, 第 337–352 页, 2012。本书引用页：581, 582。
 
 **[1596]** Seetzen, Helge, Wolfgang Heidrich, Wolfgang Stuerzlinger, Greg Ward, Lorne Whitehead, Matthew Trentacoste, Abhijeet Ghosh, and Andrejs Vorozcovs，《高动态范围显示系统》（High Dynamic Range Display Systems），ACM Transactions on Graphics (SIGGRAPH 2004), 第 23 卷, 第 3 期, 第 760–768 页, 2004 年 8 月。本书引用页：1011。
 
@@ -3234,7 +3234,7 @@
 
 **[1607]** Sen, Pradeep, Mike Cammarano，Pat Hanrahan。《阴影轮廓贴图》（原题：Shadow Silhouette Maps）。ACM Transactions on Graphics (SIGGRAPH 2003), 第22卷, 第3期, 第521–526页, 2003. 本书引用页：259。
 
-**[1608]** Senior, Andrew。《面向移动 GPU 的面部动画》（原题：Facial Animation for Mobile GPUs）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_d2e9c37cce63da.png), Charles River Media, 第561–570页, 2009. 本书引用页：90。
+**[1608]** Senior, Andrew。《面向移动 GPU 的面部动画》（原题：Facial Animation for Mobile GPUs）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_d2e9c37cce63da.png), Charles River Media, 第561–570页, 2009. 本书引用页：90。
 
 **[1609]** Senior, Andrew。《iPhone 3GS 图形开发与优化策略》（原题：iPhone 3GS Graphics Development and Optimization Strategies）。载于 Wolfgang Engel, 编， GPU Pro, A K Peters, Ltd., 第385–395页, 2010. 本书引用页：702, 795, 804, 805。
 
@@ -3286,7 +3286,7 @@
 
 **[1633]** Shoemake, Ken。《使用四元数曲线制作旋转动画》（原题：Animating Rotation with Quaternion Curves）。Computer Graphics (SIGGRAPH ’85 Proceedings), 第19卷, 第3期, 第245–254页, 1985年7月. 本书引用页：73, 76, 80, 82。
 
-**[1634]** Shoemake, Ken。《四元数与 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_ab6c0bd8794253.png) 矩阵》（原题：Quaternions and ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_ab6c0bd8794253.png) Matrices）。载于 James Arvo, 编， Graphics Gems II, Academic Press, 第351–354页, 1991. 本书引用页：80。
+**[1634]** Shoemake, Ken。《四元数与 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_ab6c0bd8794253.png) 矩阵》（原题：Quaternions and ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_ab6c0bd8794253.png) Matrices）。载于 James Arvo, 编， Graphics Gems II, Academic Press, 第351–354页, 1991. 本书引用页：80。
 
 **[1635]** Shoemake, Ken。《矩阵的极分解》（原题：Polar Matrix Decomposition）。载于 Paul S. Heckbert, 编， Graphics Gems IV, Academic Press, 第207–221页, 1994. 本书引用页：74。
 
@@ -3296,11 +3296,11 @@
 
 **[1638]** Sigg, Christian，Markus Hadwiger。《快速三阶纹理过滤》（原题：Fast Third-Order Texture Filtering）。载于 Matt Pharr, 编， GPU Gems 2, Addison-Wesley, 第313–329页, 2005. 本书引用页：189, 517。
 
-**[1639]** Sikachev, Peter, Vladimir Egorov，Sergey Makeev。《重新审视四元数》（原题：Quaternions Revisited）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_fc0f8c0e268d00.png), CRC Press, 第361–374页, 2014. 本书引用页：87, 210, 715。
+**[1639]** Sikachev, Peter, Vladimir Egorov，Sergey Makeev。《重新审视四元数》（原题：Quaternions Revisited）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_fc0f8c0e268d00.png), CRC Press, 第361–374页, 2014. 本书引用页：87, 210, 715。
 
 **[1640]** Sikachev, Peter，Nicolas Longchamps。《Thief 中的反射系统》（原题：Reflection System in Thief）。SIGGRAPH“游戏中的实时渲染进展”课程（SIGGRAPH Advances in Real-Time Rendering in Games）, 2014年8月. 本书引用页：502。
 
-**[1641]** Sikachev, Peter, Samuel Delmont, Uriel Doyon，Jean-Normand Bucci。《Thief 中的下一代渲染》（原题：Next-Generation Rendering in Thief）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_62af897d8661a1.png), CRC Press, 第65–90页, 2015. 本书引用页：251, 252。
+**[1641]** Sikachev, Peter, Samuel Delmont, Uriel Doyon，Jean-Normand Bucci。《Thief 中的下一代渲染》（原题：Next-Generation Rendering in Thief）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_62af897d8661a1.png), CRC Press, 第65–90页, 2015. 本书引用页：251, 252。
 
 **[1642]** Sillion, François，Claude Puech。《辐射度与全局光照》（原题：Radiosity and Global Illumination）。Morgan Kaufmann, 1994. 本书引用页：442, 483。
 
@@ -3346,7 +3346,7 @@
 
 **[1663]** Smith, Alvy Ray。《梦想的素材》（原题：The Stuff of Dreams）。Computer Graphics World, 第21卷, 第27–29页, 1998年7月. 本书引用页：1042。
 
-**[1664]** Smith, Ashley Vaughan，Mathieu Einig。《移动设备上基于物理的延迟着色》（原题：Physically Based Deferred Shading on Mobile）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_cc3c385a1f353c.png), CRC Press, 第187–198页, 2016. 本书引用页：903。
+**[1664]** Smith, Ashley Vaughan，Mathieu Einig。《移动设备上基于物理的延迟着色》（原题：Physically Based Deferred Shading on Mobile）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_cc3c385a1f353c.png), CRC Press, 第187–198页, 2016. 本书引用页：903。
 
 **[1665]** Smith, Bruce G.。《随机粗糙表面的几何遮蔽》（原题：Geometrical Shadowing of a Random Rough Surface）。IEEE Transactions on Antennas and Propagation, 第15卷, 第5期, 第668–671页, 1967年9月. 本书引用页：334。
 
@@ -3366,7 +3366,7 @@
 
 **[1673]** Soler, Cyril，François Sillion。《使用卷积快速计算软阴影纹理》（原题：Fast Calculation of Soft Shadow Textures Using Convolution）。载于 SIGGRAPH ’98：第25届计算机图形学与交互技术年会论文集（SIGGRAPH ’98: Proceedings of the 25th Annual Conference on Computer Graphics and Interactive Techniques）, ACM, 第321–332页, 1998年7月. 本书引用页：256。
 
-**[1674]** Sousa, Tiago。《自适应眩光》（原题：Adaptive Glare）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_a83a09be91f80b.png), Charles River Media, 第349–355页, 2004. 本书引用页：288, 527。
+**[1674]** Sousa, Tiago。《自适应眩光》（原题：Adaptive Glare）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_a83a09be91f80b.png), Charles River Media, 第349–355页, 2004. 本书引用页：288, 527。
 
 **[1675]** Sousa, Tiago。《通用折射模拟》（原题：Generic Refraction Simulation）。载于 Matt Pharr, 编， GPU Gems 2, Addison-Wesley, 第295–305页, 2005. 本书引用页：628。
 
@@ -3376,7 +3376,7 @@
 
 **[1678]** Sousa, Tiago, Nickolay Kasyan，Nicolas Schulz。《CryENGINE 3 图形技术的秘密》（原题：Secrets of CryENGINE 3 Graphics Technology）。SIGGRAPH“三维图形与游戏中的实时渲染进展”课程（SIGGRAPH Advances in Real-Time Rendering in 3D Graphics and Games）, 2011年8月. 本书引用页：145, 234, 245, 252, 257, 262, 505。
 
-**[1679]** Sousa, Tiago, Nickolay Kasyan，Nicolas Schulz。《CryENGINE 3：三年工作回顾》（原题：CryENGINE 3: Three Years of Work in Review）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_0f88d86ae08ff9.png), CRC Press, 第133–168页, 2012. 本书引用页：139, 234, 238, 245, 252, 257, 542, 786, 793, 932, 937。
+**[1679]** Sousa, Tiago, Nickolay Kasyan，Nicolas Schulz。《CryENGINE 3：三年工作回顾》（原题：CryENGINE 3: Three Years of Work in Review）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_0f88d86ae08ff9.png), CRC Press, 第133–168页, 2012. 本书引用页：139, 234, 238, 245, 252, 257, 542, 786, 793, 932, 937。
 
 **[1680]** Sousa, Tiago, Carsten Wenzel，Chris Raine。《Crysis 3 的渲染技术》（原题：The Rendering Technologies of Crysis 3）。游戏开发者大会（Game Developers Conference）, 2013年3月. 本书引用页：887, 889, 890, 895。
 
@@ -3398,7 +3398,7 @@
 
 **[1689]** Stam, Jos。《面向游戏的实时流体动力学》（原题：Real-Time Fluid Dynamics for Games）。游戏开发者大会（Game Developers Conference）, 2003年3月. 本书引用页：649。
 
-**[1690]** Stamate, Vlad。《使用球谐函数减少光照计算》（原题：Reduction of Lighting Calculations Using Spherical Harmonics）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_a83a09be91f80b.png), Charles River Media, 第251–262页, 2004. 本书引用页：430。
+**[1690]** Stamate, Vlad。《使用球谐函数减少光照计算》（原题：Reduction of Lighting Calculations Using Spherical Harmonics）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_a83a09be91f80b.png), Charles River Media, 第251–262页, 2004. 本书引用页：430。
 
 **[1691]** Stamminger, Marc，George Drettakis。《透视阴影贴图》（原题：Perspective Shadow Maps）。ACM Transactions on Graphics (SIGGRAPH 2002), 第21卷, 第3期, 第557–562页, 2002年7月. 本书引用页：241。
 
@@ -3420,7 +3420,7 @@
 
 **[1700]** Stewart, Jason，Gareth Thomas。《分块渲染对决：Forward++ 与延迟渲染》（原题：Tiled Rendering Showdown: Forward++ vs. Deferred Rendering）。游戏开发者大会（Game Developers Conference）, 2013年3月. 本书引用页：896, 897, 914。
 
-**[1701]** Stewart, Jason。《基于计算的分块剔除》（原题：Compute-Based Tiled Culling）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_62af897d8661a1.png), CRC Press, 第435–458页, 2015. 本书引用页：894, 896, 914。
+**[1701]** Stewart, Jason。《基于计算的分块剔除》（原题：Compute-Based Tiled Culling）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_62af897d8661a1.png), CRC Press, 第435–458页, 2015. 本书引用页：894, 896, 914。
 
 **[1702]** Stich, Martin, Carsten Wächter，Alexander Keller。《使用层次遮挡剔除和几何着色器实现高效稳健的阴影体》（原题：Efficient and Robust Shadow Volumes Using Hierarchical Occlusion Culling and Geometry Shaders）。载于 Hubert Nguyen, 编， GPU Gems 3, Addison-Wesley, 第239–256页, 2007. 本书引用页：233。
 
@@ -3542,13 +3542,13 @@
 
 **[1761]** Thibault, Aaron P.，Sean “Zoner” Cavanaugh。《将 Borderlands 的概念艺术化为现实》（原题：Making Concept Art Real for Borderlands）。SIGGRAPH“游戏中的风格化渲染”课程（SIGGRAPH Stylized Rendering in Games）, 2010年7月. 本书引用页：652, 661, 662, 664, 678。
 
-**[1762]** Thibieroz, Nicolas。《利用多个渲染目标进行延迟着色》（原题：Deferred Shading with Multiple Render Targets）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_6137f40531a8aa.png): DirectX 9 入门与教程（Introductions & Tutorials with DirectX 9）, Wordware, 第251–269页, 2004. 本书引用页：882, 884。
+**[1762]** Thibieroz, Nicolas。《利用多个渲染目标进行延迟着色》（原题：Deferred Shading with Multiple Render Targets）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_6137f40531a8aa.png): DirectX 9 入门与教程（Introductions & Tutorials with DirectX 9）, Wordware, 第251–269页, 2004. 本书引用页：882, 884。
 
-**[1763]** Thibieroz, Nicolas。《在 DirectX 10 中通过反向深度剥离实现稳健的顺序无关透明》（原题：Robust Order-Independent Transparency via Reverse Depth Peeling in DirectX 10）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_f94f170a8f3474.png), Charles River Media, 第211–226页, 2008. 本书引用页：154。
+**[1763]** Thibieroz, Nicolas。《在 DirectX 10 中通过反向深度剥离实现稳健的顺序无关透明》（原题：Robust Order-Independent Transparency via Reverse Depth Peeling in DirectX 10）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_f94f170a8f3474.png), Charles River Media, 第211–226页, 2008. 本书引用页：154。
 
-**[1764]** Thibieroz, Nicolas。《DirectX 10 中结合多重采样抗锯齿的延迟着色》（原题：Deferred Shading with Multisampling Anti-Aliasing in DirectX 10）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_d2e9c37cce63da.png), Charles River Media, 第225–242页, 2009. 本书引用页：888。
+**[1764]** Thibieroz, Nicolas。《DirectX 10 中结合多重采样抗锯齿的延迟着色》（原题：Deferred Shading with Multisampling Anti-Aliasing in DirectX 10）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_d2e9c37cce63da.png), Charles River Media, 第225–242页, 2009. 本书引用页：888。
 
-**[1765]** Thibieroz, Nicolas。《使用逐像素链表实现顺序无关透明》（原题：Order-Independent Transparency Using Per-Pixel Linked Lists）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_d705a2aca1d3b9.png), A K Peters/CRC Press, 第409–431页, 2011. 本书引用页：155。
+**[1765]** Thibieroz, Nicolas。《使用逐像素链表实现顺序无关透明》（原题：Order-Independent Transparency Using Per-Pixel Linked Lists）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_d705a2aca1d3b9.png), A K Peters/CRC Press, 第409–431页, 2011. 本书引用页：155。
 
 **[1766]** Thibieroz, Nicolas。《延迟着色优化》（原题：Deferred Shading Optimizations）。游戏开发者大会（Game Developers Conference）, 2011年3月. 本书引用页：886, 887, 892, 900。
 
@@ -3572,7 +3572,7 @@
 
 **[1776]** Torborg, J.，J. T. Kajiya。《Talisman：面向 PC 的大众化实时三维图形》（原题：Talisman: Commodity Realtime 3D Graphics for the PC）。载于 SIGGRAPH ’96：第23届计算机图形学与交互技术年会论文集（SIGGRAPH ’96: Proceedings of the 23rd Annual Conference on Computer Graphics and Interactive Techniques）, ACM, 第353–363页, 1996年8月. 本书引用页：551。
 
-**[1777]** Torchelsen, Rafael P., João L. D. Comba，Rui Bastos。《用于计算机游戏地形渲染的实用几何 Clipmap》（原题：Practical Geometry Clipmaps for Rendering Terrains in Computer Games）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_f94f170a8f3474.png), Charles River Media, 第103–114页, 2008. 本书引用页：612, 873。
+**[1777]** Torchelsen, Rafael P., João L. D. Comba，Rui Bastos。《用于计算机游戏地形渲染的实用几何 Clipmap》（原题：Practical Geometry Clipmaps for Rendering Terrains in Computer Games）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_f94f170a8f3474.png), Charles River Media, 第103–114页, 2008. 本书引用页：612, 873。
 
 **[1778]** Török, Balázs，Tim Green。《The Witcher 3: Wild Hunt 的渲染特性》（原题：The Rendering Features of The Witcher 3: Wild Hunt）。载于 SIGGRAPH报告集（ACM SIGGRAPH 2015 Talks）, ACM, 文章编号7, 2015年8月. 本书引用页：366, 420, 889。
 
@@ -3584,11 +3584,11 @@
 
 **[1782]** Toth, Robert, Jim Nilsson，Tomas Akenine-Möller。《虚拟现实渲染投影方法的比较》（原题：Comparison of Projection Methods for Rendering Virtual Reality）。载于 High-Performance Graphics 2016, Eurographics Association, 第163–171页, 2016年6月. 本书引用页：930。
 
-**[1783]** Tran, Ray。《面向大型动态游戏环境的分面阴影映射》（原题：Facetted Shadow Mapping for Large Dynamic Game Environments）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_d2e9c37cce63da.png), Charles River Media, 第363–371页, 2009. 本书引用页：244。
+**[1783]** Tran, Ray。《面向大型动态游戏环境的分面阴影映射》（原题：Facetted Shadow Mapping for Large Dynamic Game Environments）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_d2e9c37cce63da.png), Charles River Media, 第363–371页, 2009. 本书引用页：244。
 
 **[1784]** Trapp, Matthias，Jürgen Döllner。《实时着色器程序的自动组合》（原题：Automated Combination of Real-Time Shader Programs）。载于 Eurographics 2007——短论文（Eurographics 2007—Short Papers）, Eurographics Association, 第53–56页, 2007年9月. 本书引用页：128。
 
-**[1785]** Trebilco, Damian。《以光源为索引的延迟渲染》（原题：Light-Indexed Deferred Rendering）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_d2e9c37cce63da.png), Charles River Media, 第243–258页, 2009. 本书引用页：893。
+**[1785]** Trebilco, Damian。《以光源为索引的延迟渲染》（原题：Light-Indexed Deferred Rendering）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_d2e9c37cce63da.png), Charles River Media, 第243–258页, 2009. 本书引用页：893。
 
 **[1786]** Treglia, Dante，编。《游戏编程精粹3》（原题：Game Programming Gems 3）。Charles River Media, 2002. 本书引用页：1089。
 
@@ -3614,11 +3614,11 @@
 
 **[1797]** Ulrich, Thatcher。《使用分块细节层次控制渲染大规模地形》（原题：Rendering Massive Terrains Using Chunked Level of Detail Control）。SIGGRAPH“超大规模！扩展至大规模虚拟世界”课程（SIGGRAPH Super-Size It! Scaling up to Massive Virtual Worlds）, 2002年7月. 本书引用页：874, 875。
 
-**[1798]** Uludag, Yasin。《Hi-Z 屏幕空间追踪》（原题：Hi-Z Screen-Space Tracing）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_fc0f8c0e268d00.png), CRC Press, 第149–192页, 2014. 本书引用页：507。
+**[1798]** Uludag, Yasin。《Hi-Z 屏幕空间追踪》（原题：Hi-Z Screen-Space Tracing）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_fc0f8c0e268d00.png), CRC Press, 第149–192页, 2014. 本书引用页：507。
 
 **[1799]** Umenhoffer, Tamás, Lázló Szirmay-Kalos，Gábor Szijártó。《球形公告板及其在爆炸渲染中的应用》（原题：Spherical Billboards and Their Application to Rendering Explosions）。载于 Graphics Interface 2006, Canadian Human-Computer Communications Society, 第57–63页, 2006. 本书引用页：559。
 
-**[1800]** Umenhoffer, Tamás, László Szirmay-Kalos，Gábor Szíjártó。《用于体数据渲染的球形公告板》（原题：Spherical Billboards for Rendering Volumetric Data）。载于 Wolfgang Engel, 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B09_81da322d36d743.png), Charles River Media, 第275–285页, 2006. 本书引用页：559。
+**[1800]** Umenhoffer, Tamás, László Szirmay-Kalos，Gábor Szíjártó。《用于体数据渲染的球形公告板》（原题：Spherical Billboards for Rendering Volumetric Data）。载于 Wolfgang Engel, 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B09_81da322d36d743.png), Charles River Media, 第275–285页, 2006. 本书引用页：559。
 
 ## 参考文献 1801—1978
 
@@ -3640,7 +3640,7 @@
 
 **[1809]** Valient, Michal，《〈杀戮地带 2〉中的延迟渲染》（Deferred Rendering in Killzone 2）。Develop 大会（Develop Conference）, 2007 年 7 月. 本书引用页：882, 885, 886, 887。
 
-**[1810]** Valient, Michal，《级联阴影贴图的稳定渲染》（Stable Rendering of Cascaded Shadow Maps）。载于 Wolfgang Engel 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B10_f94f170a8f3474.png), Charles River Media, 第 231–238 页, 2008. 本书引用页：239, 245, 247。
+**[1810]** Valient, Michal，《级联阴影贴图的稳定渲染》（Stable Rendering of Cascaded Shadow Maps）。载于 Wolfgang Engel 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B10_f94f170a8f3474.png), Charles River Media, 第 231–238 页, 2008. 本书引用页：239, 245, 247。
 
 **[1811]** Valient, Michal，《阴影与游戏：实际考量》（Shadows + Games: Practical Considerations）。SIGGRAPH「高效实时阴影」课程（SIGGRAPH Efficient Real-Time Shadows）, 2012 年 8 月. 本书引用页：245, 246, 252。
 
@@ -3660,7 +3660,7 @@
 
 **[1819]** Vlachos, Alex, Jörg Peters, Chas Boyd, and Jason L. Mitchell，《弯曲 PN 三角形》（Curved PN Triangles）。载于 Proceedings of the 2001 Symposium on Interactive 3D Graphics, ACM, 第 159–166 页, 2001. 本书引用页：744, 745, 746。
 
-**[1820]** Vlachos, Alex, and John Isidoro，《基于四元数的光滑 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B10_666ecb60e6f4fb.png) 漫游路径》（Smooth ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B10_666ecb60e6f4fb.png) Quaternion-Based Flythrough Paths）。载于 Mark DeLoura 编， Game Programming Gems 2, Charles River Media, 第 220–227 页, 2001. 本书引用页：102。
+**[1820]** Vlachos, Alex, and John Isidoro，《基于四元数的光滑 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B10_666ecb60e6f4fb.png) 漫游路径》（Smooth ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B10_666ecb60e6f4fb.png) Quaternion-Based Flythrough Paths）。载于 Mark DeLoura 编， Game Programming Gems 2, Charles River Media, 第 220–227 页, 2001. 本书引用页：102。
 
 **[1821]** Vlachos, Alex，《〈橙盒〉中的后处理》（Post Processing in The Orange Box）。游戏开发者大会（Game Developers Conference）, 2008 年 2 月. 本书引用页：288, 538。
 
@@ -3692,7 +3692,7 @@
 
 **[1835]** Wan, Liang, Tien-Tsin Wong, and Chi-Sing Leung，《Isocube：利用立方体贴图硬件》（Isocube: Exploiting the Cubemap Hardware）。IEEE Transactions on Visualization and Computer Graphics, 第 13 卷, 第 4 期, 第 720–731 页, 2007 年 7 月. 本书引用页：412。
 
-**[1836]** Wan, Liang, Tien-Tsin Wong, Chi-Sing Leung, and Chi-Wing Fu，《Isocube：纹素均匀分布且重要性相等的立方体贴图》（Isocube: A Cubemap with Uniformly Distributed and Equally Important Texels）。载于 Wolfgang Engel 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B10_f94f170a8f3474.png), Charles River Media, 第 83–92 页, 2008. 本书引用页：412。
+**[1836]** Wan, Liang, Tien-Tsin Wong, Chi-Sing Leung, and Chi-Wing Fu，《Isocube：纹素均匀分布且重要性相等的立方体贴图》（Isocube: A Cubemap with Uniformly Distributed and Equally Important Texels）。载于 Wolfgang Engel 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B10_f94f170a8f3474.png), Charles River Media, 第 83–92 页, 2008. 本书引用页：412。
 
 **[1837]** Wang, Beibei, and Huw Bowles，《稳健而灵活的实时闪烁效果》（A Robust and Flexible Real-Time Sparkle Effect）。载于 Proceedings of the Eurographics Symposium on Rendering: Experimental Ideas & Implementations, Eurographics Association, 第 49–54 页, 2016. 本书引用页：372。
 
@@ -3738,7 +3738,7 @@
 
 **[1858]** Webb, Matthew, Emil Praun, Adam Finkelstein, and Hugues Hoppe，《硬件排线中的精细色调控制》（Fine Tone Control in Hardware Hatching）。载于 Proceedings of the 2nd International Symposium on Non-Photorealistic Animation and Rendering, ACM, 第 53–58 页, 2002 年 6 月. 本书引用页：671。
 
-**[1859]** Weber, Marco, and Peter Quayle，《移动设备上的后处理效果》（Post-Processing Effects on Mobile Devices）。载于 Wolfgang Engel 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B10_d705a2aca1d3b9.png), A K Peters/CRC Press, 第 291–305 页, 2011. 本书引用页：527。
+**[1859]** Weber, Marco, and Peter Quayle，《移动设备上的后处理效果》（Post-Processing Effects on Mobile Devices）。载于 Wolfgang Engel 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B10_d705a2aca1d3b9.png), A K Peters/CRC Press, 第 291–305 页, 2011. 本书引用页：527。
 
 **[1860]** Wei, Li-Yi，《基于图块的纹理映射》（Tile-Based Texture Mapping）。载于 Matt Pharr 编，GPU Gems 2, Addison-Wesley, 第 189–199 页, 2005. 本书引用页：175。
 
@@ -3810,7 +3810,7 @@
 
 **[1894]** Wimmer, Michael, and Jiří Bittner，《让硬件遮挡查询发挥作用》（Hardware Occlusion Queries Made Useful）。载于 Matt Pharr 编， GPU Gems 2, Addison-Wesley, 第 91–108 页, 2005. 本书引用页：844。
 
-**[1895]** Wimmer, Michael, and Daniel Scherzer，《利用光源空间透视阴影贴图实现稳健的阴影映射》（Robust Shadow Mapping with Light-Space Perspective Shadow Maps）。载于 Wolfgang Engel 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B10_21361f65e26b5d.png), Charles River Media, 第 313–330 页, 2005. 本书引用页：241。
+**[1895]** Wimmer, Michael, and Daniel Scherzer，《利用光源空间透视阴影贴图实现稳健的阴影映射》（Robust Shadow Mapping with Light-Space Perspective Shadow Maps）。载于 Wolfgang Engel 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B10_21361f65e26b5d.png), Charles River Media, 第 313–330 页, 2005. 本书引用页：241。
 
 **[1896]** Winnemöller, Holger，《XDoG：利用扩展高斯差分实现高级图像风格化》（XDoG: Advanced Image Stylization with eXtended Difference-of-Gaussians）。载于 ACM SIGGRAPH/Eurographics Symposium on Non-Photorealistic Animation and Rendering, ACM, 第 147–156 页, 2011 年 8 月. 本书引用页：665。
 
@@ -3876,7 +3876,7 @@
 
 **[1927]** Wyman, Chris，《邻近几何体的交互式图像空间折射》（Interactive Image-Space Refraction of Nearby Geometry）。载于 GRAPHITE 2005, ACM, 第 205–211 页, 2005 年 11 月. 本书引用页：630, 632。
 
-**[1928]** Wyman, Chris，《利用图像空间技术实现交互式折射与焦散》（Interactive Refractions and Caustics Using Image-Space Techniques）。载于 Wolfgang Engel 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B10_81da322d36d743.png), Charles River Media, 第 359–371 页, 2006. 本书引用页：632。
+**[1928]** Wyman, Chris，《利用图像空间技术实现交互式折射与焦散》（Interactive Refractions and Caustics Using Image-Space Techniques）。载于 Wolfgang Engel 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B10_81da322d36d743.png), Charles River Media, 第 359–371 页, 2006. 本书引用页：632。
 
 **[1929]** Wyman, Chris，《层次化焦散贴图》（Hierarchical Caustic Maps）。载于 Proceedings of the 2008 Symposium on Interactive 3D Graphics and Games, ACM, 第 163–172 页, 2008 年 2 月. 本书引用页：632。
 
@@ -3932,7 +3932,7 @@
 
 **[1955]** Yuksel, Cem，《网格颜色纹理》（Mesh Color Textures）。载于 High Performance Graphics 2017, Eurographics Association, 第 17:1–17:11 页, 2017. 本书引用页：191。
 
-**[1956]** Yusov, E.，《利用 DirectX 11 实现实时可变形地形渲染》（Real-Time Deformable Terrain Rendering with DirectX 11）。载于 Wolfgang Engel 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B10_a83a09be91f80b.png), Charles River Media, 第 13–39 页, 2004. 本书引用页：879。
+**[1956]** Yusov, E.，《利用 DirectX 11 实现实时可变形地形渲染》（Real-Time Deformable Terrain Rendering with DirectX 11）。载于 Wolfgang Engel 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B10_a83a09be91f80b.png), Charles River Media, 第 13–39 页, 2004. 本书引用页：879。
 
 **[1957]** Yusov, Egor，《室外光散射》（Outdoor Light Scattering）。游戏开发者大会（Game Developers Conference）, 2013 年 3 月. 本书引用页：615。
 
@@ -3948,7 +3948,7 @@
 
 **[1963]** Zhang, Fan, Hanqiu Sun, and Oskari Nyman，《可编程 GPU 上的平行分割阴影贴图》（Parallel-Split Shadow Maps on Programmable GPUs）。载于 Hubert Nguyen 编， GPU Gems 3, Addison-Wesley, 第 203–237 页, 2007. 本书引用页：242, 243, 244。
 
-**[1964]** Zhang, Fan, Alexander Zaprjagaev, and Allan Bentham，《实用级联阴影贴图》（Practical Cascaded Shadow Maps）。载于 Wolfgang Engel 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B10_d2e9c37cce63da.png), Charles River Media, 第 305–329 页, 2009. 本书引用页：242, 245。
+**[1964]** Zhang, Fan, Alexander Zaprjagaev, and Allan Bentham，《实用级联阴影贴图》（Practical Cascaded Shadow Maps）。载于 Wolfgang Engel 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B10_d2e9c37cce63da.png), Charles River Media, 第 305–329 页, 2009. 本书引用页：242, 245。
 
 **[1965]** Zhang, Hansong，《用于任意模型交互式显示的有效遮挡剔除》（Effective Occlusion Culling for the Interactive Display of Arbitrary Models）。博士学位论文, 北卡罗来纳大学教堂山分校计算机科学系（Department of Computer Science, University of North Carolina at Chapel Hill）, 1998 年 7 月. 本书引用页：843。
 
@@ -3966,7 +3966,7 @@
 
 **[1972]** Zinke, Arno, Cem Yuksel, Weber Andreas, and John Keyser，《用于快速计算毛发多重散射的双重散射近似》（Dual Scattering Approximation for Fast Multiple Scattering in Hair）。ACM Transactions on Graphics (SIGGRAPH 2008), 第 27 卷, 第 3 期, 第 1–10 页, 2008. 本书引用页：645。
 
-**[1973]** Zioma, Renaldas，《利用光照缓冲改进几何批处理》（Better Geometry Batching Using Light Buffers）。载于 Wolfgang Engel 编， ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_B10_21361f65e26b5d.png), Charles River Media, 第 5–16 页, 2005. 本书引用页：893。
+**[1973]** Zioma, Renaldas，《利用光照缓冲改进几何批处理》（Better Geometry Batching Using Light Buffers）。载于 Wolfgang Engel 编， ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_B10_21361f65e26b5d.png), Charles River Media, 第 5–16 页, 2005. 本书引用页：893。
 
 **[1974]** Zirr, Tobias, and Anton Kaplanyan，《程序化多尺度材质的实时渲染》（Real-Time Rendering of Procedural Multiscale Materials）。Symposium on Interactive 3D Graphics and Games, 2016 年 2 月. 本书引用页：372。
 

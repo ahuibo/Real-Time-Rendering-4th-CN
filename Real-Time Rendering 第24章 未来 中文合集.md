@@ -28,7 +28,7 @@
 未来包含两个部分：你，以及其他一切。本章讨论这两个部分。首先，我们会作一些预测，其中有几条甚至可能成真。更重要的是第二部分，它讨论你接下来可以走向何方。这一部分有点像扩展版的“延伸阅读与资源”一节，但也讨论从这里继续前进的方式：通用的信息来源、会议、代码，以及更多内容。不过，先来看一幅图：见图24.1。
 
 
-![图24.1 透过命运2一窥未来](Real-Time_Rendering_4th_中文/assets/fig_24_1_24.1.png)
+![图24.1 透过命运2一窥未来](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_24_1_24.1.png)
 
 图24.1. 透过游戏《命运2》（Destiny 2），一窥某种未来。（图片© 2017 Bungie, Inc.，保留所有权利。）
 
@@ -43,7 +43,7 @@
 
 为了从长远角度解决性能问题，过分乐观的人喜欢求助于摩尔定律。这项观察给出的加速幅度是每1.5年达到2倍；换一种更实用的说法，就是每5年大约加速10倍[1663]。然而，处理器速度通常并不是瓶颈，而且随着时间推移，它成为瓶颈的可能性还会降低。真正的瓶颈是带宽，因为带宽每10年才增长到10倍，而不是每5年[1332]。
 
-电影行业的算法经常会进入实时渲染领域，因为两个领域都有生成逼真图像这一共同目标。考察电影行业的实践，我们会看到这样的统计数据：2016年电影《奇幻森林》（The Jungle Book）某些场景的单帧画面包含数百万根毛发，每帧的渲染时间达到30至40小时[1960]。虽然GPU专为实时渲染而设计，因此相对于CPU有明显优势，但从 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_24_01_8f8358f7b3a671.png) 提高到60 FPS，仍然相差约七个数量级。
+电影行业的算法经常会进入实时渲染领域，因为两个领域都有生成逼真图像这一共同目标。考察电影行业的实践，我们会看到这样的统计数据：2016年电影《奇幻森林》（The Jungle Book）某些场景的单帧画面包含数百万根毛发，每帧的渲染时间达到30至40小时[1960]。虽然GPU专为实时渲染而设计，因此相对于CPU有明显优势，但从 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_24_01_8f8358f7b3a671.png) 提高到60 FPS，仍然相差约七个数量级。
 
 我们答应过要作一些预测。“更快、更灵活”是一个容易作出的预测。就GPU架构而言，一种可能性是，采用z缓冲的三角形光栅化流水线将继续占据主导地位。除了最简单的游戏以外，所有游戏都使用GPU进行渲染。即使明天出现某种不可思议的技术，取代当前的流水线，速度快上一百倍，而且只需下载一个系统补丁即可使用，整个行业仍然可能需要数年才能转向这项新技术。一个障碍在于，新方法能否使用与现有方法完全相同的API。如果不能，推广应用就需要一段时间。一款复杂游戏的开发成本可达数千万美元甚至更多，并且需要数年才能完成。在开发过程的早期就要选定目标平台，这会影响从所用算法和着色器，到所制作美术资源的规模与复杂度等各方面的决策。除此之外，还需要开发用于处理或制作这些内容的工具，使用者也需要熟练掌握它们。即使奇迹真的出现，现有光栅化流水线背后的惯性也足以让它再延续数年。
 
@@ -58,7 +58,7 @@ API和GPU一直在共同演进，以适应这一现实。其口号是“灵活�
 实时渲染——其实所有渲染都是如此——归根结底都关乎采样与滤波。除了提高光线投射的效率，路径追踪还可以受益于更聪明的采样和滤波。无论宣传资料怎么说，现实中几乎所有离线路径追踪器都是有偏的[1276]。它们会对采样光线应当射向何处作出合理假设，从而大幅提高性能。路径追踪可以受益的另一个领域，是名副其实的智能滤波。深度学习目前是研究与开发中极其热门的领域。人们对它的兴趣最初重新高涨，源于2012年取得的显著进展：当时它在图像识别中大幅超越了人工调校的算法[349]。将神经网络用于降噪[95, 200, 247]和抗锯齿[1534]，是令人着迷的发展。见图24.2。我们已经看到，用神经网络完成渲染相关任务的研究论文数量大幅增长，更不用说建模与动画领域了。
 
 
-![图24.2 神经网络图像重建](Real-Time_Rendering_4th_中文/assets/fig_24_1_24.2.png)
+![图24.2 神经网络图像重建](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_24_1_24.2.png)
 
 图24.2. 使用神经网络重建图像。左侧是路径追踪生成的含噪图像。右侧是使用GPU加速降噪器以交互速率清理后的图像。（图片由NVIDIA Corporation提供[200]，使用Amazon Lumberyard Bistro场景。）
 
@@ -67,7 +67,7 @@ API和GPU一直在共同演进，以适应这一现实。其口号是“灵活�
 截至本书撰写时，尚无任何主流商用GPU将层次化光线投射明确列为一种基本操作。我们把PowerVR的Wizard GPU[1158]视为一个好兆头，因为这表明一家移动设备公司正在考虑以硬件支持光线与层次化场景描述之间的相交测试。直接支持光线投射的新一代GPU将改变效率上的权衡，并可能形成良性循环，使各种渲染效果不再那么依赖量身定制的专门技术。一种做法是，对视线光线使用光栅化，而对几乎所有其他工作使用光线追踪或计算着色器；各种DXR演示已经采用了这种方法[1, 47, 745]。随着降噪算法改进、追踪光线的GPU加快、既有研究得到重新应用，再加上新的研究探索，我们预计很快就能看到相当于10倍的性能提升。
 
 
-![图24.3 交互速率下的光线追踪反射与阴影](Real-Time_Rendering_4th_中文/assets/fig_24_1_24.3.png)
+![图24.3 交互速率下的光线追踪反射与阴影](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_24_1_24.3.png)
 
 图24.3. 这些图像以交互速率渲染。每个像素包含两次反射光线反弹，在屏幕对应位置和两次反弹位置各发出一条阴影光线，再加上两条环境光遮蔽光线，每个像素总计七条光线。阴影与反射使用了降噪滤波器。（图片由NVIDIA Corporation提供。）
 
@@ -78,7 +78,7 @@ GPU如何演进，当然还有其他引人入胜的可能性。另一种理想�
 有时，某个应用的独特约束允许其开发者“打破常规”，使用先前被认为异乎寻常或不可行的技术。Media Molecule的《Dreams》，以及图24.4所示Second Order的《Claybook》等游戏，让我们得以一窥某些有趣的渲染未来：在那里，占主导地位的可能是非传统算法。
 
 
-![图24.4 Claybook的黏土世界](Real-Time_Rendering_4th_中文/assets/fig_24_1_24.4.png)
+![图24.4 Claybook的黏土世界](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_24_1_24.4.png)
 
 图24.4. 《Claybook》是一款基于物理的解谜游戏，其黏土世界可由用户自由雕塑。黏土世界采用有符号距离场建模，并以光线追踪进行渲染，涵盖主光线，以及光线追踪阴影和环境光遮蔽（AO）。固体与液体的物理过程在GPU上模拟。（Claybook。© 2017 Second Order, Ltd.）
 
@@ -122,13 +122,13 @@ GPU如何演进，当然还有其他引人入胜的可能性。另一种理想�
 
 ## 章末未编号插图
 
-![章末未编号插图：《巫师》中的骑马远眺场景](Real-Time_Rendering_4th_中文/assets/fig_24_2_unnumbered_witcher.png)
+![章末未编号插图：《巫师》中的骑马远眺场景](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_24_2_unnumbered_witcher.png)
 
 你接下来想做什么？（CD PROJEKT®、The Witcher®是CD PROJEKT资本集团的注册商标。《巫师》游戏© CD PROJEKT S.A.。由CD PROJEKT S.A.开发。保留所有权利。《巫师》游戏根据Andrzej Sapkowski的文学作品改编。所有其他版权与商标均归各自所有者所有。）
 
 ## 出版社标识页
 
-![Taylor & Francis出版社标识](Real-Time_Rendering_4th_中文/assets/fig_24_2_unnumbered_publisher.png)
+![Taylor & Francis出版社标识](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_24_2_unnumbered_publisher.png)
 
 Taylor & Francis（泰勒与弗朗西斯）
 

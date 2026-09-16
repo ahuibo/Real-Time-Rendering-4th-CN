@@ -31,10 +31,10 @@
 辐亮度是渲染过程最终计算的量。到目前为止，我们一直使用反射方程来计算它：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_00_54c8b62ff3da23.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_00_54c8b62ff3da23.png)
 
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_00_96471259e53d03.png) 是从表面位置 p 沿观察方向 v 出射的辐亮度；Ω 是 p 上方的方向半球；![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_00_928fd13427f4f8.png) 是针对 v 和当前入射方向 l 求得的 BRDF 值；![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_00_d3f9c707fef2b3.png) 是从 l 方向入射到 p 的辐亮度；![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_00_d9d59d4e4888be.png) 是 l 与 n 的点积，并将负值钳制为零。
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_00_96471259e53d03.png) 是从表面位置 p 沿观察方向 v 出射的辐亮度；Ω 是 p 上方的方向半球；![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_00_928fd13427f4f8.png) 是针对 v 和当前入射方向 l 求得的 BRDF 值；![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_00_d3f9c707fef2b3.png) 是从 l 方向入射到 p 的辐亮度；![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_00_d9d59d4e4888be.png) 是 l 与 n 的点积，并将负值钳制为零。
 
 
 ## 11.1 渲染方程
@@ -44,25 +44,25 @@
 反射方程是完整渲染方程的一个受限特例。渲染方程由 Kajiya 于 1986 年提出 [846]。人们使用过不同形式的渲染方程。我们将采用以下版本：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_01_f577c15411e443.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_01_f577c15411e443.png)
 
 
-其中新增的元素是 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_01_58ff9546a2eb8e.png)，即从表面位置 p 沿方向 v 发射的辐亮度，以及下面这项替换：
+其中新增的元素是 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_01_58ff9546a2eb8e.png)，即从表面位置 p 沿方向 v 发射的辐亮度，以及下面这项替换：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_01_1f67007b835158.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_01_1f67007b835158.png)
 
 
 这一项表示，从方向 l 入射到位置 p 的辐亮度，等于从另一个点沿相反方向 −l 出射的辐亮度。在这里，“另一个点”由光线投射函数 r(p, l) 定义。该函数返回从 p 沿方向 l 投射的光线所击中的第一个表面点的位置。见图 11.1。
 
 
-![图11.1 光线投射与入射、出射辐亮度](Real-Time_Rendering_4th_中文/assets/fig_11_1_11.1.png)
+![图11.1 光线投射与入射、出射辐亮度](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_1_11.1.png)
 
-**图 11.1** 待着色的表面位置 p、光照方向 l、光线投射函数 r(p, l)，以及入射辐亮度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_01_d3f9c707fef2b3.png)；后者也表示为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_01_95b02c06b32ddd.png)。
+**图 11.1** 待着色的表面位置 p、光照方向 l、光线投射函数 r(p, l)，以及入射辐亮度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_01_d3f9c707fef2b3.png)；后者也表示为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_01_95b02c06b32ddd.png)。
 
-渲染方程的含义很直观。为了对表面位置 p 着色，我们需要知道从 p 沿观察方向 v 离开的出射辐亮度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_01_4a356304a16efc.png)。它等于发射辐亮度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_01_013c0484d8a8c2.png) 加上反射辐亮度。前面的章节已经研究过光源的发射，也研究过反射。甚至光线投射算子也没有看起来那么陌生。例如，z 缓冲就为从眼睛投射到场景中的光线计算这个算子。
+渲染方程的含义很直观。为了对表面位置 p 着色，我们需要知道从 p 沿观察方向 v 离开的出射辐亮度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_01_4a356304a16efc.png)。它等于发射辐亮度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_01_013c0484d8a8c2.png) 加上反射辐亮度。前面的章节已经研究过光源的发射，也研究过反射。甚至光线投射算子也没有看起来那么陌生。例如，z 缓冲就为从眼睛投射到场景中的光线计算这个算子。
 
-唯一的新项是 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_01_95b02c06b32ddd.png)，它明确表达了这样一个事实：入射到某个点的辐亮度，必然是从另一个点出射的。不幸的是，这是一个递归项。也就是说，要计算它，就又要对各个位置 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_01_8db566c871d41c.png) 的出射辐亮度求和。而这些位置又需要计算位置 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_01_a68bc93148f8c5.png) 的出射辐亮度，如此无穷无尽。真实世界竟然能够实时计算所有这些，实在令人惊叹。
+唯一的新项是 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_01_95b02c06b32ddd.png)，它明确表达了这样一个事实：入射到某个点的辐亮度，必然是从另一个点出射的。不幸的是，这是一个递归项。也就是说，要计算它，就又要对各个位置 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_01_8db566c871d41c.png) 的出射辐亮度求和。而这些位置又需要计算位置 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_01_a68bc93148f8c5.png) 的出射辐亮度，如此无穷无尽。真实世界竟然能够实时计算所有这些，实在令人惊叹。
 
 我们凭直觉就知道，灯光照亮场景，光子在其中四处弹射，每次碰撞时都会以各种方式被吸收、反射和折射。渲染方程的重要之处在于，它用一个看似简单的方程概括了所有可能的路径。
 
@@ -71,7 +71,7 @@
 在实时渲染中，通常只使用局部光照模型。计算光照只需要可见点处的表面数据，而这恰好是 GPU 能够最高效地提供的数据。各个图元被独立处理并光栅化，随后便被丢弃。在 b 点执行计算时，无法访问 a 点处的光照计算结果。透明、反射和阴影都是全局光照算法的例子。它们使用被照亮物体以外的其他物体的信息。这些效果能够大幅提高渲染图像的真实感，并提供帮助观察者理解空间关系的线索。同时，它们的模拟也很复杂，可能需要预计算，或者进行多个渲染遍次来计算一些中间信息。
 
 
-![图11.2 光子路径及其记法](Real-Time_Rendering_4th_中文/assets/fig_11_1_11.2.png)
+![图11.2 光子路径及其记法](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_1_11.2.png)
 
 **图 11.2** 一些到达眼睛的路径及其等价记法。注意，图中有两条路径从网球继续延伸。
 
@@ -105,11 +105,11 @@
 本节来源：《Real-Time Rendering, Fourth Edition》书页 441—445（PDF 第 462—466 页）；已检查 PDF 第 467 页的下一节边界。包含 11.2.1、11.2.2 及本节位于标题上方的图 11.3。
 
 
-![图11.3 路径追踪渲染的厨房](Real-Time_Rendering_4th_中文/assets/fig_11_2_11.3.png)
+![图11.3 路径追踪渲染的厨房](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_2_11.3.png)
 
 **图 11.3。** 路径追踪可以生成照片级真实感图像，但计算成本很高。上图每个像素使用了两千多条路径，每条路径最长包含 64 个线段。渲染耗时超过两小时，仍然可见少量噪声。（“Country Kitchen”模型由 Jay-Artist 制作，来自 Benedikt Bitterli Rendering Resources，采用 CC BY 3.0 许可 [149]。使用 Mitsuba 渲染器渲染。）
 
-前面的章节重点讨论了求解反射方程的各种方法。我们假定入射辐亮度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_02_b456bbb8033d74.png) 具有某种分布，并分析它如何影响着色。本章介绍的算法旨在求解完整的渲染方程。二者的区别在于，前者忽略了辐亮度来自何处——它只是一个给定量；后者则明确说明了这一点：到达某一点的辐亮度，就是其他点发射或反射出的辐亮度。
+前面的章节重点讨论了求解反射方程的各种方法。我们假定入射辐亮度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_02_b456bbb8033d74.png) 具有某种分布，并分析它如何影响着色。本章介绍的算法旨在求解完整的渲染方程。二者的区别在于，前者忽略了辐亮度来自何处——它只是一个给定量；后者则明确说明了这一点：到达某一点的辐亮度，就是其他点发射或反射出的辐亮度。
 
 求解完整渲染方程的算法能够生成令人惊叹的照片级真实感图像（图 11.3）。然而，这些方法的计算开销过大，无法用于实时应用。那么，为什么还要讨论它们呢？第一个原因是，在静态或部分静态的场景中，可以将这类算法作为预处理步骤运行，存储结果，以便之后在渲染时使用。例如，这在游戏中是一种常见做法；我们将讨论此类系统的不同方面。
 
@@ -128,20 +128,20 @@
 从渲染方程出发，可以推导出面片 i 的辐射度为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_02_550c4e56f02e55.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_02_550c4e56f02e55.png)
 
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_02_f29fb3afea9d36.png) 表示面片 i 的辐射度，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_02_877bf7285f71a6.png) 是辐射出射度，也就是面片 i 自身发出的辐射度；![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_02_54cc8781620e9a.png) 是次表面反照率（第 9.3 节）。只有光源的发射量才非零。![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_02_1ff0d108c0980c.png) 是面片 i 与 j 之间的形状因子（form factor）。形状因子的定义为
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_02_f29fb3afea9d36.png) 表示面片 i 的辐射度，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_02_877bf7285f71a6.png) 是辐射出射度，也就是面片 i 自身发出的辐射度；![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_02_54cc8781620e9a.png) 是次表面反照率（第 9.3 节）。只有光源的发射量才非零。![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_02_1ff0d108c0980c.png) 是面片 i 与 j 之间的形状因子（form factor）。形状因子的定义为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_02_4a5b43f4d05c3f.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_02_4a5b43f4d05c3f.png)
 
 
-![图11.4 两个表面点之间的形状因子](Real-Time_Rendering_4th_中文/assets/fig_11_2_11.4.png)
+![图11.4 两个表面点之间的形状因子](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_2_11.4.png)
 
 **图 11.4。** 两个表面点之间的形状因子。
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_02_db175bc6cb7648.png) 是面片 i 的面积，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_02_672a1f020d6c22.png) 是点 **i** 与 **j** 之间的可见性函数：两点之间没有任何物体阻挡光时，函数值为 1，否则为 0。![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_02_ba4635370b500e.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_02_8666e20fdab744.png) 分别是两个面片的法线与连接点 **i**、**j** 的射线之间的夹角。最后，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_02_f0078ed228cf02.png) 是该射线的长度。参见图 11.4。
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_02_db175bc6cb7648.png) 是面片 i 的面积，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_02_672a1f020d6c22.png) 是点 **i** 与 **j** 之间的可见性函数：两点之间没有任何物体阻挡光时，函数值为 1，否则为 0。![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_02_ba4635370b500e.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_02_8666e20fdab744.png) 分别是两个面片的法线与连接点 **i**、**j** 的射线之间的夹角。最后，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_02_f0078ed228cf02.png) 是该射线的长度。参见图 11.4。
 
 形状因子是一个纯几何项。它表示离开面片 i 的均匀漫射辐射能量中，入射到面片 j 的那一部分所占的比例 [399]。两个面片的面积、距离和朝向，以及位于二者之间的任何表面，都会影响形状因子的值。设想用一台计算机显示器来代表一个面片。房间内的其他每个面片，都会直接接收到显示器发出的光中的某个比例。如果一个表面位于显示器背后，或者无法“看见”显示器，这个比例就可能为零。所有这些比例相加等于 1。辐射度算法的重要工作之一，就是准确确定场景中各对面片之间的形状因子。
 
@@ -156,12 +156,12 @@
 经典光线追踪只能提供有限的一组效果：清晰的反射和折射，以及硬阴影。然而，同样的基本原理也可以用于求解完整的渲染方程。Kajiya [846] 意识到，发射射线并计算它们携带多少光的机制，可以用于计算式 11.2 中的积分。该方程是递归的，这意味着对于每条射线，都需要在另一个位置重新计算积分。幸运的是，处理这个问题所需的坚实数学基础早已存在。蒙特卡洛方法是在曼哈顿计划期间为物理实验而发展起来的，专门用于处理这一类问题。它不通过求积规则直接计算每个着色点处的积分值，而是在积分域内若干随机点处求被积函数的值，再利用这些值估计积分值。采样点越多，精度越高。这种方法最重要的性质是，只需要在离散点处计算被积函数的值。只要时间足够，就能以任意精度计算积分。在渲染的语境下，光线追踪恰好提供了这种能力。发射射线时，我们就在对式 11.2 的被积函数进行点采样。即使交点处还有另一个积分需要计算，我们也不需要它的最终值，只需再对它进行一次点采样即可。当射线在场景中反弹时，就构建出了一条路径。沿每条路径传输的光，为被积函数提供一次求值。这个过程称为路径追踪（path tracing，图 11.5）。
 
 
-![图11.5 路径追踪算法生成的示例路径](Real-Time_Rendering_4th_中文/assets/fig_11_2_11.5.png)
+![图11.5 路径追踪算法生成的示例路径](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_2_11.5.png)
 
 **图 11.5。** 路径追踪算法生成的示例路径。这三条路径都经过成像平面上的同一个像素，用于估计该像素的亮度。图底部的地板具有很强的光泽，会将射线反射到一个较小的立体角范围内。蓝色方盒和红色球体是漫反射表面，因此会将射线均匀地散射到交点法线周围。
 
 
-![图11.6 蒙特卡洛路径追踪的采样噪声](Real-Time_Rendering_4th_中文/assets/fig_11_2_11.6.png)
+![图11.6 蒙特卡洛路径追踪的采样噪声](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_2_11.6.png)
 
 **图 11.6。** 使用蒙特卡洛路径追踪时，样本数不足所产生的噪声。左图每个像素使用 8 条路径渲染，右图每个像素使用 1024 条路径渲染。（“Cornell Box”模型来自 Benedikt Bitterli Rendering Resources，采用 CC BY 3.0 许可 [149]。使用 Mitsuba 渲染器渲染。）
 
@@ -182,103 +182,103 @@
 
 ### 11.3.1 环境光遮蔽理论
 
-环境光遮蔽的理论基础可以直接由反射方程推导出来。为简单起见，我们首先只考虑朗伯表面。这类表面的出射辐亮度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_a5b25c741c2012.png) 与表面辐照度 E 成正比。辐照度是入射辐亮度经过余弦加权后的积分。一般而言，它取决于表面位置 **p** 和表面法线 **n**。同样为了简化，我们假设对于所有入射方向 **l**，入射辐亮度均为常量，即 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_4abf6e55c5ebce.png)(**l**) = ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_8d3585ae5f6f75.png)。由此得到计算辐照度的下式：
+环境光遮蔽的理论基础可以直接由反射方程推导出来。为简单起见，我们首先只考虑朗伯表面。这类表面的出射辐亮度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_a5b25c741c2012.png) 与表面辐照度 E 成正比。辐照度是入射辐亮度经过余弦加权后的积分。一般而言，它取决于表面位置 **p** 和表面法线 **n**。同样为了简化，我们假设对于所有入射方向 **l**，入射辐亮度均为常量，即 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_4abf6e55c5ebce.png)(**l**) = ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_8d3585ae5f6f75.png)。由此得到计算辐照度的下式：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_a32e8a48706e28.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_a32e8a48706e28.png)
 
 
 这里的积分在所有可能入射方向所构成的半球 Ω 上进行。假设照明恒定且均匀，辐照度（因此也包括出射辐亮度）就不依赖表面位置或法线，而在整个物体上保持不变。这会使物体呈现平板的外观。
 
-式 11.6 完全没有考虑可见性。有些方向可能被物体的其他部分或场景中的其他物体挡住。这些方向的入射辐亮度将不同于 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_8d3585ae5f6f75.png)。为简单起见，我们假设被遮挡方向的入射辐亮度为零。这忽略了所有可能从场景中其他物体反弹、最终沿这些被遮挡方向到达点 **p** 的光，但大大简化了推理。于是得到下面这个最早由 Cook 和 Torrance [285, 286] 提出的方程：
+式 11.6 完全没有考虑可见性。有些方向可能被物体的其他部分或场景中的其他物体挡住。这些方向的入射辐亮度将不同于 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_8d3585ae5f6f75.png)。为简单起见，我们假设被遮挡方向的入射辐亮度为零。这忽略了所有可能从场景中其他物体反弹、最终沿这些被遮挡方向到达点 **p** 的光，但大大简化了推理。于是得到下面这个最早由 Cook 和 Torrance [285, 286] 提出的方程：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_9ecf81e1074c40.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_9ecf81e1074c40.png)
 
 
 其中 v(**p**, **l**) 是可见性函数：若从 **p** 沿 **l** 方向发射的射线被挡住，它等于零；否则等于一。
 
 
-![图11.7](Real-Time_Rendering_4th_中文/assets/fig_11_3_11.7.png)
+![图11.7](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_3_11.7.png)
 
 图 11.7　只使用恒定环境光照渲染的物体（左），以及使用环境光遮蔽渲染的物体（右）。即使光照恒定，环境光遮蔽也能显现物体细节。（“Dragon”模型由 Delatronic 制作，来自 Benedikt Bitterli Rendering Resources，采用 CC BY 3.0 许可 [149]。使用 Mitsuba 渲染器渲染。）
 
 可见性函数经过归一化的余弦加权积分，称为环境光遮蔽：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_4f329c99fbfc1d.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_4f329c99fbfc1d.png)
 
 
 它表示未被遮挡的半球所占的余弦加权比例。其值从零到一：完全被遮挡的表面点为零，完全没有遮挡的位置为一。需要注意，球体或盒子等凸物体不会造成自遮蔽。如果场景中没有其他物体，凸物体各处的环境光遮蔽值都为一。如果物体存在凹陷，那么这些区域的遮蔽值就会小于一。
 
-定义 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 之后，存在遮蔽时的环境辐照度方程为：
+定义 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 之后，存在遮蔽时的环境辐照度方程为：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_5b8383df9d5e99.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_5b8383df9d5e99.png)
 
 
-注意，现在辐照度确实会随表面位置变化，因为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 会变化。这会产生真实得多的结果，如图 11.7 右图所示。尖锐褶皱中的表面位置会很暗，因为这些位置的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 很低。请比较图 11.8 中的表面位置 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_2e288399bdd152.png) 与 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_b987f4a3cec965.png)。表面朝向也有影响，因为可见性函数 v(**p**, **l**) 在积分时用余弦因子加权。请比较该图左侧的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_b987f4a3cec965.png) 与 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_13d2f5c2f95120.png)。两者未被遮挡的立体角大小大致相同，但 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_b987f4a3cec965.png) 的大部分未遮挡区域位于其表面法线附近，因此余弦因子较高，这从箭头的明暗可以看出。相比之下，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_13d2f5c2f95120.png) 的大部分未遮挡区域偏向表面法线的一侧，对应的余弦因子较低。因此，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_13d2f5c2f95120.png) 处的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 较低。从这里开始，为简洁起见，我们不再显式写出对表面位置 **p** 的依赖。
+注意，现在辐照度确实会随表面位置变化，因为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 会变化。这会产生真实得多的结果，如图 11.7 右图所示。尖锐褶皱中的表面位置会很暗，因为这些位置的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 很低。请比较图 11.8 中的表面位置 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_2e288399bdd152.png) 与 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_b987f4a3cec965.png)。表面朝向也有影响，因为可见性函数 v(**p**, **l**) 在积分时用余弦因子加权。请比较该图左侧的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_b987f4a3cec965.png) 与 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_13d2f5c2f95120.png)。两者未被遮挡的立体角大小大致相同，但 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_b987f4a3cec965.png) 的大部分未遮挡区域位于其表面法线附近，因此余弦因子较高，这从箭头的明暗可以看出。相比之下，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_13d2f5c2f95120.png) 的大部分未遮挡区域偏向表面法线的一侧，对应的余弦因子较低。因此，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_13d2f5c2f95120.png) 处的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 较低。从这里开始，为简洁起见，我们不再显式写出对表面位置 **p** 的依赖。
 
 
-![图11.8](Real-Time_Rendering_4th_中文/assets/fig_11_3_11.8.png)
+![图11.8](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_3_11.8.png)
 
-图 11.8　环境照明下的一个物体。图中标出三个点（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_2e288399bdd152.png)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_b987f4a3cec965.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_13d2f5c2f95120.png)）。左图中，被挡住的方向用终止于交点（黑色圆点）的黑色射线表示。未被挡住的方向用箭头表示，并按余弦因子着色，因此越接近表面法线的箭头越亮。右图中，每个蓝色箭头都表示平均未遮挡方向，即弯曲法线。
+图 11.8　环境照明下的一个物体。图中标出三个点（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_2e288399bdd152.png)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_b987f4a3cec965.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_13d2f5c2f95120.png)）。左图中，被挡住的方向用终止于交点（黑色圆点）的黑色射线表示。未被挡住的方向用箭头表示，并按余弦因子着色，因此越接近表面法线的箭头越亮。右图中，每个蓝色箭头都表示平均未遮挡方向，即弯曲法线。
 
-除 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 外，Landis [974] 还计算平均未遮挡方向，称为弯曲法线（bent normal）。这一方向向量通过对未遮挡的入射光方向求余弦加权平均得到：
+除 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 外，Landis [974] 还计算平均未遮挡方向，称为弯曲法线（bent normal）。这一方向向量通过对未遮挡的入射光方向求余弦加权平均得到：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_92a5416a59ee2f.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_92a5416a59ee2f.png)
 
 
 记号 ‖**x**‖ 表示向量 **x** 的长度。将积分结果除以它自身的长度，就得到归一化结果。参见图 11.8 右图。在着色时，可以用得到的向量替代几何法线，以提供更准确的结果，而不增加性能开销（第 11.3.7 节）。
 
 ### 11.3.2 可见性与遮暗
 
-用来计算环境光遮蔽因子 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png)（式 11.8）的可见性函数 v(**l**) 需要仔细定义。对于角色或车辆这样的物体，可以很直接地根据从某个表面位置沿 **l** 方向发射的射线是否与同一物体的其他部分相交来定义 v(**l**)。但这没有计入附近其他物体造成的遮蔽。在照明计算中，通常可以假定该物体放在一个平面上。将这个平面包含在可见性计算中，就能得到更真实的遮蔽。另一个好处是，物体对地平面的遮蔽可以用作接触阴影 [974]。
+用来计算环境光遮蔽因子 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png)（式 11.8）的可见性函数 v(**l**) 需要仔细定义。对于角色或车辆这样的物体，可以很直接地根据从某个表面位置沿 **l** 方向发射的射线是否与同一物体的其他部分相交来定义 v(**l**)。但这没有计入附近其他物体造成的遮蔽。在照明计算中，通常可以假定该物体放在一个平面上。将这个平面包含在可见性计算中，就能得到更真实的遮蔽。另一个好处是，物体对地平面的遮蔽可以用作接触阴影 [974]。
 
-遗憾的是，这种可见性函数方法对封闭几何体会失效。设想一个由封闭房间及其中各种物体组成的场景。所有表面的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 都为零，因为从表面发出的所有射线都会碰到某个东西。对于这类场景，尝试复现环境光遮蔽外观、但不一定模拟物理可见性的经验方法往往效果更好。其中一些方法受到 Miller 的可达性着色（accessibility shading）概念 [1211] 的启发；它模拟表面角落和缝隙如何积聚污垢或受到腐蚀。
+遗憾的是，这种可见性函数方法对封闭几何体会失效。设想一个由封闭房间及其中各种物体组成的场景。所有表面的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 都为零，因为从表面发出的所有射线都会碰到某个东西。对于这类场景，尝试复现环境光遮蔽外观、但不一定模拟物理可见性的经验方法往往效果更好。其中一些方法受到 Miller 的可达性着色（accessibility shading）概念 [1211] 的启发；它模拟表面角落和缝隙如何积聚污垢或受到腐蚀。
 
 
-![图11.9](Real-Time_Rendering_4th_中文/assets/fig_11_3_11.9.png)
+![图11.9](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_3_11.9.png)
 
 图 11.9　环境光遮蔽与遮暗之间的区别。左侧飞船的遮蔽使用无限长射线计算，右图使用有限长度的射线。（“4060.b Spaceship”模型由 thecali 制作，来自 Benedikt Bitterli Rendering Resources，采用 CC BY 3.0 许可 [149]。使用 Mitsuba 渲染器渲染。）
 
 Zhukov 等人 [1970] 引入了遮暗（obscurance）的概念：将可见性函数 v(**l**) 替换为距离映射函数 ρ(**l**)，从而修改环境光遮蔽的计算：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_c44664926af6ca.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_c44664926af6ca.png)
 
 
-v(**l**) 只有两个有效值，无交点时为 1，有交点时为 0；与之不同，ρ(**l**) 是一个连续函数，取决于射线在与表面相交前所行进的距离。当交点距离为 0 时，ρ(**l**) 为 0；当交点距离大于指定距离 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_9f162f4b5bf1ff.png)，或者完全没有交点时，其值为 1。无需检测 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_9f162f4b5bf1ff.png) 之外的交点，这能显著加快 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 的计算。图 11.9 展示了环境光遮蔽与环境遮暗的区别。注意，使用环境光遮蔽渲染的图像明显更暗。这是因为即使很远处的交点也会被检测到，进而影响 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 的值。
+v(**l**) 只有两个有效值，无交点时为 1，有交点时为 0；与之不同，ρ(**l**) 是一个连续函数，取决于射线在与表面相交前所行进的距离。当交点距离为 0 时，ρ(**l**) 为 0；当交点距离大于指定距离 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_9f162f4b5bf1ff.png)，或者完全没有交点时，其值为 1。无需检测 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_9f162f4b5bf1ff.png) 之外的交点，这能显著加快 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 的计算。图 11.9 展示了环境光遮蔽与环境遮暗的区别。注意，使用环境光遮蔽渲染的图像明显更暗。这是因为即使很远处的交点也会被检测到，进而影响 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 的值。
 
-尽管有人尝试从物理角度为它提供依据，遮暗并不符合物理规律。不过，它常常能给出符合观看者预期的可信结果。一个缺点是，必须手动设定 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_9f162f4b5bf1ff.png) 才能得到令人满意的效果。计算机图形学中经常会出现这种折中：一种技术没有直接的物理基础，却“在感知上令人信服”。目标通常是可信的图像，因此使用这样的技术没有问题。话虽如此，基于理论的方法也有一些优势：它们能够自动工作，而且可以通过推理真实世界的运作方式来进一步改进。
+尽管有人尝试从物理角度为它提供依据，遮暗并不符合物理规律。不过，它常常能给出符合观看者预期的可信结果。一个缺点是，必须手动设定 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_9f162f4b5bf1ff.png) 才能得到令人满意的效果。计算机图形学中经常会出现这种折中：一种技术没有直接的物理基础，却“在感知上令人信服”。目标通常是可信的图像，因此使用这样的技术没有问题。话虽如此，基于理论的方法也有一些优势：它们能够自动工作，而且可以通过推理真实世界的运作方式来进一步改进。
 
 ### 11.3.3 计入相互反射
 
 
-![图11.10](Real-Time_Rendering_4th_中文/assets/fig_11_3_11.10.png)
+![图11.10](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_3_11.10.png)
 
 图 11.10　不考虑与考虑相互反射时的环境光遮蔽差异。左图只使用可见性信息。右图还使用了一次反弹的间接光照。（“Victorian Style House”模型由 MrChimp2313 制作，来自 Benedikt Bitterli Rendering Resources，采用 CC BY 3.0 许可 [149]。使用 Mitsuba 渲染器渲染。）
 
 尽管环境光遮蔽产生的结果在视觉上可信，它们仍比完整全局光照模拟的结果更暗。请比较图 11.10 中的图像。
 
-环境光遮蔽与完整全局光照之间的一个重要差异来源是相互反射。式 11.8 假定被遮挡方向的辐亮度为零，而实际上相互反射会让这些方向产生非零辐亮度。与图 11.10 右侧模型相比，这种影响表现为左侧模型褶皱和凹坑中的变暗。可以通过增大 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 来弥补这一差异。使用遮暗的距离映射函数替代可见性函数（第 11.3.2 节）也能缓解这一问题，因为遮暗函数对于被遮挡方向的取值通常大于零。
+环境光遮蔽与完整全局光照之间的一个重要差异来源是相互反射。式 11.8 假定被遮挡方向的辐亮度为零，而实际上相互反射会让这些方向产生非零辐亮度。与图 11.10 右侧模型相比，这种影响表现为左侧模型褶皱和凹坑中的变暗。可以通过增大 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 来弥补这一差异。使用遮暗的距离映射函数替代可见性函数（第 11.3.2 节）也能缓解这一问题，因为遮暗函数对于被遮挡方向的取值通常大于零。
 
-更准确地跟踪相互反射很昂贵，因为这需要求解一个递归问题。要对一个点着色，就必须先对其他点着色，以此类推。计算 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 比完整全局光照计算便宜得多，但通常仍希望以某种形式补上这部分缺失的光，以免过度变暗。Stewart 和 Langer [1699] 提出一种低成本、却出人意料地准确的相互反射近似方法。它依据这样的观察：对于漫射照明下的朗伯场景，从给定位置能够看到的表面位置往往具有相近的辐亮度。假定来自被遮挡方向的辐亮度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_4abf6e55c5ebce.png) 等于当前着色点的出射辐亮度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_a5b25c741c2012.png)，就可以打破递归，并得到解析表达式：
-
-
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_5b53227514e1b2.png)
+更准确地跟踪相互反射很昂贵，因为这需要求解一个递归问题。要对一个点着色，就必须先对其他点着色，以此类推。计算 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 比完整全局光照计算便宜得多，但通常仍希望以某种形式补上这部分缺失的光，以免过度变暗。Stewart 和 Langer [1699] 提出一种低成本、却出人意料地准确的相互反射近似方法。它依据这样的观察：对于漫射照明下的朗伯场景，从给定位置能够看到的表面位置往往具有相近的辐亮度。假定来自被遮挡方向的辐亮度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_4abf6e55c5ebce.png) 等于当前着色点的出射辐亮度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_a5b25c741c2012.png)，就可以打破递归，并得到解析表达式：
 
 
-其中 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_54cc8781620e9a.png) 是次表面反照率，也就是漫反射率。这等价于用一个新的因子 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_90ea4d597e2660.png) 替换环境光遮蔽因子 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png)：
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_5b53227514e1b2.png)
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_e26b066db544e2.png)
+其中 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_54cc8781620e9a.png) 是次表面反照率，也就是漫反射率。这等价于用一个新的因子 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_90ea4d597e2660.png) 替换环境光遮蔽因子 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png)：
 
 
-这个方程倾向于提高环境光遮蔽因子，使视觉结果更接近包含相互反射的完整全局光照解。其效果高度依赖 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_54cc8781620e9a.png) 的值。底层近似假定着色点附近的表面颜色相同，从而产生一种有些类似颜色渗透的效果。Hoffman 和 Mitchell [755] 使用这种方法，以天空光照亮地形。
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_e26b066db544e2.png)
 
-Jimenez 等人 [835] 提出了另一种方案。他们对若干场景执行完整的离线路径追踪，每个场景都由均匀白色、位于无限远处的环境贴图照明，以获得正确计入相互反射的遮蔽值。根据这些示例，他们拟合三次多项式来近似函数 f；该函数将环境光遮蔽值 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 和次表面反照率 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_54cc8781620e9a.png) 映射为受相互反射光提亮后的遮蔽值 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_90ea4d597e2660.png)。他们的方法也假定反照率在局部恒定，因此可以根据给定点的反照率推导入射反弹光的颜色。
+
+这个方程倾向于提高环境光遮蔽因子，使视觉结果更接近包含相互反射的完整全局光照解。其效果高度依赖 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_54cc8781620e9a.png) 的值。底层近似假定着色点附近的表面颜色相同，从而产生一种有些类似颜色渗透的效果。Hoffman 和 Mitchell [755] 使用这种方法，以天空光照亮地形。
+
+Jimenez 等人 [835] 提出了另一种方案。他们对若干场景执行完整的离线路径追踪，每个场景都由均匀白色、位于无限远处的环境贴图照明，以获得正确计入相互反射的遮蔽值。根据这些示例，他们拟合三次多项式来近似函数 f；该函数将环境光遮蔽值 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 和次表面反照率 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_54cc8781620e9a.png) 映射为受相互反射光提亮后的遮蔽值 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_90ea4d597e2660.png)。他们的方法也假定反照率在局部恒定，因此可以根据给定点的反照率推导入射反弹光的颜色。
 
 ### 11.3.4 预计算环境光遮蔽
 
@@ -287,7 +287,7 @@ Jimenez 等人 [835] 提出了另一种方案。他们对若干场景执行完�
 预计算环境光遮蔽最常见的方法是蒙特卡洛方法。发射射线并检查它们与场景的交点，对式 11.8 进行数值求值。例如，设我们在法线 **n** 周围的半球上选取 N 个均匀分布的随机方向 **l**，并沿这些方向追踪射线。根据相交结果求出可见性函数 v。于是环境光遮蔽可计算为：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_ccb6d2c60abbc1.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_ccb6d2c60abbc1.png)
 
 
 > 译注：式 11.14 忠实保留原书。按照正文所述“在半球上均匀分布”的采样以及式 11.8 的归一化，蒙特卡洛估计的前因子应为 2/N；原式的 1/N 疑似漏了因子 2。此处不暗改原式。
@@ -307,7 +307,7 @@ Malmer 等人 [1111] 将环境光遮蔽因子以及可选的弯曲法线存储�
 无论选择哪种方法存储环境光遮蔽值，都必须意识到，我们处理的是连续信号。从空间某一点发射射线时，我们在进行采样；在着色之前根据这些结果插值出一个值时，我们在进行重建。信号处理领域的所有工具都可以用于提高采样与重建过程的质量。Kavan 等人 [875] 提出一种称为最小二乘烘焙（least-squares baking）的方法。先在整个网格上均匀采样遮蔽信号，再推导顶点值，使插值结果与采样结果之间的总差异在最小二乘意义下达到最小。他们专门在顶点数据存储的背景下讨论该方法，但同样的推理也可以用于推导要存储到纹理或体数据中的值。
 
 
-![图11.11](Real-Time_Rendering_4th_中文/assets/fig_11_3_11.11.png)
+![图11.11](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_3_11.11.png)
 
 图 11.11　《命运》在间接光照计算中使用预计算环境光遮蔽。这一方案用于两个不同硬件世代的游戏版本，兼顾了高质量与高性能。（图像 ©2013 Bungie, Inc.，保留所有权利。）
 
@@ -317,13 +317,13 @@ Malmer 等人 [1111] 将环境光遮蔽因子以及可选的弯曲法线存储�
 
 ### 11.3.5 动态计算环境光遮蔽
 
-对于静态场景，环境光遮蔽因子 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 和弯曲法线 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_e3b098775e9b7c.png) 可以预计算。但对于物体正在移动或改变形状的场景，即时计算这些因子能得到更好的结果。这类方法可以分成两组：在物体空间中工作的方法，以及在屏幕空间中工作的方法。
+对于静态场景，环境光遮蔽因子 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 和弯曲法线 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_e3b098775e9b7c.png) 可以预计算。但对于物体正在移动或改变形状的场景，即时计算这些因子能得到更好的结果。这类方法可以分成两组：在物体空间中工作的方法，以及在屏幕空间中工作的方法。
 
 离线环境光遮蔽计算方法通常从每个表面点向场景发射大量射线，数量从几十条到几百条不等，并检查是否相交。这是一项昂贵的操作，因此实时方法重点研究如何近似或避免其中的大部分计算。
 
-Bunnell [210] 把表面建模为放置在网格顶点上的一组圆盘状元素，从而计算环境光遮蔽因子 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 和弯曲法线 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_e3b098775e9b7c.png)。选择圆盘，是因为一个圆盘对另一个圆盘的遮蔽可以解析计算，从而无需投射射线。简单地将其他所有圆盘对某个圆盘的遮蔽因子相加，会因重复阴影而得到过暗的结果。也就是说，如果一个圆盘位于另一个圆盘后面，两者都会被计为遮挡表面，尽管本来只应计入较近的圆盘。Bunnell 使用一种巧妙的两遍方法来避免这一问题。第一遍计算包含重复阴影的环境光遮蔽；第二遍根据第一遍算出的每个圆盘所受的遮蔽，降低该圆盘的贡献。这是一种近似，但实际结果令人信服。
+Bunnell [210] 把表面建模为放置在网格顶点上的一组圆盘状元素，从而计算环境光遮蔽因子 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 和弯曲法线 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_e3b098775e9b7c.png)。选择圆盘，是因为一个圆盘对另一个圆盘的遮蔽可以解析计算，从而无需投射射线。简单地将其他所有圆盘对某个圆盘的遮蔽因子相加，会因重复阴影而得到过暗的结果。也就是说，如果一个圆盘位于另一个圆盘后面，两者都会被计为遮挡表面，尽管本来只应计入较近的圆盘。Bunnell 使用一种巧妙的两遍方法来避免这一问题。第一遍计算包含重复阴影的环境光遮蔽；第二遍根据第一遍算出的每个圆盘所受的遮蔽，降低该圆盘的贡献。这是一种近似，但实际结果令人信服。
 
-计算每一对元素之间的遮蔽，是 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_fe3aa210ee9784.png) 量级的操作，除最简单的场景外，开销都过高。对远处表面使用简化表示可以降低成本。Bunnell 为元素构建一棵层次树，其中每个节点都是一个圆盘，代表树中其下方圆盘的聚合。计算圆盘之间的遮蔽时，对更远处的表面使用更高层节点。这将计算量降低到合理得多的 O(n log n)。Bunnell 的技术相当高效，并能产生高质量结果。例如，它曾用于《加勒比海盗》系列电影的最终渲染 [265]。
+计算每一对元素之间的遮蔽，是 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_fe3aa210ee9784.png) 量级的操作，除最简单的场景外，开销都过高。对远处表面使用简化表示可以降低成本。Bunnell 为元素构建一棵层次树，其中每个节点都是一个圆盘，代表树中其下方圆盘的聚合。计算圆盘之间的遮蔽时，对更远处的表面使用更高层节点。这将计算量降低到合理得多的 O(n log n)。Bunnell 的技术相当高效，并能产生高质量结果。例如，它曾用于《加勒比海盗》系列电影的最终渲染 [265]。
 
 Hoberock [751] 对 Bunnell 的算法提出若干修改，以更高的计算开销换取质量提升。他还给出一个距离衰减因子，产生的结果与 Zhukov 等人 [1970] 提出的遮暗因子相似。
 
@@ -332,20 +332,20 @@ Evans [444] 描述了一种基于有符号距离场（signed distance field，SD
 Wright [1910] 进一步扩展了将有符号距离场用于环境光遮蔽的方法。他没有使用临时设计的启发式规则来生成遮蔽值，而是执行锥体追踪。锥体起于正在着色的位置，并与距离场中编码的场景表示进行相交测试。锥体追踪通过沿轴线前进若干步来近似：每一步都检查 SDF 与一个半径不断增大的球体是否相交。如果到最近遮挡物的距离（从 SDF 采样得到的值）小于球体半径，锥体的这一部分便被遮挡（图 11.12）。只追踪单个锥体不够精确，而且无法纳入余弦项。因此，Wright 追踪一组覆盖整个半球的锥体，以估计环境光遮蔽。为了提高视觉保真度，他的方案不仅使用场景的全局 SDF，还使用表示单个物体或逻辑上相连的一组物体的局部 SDF。
 
 
-![图11.12](Real-Time_Rendering_4th_中文/assets/fig_11_3_11.12.png)
+![图11.12](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_3_11.12.png)
 
 图 11.12　通过让场景几何体与半径逐渐增大的球体执行一系列相交测试，来近似锥体追踪。球体的大小对应于距追踪起点给定距离处的锥体半径。每一步都减小锥角，以计入场景几何体造成的遮蔽。最终遮蔽因子估计为裁剪后锥体所张立体角与原始锥体立体角之比。
 
 Crassin 等人 [305] 在场景体素表示的背景下描述了类似方法。他们使用稀疏体素八叉树（第 13.10 节）存储场景体素化的结果。他们的环境光遮蔽计算算法，是一种用于渲染完整全局光照效果的更通用方法的特殊情况（第 11.5.7 节）。
 
 
-![图11.13](Real-Time_Rendering_4th_中文/assets/fig_11_3_11.13.png)
+![图11.13](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_3_11.13.png)
 
 图 11.13　环境光遮蔽效果是模糊的，不会显现遮挡物的细节。AO 计算可以使用简单得多的几何表示，仍然产生可信效果。犰狳模型（左）用一组球体（右）近似。两个模型在身后墙面上投下的遮蔽几乎没有区别。（模型由斯坦福计算机图形学实验室提供。）
 
 Ren 等人 [1482] 把遮挡几何体近似为球体集合（图 11.13）。表面点被单个球体遮挡时的可见性函数用球谐函数表示。被一组球体遮挡时的总可见性函数，是各个球体可见性函数相乘的结果。遗憾的是，计算球谐函数乘积是一项昂贵的操作。他们的关键思路是，将各个球谐可见性函数的对数相加，再对结果求指数。这样得到的最终结果与可见性函数直接相乘相同，但球谐函数求和的成本远低于相乘。论文表明，采用合适的近似后，对数与指数运算可以快速完成，从而实现整体加速。
 
-这种方法计算的不只是环境光遮蔽因子，而是以球谐函数表示的完整球面可见性函数（第 10.3.2 节）。第一个系数（0 阶）可以用作环境光遮蔽因子 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png)，接下来的三个系数（1 阶）可以用来计算弯曲法线 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_e3b098775e9b7c.png)。更高阶的系数可以用于环境贴图或圆形光源的阴影。由于几何体近似为包围球，褶皱和其他细小细节造成的遮蔽不会被模拟。
+这种方法计算的不只是环境光遮蔽因子，而是以球谐函数表示的完整球面可见性函数（第 10.3.2 节）。第一个系数（0 阶）可以用作环境光遮蔽因子 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png)，接下来的三个系数（1 阶）可以用来计算弯曲法线 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_e3b098775e9b7c.png)。更高阶的系数可以用于环境贴图或圆形光源的阴影。由于几何体近似为包围球，褶皱和其他细小细节造成的遮蔽不会被模拟。
 
 Sloan 等人 [1655] 在屏幕空间中累加 Ren 所描述的可见性函数。对于每个遮挡物，他们考虑到其中心的世界空间距离位于指定范围内的一组像素。可以通过渲染一个球体，并在着色器中执行距离测试或使用模板测试，来实现这一操作。对于所有受影响的屏幕区域，将适当的球谐值加到离屏缓冲区。在累加完所有遮挡物的可见性后，对缓冲区中的值求指数，便得到每个屏幕像素最终的组合可见性函数。Hill [737] 使用相同的方法，但将球谐可见性函数限制为仅使用二阶系数。在这一假设下，球谐乘积只需少量标量乘法，甚至可以由 GPU 的固定功能混合硬件执行。因此，即使性能有限的主机硬件也能使用该方法。由于采用低阶球谐函数，它无法生成边界更清晰的硬阴影，而只能产生大体没有方向性的遮蔽。
 
@@ -355,15 +355,15 @@ Sloan 等人 [1655] 在屏幕空间中累加 Ren 所描述的可见性函数。�
 
 **注1：** 实际上，执行时间仍取决于深度或法线缓冲区中数据的分布，因为这种分布会影响遮蔽计算逻辑利用 GPU 缓存的效率。
 
-Crytek 开发了一种动态屏幕空间环境光遮蔽（screen-space ambient occlusion，SSAO）方法，用于《孤岛危机》[1227]。他们在一个全屏处理遍中计算环境光遮蔽，唯一的输入是 z 缓冲区。通过对像素位置周围一个球体内分布的一组点与 z 缓冲区进行测试，估计该像素的环境光遮蔽因子 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png)。![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 是位于相应 z 缓冲值前方的样本数量的函数。通过测试的样本越少，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 就越低。参见图 11.14。样本的权重随到该像素的距离增加而减小，类似于遮暗因子 [1970]。注意，由于样本没有用 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_859bdece4e015a.png) 因子加权，得到的环境光遮蔽并不正确。它没有只考虑表面位置上方半球内的样本，而是将全部样本统计并计入。这一简化意味着表面下方本不该参与的样本也被计入，导致平坦表面变暗，而边缘比周围更亮。尽管如此，其结果通常仍然具有令人满意的视觉效果。参见图 11.15。
+Crytek 开发了一种动态屏幕空间环境光遮蔽（screen-space ambient occlusion，SSAO）方法，用于《孤岛危机》[1227]。他们在一个全屏处理遍中计算环境光遮蔽，唯一的输入是 z 缓冲区。通过对像素位置周围一个球体内分布的一组点与 z 缓冲区进行测试，估计该像素的环境光遮蔽因子 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png)。![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 是位于相应 z 缓冲值前方的样本数量的函数。通过测试的样本越少，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 就越低。参见图 11.14。样本的权重随到该像素的距离增加而减小，类似于遮暗因子 [1970]。注意，由于样本没有用 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_859bdece4e015a.png) 因子加权，得到的环境光遮蔽并不正确。它没有只考虑表面位置上方半球内的样本，而是将全部样本统计并计入。这一简化意味着表面下方本不该参与的样本也被计入，导致平坦表面变暗，而边缘比周围更亮。尽管如此，其结果通常仍然具有令人满意的视觉效果。参见图 11.15。
 
 
-![图11.14](Real-Time_Rendering_4th_中文/assets/fig_11_3_11.14.png)
+![图11.14](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_3_11.14.png)
 
-图 11.14　将 Crytek 的环境光遮蔽方法应用于三个表面点（黄色圆点）。为清楚起见，图中以二维形式展示算法，摄像机（未画出）位于图的上方。本例在每个表面点周围的圆盘内分布十个样本（实际是在球体内分布）。未通过 z 测试的样本，即位于已存储 z 缓冲值之后的样本，显示为红色；通过的样本显示为绿色。![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 是通过测试样本数占总样本数比例的函数。为简化说明，这里忽略可变的样本权重。左侧点的 10 个样本中有 6 个通过测试，比值为 0.6，据此计算 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png)。中间的点有三个通过测试的样本；另一个样本虽位于物体外部，却未通过 z 测试，如红色箭头所示。由此得到 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 为 0.3。右侧点只有一个样本通过，因此 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 为 0.1。
+图 11.14　将 Crytek 的环境光遮蔽方法应用于三个表面点（黄色圆点）。为清楚起见，图中以二维形式展示算法，摄像机（未画出）位于图的上方。本例在每个表面点周围的圆盘内分布十个样本（实际是在球体内分布）。未通过 z 测试的样本，即位于已存储 z 缓冲值之后的样本，显示为红色；通过的样本显示为绿色。![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 是通过测试样本数占总样本数比例的函数。为简化说明，这里忽略可变的样本权重。左侧点的 10 个样本中有 6 个通过测试，比值为 0.6，据此计算 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png)。中间的点有三个通过测试的样本；另一个样本虽位于物体外部，却未通过 z 测试，如红色箭头所示。由此得到 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 为 0.3。右侧点只有一个样本通过，因此 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 为 0.1。
 
 
-![图11.15](Real-Time_Rendering_4th_中文/assets/fig_11_3_11.15.png)
+![图11.15](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_3_11.15.png)
 
 图 11.15　左上展示屏幕空间环境光遮蔽效果。右上展示没有环境光遮蔽的反照率（漫反射颜色）。左下将两者组合。再加入镜面着色与阴影，就得到右下的最终图像。（《孤岛危机》图像由 Crytek 提供。）
 
@@ -374,7 +374,7 @@ Shanmugam 和 Arikan [1615] 同期开发了一种类似方法。他们的论文�
 另一些方法则试图为遮蔽计算提供更有理论依据的方式。Loos 和 Sloan [1072] 注意到，Crytek 的方法可以解释为蒙特卡洛积分。他们将计算得到的值称为体积遮暗（volumetric obscurance），定义为：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_9962cb3d6cac08.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_9962cb3d6cac08.png)
 
 
 其中 X 是该点周围的三维球形邻域，ρ 是类似于式 11.11 的距离映射函数，d 是距离函数，o(**x**) 是占据函数：**x** 未被占据时为零，否则为一。他们指出，ρ(d) 函数对最终视觉质量影响很小，因此使用常量函数。在这一假设下，体积遮暗就是在一点的邻域内对占据函数求积分。Crytek 的方法通过随机采样三维邻域来计算该积分。Loos 和 Sloan 则通过随机采样像素的屏幕空间邻域，在 x、y 维度上进行数值积分，而在 z 维度上进行解析积分。如果该点的球形邻域内没有任何几何体，积分就等于射线与表示 X 的球体相交所形成线段的长度。存在几何体时，将深度缓冲区用作占据函数的近似，并只在每条线段未被占据的部分求积分。参见图 11.16 左图。该方法生成的结果质量与 Crytek 的方法相当，但所需样本更少，因为其中一个维度上的积分是精确的。如果有表面法线可用，还能扩展该方法，将法线考虑在内。在这一版本中，线积分的求值范围截断于求值点法线定义的平面。
@@ -384,14 +384,14 @@ Shanmugam 和 Arikan [1615] 同期开发了一种类似方法。他们的论文�
 Szirmay-Kalos 等人 [1733] 提出另一种利用法线信息的屏幕空间方案，称为体积环境光遮蔽（volumetric ambient occlusion）。式 11.6 在法线周围的半球上积分，并包含余弦项。他们提出，可以从被积函数中去掉余弦项，再用余弦分布限制积分范围，从而近似这类积分。这会把半球上的积分变成球体上的积分：这个球体半径减半，并沿法线平移，使其完全位于原半球内部。其未占据部分的体积按照 Loos 和 Sloan 的方法计算，即随机采样像素邻域，并在 z 维度上对占据函数作解析积分。参见图 11.16 右图。
 
 
-![图11.16](Real-Time_Rendering_4th_中文/assets/fig_11_3_11.16.png)
+![图11.16](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_3_11.16.png)
 
 图 11.16　体积遮暗（左）利用线积分，估计点周围未占据体积的积分。体积环境光遮蔽（右）也使用线积分，不过是计算与着色点相切的球体的占据情况，从而模拟反射方程中的余弦项。两种情况下，积分均由球体未占据体积（绿色实线所标）与球体总体积之比估计；总体积是未占据体积与被占据体积之和，后者用红色虚线标出。两图的摄像机均从上方观察。绿色圆点表示从深度缓冲区读取的样本，黄色圆点是正在计算遮蔽的样本。
 
 Bavoil 等人 [119] 针对局部可见性估计问题提出另一种方法，其灵感来自 Max [1145] 的地平线映射技术。他们的方法称为基于地平线的环境光遮蔽（horizon-based ambient occlusion，HBAO），假设 z 缓冲区的数据表示一个连续高度场。可以通过确定地平线角来估计一点的可见性；地平线角就是邻域在切平面上方遮挡到的最大角度。也就是说，从一点沿给定方向观察，记录可见最高物体的角度。如果忽略余弦项，环境光遮蔽因子可以通过对地平线上方未遮挡部分积分得到，或者等价地，以一减去地平线下方被遮挡部分的积分：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_5ad0756b949621.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_5ad0756b949621.png)
 
 
 其中 h(φ) 是切平面上方的地平线角，t(φ) 是切平面与视向量之间的切线角，W(ω) 是衰减函数。参见图 11.17。1/(2π) 项对积分归一化，使结果位于零与一之间。
@@ -401,23 +401,23 @@ Bavoil 等人 [119] 针对局部可见性估计问题提出另一种方法，其
 对于给定 φ，按到定义地平线的点的距离采用线性衰减，就可以解析计算内层积分：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_a098528bdd3df8.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_a098528bdd3df8.png)
 
 
 剩余积分通过采样若干方向并求取地平线角来进行数值计算。
 
 
-![图11.17](Real-Time_Rendering_4th_中文/assets/fig_11_3_11.17.png)
+![图11.17](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_3_11.17.png)
 
-图 11.17　基于地平线的环境光遮蔽（左）寻找切平面上方的地平线角 h，并对它们之间未遮挡的角度积分。切平面与视向量之间的角记为 t。真值环境光遮蔽（右）使用相同的地平线角 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_592f440cc49043.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_4d2093530e4ff7.png)，但还利用法线与视向量之间的夹角 γ，把余弦项纳入计算。两图中摄像机均从上方观察场景。图中展示的是截面；地平线角是 φ 的函数，φ 是绕观察方向的角度。绿色圆点表示从深度缓冲区读取的样本；黄色圆点表示正在计算遮蔽的样本。
+图 11.17　基于地平线的环境光遮蔽（左）寻找切平面上方的地平线角 h，并对它们之间未遮挡的角度积分。切平面与视向量之间的角记为 t。真值环境光遮蔽（右）使用相同的地平线角 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_592f440cc49043.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_4d2093530e4ff7.png)，但还利用法线与视向量之间的夹角 γ，把余弦项纳入计算。两图中摄像机均从上方观察场景。图中展示的是截面；地平线角是 φ 的函数，φ 是绕观察方向的角度。绿色圆点表示从深度缓冲区读取的样本；黄色圆点表示正在计算遮蔽的样本。
 
 Jimenez 等人 [835] 也采用基于地平线的思路，并将其方法称为真值环境光遮蔽（ground-truth ambient occlusion，GTAO）。他们的目标是在唯一可用信息为 z 缓冲数据所形成高度场的假设下，得到与射线追踪结果一致的真值结果。HBAO 的定义没有包含余弦项，还加入了式 11.8 中不存在的特设衰减，因此它的结果虽然接近射线追踪，却并不相同。GTAO 补入缺少的余弦因子，去掉衰减函数，并在围绕视向量的参考系中表述遮蔽积分。遮蔽因子定义为：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_24b6605806c9e0.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_24b6605806c9e0.png)
 
 
-其中 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_a33415ecfc3ae7.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_4a676f2f288094.png) 是给定 φ 时左右两侧的地平线角，γ 是法线与观察方向之间的夹角。由于包含余弦项，归一化项 1/π 与 HBAO 不同；余弦项使开放半球上的积分等于 π，而不包含余弦项时积分等于 2π。在高度场假设下，这一表述与式 11.8 完全一致。参见图 11.17。内层积分仍可解析求解，因此只需数值计算外层积分。积分方式与 HBAO 相同，即在给定像素周围采样若干方向。
+其中 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_a33415ecfc3ae7.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_4a676f2f288094.png) 是给定 φ 时左右两侧的地平线角，γ 是法线与观察方向之间的夹角。由于包含余弦项，归一化项 1/π 与 HBAO 不同；余弦项使开放半球上的积分等于 π，而不包含余弦项时积分等于 2π。在高度场假设下，这一表述与式 11.8 完全一致。参见图 11.17。内层积分仍可解析求解，因此只需数值计算外层积分。积分方式与 HBAO 相同，即在给定像素周围采样若干方向。
 
 在基于地平线的方法中，开销最大的部分是沿屏幕空间直线采样深度缓冲区，以确定地平线角。Timonen [1771] 提出一种专门改善这一步性能的方法。他指出，对于沿屏幕空间直线排列的像素，用来估计给定方向地平线角的样本可以大量复用。他将遮蔽计算分成两步。首先，在整个 z 缓冲区上进行直线追踪。沿直线前进的每一步，他都在考虑指定最大影响距离的同时更新地平线角，并将信息写入缓冲区。对于地平线映射采用的每个屏幕空间方向，都建立这样一个缓冲区。这些缓冲区不必与原深度缓冲区大小相同。其大小取决于直线间距以及沿线步进间距；选择这些参数时有一定灵活性，不同设置会影响最终质量。
 
@@ -434,50 +434,50 @@ Jimenez 等人 [835] 也采用基于地平线的思路，并将其方法称为�
 尽管我们是在恒定、远距离照明的背景下推导环境光遮蔽值，也可以将它应用于更复杂的光照情形。再次考虑反射方程：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_14f9b584610716.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_14f9b584610716.png)
 
 
-上式包含第 11.3.1 节引入的可见性函数 v(**l**)。如果处理的是漫反射表面，可以用朗伯 BRDF 替换 f(**l**, **v**)，它等于次表面反照率 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_54cc8781620e9a.png) 除以 π。于是得到：
+上式包含第 11.3.1 节引入的可见性函数 v(**l**)。如果处理的是漫反射表面，可以用朗伯 BRDF 替换 f(**l**, **v**)，它等于次表面反照率 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_54cc8781620e9a.png) 除以 π。于是得到：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_900f0fedc5b0bc.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_900f0fedc5b0bc.png)
 
 
 对上式改写，可得：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_b7694f5e65482f.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_b7694f5e65482f.png)
 
 
 利用式 11.8 中环境光遮蔽的定义，上式简化为：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_c8f7e838e8f43b.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_c8f7e838e8f43b.png)
 
 
 其中：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_eea941b73aa0c4.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_eea941b73aa0c4.png)
 
 
-这种形式为理解这一过程提供了新的角度。式 11.22 的积分可以看作向入射辐亮度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_4abf6e55c5ebce.png) 应用方向性滤波核 K。滤波器 K 随空间位置与方向发生复杂变化，但具有两个重要性质。第一，由于点积被截断，它最多只覆盖点 **p** 处法线周围的半球。第二，由于分母的归一化因子，它在半球上的积分等于一。
+这种形式为理解这一过程提供了新的角度。式 11.22 的积分可以看作向入射辐亮度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_4abf6e55c5ebce.png) 应用方向性滤波核 K。滤波器 K 随空间位置与方向发生复杂变化，但具有两个重要性质。第一，由于点积被截断，它最多只覆盖点 **p** 处法线周围的半球。第二，由于分母的归一化因子，它在半球上的积分等于一。
 
-为了着色，需要计算两个函数乘积的积分，这两个函数分别为入射辐亮度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_4abf6e55c5ebce.png) 和滤波函数 K。在某些情况下，可以简化描述滤波器，以较低成本计算这一双函数乘积积分，例如 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_4abf6e55c5ebce.png) 和 K 都用球谐函数表示时（第 10.3.2 节）。处理该方程复杂性的另一种方式，是用性质相近、但更简单的滤波器进行近似。最常见的选择是归一化余弦核 H：
-
-
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_34eec69a34c006.png)
+为了着色，需要计算两个函数乘积的积分，这两个函数分别为入射辐亮度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_4abf6e55c5ebce.png) 和滤波函数 K。在某些情况下，可以简化描述滤波器，以较低成本计算这一双函数乘积积分，例如 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_4abf6e55c5ebce.png) 和 K 都用球谐函数表示时（第 10.3.2 节）。处理该方程复杂性的另一种方式，是用性质相近、但更简单的滤波器进行近似。最常见的选择是归一化余弦核 H：
 
 
-当没有任何东西阻挡入射光照时，这一近似是准确的。它覆盖的角度范围也与被近似的滤波器相同。它完全忽略可见性，但式 11.22 中仍然存在环境光遮蔽项 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png)，因此着色表面上仍会出现一定程度的、取决于可见性的变暗。
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_34eec69a34c006.png)
+
+
+当没有任何东西阻挡入射光照时，这一近似是准确的。它覆盖的角度范围也与被近似的滤波器相同。它完全忽略可见性，但式 11.22 中仍然存在环境光遮蔽项 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png)，因此着色表面上仍会出现一定程度的、取决于可见性的变暗。
 
 选择这一滤波核后，式 11.22 变为：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_d094ba45b68c9d.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_d094ba45b68c9d.png)
 
 
-这意味着，最简单形式的环境光遮蔽着色，只需计算辐照度，再乘以环境光遮蔽值。辐照度可以来自任何来源，例如从辐照度环境贴图采样（第 10.6 节）。这种方法的准确性只取决于近似滤波器对正确滤波器的拟合程度。对于在球面上平滑变化的光照，该近似能够给出可信结果。如果所有可能方向上的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_4abf6e55c5ebce.png) 都相同，也就是场景仿佛被一幅全白的环境贴图照明，那么它也完全准确。
+这意味着，最简单形式的环境光遮蔽着色，只需计算辐照度，再乘以环境光遮蔽值。辐照度可以来自任何来源，例如从辐照度环境贴图采样（第 10.6 节）。这种方法的准确性只取决于近似滤波器对正确滤波器的拟合程度。对于在球面上平滑变化的光照，该近似能够给出可信结果。如果所有可能方向上的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_4abf6e55c5ebce.png) 都相同，也就是场景仿佛被一幅全白的环境贴图照明，那么它也完全准确。
 
 这一表述也有助于理解，为什么环境光遮蔽不能很好地近似点状光源或小面积光源的可见性。它们在表面上只张成很小的立体角；对点状光源而言，立体角为无穷小。可见性函数会对光照积分值产生重要影响。它几乎以二值方式控制光的贡献，即要么完全启用，要么完全禁用。像式 11.25 那样忽略可见性，是一种相当大的近似，通常无法产生预期结果。阴影缺乏清晰度，也没有预期的方向性，也就是说，它们看起来不像由某个特定光源产生。环境光遮蔽并不适合模拟这类光源的可见性，应改用阴影贴图等其他方法。不过，有时会用小型局部光源来模拟间接照明，在这种情况下，用环境光遮蔽值调制其贡献是合理的。
 
@@ -485,7 +485,7 @@ Jimenez 等人 [835] 也采用基于地平线的思路，并将其方法称为�
 
 使用弯曲法线（参见书页 448 的式 11.10）可以看作更精确地近似滤波器 K 的方式。滤波器中仍然没有可见性项，但它的最大值方向与平均未遮挡方向一致，因此总体上对式 11.23 的近似稍好一些。当几何法线与弯曲法线不一致时，使用后者会得到更准确的结果。Landis [974] 不仅将它用于环境贴图着色，还将它用于某些直接光源，替代常规阴影技术。
 
-对于环境贴图着色，Pharr [1412] 提出另一种方案，利用 GPU 的纹理滤波硬件动态执行滤波。滤波器 K 的形状即时确定：其中心位于弯曲法线方向，大小取决于 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_03_6d65652d81b5cd.png) 的值。这能更精确地匹配式 11.23 中的原始滤波器。
+对于环境贴图着色，Pharr [1412] 提出另一种方案，利用 GPU 的纹理滤波硬件动态执行滤波。滤波器 K 的形状即时确定：其中心位于弯曲法线方向，大小取决于 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_03_6d65652d81b5cd.png) 的值。这能更精确地匹配式 11.23 中的原始滤波器。
 
 
 ## 11.4 方向性遮蔽
@@ -497,7 +497,7 @@ Jimenez 等人 [835] 也采用基于地平线的思路，并将其方法称为�
 我们将着重讨论对整个球面或半球面可见性进行编码的方法，也就是描述哪些方向会阻挡入射辐亮度的方法。虽然这些信息可以用于为点状光源生成阴影，但这并非其主要用途。专门针对这些光源类型的方法（第 7 章已详细讨论）能够获得好得多的质量，因为它们只需对光源的一个位置或一个方向编码可见性。这里介绍的方案主要用于大型面光源或环境光照的遮蔽；在这些情况下，产生的阴影较柔和，近似可见性所造成的瑕疵并不明显。此外，在常规阴影技术不可行时，也可以用这些方法提供遮蔽，例如凹凸贴图细节的自阴影，或者极大场景中的阴影；对于后一种情形，阴影贴图的分辨率往往不足。
 
 
-![图11.18 复杂光照下不同遮蔽方法的颜色](Real-Time_Rendering_4th_中文/assets/fig_11_4_11.18.png)
+![图11.18 复杂光照下不同遮蔽方法的颜色](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_4_11.18.png)
 
 **图 11.18**　在复杂光照条件下，a 点和 b 点处辐照度的近似颜色。环境光遮蔽不建模任何方向性，因此两点的颜色相同。使用弯曲法线实际上会把余弦波瓣移向天空中未被遮挡的部分，但由于积分范围未受到任何限制，这仍不足以给出准确结果。方向性方法能够正确地剔除来自天空被遮挡部分的光照。图内标签自上而下为：环境光遮蔽、弯曲法线、方向性遮蔽。
 
@@ -510,7 +510,7 @@ Max [1145] 引入了地平线映射（horizon mapping）的概念，用来描述
 遮蔽技术有许多变体。Wang 等人 [1838] 使用球面有符号距离函数（spherical signed distance function，SSDF）表示可见性。它编码的是球面上到被遮挡区域边界的有符号距离。第 10.3 节讨论的任何球面或半球面基，也都可以用于编码可见性 [582, 632, 805, 1267]。与环境光遮蔽一样，方向性可见性信息可以存储在纹理、网格顶点或体积中 [1969]。
 
 
-![图11.19 环境孔径光照](Real-Time_Rendering_4th_中文/assets/fig_11_4_11.19.png)
+![图11.19 环境孔径光照](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_4_11.19.png)
 
 **图 11.19**　环境孔径光照用圆锥近似着色点上方未被遮挡区域的实际形状。左图中，面光源以黄色表示，表面位置处的可见地平线以蓝色表示。右图中，地平线被简化为一个圆，它是从该表面位置向右上方投射的圆锥的边缘，圆锥以虚线表示。随后，通过将面光源对应的圆锥与遮蔽圆锥相交，估计面光源的遮蔽情况，得到红色所示的区域。
 
@@ -528,10 +528,10 @@ Iwanicki [806] 同样使用圆锥追踪，但将其限制在一个方向上。�
 
 方向性遮蔽的编码方式如此之多，我们无法给出一种通用的着色办法。具体方案取决于我们想达到的特定效果。
 
-再次考虑反射方程，这一次把入射辐亮度分成远处光照 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_b456bbb8033d74.png) 及其可见性 v：
+再次考虑反射方程，这一次把入射辐亮度分成远处光照 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_b456bbb8033d74.png) 及其可见性 v：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_3f267ae8308683.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_3f267ae8308683.png)
 
 
 我们能够执行的最简单操作，是利用可见性信号为点状光源生成阴影。由于大多数可见性编码方式比较简单，结果的质量往往不能令人满意，但这个基础示例有助于我们理解推理过程。在传统阴影方法因分辨率不足而失效，并且获得某种形式的遮蔽比结果精度更重要的情况下，也可以使用这种方法。例如，极大规模的地形模型，或以凹凸贴图表示的小尺度表面细节。
@@ -539,29 +539,29 @@ Iwanicki [806] 同样使用圆锥追踪，但将其限制在一个方向上。�
 按照第 9.4 节的讨论，当处理点状光源时，式 11.26 变为：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_797f82ffefca38.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_797f82ffefca38.png)
 
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_74420ecde30b44.png) 是正对光源的白色朗伯表面反射出的辐亮度，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_df46fa9a023604.png) 是指向光源的方向。我们可以把上式理解为：先计算材质对未被遮挡的光的响应，再将结果乘以可见性函数的值。如果光源方向落在地平线下方（使用地平线映射时）、可见性圆锥外部（使用环境孔径光照时），或 SSDF 的负值区域，那么可见性函数等于零，因此不应计入该光源的任何贡献。值得一提的是，虽然可见性被定义为二值函数，注2 但许多表示方法能够返回整个范围的数值，而不只是零或一。这些数值表示部分遮蔽。由于振铃，球谐函数或 H 基甚至可能重建出负值。这些行为可能并非我们所愿，却是编码方式固有的性质。
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_74420ecde30b44.png) 是正对光源的白色朗伯表面反射出的辐亮度，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_df46fa9a023604.png) 是指向光源的方向。我们可以把上式理解为：先计算材质对未被遮挡的光的响应，再将结果乘以可见性函数的值。如果光源方向落在地平线下方（使用地平线映射时）、可见性圆锥外部（使用环境孔径光照时），或 SSDF 的负值区域，那么可见性函数等于零，因此不应计入该光源的任何贡献。值得一提的是，虽然可见性被定义为二值函数，注2 但许多表示方法能够返回整个范围的数值，而不只是零或一。这些数值表示部分遮蔽。由于振铃，球谐函数或 H 基甚至可能重建出负值。这些行为可能并非我们所愿，却是编码方式固有的性质。
 
 **注2：** 至少在大多数情况下如此。有些情况下，我们希望可见性函数取零和一以外、但仍处于两者之间的值。例如，在编码半透明材质造成的遮蔽时，我们可能希望使用小数形式的遮蔽值。
 
-对面光源光照也可以作类似推理。此时，除了光源所张的立体角以内，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_b456bbb8033d74.png) 在其余所有方向上都等于零；在该立体角内，它等于光源发出的辐亮度。我们把它记作 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_d1f5789d9d04dd.png)，并假设它在光源的整个立体角上为常数。于是，可以把对整个球面 Ω 的积分替换成对光源立体角 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_38da5514d46e34.png) 的积分：
+对面光源光照也可以作类似推理。此时，除了光源所张的立体角以内，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_b456bbb8033d74.png) 在其余所有方向上都等于零；在该立体角内，它等于光源发出的辐亮度。我们把它记作 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_d1f5789d9d04dd.png)，并假设它在光源的整个立体角上为常数。于是，可以把对整个球面 Ω 的积分替换成对光源立体角 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_38da5514d46e34.png) 的积分：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_020b4b383c2a89.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_020b4b383c2a89.png)
 
 
 如果假设 BRDF 为常数，也就是说处理的是朗伯表面，那么也可以将其移出积分号：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_0c9395a2d2ed0e.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_0c9395a2d2ed0e.png)
 
 
 为了确定受遮蔽后的光照，需要在光源所张的立体角上，计算可见性函数与余弦项乘积的积分。有些情况下可以解析地完成这一计算。Lambert [967] 推导出了在球面多边形上计算余弦积分的公式。如果面光源是多边形，而且可以用可见性表示对它进行裁剪，那么只需使用 Lambert 公式就能得到精确结果（图 11.20）。例如，当我们选择用地平线角表示可见性时，这便是可行的。然而，如果出于某种原因采用了另一种编码，例如弯曲圆锥，那么裁剪会产生圆弧段，此时便无法再使用 Lambert 公式。如果要使用非多边形面光源，也会遇到同样的问题。
 
 
-![图11.20 球面多边形的可见性裁剪](Real-Time_Rendering_4th_中文/assets/fig_11_4_11.20.png)
+![图11.20 球面多边形的可见性裁剪](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_4_11.20.png)
 
 **图 11.20**　黄色多边形光源可以投影到着色点上方的单位半球上，形成一个球面多边形。如果使用地平线映射描述可见性，就可以据此裁剪该多边形。裁剪后红色多边形的余弦加权积分，可使用 Lambert 公式解析地计算。
 
@@ -570,7 +570,7 @@ Iwanicki [806] 同样使用圆锥追踪，但将其限制在一个方向上。�
 对于环境光照，我们无法限制积分范围，因为照明来自所有方向。需要找到计算式 11.26 完整积分的方法。先考虑朗伯 BRDF：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_de9ee13cfbd3d3.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_de9ee13cfbd3d3.png)
 
 
 此式中的积分类型称为三重乘积积分（triple product integral）。如果各个函数采用某些特定方式表示，例如球谐函数或小波，就能够解析地计算它。遗憾的是，这对于典型的实时应用而言代价过高，尽管已有方案在简单配置下达到了交互帧率 [1270]。
@@ -578,47 +578,47 @@ Iwanicki [806] 同样使用圆锥追踪，但将其限制在一个方向上。�
 不过，我们的具体情况稍微简单一些，因为其中一个函数是余弦。因此可以把式 11.30 改写成：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_a3ddca89625f7d.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_a3ddca89625f7d.png)
 
 
 或：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_7919d048b6edff.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_7919d048b6edff.png)
 
 
 其中：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_8e57cb4a6dfdf9.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_8e57cb4a6dfdf9.png)
 
 
-![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_a041a00ee8ea25.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_9b99282a38b58a.png) 都是球面函数，与 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_d77be6da89c4e4.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_41256125c9dc10.png) 一样。我们不再尝试直接计算三重乘积积分，而是先把余弦乘以 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_b456bbb8033d74.png)（式 11.31）或 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_3ad693c18421f2.png)（式 11.32）。译注1 这样，被积函数就只包含两个函数的乘积。虽然这看起来只是一个数学技巧，却能显著简化计算。如果各因子使用球谐函数这样的标准正交基表示，那么二重乘积积分的计算就非常简单：它就是两者系数向量的点积（第 10.3.2 节）。
+![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_a041a00ee8ea25.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_9b99282a38b58a.png) 都是球面函数，与 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_d77be6da89c4e4.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_41256125c9dc10.png) 一样。我们不再尝试直接计算三重乘积积分，而是先把余弦乘以 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_b456bbb8033d74.png)（式 11.31）或 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_3ad693c18421f2.png)（式 11.32）。译注1 这样，被积函数就只包含两个函数的乘积。虽然这看起来只是一个数学技巧，却能显著简化计算。如果各因子使用球谐函数这样的标准正交基表示，那么二重乘积积分的计算就非常简单：它就是两者系数向量的点积（第 10.3.2 节）。
 
-我们仍需计算 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_a041a00ee8ea25.png) 或 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_9b99282a38b58a.png)，但由于其中涉及余弦，这比完全一般的情况更简单。如果使用球谐函数表示这些函数，余弦会投影为带谐函数（zonal harmonics，ZH），它是球谐函数的一个子集，每个频带中只有一个系数非零（第 10.3.2 节）。这一投影的系数具有简单的解析公式 [1656]。计算 SH 与 ZH 的乘积，比计算 SH 与另一个 SH 的乘积高效得多。
+我们仍需计算 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_a041a00ee8ea25.png) 或 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_9b99282a38b58a.png)，但由于其中涉及余弦，这比完全一般的情况更简单。如果使用球谐函数表示这些函数，余弦会投影为带谐函数（zonal harmonics，ZH），它是球谐函数的一个子集，每个频带中只有一个系数非零（第 10.3.2 节）。这一投影的系数具有简单的解析公式 [1656]。计算 SH 与 ZH 的乘积，比计算 SH 与另一个 SH 的乘积高效得多。
 
-如果决定先把余弦乘以 v（式 11.32），就可以离线执行，并改为只存储可见性。译注2 这是 Sloan 等人 [1651] 所描述的预计算辐亮度传输（precomputed radiance transfer）的一种形式（第 11.5.3 节）。不过，在这种形式下无法对法线作任何细尺度修改，因为由法线控制的余弦项已经与可见性融合在一起。如果想建模细尺度法线细节，可以先把余弦乘以 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_b456bbb8033d74.png)（式 11.31）。由于无法预先知道法线方向，可以针对不同法线预计算这一乘积 [805]，也可以在运行时相乘 [809]。离线预计算 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_b456bbb8033d74.png) 与余弦的乘积，也就意味着光照的任何变化都会受到限制；若允许光照随空间位置变化，所需内存量将大得难以接受。另一方面，在运行时计算乘积的计算成本很高。Iwanicki 和 Sloan [809] 描述了降低这一成本的办法：以较低的采样密度计算乘积，在他们的方案中是在顶点上计算。将结果与余弦项卷积，投影到更简单的表示（AHD），再进行插值，并使用逐像素法线重建。该方法使他们能够将这一技术用于性能要求很高的 60 FPS 游戏中。
+如果决定先把余弦乘以 v（式 11.32），就可以离线执行，并改为只存储可见性。译注2 这是 Sloan 等人 [1651] 所描述的预计算辐亮度传输（precomputed radiance transfer）的一种形式（第 11.5.3 节）。不过，在这种形式下无法对法线作任何细尺度修改，因为由法线控制的余弦项已经与可见性融合在一起。如果想建模细尺度法线细节，可以先把余弦乘以 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_b456bbb8033d74.png)（式 11.31）。由于无法预先知道法线方向，可以针对不同法线预计算这一乘积 [805]，也可以在运行时相乘 [809]。离线预计算 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_b456bbb8033d74.png) 与余弦的乘积，也就意味着光照的任何变化都会受到限制；若允许光照随空间位置变化，所需内存量将大得难以接受。另一方面，在运行时计算乘积的计算成本很高。Iwanicki 和 Sloan [809] 描述了降低这一成本的办法：以较低的采样密度计算乘积，在他们的方案中是在顶点上计算。将结果与余弦项卷积，投影到更简单的表示（AHD），再进行插值，并使用逐像素法线重建。该方法使他们能够将这一技术用于性能要求很高的 60 FPS 游戏中。
 
 Klehm 等人 [904] 提出了一种方案，以环境贴图表示光照，以圆锥编码可见性。他们用不同大小的核对环境贴图进行滤波；这些核表示不同圆锥开口下，可见性与光照乘积的积分。他们将圆锥角逐渐增大时的结果存储到纹理的各个 mip 层级。之所以可以这样做，是因为较大圆锥角对应的预滤波结果在球面上变化平滑，不必用很高的角分辨率存储。在预滤波过程中，他们假设可见性圆锥的方向与法线一致。虽然这是一个近似，但在实践中能产生合理的结果。他们还分析了这种近似对最终质量的影响。
 
 如果要处理光泽 BRDF 和环境光照，情况就更复杂了。由于 BRDF 不是常数，不能再将其移出积分号。为解决这一问题，Green 等人 [582] 建议用一组球面高斯函数近似 BRDF 本身。这些函数径向对称，只需三个参数便可紧凑地表示：方向（或均值）d、标准差 μ 和幅度 w。近似 BRDF 定义为多个球面高斯函数之和：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_a0297f35f22ed7.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_a0297f35f22ed7.png)
 
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_e687d13cf43bc7.png) 是沿方向 d、锐度为 μ 的球面高斯波瓣（第 10.3.2 节），![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_fe9b6f2423b8db.png) 是第 k 个波瓣的幅度。译注3 对于各向同性 BRDF，波瓣形状只取决于法线与观察方向之间的夹角。可以将这些近似结果存储在一维查找表中，并进行插值。
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_e687d13cf43bc7.png) 是沿方向 d、锐度为 μ 的球面高斯波瓣（第 10.3.2 节），![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_fe9b6f2423b8db.png) 是第 k 个波瓣的幅度。译注3 对于各向同性 BRDF，波瓣形状只取决于法线与观察方向之间的夹角。可以将这些近似结果存储在一维查找表中，并进行插值。
 
 采用这一近似后，可以把式 11.26 写为：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_476278ded780fa.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_476278ded780fa.png)
 
 
 Green 等人还假设，可见性函数在每个球面高斯函数的整个支撑域内为常数，因此可以将其移出积分号。他们沿波瓣中心方向求可见性函数的值：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_5a43d6ff305aa4.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_5a43d6ff305aa4.png)
 
 
 剩余的积分表示入射光照与一个具有给定方向和给定标准差的球面高斯函数的卷积。这类卷积的结果可以预计算并存储在环境贴图中；较大 μ 所对应的卷积存储在较低的 mip 层级。可见性使用低阶球谐函数编码，不过也可以使用任何其他表示，因为这里只对它进行单点求值。
@@ -628,11 +628,11 @@ Wang 等人 [1838] 以类似方式近似 BRDF，但对可见性的处理更加�
 对于某些应用，这种方法的代价可能过高。它需要从预滤波环境贴图中进行多次采样，而纹理采样本身往往已经是渲染瓶颈。Jimenez 等人 [835] 和 El Garawany [414] 提出了更简单的近似。为了计算遮蔽因子，他们用一个圆锥表示整个 BRDF 波瓣，忽略波瓣对观察角度的依赖，只考虑材质粗糙度等参数（图 11.21）。他们将可见性近似为一个圆锥，并计算可见性圆锥与 BRDF 圆锥相交部分的立体角，与环境孔径光照的做法非常相似。所得标量结果用于衰减光照。尽管这是很大的简化，结果仍然可信。
 
 
-![图11.21 用圆锥近似镜面波瓣](Real-Time_Rendering_4th_中文/assets/fig_11_4_11.21.png)
+![图11.21 用圆锥近似镜面波瓣](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_4_11.21.png)
 
 **图 11.21**　为了计算遮蔽，可以把光泽材质的镜面波瓣表示为一个圆锥。如果也把可见性近似为另一个圆锥，就能以两者相交部分的立体角计算遮蔽因子，方式与环境孔径光照相同（图 11.19）。图中展示了用圆锥表示 BRDF 波瓣的一般原理，但仅作示意。实践中，要得到合理的遮蔽结果，圆锥需要更宽。
 
-**译注1：** 原书此处正文印作 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_04_3ad693c18421f2.png)，但式 11.32 及随后定义使用的是无下标的可见性函数 v。本译文保留原文记号并指出这一排印不一致。
+**译注1：** 原书此处正文印作 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_04_3ad693c18421f2.png)，但式 11.32 及随后定义使用的是无下标的可见性函数 v。本译文保留原文记号并指出这一排印不一致。
 
 **译注2：** 原书此处写作“改为只存储可见性”。结合式 11.32 和紧接着关于余弦项已融合的解释，实际存储对象应理解为乘入余弦后的可见性，而非原始二值可见性；此处保留原文表述。
 
@@ -654,7 +654,7 @@ Wang 等人 [1838] 以类似方式近似 BRDF，但对可见性的处理更加�
 可以预计算的最简单光照信息是辐照度。对于平坦的朗伯表面，辐照度与表面颜色结合，就能完整描述材质对光照的响应。由于一个照明源的影响独立于其他照明源，因此可以在预计算辐照度之上叠加动态光源（图 11.22）。
 
 
-![图11.22 辐照度与表面颜色相乘](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.22.png)
+![图11.22 辐照度与表面颜色相乘](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.22.png)
 
 图 11.22。对于法线已知的朗伯表面，可以预计算其辐照度。运行时，将此值与实际表面颜色相乘（例如来自纹理的颜色），便得到反射辐亮度。根据表面颜色的具体形式，可能还需要额外除以 π，才能确保能量守恒。
 
@@ -679,7 +679,7 @@ Habel 等人 [627] 的 H 基是另一种可选方案。因为它只编码半球�
 正因为成本问题，简单的替代方案仍然很流行。《Half-Life 2》使用了一种自定义半球基（10.3.3 节），存储三个颜色值，每个样本共九个系数。环境／高光／方向（ambient/highlight/direction，AHD）基（10.3.3 节）虽然简单，也是很受欢迎的选择。它已用于《Call of Duty》系列 [809, 998] 和《The Last of Us》[806] 等游戏，见图 11.23。
 
 
-![图11.23 AHD光照贴图](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.23.png)
+![图11.23 AHD光照贴图](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.23.png)
 
 图 11.23。《Call of Duty: WWII》使用 AHD 表示法，在光照贴图中编码光照随方向的变化。调试模式下用网格可视化光照贴图的密度。每个方格对应一个光照贴图纹素。（图片由 Activision Publishing, Inc. 提供，2018。）
 
@@ -690,15 +690,15 @@ Crytek 在《Far Cry》中采用了一个变体 [1227]。Crytek 的表示由切�
 另一端则是为高视觉质量设计的方法。Neubelt 和 Pettineo [1268] 在游戏《The Order: 1886》中使用存储球面高斯系数的纹理贴图（图 11.24）。他们存储的是入射辐亮度，而非辐照度，并将其投影到一组在切线标架中定义的高斯波瓣上（10.3.2 节）。根据特定场景中光照的复杂程度，他们使用五到九个波瓣。为了产生漫反射响应，将球面高斯与沿表面法线方向的余弦波瓣卷积。该表示的精度也足以通过将高斯与镜面 BRDF 波瓣卷积，提供低光泽的镜面效果。Pettineo 详细描述了整个系统 [1408]，并提供了一个能够烘焙和渲染不同光照表示的应用程序的源代码。
 
 
-![图11.24 球面高斯表示的漫反射与镜面响应](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.24.png)
+![图11.24 球面高斯表示的漫反射与镜面响应](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.24.png)
 
 图 11.24。《The Order: 1886》在光照贴图中存储投影到一组球面高斯波瓣上的入射辐亮度。运行时，将辐亮度与余弦波瓣卷积来计算漫反射响应（左），与形状适当的各向异性球面高斯卷积来生成镜面响应（右）。（图片由 Ready at Dawn Studios 提供，版权归 Sony Interactive Entertainment 所有。）
 
 如果需要任意方向的光照信息，而不仅是表面上方一个半球内的信息，例如为了给动态几何体提供间接光照，可以采用编码完整球面信号的方法。球谐函数在此非常合适。内存不是主要顾虑时，三阶 SH（每个颜色通道九个系数）是常见选择；否则使用二阶 SH（每个颜色通道四个系数，恰好与 RGBA 纹理的分量数相同，因此一张贴图就能存储一个颜色通道的系数）。球面高斯同样能用于完整球面，因为波瓣既可以分布在整个球面上，也可以只分布在法线周围的半球上。不过，完整球面技术需要用波瓣覆盖的立体角是半球的两倍，因此可能需要更多波瓣才能保持相同质量。
 
-如果想避免处理振铃，又无法承担大量波瓣的开销，环境立方体 [1193]（10.3.1 节）是一种可行替代。它由沿主坐标轴定向的六个截断 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_05_8ab95f521c4036.png) 波瓣组成。余弦波瓣具有局部支撑，也就是仅在球面定义域的一个子集上非零，因此每个波瓣只覆盖一个半球。正因如此，重建时在存储的六个值中只需要三个可见波瓣。这限制了光照计算的带宽成本。重建质量与二阶球谐函数相近。
+如果想避免处理振铃，又无法承担大量波瓣的开销，环境立方体 [1193]（10.3.1 节）是一种可行替代。它由沿主坐标轴定向的六个截断 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_05_8ab95f521c4036.png) 波瓣组成。余弦波瓣具有局部支撑，也就是仅在球面定义域的一个子集上非零，因此每个波瓣只覆盖一个半球。正因如此，重建时在存储的六个值中只需要三个可见波瓣。这限制了光照计算的带宽成本。重建质量与二阶球谐函数相近。
 
-环境骰子 [808]（同见 10.3.1 节）可以提供比环境立方体更高的质量。它采用沿正二十面体顶点方向定向的十二个波瓣，各波瓣是 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_05_8ab95f521c4036.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_05_744fe5d6cc24af.png) 波瓣的线性组合。重建时使用十二个存储值中的六个。质量与三阶球谐函数相当。这些以及其他类似表示，例如由三个 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_05_8ab95f521c4036.png) 波瓣和一个经变形以覆盖整个球面的余弦波瓣组成的基，已在许多商业上成功的游戏中使用，其中包括《Half-Life 2》[1193]、《Call of Duty》系列 [766, 808]、《Far Cry 3》[533]、《Tom Clancy’s The Division》[1694] 和《Assassin’s Creed 4: Black Flag》[1911]，等等。
+环境骰子 [808]（同见 10.3.1 节）可以提供比环境立方体更高的质量。它采用沿正二十面体顶点方向定向的十二个波瓣，各波瓣是 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_05_8ab95f521c4036.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_05_744fe5d6cc24af.png) 波瓣的线性组合。重建时使用十二个存储值中的六个。质量与三阶球谐函数相当。这些以及其他类似表示，例如由三个 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_05_8ab95f521c4036.png) 波瓣和一个经变形以覆盖整个球面的余弦波瓣组成的基，已在许多商业上成功的游戏中使用，其中包括《Half-Life 2》[1193]、《Call of Duty》系列 [766, 808]、《Far Cry 3》[533]、《Tom Clancy’s The Division》[1694] 和《Assassin’s Creed 4: Black Flag》[1911]，等等。
 
 ### 11.5.3 预计算传输
 
@@ -711,17 +711,17 @@ Crytek 在《Far Cry》中采用了一个变体 [1227]。Crytek 的表示由切�
 Sloan 等人 [1651] 把预计算辐亮度传输的概念引入了图形学。他们用球谐函数描述它，但这一方法并不一定要使用 SH。基本思想很简单：如果用一定数量（最好较少）的“构件”光源描述直接光照，就可以预计算场景受到每个构件照明时的结果。设想一个有三台计算机显示器的房间，假定每台显示器只能显示单一颜色，但亮度可以变化。令各屏幕的最大亮度等于 1，也就是归一化的“单位”亮度。我们可以分别预计算每台显示器对房间的影响，方法可使用 11.2 节所介绍的那些。由于光传输是线性的，三台显示器同时照明场景的结果，等于各显示器直接或间接产生的光的总和。每台显示器的照明不影响其他解，因此把其中一块屏幕的亮度减半，只会改变它自身对总光照的贡献。这样便可以快速计算整个房间中包含反弹的完整光照。取每个预计算光照解，乘以该屏幕的实际亮度，再把结果相加。我们可以开关显示器，使其变亮或变暗，甚至改变颜色；得到最终光照所需的只是这些乘法和加法（图 11.25）。
 
 
-![图11.25 显示器光照的预计算传输](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.25.png)
+![图11.25 显示器光照的预计算传输](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.25.png)
 
 图 11.25。使用预计算辐亮度传输进行渲染的例子。分别预计算三台显示器中每一台产生的完整光传输，得到“单位”响应。由于光传输的线性性质，可以将这些独立的解分别乘以屏幕颜色（本例为粉红、黄和蓝），得到最终光照。
 
 可以写成
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_05_80b40c0c24d703.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_05_80b40c0c24d703.png)
 
 
-其中，L(𝐩) 是点 𝐩 处的最终辐亮度，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_05_b456bbb8033d74.png)(𝐩) 是来自屏幕 i 的预计算单位贡献，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_05_3e929edc96716e.png) 是该屏幕当前的亮度。从数学意义上讲，这个方程定义了一个向量空间，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_05_b456bbb8033d74.png) 是该空间的基向量。任何可能的光照都可以由各光源贡献的线性组合产生。
+其中，L(𝐩) 是点 𝐩 处的最终辐亮度，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_05_b456bbb8033d74.png)(𝐩) 是来自屏幕 i 的预计算单位贡献，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_05_3e929edc96716e.png) 是该屏幕当前的亮度。从数学意义上讲，这个方程定义了一个向量空间，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_05_b456bbb8033d74.png) 是该空间的基向量。任何可能的光照都可以由各光源贡献的线性组合产生。
 
 Sloan 等人的原始 PRT 论文 [1651] 使用了同样的推理，不过背景是用球谐函数表示的无限远光照环境。他们存储的并非场景对显示器屏幕的响应，而是场景对周围光照的响应，其分布由球谐基函数定义。对一定数量的 SH 频带执行这一过程后，就可以渲染被任意光照环境照亮的场景。他们将该光照投影到球谐函数上，把得到的各系数分别乘以对应的归一化“单位”贡献，再全部相加，就像前面显示器的例子一样。
 
@@ -746,7 +746,7 @@ SIGGRAPH 2005 关于预计算辐亮度传输的课程 [870] 很好地概述了�
 按照这些原理工作的系统中，最受欢迎的是 Geomerics 的 Enlighten（图 11.26）。虽然算法的具体细节从未完全公开，但众多演讲与报告已经准确呈现了该系统的原理 [315, 1101, 1131, 1435]。
 
 
-![图11.26 Enlighten实时全局光照](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.26.png)
+![图11.26 Enlighten实时全局光照](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.26.png)
 
 图 11.26。Geomerics 的 Enlighten 能够实时生成全局光照效果。图中展示了它与 Unity 引擎集成的一个例子。用户可以自由改变一天中的时间，也可以开关光源。所有间接光照都会相应地实时更新。（Courtyard 演示，© Unity Technologies，2015。）
 
@@ -777,12 +777,12 @@ Loos 等人 [1073] 针对不同侧壁配置，在模块化单位单元内预计�
 为了把光照存入纹理，物体需要提供唯一参数化。将漫反射颜色纹理映射到模型上时，网格的不同部分使用纹理中的相同区域通常没有问题，尤其是采用通用重复图案为模型贴纹理时。然而，要复用光照贴图，即使在最好的情况下也很困难。网格上每一点的光照都是独特的，所以每个三角形都需要在光照贴图上占有自己独一无二的区域。创建参数化时，先把网格拆分为较小的块。可以使用某些启发式方法自动完成 [1036]，也可以在创作工具中手工完成。通常会沿用为其他纹理映射已有的划分。接着，分别对每一块参数化，确保其各部分在纹理空间中不重叠 [1057, 1617]。在纹理空间中得到的元素称为图表（charts）或壳（shells）。最后，把所有图表打包到一张公共纹理中（图 11.27）。不仅要确保图表不重叠，还必须使其滤波足迹相互分离。渲染某个图表时可能访问的所有纹素，都应标记为已使用，避免其他图表与它们重叠；双线性滤波会访问四个相邻纹素。否则，图表之间可能出现渗漏，一个图表的光照会在另一个图表上显现。虽然光照贴图系统经常提供一个由用户控制的“沟槽”（gutter）宽度，用来设置图表之间的间隔，但这种额外间隔并非必需。可以使用一组特殊规则，在光照贴图空间中光栅化图表，自动确定其正确的滤波足迹，见图 11.28。只要按这种方式光栅化得到的壳不重叠，就能保证不会发生渗漏。
 
 
-![图11.27 场景与光照贴图](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.27.png)
+![图11.27 场景与光照贴图](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.27.png)
 
 图 11.27。烘焙到场景中的光照，以及应用于这些表面的光照贴图。光照映射采用唯一参数化：将场景分成若干元素，展开后打包到同一张纹理中。例如，左下方区域对应地面平面，其中可以看到两个立方体的阴影。（来自 three.js 示例 webgl_materials_lightmap [218]。）
 
 
-![图11.28 图表滤波足迹](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.28.png)
+![图11.28 图表滤波足迹](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.28.png)
 
 图 11.28。要准确确定图表的滤波足迹，需要找出渲染时可能访问的全部纹素。如果图表与四个相邻纹素中心围成的正方形相交，那么这四个纹素都会参与双线性滤波。左图中，实线表示纹素网格，蓝点表示纹素中心，粗实线表示要光栅化的图表。首先，对图表执行保守光栅化，所用网格偏移半个纹素，图中以虚线表示（中）。与标记单元接触的任何纹素，都被视为已占用（右）。
 
@@ -793,7 +793,7 @@ Loos 等人 [1073] 针对不同侧壁配置，在模块化单位单元内预计�
 光照贴图的一个常见问题是接缝（图 11.29）。网格被拆分为图表，每个图表独立参数化，因此无法保证分割边缘两侧的光照完全相同。这会表现为视觉不连续。如果手工拆分网格，可以选择在不直接可见的区域分割，从而在一定程度上避免这一问题。不过，这是一个费力的过程，也无法用于自动生成参数化的情况。Iwanicki [806] 对最终光照贴图执行后处理，修改分割边缘沿线的纹素，使两侧插值结果的差异最小。Liu、Ferguson 等人 [1058] 通过等式约束强制边缘沿线的插值值相匹配，并求解能最好保持平滑性的纹素值。另一种方法是在创建参数化和打包图表时就考虑该约束。Ray 等人 [1467] 展示了如何使用保持网格的参数化，创建不会出现接缝伪影的光照贴图。
 
 
-![图11.29 环面参数化接缝](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.29.png)
+![图11.29 环面参数化接缝](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.29.png)
 
 图 11.29。为了给环面创建唯一参数化，需要将其切开并展开。左侧环面采用简单映射，创建时没有考虑切口在纹理空间中的位置。请注意左侧表示纹素的网格存在不连续。使用更先进的算法，可以创建如右图所示的参数化，确保纹素网格线在三维网格上保持连续。这类展开方法非常适合光照映射，因为所得到的光照不会出现不连续。
 
@@ -820,14 +820,14 @@ Evans [444] 描述了《LittleBigPlanet》辐照度体中采用的一项技巧�
 存储光照的体积结构不一定是规则的。一种流行选择是在不规则点云中存储光照，再连接这些点，形成 Delaunay 四面体剖分（图 11.30）。Cupisz [316] 推广了这一方法。查询光照时，首先找到采样位置所在的四面体。这是一个迭代过程，成本可能不低。我们遍历网格，在相邻单元之间移动。根据查询点相对于当前四面体各角点的重心坐标，选择下一步访问哪个邻居（图 11.31）。典型场景可能包含数千个存储光照的位置，因此这个过程可能相当耗时。为了加速，可以在可能时记录上一帧查询所用的四面体，或者使用简单的体积数据结构，为场景中的任意点提供合适的“起始四面体”。
 
 
-![图11.30 四面体光照探针网格](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.30.png)
+![图11.30 四面体光照探针网格](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.30.png)
 
 图 11.30。Unity 引擎使用四面体网格，对一组探针的光照进行插值。（Book of the Dead，© Unity Technologies，2018。）
 
 找到正确的四面体后，利用已经得到的重心坐标，对其角点上存储的光照进行插值。GPU 不会加速这一操作，但它只需四个值，而规则网格上的三线性插值需要八个值。
 
 
-![图11.31 四面体网格查询步骤](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.31.png)
+![图11.31 四面体网格查询步骤](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.31.png)
 
 图 11.31。用二维图示说明四面体网格中的查询过程。步骤顺序从左到右、从上到下。给定一个起始单元（蓝色标记），计算查询点（蓝点）相对于该单元各角点的重心坐标。下一步，跨过最负坐标所对应角点的对边，移动到相邻单元。
 
@@ -856,7 +856,7 @@ Evans [444] 描述了《LittleBigPlanet》辐照度体中采用的一项技巧�
 要获得高质量结果，并在光源移动时保持时间稳定性，需要创建大量间接光源。创建得太少时，随着 RSM 重新生成，这些光源的位置往往会迅速变化，引起闪烁伪影。另一方面，间接光源过多又会带来性能挑战。Xu [1938] 描述了该方法在游戏《Uncharted 4》中的实现。为了满足性能约束，他为每个像素仅使用少量光源（16 个），但跨若干帧循环使用不同的光源集合，并对结果进行时间滤波（图 11.32）。
 
 
-![图11.32 反射阴影贴图与时间滤波](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.32.png)
+![图11.32 反射阴影贴图与时间滤波](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.32.png)
 
 图 11.32。《Uncharted 4》使用反射阴影贴图，提供来自玩家手电筒的间接光照。左图展示不包含间接贡献的场景，右图则启用了该贡献。插图展示了关闭时间滤波（上）和启用时间滤波（下）时渲染帧的局部特写。时间滤波用来增加每个图像像素实际使用的 VPL 有效数量。（UNCHARTED 4 A Thief’s End，©/TM 2016 SIE。由 Naughty Dog LLC 创作与开发。）
 
@@ -871,7 +871,7 @@ Evans [444] 描述了《LittleBigPlanet》辐照度体中采用的一项技巧�
 Kaplanyan [854] 提出的光传播体（light propagation volumes，LPV）借鉴了辐射传输中的离散纵标法。在他的方法中，把场景离散为由三维单元组成的规则网格。每个单元保存流经它的辐亮度方向分布。他使用二阶球谐函数表示这些数据。第一步，将光照注入包含直接受光表面的单元。通过访问反射阴影贴图找出这些单元，但也可以使用其他任何方法。注入的光照是受光表面反射出的辐亮度，因此其分布围绕法线、朝向表面外侧，其颜色来自材质颜色。接着传播光照：每个单元分析相邻单元的辐亮度场，再修改自身分布，计入从各个方向到达的辐亮度。单步只能将辐亮度传播一个单元的距离。要将其分布到更远处，需要多次迭代（图 11.33）。
 
 
-![图11.33 光传播体的三次传播状态](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.33.png)
+![图11.33 光传播体的三次传播状态](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.33.png)
 
 图 11.33。光照分布在体积网格中传播的三个步骤。左图展示方向光源照亮几何体后，几何体反射出的光照分布。注意，只有与几何体直接相邻的单元具有非零分布。在后续步骤中，收集相邻单元的光，并将其传播到网格中。
 
@@ -892,7 +892,7 @@ Crassin [304] 提出的体素锥追踪全局光照（voxel cone tracing global i
 > 译注：原文在此将逐步减小、用于衰减后续辐亮度的量称为“occlusion”。从计算作用看，它对应尚可透过的比例（剩余可见性）；译文保留原文“遮挡因子”的称呼，不将其暗改为另一个算法。
 
 
-![图11.34 体素锥追踪中的层次查询](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.34.png)
+![图11.34 体素锥追踪中的层次查询](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.34.png)
 
 图 11.34。体素锥追踪用对体素树的一系列滤波查询，近似精确的锥体追踪。左侧是三维追踪的二维类比。右侧展示体素化几何体的层次表示，每一列对应逐渐变粗的一个树层级。每一行展示为某个样本提供覆盖所使用的层次节点。选择层级时，使较粗层的节点尺寸大于查询尺寸，较细层的节点尺寸小于查询尺寸。再使用类似三线性滤波的过程，在这两个选定层级之间插值。
 
@@ -905,7 +905,7 @@ Mittring [1229] 描述了该方法在 Unreal Engine 某个原型版本中的实�
 大量 warp 停顿会使性能不理想，人们为此开发了缓解这些低效现象的方法。McLaren [1190] 用一组级联三维纹理替代八叉树，很像级联光传播体 [855]（11.5.6 节）。它们具有相同的纹理尺寸，但覆盖的区域逐级扩大。这样，读取数据只需一次普通纹理查询，不需要依赖读取。纹理中存储的数据与稀疏体素八叉树相同，包括反照率、占据情况，以及六个方向的反弹光照信息。由于级联的位置随摄像机移动而改变，物体会不断进入或离开高分辨率区域。内存限制使我们无法一直保留这些体素化版本，因此会在需要时按需进行体素化。McLaren 还描述了若干优化，使该技术能够用于以 30 FPS 运行的游戏《The Tomorrow Children》（图 11.35）。
 
 
-![图11.35 The Tomorrow Children体素锥追踪](Real-Time_Rendering_4th_中文/assets/fig_11_5_11.35.png)
+![图11.35 The Tomorrow Children体素锥追踪](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_5_11.35.png)
 
 图 11.35。《The Tomorrow Children》使用体素锥追踪渲染间接光照效果。（© 2016 Sony Interactive Entertainment Inc.。The Tomorrow Children 是 Sony Interactive Entertainment America LLC 的商标。）
 
@@ -929,10 +929,10 @@ Bunnell 用于计算环境遮挡的方法 [210]（11.3.5 节）也可以动态�
 提高入射光照表示的精度也能减轻瑕疵。Neubelt和Pettineo在游戏《教团：1886》中使用球面高斯波瓣表示入射辐亮度[1268]。为了渲染镜面效果，他们采用Xu等人[1940]的方法；后者为典型微表面BRDF（第9.8节）的镜面响应提出了一种高效近似。如果用一组球面高斯表示光照，并假设菲涅耳项和遮蔽—阴影函数在各自的支撑域上保持常量，则反射方程可以近似为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_11_06_33c06343d41d02.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_06_33c06343d41d02.png)
 
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_06_7f4961c6fcde8e.png)是表示入射辐亮度的第k个球面高斯，M是合并了菲涅耳函数和遮蔽—阴影函数的因子，D是法线分布函数（NDF）。Xu等人引入了各向异性球面高斯（ASG），用于建模NDF。他们还给出了计算球面高斯（SG）与ASG乘积积分的高效近似，如式（11.37）所示。
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_06_7f4961c6fcde8e.png)是表示入射辐亮度的第k个球面高斯，M是合并了菲涅耳函数和遮蔽—阴影函数的因子，D是法线分布函数（NDF）。Xu等人引入了各向异性球面高斯（ASG），用于建模NDF。他们还给出了计算球面高斯（SG）与ASG乘积积分的高效近似，如式（11.37）所示。
 
 Neubelt和Pettineo用9到12个高斯波瓣表示光照，因此只能对具有中等光泽的材质进行建模。他们能够用这种方法表示游戏中的大部分光照，是因为游戏发生在19世纪的伦敦，高度抛光的材质、玻璃以及反光表面都很少见。
 
@@ -941,7 +941,7 @@ Neubelt和Pettineo用9到12个高斯波瓣表示光照，因此只能对具有�
 迄今讨论的方法还不足以令人信服地渲染抛光材质。这些技术中的辐亮度场过于粗糙，无法精确编码入射辐亮度的细微细节，因而反射显得暗淡。如果同一种材质上还使用了解析光源，所产生的结果也会与这些光源形成的镜面高光不一致。一种解决办法是使用更多的球面高斯，或阶数高得多的球谐函数（SH），以获得所需细节。这是可行的，但很快就会遇到性能问题：SH和SG都具有全局支撑。每个基函数在整个球面上都非零，这意味着，要计算某个方向上的光照，就需要使用全部基函数。要渲染清晰的反射，需要数千个基函数，而在数量还远未达到这一要求时，计算开销就已经高得无法承受。此外，也不可能在漫反射光照通常采用的分辨率下存储这么多数据。
 
 
-![图11.36 局部化反射探针和盒状代理](Real-Time_Rendering_4th_中文/assets/fig_11_6_11_36.png)
+![图11.36 局部化反射探针和盒状代理](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_6_11_36.png)
 
 **图11.36** 配置了局部化反射探针的简单场景。反光球体代表探针位置。黄色线条表示盒状反射代理。注意这些代理如何近似场景的整体形状。
 
@@ -962,12 +962,12 @@ Brennan[194]和Bjorke[155]提出了一种解决方法。他们不再把入射光
 遗憾的是，这种方法过于简单，会引发多种瑕疵。反射代理很少与底层几何体完全吻合，从而使某些区域的反射发生不自然的拉伸。这主要影响反射能力很强的抛光材质。此外，渲染到环境贴图中的反光物体，其BRDF是从贴图所在位置求值的。访问环境贴图的表面位置观察这些物体时，视角并不完全相同，因此纹理中存储的结果并不完全正确。
 
 
-![图11.37 使用反射代理进行环境贴图视差校正](Real-Time_Rendering_4th_中文/assets/fig_11_6_11_37.png)
+![图11.37 使用反射代理进行环境贴图视差校正](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_6_11_37.png)
 
 **图11.37** 使用反射代理在空间中局部化环境贴图（EM）的效果。两种情况下，我们都希望在黑色圆的表面渲染环境的反射。左图是常规环境映射，用蓝色圆表示；实际可以采用任意表示形式，例如立方体贴图。对于黑色圆上的一点，使用反射后的观察方向r访问环境贴图，确定其效果。由于只使用该方向，蓝色圆所代表的EM被视为无限大且位于无穷远处。对于黑色圆上的任意一点，都好像EM以该点为中心。右图中，我们希望EM把周围的黑色房间表示为局部环境，而不是无穷远处的环境。蓝色圆EM从房间中心生成。为了像访问一个房间那样访问此EM，从位置p沿反射后的观察方向追踪反射射线，并在着色器中求它与简单代理物体的交点；代理是包围房间的红色盒子。随后利用交点和EM中心形成方向r′，再像通常那样仅凭一个方向访问EM。通过求出r′，这个过程将EM当作具有实体形状的对象，即红色盒子。由于代理形状不符合实际房间的几何形状，这种代理盒假设在该房间下面的两个角落处会失效。
 
 
-![图11.38 BRDF波瓣覆盖范围与反射代理距离](Real-Time_Rendering_4th_中文/assets/fig_11_6_11_38.png)
+![图11.38 BRDF波瓣覆盖范围与反射代理距离](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_6_11_38.png)
 
 **图11.38** 点a和点b处的BRDF相同，观察向量v与v′也相同。由于点a到反射代理的距离d小于点b到反射代理的距离d′，BRDF波瓣在反射代理侧面上的覆盖范围（红色标出）更小。采样预滤波环境贴图时，可以结合这个距离与反射点处的粗糙度来影响mip层级。
 
@@ -1010,7 +1010,7 @@ Brennan[194]和Bjorke[155]提出了一种解决方法。他们不再把入射光
 理想反射体遵循反射定律，即入射角等于反射角。换言之，入射射线与法线的夹角等于反射射线与法线的夹角。见图11.39。图中还显示了被反射物体的“像”。根据反射定律，物体的反射像就是该物体自身相对于平面对称后的结果。也就是说，无须沿反射射线前进，我们可以沿入射射线穿过反射体，在镜像物体上命中同一个对应点。
 
 
-![图11.39 平面反射的几何关系](Real-Time_Rendering_4th_中文/assets/fig_11_6_11_39.png)
+![图11.39 平面反射的几何关系](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_6_11_39.png)
 
 **图11.39** 平面中的反射，展示了入射角、反射角、被反射的几何体和反射体。
 
@@ -1032,7 +1032,7 @@ McGuire和Mara[1179]指出，由于透视投影，在世界空间中等间隔前
 
 在简单的临时性方案中[1589, 1812]，仍然沿反射方向只追踪一条射线。结果存入离屏缓冲区，供后续步骤处理。应用一系列滤波核，通常还结合对缓冲区的降采样，创建一组模糊程度各不相同的反射缓冲区。计算光照时，由BRDF波瓣宽度决定采样哪个反射缓冲区。尽管滤波器形状通常被选为与BRDF波瓣形状匹配，这依然只是粗略近似，因为屏幕空间滤波没有考虑不连续性、表面朝向以及其他对结果精度至关重要的因素。最后还要加入专门的启发式规则，让屏幕空间光泽反射在视觉上与其他来源的镜面贡献一致。虽然这是一种近似，其结果仍然具有说服力。
 
-Stachowiak[1684]以更有理论依据的方式处理这个问题。屏幕空间反射计算是射线追踪的一种形式，因此同样可以用来进行正确的蒙特卡洛积分。他不再只使用反射后的观察方向，而是对BRDF进行重要性采样，随机发射射线。受性能限制，追踪以一半分辨率进行，每个像素只追踪少量射线，介于1到4条之间。这么少的射线不足以产生无噪声图像，因此相邻像素之间会共享相交结果。这里假设一定范围内各像素的局部可见性可以视为相同。如果从点![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_06_c2f9d040fb9beb.png)沿方向![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_06_3f371e86320ac1.png)发出的射线在点![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_06_62b833401b8ac4.png)与场景相交，就可以假设：从点![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_06_121bbb5295ca5a.png)沿同样经过![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_06_62b833401b8ac4.png)的方向![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_06_06a41f7c38a7ff.png)发射射线，也会在![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_11_06_62b833401b8ac4.png)命中几何体，而在此之前不会发生其他相交。这样，只需适当修改这条射线对相邻像素积分的贡献，就可以利用它，而不必真正追踪。从形式上说，对于从相邻像素发出的射线，若相对于当前像素BRDF的概率分布函数计算，其方向会具有不同的概率。
+Stachowiak[1684]以更有理论依据的方式处理这个问题。屏幕空间反射计算是射线追踪的一种形式，因此同样可以用来进行正确的蒙特卡洛积分。他不再只使用反射后的观察方向，而是对BRDF进行重要性采样，随机发射射线。受性能限制，追踪以一半分辨率进行，每个像素只追踪少量射线，介于1到4条之间。这么少的射线不足以产生无噪声图像，因此相邻像素之间会共享相交结果。这里假设一定范围内各像素的局部可见性可以视为相同。如果从点![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_06_c2f9d040fb9beb.png)沿方向![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_06_3f371e86320ac1.png)发出的射线在点![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_06_62b833401b8ac4.png)与场景相交，就可以假设：从点![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_06_121bbb5295ca5a.png)沿同样经过![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_06_62b833401b8ac4.png)的方向![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_06_06a41f7c38a7ff.png)发射射线，也会在![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_11_06_62b833401b8ac4.png)命中几何体，而在此之前不会发生其他相交。这样，只需适当修改这条射线对相邻像素积分的贡献，就可以利用它，而不必真正追踪。从形式上说，对于从相邻像素发出的射线，若相对于当前像素BRDF的概率分布函数计算，其方向会具有不同的概率。
 
 为了进一步增加有效射线数量，还会对结果进行时间滤波。另外，离线计算积分中与场景无关的部分，并将其存入由BRDF参数索引的查找表，也能降低最终积分的方差。当反射射线所需的全部信息都可以在屏幕空间中获得时，这些策略能够产生精确、无噪声的结果，接近路径追踪的真值图像（图11.40）。
 
@@ -1041,14 +1041,14 @@ Stachowiak[1684]以更有理论依据的方式处理这个问题。屏幕空间�
 Uludag[1798]描述了一种利用层次深度缓冲区（第19.7.2节）加速追踪的优化。首先创建层次结构。逐步对深度缓冲区降采样，每一步在两个方向上都缩小为原来的一半。较高层的一个像素存储下一层对应四个像素的最小深度值。然后在层次结构中追踪射线。如果某一步中，射线没有命中所经过单元中存储的几何体，就让它前进到单元边界，并在下一步使用分辨率更低的缓冲区。如果射线在当前单元中命中，就让它前进到命中位置，并在下一步使用分辨率更高的缓冲区。在最高分辨率缓冲区中检测到命中时，追踪终止（图11.41）。
 
 
-![图11.40 随机屏幕空间反射效果](Real-Time_Rendering_4th_中文/assets/fig_11_6_11_40.png)
+![图11.40 随机屏幕空间反射效果](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_6_11_40.png)
 
 **图11.40** 这幅图像中的全部镜面效果均使用随机屏幕空间反射算法渲染[1684]。注意垂直方向的拉伸，这是微表面模型反射的特征。（图片由Tomasz Stachowiak提供。场景由Joacim Lunde建模并制作纹理。）
 
 该方案特别适合长距离追踪，因为它既确保不会漏掉任何特征，又允许射线以大步长前进。它的缓存访问表现也很好，因为读取深度缓冲区时，访问的是局部邻域，而不是随机且相距很远的位置。Grenier[599]介绍了实现该方法的许多实用技巧。
 
 
-![图11.41 在层次深度缓冲区中追踪射线](Real-Time_Rendering_4th_中文/assets/fig_11_6_11_41.png)
+![图11.41 在层次深度缓冲区中追踪射线](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_6_11_41.png)
 
 **图11.41** 在层次深度缓冲区中追踪射线。如果射线经过一个像素时未命中几何体，下一步就使用更粗的分辨率。如果检测到命中，后续步骤就使用更细的分辨率。这个过程使射线能够以大步长穿过空白区域，从而提高性能。
 
@@ -1080,7 +1080,7 @@ SSR的另一个问题是深度缓冲区中缺少物体厚度信息。由于只�
 光线追踪系统依赖某种加速方案，例如使用包围体层次结构（bounding volume hierarchy，BVH）来加速可见性测试。关于这个主题的更多信息，请参阅第19.1.1节。朴素的BVH实现并不能很好地映射到GPU上。如第3章所述，GPU原生以线程组的方式执行，这些线程组称为warp或wavefront。一个warp以锁步方式处理，其中每个线程都执行相同的操作。如果某些线程不执行代码的某些部分，它们就会被暂时禁用。因此，编写GPU代码时，应尽量减少同一wavefront内各线程之间的控制流分歧。假设每个线程处理一条光线，这种安排通常会导致线程之间出现很大的分歧。不同光线会执行遍历代码的不同分支，沿途与不同的包围体进行相交测试。有些光线会比其他光线更早完成树的遍历。这种行为使我们偏离了理想状态：warp中的所有线程都在利用GPU的计算能力。为了消除这些低效之处，研究人员开发了能够尽量减少分歧、并重新利用那些提前完成任务的线程的遍历方法[15, 16, 1947]。
 
 
-![图11.42 时空方差引导滤波的去噪效果](Real-Time_Rendering_4th_中文/assets/fig_11_7_11.42.png)
+![图11.42 时空方差引导滤波的去噪效果](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_11_7_11.42.png)
 
 图11.42：时空方差引导滤波可以对每像素一个样本的路径追踪图像（左）进行去噪，生成平滑且没有伪影的图像（中）。其质量可与每像素使用2048个样本渲染的参考图像（右）相媲美。（图片由NVIDIA公司提供。）
 

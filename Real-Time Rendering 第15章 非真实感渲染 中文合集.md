@@ -26,7 +26,7 @@
 照片级真实感渲染试图使图像与照片无法区分。非真实感渲染（non-photorealistic rendering，NPR），也称风格化渲染，具有范围广泛的目标。某些形式的NPR以创建类似技术插图的图像为目标之一。应当显示的，只是与特定应用目标有关的那些细节。例如，一张光亮的法拉利发动机照片可能有助于向顾客推销汽车；但若要维修发动机，一幅突出显示相关部件的简化线描图可能更有意义（而且印刷成本也更低）。
 
 
-![图15.1 咖啡研磨机的多种非真实感渲染风格](Real-Time_Rendering_4th_中文/assets/fig_15_0_15.1.png)
+![图15.1 咖啡研磨机的多种非真实感渲染风格](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_0_15.1.png)
 
 图15.1 将多种非真实感渲染风格应用于一台咖啡研磨机。（使用Viewpoint DataLabs的LiveArt生成。）
 
@@ -42,14 +42,14 @@ NPR的另一个领域是模拟绘画风格和自然媒材，例如钢笔与墨�
 几十年来，计算机图形学一直使用卡通渲染风格，将三维模型与二维赛璐珞动画融合起来。与其他NPR风格相比，这种风格容易定义，因此很适合由计算机自动生成。许多电子游戏都使用它取得了良好的效果[250, 1224, 1761]。见图15.2。
 
 
-![图15.2 游戏《大神》中的实时非真实感渲染](Real-Time_Rendering_4th_中文/assets/fig_15_1_15.2.png)
+![图15.2 游戏《大神》中的实时非真实感渲染](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_1_15.2.png)
 
 图15.2 游戏《大神》（Okami）中的一个实时NPR渲染示例。（图片由Capcom Entertainment, Inc.提供。）
 
 物体的外轮廓通常渲染为黑色，以强化卡通外观。如何寻找并渲染这些外轮廓，将在下一节讨论。卡通表面着色有几种不同的方法。最常见的两种方法是用纯色（不受光照影响）填充网格区域，或者采用双色调方法，分别表示受光区域与阴影区域。双色调方法有时也称为硬着色（hard shading），用像素着色器实现起来很简单：当着色法线与光源方向的点积大于某个值时，使用较浅的颜色；否则使用较深的色调。当光照更加复杂时，另一种方法是对最终图像本身进行量化。这一过程也称为色调分离（posterization），即将连续的数值范围转换成少数几个色调，各色调之间发生突变。见图15.3。对RGB值进行量化可能会造成令人不悦的色相偏移，因为各个独立通道的变化方式与其他通道并无紧密关联。更好的选择是在保持色相的颜色空间中进行处理，例如HSV、HSL或Y′CbCr。另一种做法是定义一维函数或纹理，将强度级别重新映射到特定的明暗色调或颜色。还可以使用量化或其他滤波器对纹理进行预处理。第665页的图15.16展示了另一个采用更多颜色级别的例子。
 
 
-![图15.3 基础渲染、纯色填充、色调分离与铅笔着色](Real-Time_Rendering_4th_中文/assets/fig_15_1_15.3.png)
+![图15.3 基础渲染、纯色填充、色调分离与铅笔着色](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_1_15.3.png)
 
 图15.3 对最左侧的基础渲染，依次应用纯色填充、色调分离和铅笔着色技术。图中从左至右的标签为：基础渲染（basic）、纯色填充（solid）、色调分离（posterization）、铅笔着色（pencil）。（Jade2模型由Quidam制作，由wismo发布[1449]，采用知识共享署名2.5许可协议。）
 
@@ -73,7 +73,7 @@ Barla等人[104]使用二维映射代替一维明暗纹理，从而加入依赖�
 参见图 15.4。这种分类以文献中的常见用法为基础，但也存在一些变体。例如，我们这里称为折痕边和材质边的边，在其他文献中有时被称为边界边。
 
 
-![图15.4 边的分类](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.4.png)
+![图15.4 边的分类](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.4.png)
 
 **图 15.4** 顶部打开、正面带有一条条纹的盒子。图中标出了边界边（B）、折痕边（C）、材质边（M）和剪影边（S）。按照这里给出的定义，所有边界边都不算剪影边，因为这些边只与一个多边形相邻。
 
@@ -82,7 +82,7 @@ Barla等人[104]使用二维映射代替一维明暗纹理，从而加入依赖�
 注意，边界边不同于轮廓边或剪影边。轮廓边与剪影边由观察方向定义，而边界边与视点无关。**暗示轮廓（suggestive contours）** [335] 由从原始视点看几乎已经成为轮廓的位置构成。它们提供额外的边，帮助传达物体形状。参见图 15.5。虽然这里主要关注轮廓边的检测与渲染，但针对其他类型笔画也已有大量研究 [281, 1014, 1521]。我们也主要关注如何为多边形模型寻找这样的边。Bénard 等人 [132] 讨论了如何寻找由细分曲面或其他高阶定义构成的模型的轮廓。
 
 
-![图15.5 剪影、轮廓与暗示轮廓](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.5.png)
+![图15.5 剪影、轮廓与暗示轮廓](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.5.png)
 
 **图 15.5** 从左至右：剪影边、轮廓边、轮廓边加暗示轮廓边。（图片由 Doug DeCarlo、Adam Finkelstein、Szymon Rusinkiewicz 和 Anthony Santella 提供。）
 
@@ -95,7 +95,7 @@ Barla等人[104]使用二维映射代替一维明暗纹理，从而加入依赖�
 这个方法的一个特点，也可能是缺点，是所绘制的轮廓线宽度会随表面曲率变化。它适用于没有折痕边的曲面模型。例如，在剪影附近的区域，通常会有像素的法线近乎垂直于观察方向。
 
 
-![图15.6 着色法线轮廓边](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.6.png)
+![图15.6 着色法线轮廓边](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.6.png)
 
 **图 15.6** 当表面的着色法线变得垂直于观察方向时，使表面变暗，以此对轮廓边着色。加宽衰减角范围，会显示更粗的边。（图片由 Kenny Hoff 提供。）
 
@@ -110,26 +110,26 @@ Barla等人[104]使用二维映射代替一维明暗纹理，从而加入依赖�
 让这些线变粗的一种方式，是将背面本身渲染为黑色，同样向前施加偏移。Raskar 和 Cohen 给出了几种偏移方法，例如平移固定距离，或平移一个能够补偿 z 深度非线性性质的距离，或者使用 OpenGL 的 `glPolygonOffset` 之类的深度斜率偏移调用。Lengyel [1022] 讨论了如何修改透视矩阵，以实现更精细的深度控制。所有这些方法的一个问题是无法生成宽度均匀的线。要做到这一点，向前移动的距离不仅取决于背面，还取决于相邻的一个或多个正面。参见图 15.7。可以根据背面斜率将多边形向前偏移，但线的粗细还会取决于正面的角度。
 
 
-![图15.7 z偏移剪影方法](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.7.png)
+![图15.7 z偏移剪影方法](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.7.png)
 
 **图 15.7** 通过将背面向前平移来生成剪影的 z 偏移方法。如果正面的角度不同，如右图所示，露出的背面面积也会不同。（示意图改绘自 Raskar 和 Cohen [1460]。）图中 eye 为眼睛，front 为正面，back 为背面，backface visible 为背面可见部分，translate 为平移。
 
 Raskar 和 Cohen [1460, 1461] 通过另一种方式解决了这种相邻面依赖问题：沿每个背面三角形的边将其向外加宽，加宽量以能看到粗细一致的线为准。也就是说，三角形的斜率和它到观察者的距离决定了三角形的扩张程度。一种方法是沿三角形所在平面向外扩展其三个顶点。更安全的绘制方法，是将三角形的每条边向外移动，然后连接这些边。这样可以避免顶点伸到远离原始三角形的位置。参见图 15.8。注意，这种方法不需要偏移，因为背面扩张后会超出正面的边缘。三种方法的结果见图 15.9。这种加宽技术更容易控制、结果更一致，已经成功用于《波斯王子》（Prince of Persia）[1138] 和《爆炸头武士》（Afro Samurai）[250] 等电子游戏中的角色描边。
 
 
-![图15.8 三角形加宽](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.8.png)
+![图15.8 三角形加宽](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.8.png)
 
 **图 15.8** 三角形加宽。左图中，一个背面三角形沿其所在平面扩张。各条边在世界空间中移动的距离不同，从而使最终的边在屏幕空间具有相同粗细。对于细长的三角形，这种技术会出问题，因为一个角会被拉得很长。右图中，将三角形的各条边向外扩展并连接，形成斜接角，以避免这个问题。
 
 
-![图15.9 三种背面轮廓方法的比较](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.9.png)
+![图15.9 三种背面轮廓方法的比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.9.png)
 
 **图 15.9** 分别用背面粗线边绘制、z 偏移，以及三角形加宽算法渲染的轮廓边。背面边绘制技术在线段连接处效果不佳，而且小特征上的偏移问题会导致线条不均匀。z 偏移技术由于依赖正面的角度，会产生不均匀的边宽。（图片由 Raskar 和 Cohen [1460] 提供。）
 
 在刚才的方法中，背面三角形沿其原始平面扩张。另一种方法是沿共享的顶点法线移动顶点，将背面向外移，移动量与顶点到眼睛的 z 方向距离成正比 [671]。这种方法称为**外壳（shell）或光晕（halo）方法**，因为移动后的背面会在原物体外围形成一个壳。设想一个球体。先正常渲染球体，再增大球的半径，增加的量以球心位置为基准对应 5 像素的宽度。也就是说，如果将球心移动 1 像素等价于在世界空间移动 3 毫米，就将球的半径增加 15 毫米。仅以黑色渲染扩张后版本的背面，轮廓边就会宽 5 像素。参见图 15.10。沿法线向外移动顶点，非常适合由顶点着色器完成。这类扩张有时称为外壳映射（shell mapping）。该方法实现简单、高效、稳健，而且性能稳定。参见图 15.11。进一步扩张这些背面，并根据它们的角度着色，还可以产生力场或光晕效果。
 
 
-![图15.10 三角形外壳技术](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.10.png)
+![图15.10 三角形外壳技术](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.10.png)
 
 **图 15.10** 三角形外壳技术沿顶点法线移动表面，创建第二层表面。图中 eye 为眼睛，render frontfaces 为渲染正面，expand and render backfaces in black 为扩张背面并以黑色渲染。
 
@@ -138,7 +138,7 @@ Raskar 和 Cohen [1460, 1461] 通过另一种方式解决了这种相邻面依�
 外壳和加宽技术都会浪费一定的填充能力，因为所有背面都会被送入流水线。所有这些技术的其他局限包括：对边线外观的控制很少；而半透明表面能否被正确渲染则比较棘手，取决于使用的透明度算法。
 
 
-![图15.11 Cel Damage外壳描边](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.11.png)
+![图15.11 Cel Damage外壳描边](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.11.png)
 
 **图 15.11** 游戏《Cel Damage》中的实时卡通风格渲染示例：通过背面外壳扩张形成轮廓边，同时显式绘制折痕边。（图片由 Pseudo Interactive Inc. 提供。）
 
@@ -147,7 +147,7 @@ Raskar 和 Cohen [1460, 1461] 通过另一种方式解决了这种相邻面依�
 这类算法只渲染轮廓边。Raskar [1461] 给出了一个巧妙方案，用于在变形模型上绘制凸脊折痕边，无须创建和访问边连通性数据结构。其思路是沿正在渲染的三角形的每条边生成一个额外多边形。将这些边多边形从三角形平面向外弯折，弯折角采用用户定义的临界二面角；这个角度决定了折痕何时应该可见。如果在某一时刻，两个相邻三角形之间的夹角大于这个折痕角，边多边形就会显露出来，否则会被三角形遮住。参见图 15.12。类似技术也可以生成凹谷边，不过需要模板缓冲和多个通道。
 
 
-![图15.12 通过鳍片生成凸脊边](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.12.png)
+![图15.12 通过鳍片生成凸脊边](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.12.png)
 
 **图 15.12** 两个三角形沿一条边相接的侧视图，每个三角形都附有一个小“鳍片”。随着这两个三角形沿公共边弯折，鳍片逐渐趋于可见。右图中，鳍片已经露出。将其涂黑，就会呈现为凸脊边。
 
@@ -162,14 +162,14 @@ Saito 和 Takahashi [1528] 首先引入了这种 G 缓冲（G-buffer）概念，
 在法线和深度缓冲上使用各种滤波器，可以找到轮廓边。例如，如果相邻像素的深度差大于某个阈值，就很可能存在轮廓边，于是将该像素设为黑色。这里需要的不是简单判断邻居像素是否与当前样本相同，而是其他更精细的边检测算子。我们不在这里讨论 Roberts 交叉、Sobel、Scharr 等各种边检测滤波器的优缺点，因为图像处理文献对此已有广泛论述 [559, 1729]。这些算子的结果不一定是布尔值，因此可以调整它们的阈值，或在某个区间内使结果在黑白之间渐变。注意，法线缓冲也可以检测折痕边，因为法线间的较大差异既可能代表轮廓，也可能代表折痕。Thibault 和 Cavanaugh [1761] 讨论了他们如何在游戏《无主之地》（Borderlands）中结合深度缓冲使用这项技术。在多项技术中，他们修改了 Sobel 滤波器，使之创建单像素宽的外轮廓，并修改深度计算来提高精度。参见图 15.13。也可以反过来，仅在阴影周围添加外轮廓：忽略那些相邻深度差异很大的边即可 [1138]。
 
 
-![图15.13 无主之地的Sobel边检测](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.13.png)
+![图15.13 无主之地的Sobel边检测](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.13.png)
 
 **图 15.13** 游戏《无主之地》中修改后的 Sobel 边检测。最终发行版本（此处未展示）进一步通过屏蔽前景草地的边线来改善外观 [1761]。（图片由 Gearbox Software, LLC 提供。）
 
 **膨胀算子（dilation operator）** 是一种形态学算子，用来加粗检测到的边 [226, 1217]。生成边图像后，再执行一个单独的通道。在每个像素处，检查该像素值以及某个半径范围内的周围像素值，将找到的最暗像素值作为输出。这样，一条细黑线就会被加粗，增粗的量由搜索区域的直径决定。可以执行多个通道来进一步加粗线条；这里的权衡是，额外通道的开销可由每个通道大幅减少的采样数量来抵消。不同的结果可以采用不同粗细，例如可以让剪影边比其他轮廓边更粗。与之相关的**腐蚀算子（erosion operator）** 可用来细化线条或产生其他效果。部分结果见图 15.14。
 
 
-![图15.14 法线和深度边检测及合成](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.14.png)
+![图15.14 法线和深度边检测及合成](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.14.png)
 
 **图 15.14** 对法线图（左上）和深度图（上中）的数值应用 Sobel 边检测，结果分别显示在左下和下中。右上图是使用膨胀进行加粗后的合成图像。右下的最终渲染通过对图像应用 Gooch 着色，再合成边线得到。（图片由 ATI Technologies Inc. 的 Drew Card 和 Jason L. Mitchell 提供。）
 
@@ -178,7 +178,7 @@ Saito 和 Takahashi [1528] 首先引入了这种 G 缓冲（G-buffer）概念，
 这类技术的缺陷相对较少。对于几乎以侧边朝向观察者的表面，z 深度比较滤波器可能会把横跨表面的某个像素误判为轮廓边像素。z 深度比较的另一个问题是，如果深度差很小，就可能漏掉轮廓边。例如，放在桌子上的一张纸，其边缘通常会被漏掉。同样，法线图滤波器也会漏掉这张纸的边，因为法线完全相同。这种方法仍然并非万无一失：例如，一张对折的纸会在边缘重叠处产生无法检测的边 [725]。生成的线会出现阶梯状锯齿，但 5.4.2 节介绍的各种形态学抗锯齿技术，能够很好地处理这种高对比度输出，也适用于色调分层等技术，从而改善边缘质量。
 
 
-![图15.15 多种边线方法与权重](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.15.png)
+![图15.15 多种边线方法与权重](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.15.png)
 
 **图 15.15** 多种边线方法。皱纹等特征边属于纹理本身，由艺术家预先添加。角色的剪影通过背面挤出生成。轮廓边通过图像处理边检测生成，并采用不同权重。左图使用的权重太小，因此这些边很淡。中图展示了外轮廓线，尤其是鼻子和嘴唇处的轮廓边。右图展示了权重过大产生的伪影 [250]。（Afro Samurai ® & ©2006 TAKASHI OKAZAKI, GONZO / SAMURAI PROJECT。程序 ©2009 BANDAI NAMCO Entertainment America Inc.。）
 
@@ -187,7 +187,7 @@ Saito 和 Takahashi [1528] 首先引入了这种 G 缓冲（G-buffer）概念，
 笔画生成后，可以按需要执行进一步的图像处理。由于笔画可以创建在独立缓冲中，因此能够单独修改，再合成到表面之上。例如，可以使用噪声函数分别使线条和表面产生毛糙与摆动，在两者之间制造细小间隙，从而形成手绘外观。还可以利用纸张的高度场影响渲染，使木炭之类的固体材料沉积在凸起顶部，或使水彩颜料积聚在凹谷中。图 15.16 给出了一个例子。
 
 
-![图15.16 鱼模型的手绘效果](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.16.png)
+![图15.16 鱼模型的手绘效果](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.16.png)
 
 **图 15.16** 左边的鱼模型在右图中通过边检测、色调分层、噪声扰动、模糊，以及在纸张之上混合等操作进行渲染。（图片由 Autodesk, Inc. 提供。）
 
@@ -196,7 +196,7 @@ Saito 和 Takahashi [1528] 首先引入了这种 G 缓冲（G-buffer）概念，
 在模拟水彩、丙烯颜料等艺术媒介的许多 NPR 技术中，图像后处理算子占据突出地位。这个领域已有大量研究；对于交互式应用，主要挑战之一是如何以最少的纹理采样完成尽可能多的处理。可以在 GPU 上使用双边、均值漂移和 Kuwahara 滤波器，保留边缘并平滑区域，使之呈现绘画效果 [58, 948]。Kyprianidis 等人 [949] 对该领域的图像处理效果作了全面综述并给出了分类。Montesdeoca 等人 [1237] 的工作是一个很好的例子：将若干简单直接的技术组合成一种能以交互速率运行的水彩效果。图 15.17 展示了以水彩风格渲染的模型。
 
 
-![图15.17 水彩风格渲染](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.17.png)
+![图15.17 水彩风格渲染](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.17.png)
 
 **图 15.17** 左图是标准的真实感渲染。右图的水彩风格通过均值漂移颜色匹配柔化纹理，并采用提高对比度与饱和度等技术。（水彩图像由 Autodesk, Inc. 提供。）
 
@@ -207,10 +207,10 @@ Saito 和 Takahashi [1528] 首先引入了这种 G 缓冲（G-buffer）概念，
 轮廓边的两个相邻三角形中，一个面向观察者，另一个背向观察者。测试条件为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_15_02_12f90816c7a87f.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_15_02_12f90816c7a87f.png)
 
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_15_02_30493b097ef831.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_15_02_722b67e040acba.png) 是两个三角形的法线，**v** 是从眼睛指向该边（即任一端点）的观察方向。为了让这个测试正确工作，表面的朝向必须一致（16.3 节）。
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_15_02_30493b097ef831.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_15_02_722b67e040acba.png) 是两个三角形的法线，**v** 是从眼睛指向该边（即任一端点）的观察方向。为了让这个测试正确工作，表面的朝向必须一致（16.3 节）。
 
 寻找模型轮廓边的暴力方法，是遍历边列表并执行这一测试 [1130]。Lander [972] 指出，一项值得采用的优化是识别并忽略平面多边形内部的边。也就是说，给定一个连通的三角网格，如果一条边的两个相邻三角形位于同一平面上，这条边就不可能成为轮廓边。在一个简单的时钟模型上实现这一测试后，边数从 444 条降到了 256 条。此外，如果模型定义了一个实体物体，凹边就永远不可能成为轮廓边。Buchanan 和 Sousa [207] 复用每个单独面的点积测试结果，从而避免为每条边分别执行点积测试。
 
@@ -219,7 +219,7 @@ Saito 和 Takahashi [1528] 首先引入了这种 G 缓冲（G-buffer）概念，
 每帧都从头检测轮廓边，开销可能很大。如果相机视图和物体在帧间移动很小，就可以合理地假设：前几帧的轮廓边可能仍是有效轮廓边。Aila 和 Miettinen [13] 为每条边关联一个有效距离，即观察者移动多远之后，这条轮廓边仍能保持其状态。在任意实体模型中，每条独立轮廓总是由一条闭合曲线组成，称为**剪影环（silhouette loop）**，更准确的名称是**轮廓环（contour loop）**。对于物体边界范围内部的轮廓，环的一部分可能被遮住。即使是真正的剪影，也可能由几个环组成，其中一部分位于外轮廓内部，或者被其他表面遮挡。由此可知，每个顶点必须连接偶数条轮廓边 [23]。参见图 15.18。注意，当这些环沿网格边延伸时，在三维中往往十分锯齿化，z 深度有明显变化。如果希望边组成更平滑的曲线，例如为了随距离改变线宽 [565]，可以执行额外处理，在三角形的法线之间插值，近似求出三角形内部的真实轮廓边 [725, 726]。
 
 
-![图15.18 轮廓环](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.18.png)
+![图15.18 轮廓环](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.18.png)
 
 **图 15.18** 轮廓环。左图是相机观察到的模型。中图以蓝色表示背向相机的三角形。右图是脸部某一区域的特写。注意其复杂性，以及某些轮廓环如何隐藏在鼻子后面。（模型由 Chris Landreth 提供，图片由 Pierre Bénard 和 Aaron Hertzmann [132] 提供。）
 
@@ -238,7 +238,7 @@ Saito 和 Takahashi [1528] 首先引入了这种 G 缓冲（G-buffer）概念，
 Northrup 和 Markosian [1287] 处理这一问题的方法，是渲染物体的全部三角形和轮廓边，并为每个三角形和轮廓边分配不同的标识编号。将这个 ID 缓冲读回，再据此确定可见轮廓边。接着检查这些可见线段是否重叠，并将它们连接起来形成平滑的笔画路径。如果屏幕上的线段较短，这种方法能够奏效，但它不包含对线段本身的裁剪。随后沿这些重建路径渲染风格化笔画。笔画本身可采用许多不同方式进行风格化，包括渐细、张开、摆动、出头和淡出等效果，以及深度与距离线索。图 15.19 展示了一个例子。
 
 
-![图15.19 混合技术生成的笔画](Real-Time_Rendering_4th_中文/assets/fig_15_2_15.19.png)
+![图15.19 混合技术生成的笔画](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_2_15.19.png)
 
 **图 15.19** 使用 Northrup 和 Markosian 的混合技术生成的图像。先找到轮廓边，将它们构造成链，再渲染为笔画。（图片由 Lee Markosian 提供。）
 
@@ -258,21 +258,21 @@ Cole 和 Finkelstein [282] 提出了一种针对一组边的可见性计算方�
 Lake 等人 [966] 讨论了利用漫反射着色项来选择表面所用纹理的方法。随着漫反射项变暗，就使用视觉上更暗的纹理。纹理采用屏幕空间坐标进行映射，以营造手绘外观。为了进一步强化素描感，还在屏幕空间中为所有表面应用一张纸张纹理。见图 15.20。这类算法的一大问题是“淋浴门效应”（shower door effect）：在动画中，物体看起来仿佛是隔着带有图案的玻璃观看的，给人的感觉就像物体在纹理中游动。Breslav 等人 [196] 通过确定哪一种图像变换最能匹配底层模型上某些位置的运动，来维持纹理的二维外观。这样既能保留填充图案基于屏幕的特性，又能使它与物体之间建立更紧密的联系。
 
 
-![图 15.20：纹理组合、纸张纹理与轮廓边渲染形成的素描效果](Real-Time_Rendering_4th_中文/assets/fig_15_3_15.20.png)
+![图 15.20：纹理组合、纸张纹理与轮廓边渲染形成的素描效果](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_3_15.20.png)
 
 图 15.20．使用一组纹理、纸张纹理以及轮廓边渲染生成的图像。（经英特尔公司的 Adam Lake 和 Carl Marshall 许可转载，版权归英特尔公司所有，2002 年。）
 
 一个显而易见的解决办法是：将纹理直接应用到表面上。难点在于，基于笔触的纹理必须保持相对均匀的笔触粗细和密度，才能显得可信。如果纹理被放大，笔触就会显得过粗；如果纹理被缩小，笔触要么被模糊掉，要么变得纤细且充满噪声，具体取决于是否使用 mipmapping。Praun 等人 [1442] 提出了一种实时方法，用于生成笔触纹理的 mipmap，并将其平滑地应用到表面上。这样，当物体距离发生变化时，就能维持屏幕上的笔触密度。第一步是构造要使用的纹理，称为色调艺术贴图（tonal art maps，TAM）。其做法是在各个 mipmap 层级中绘制笔触，见图 15.21。
 
 
-![图 15.21：色调艺术贴图的不同色调与 mipmap 层级](Real-Time_Rendering_4th_中文/assets/fig_15_3_15.21.png)
+![图 15.21：色调艺术贴图的不同色调与 mipmap 层级](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_3_15.21.png)
 
 图 15.21．色调艺术贴图（TAM）。笔触被绘制到各个 mipmap 层级中。每个 mipmap 层级都包含其左侧和上方纹理中的全部笔触。这样，mip 层级之间以及相邻纹理之间的插值就是平滑的。（图片由普林斯顿大学 Emil Praun 提供。）
 
 Klein 等人 [905] 在他们的“艺术贴图”（art maps）中采用了相关思路，以维持非真实感渲染（NPR）纹理的笔触尺寸。准备好这些纹理后，通过在每个顶点所需的色调之间进行插值来渲染模型。这项技术能够生成具有手绘感的图像 [1441]，见图 15.22。
 
 
-![图 15.22：利用色调艺术贴图渲染的手与曲面模型](Real-Time_Rendering_4th_中文/assets/fig_15_3_15.22.png)
+![图 15.22：利用色调艺术贴图渲染的手与曲面模型](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_3_15.22.png)
 
 图 15.22．使用色调艺术贴图（TAM）渲染的两个模型。小样展示了渲染各模型时所用的搭接纹理图案。（图片由普林斯顿大学 Emil Praun 提供。）
 
@@ -285,7 +285,7 @@ Girshick 等人 [538] 讨论了沿表面主曲率方向线渲染笔触的方法�
 嫁接元素（graftals）[372, 853, 1126] 的思想是，可以按需向表面添加几何体或贴花纹理，以产生特定效果。它们可以由所需的细节层次、表面相对于观察者的朝向，或其他因素来控制。这些元素也可用于模拟钢笔或画笔笔触。图 15.23 给出了一个例子。几何嫁接元素是程序化建模的一种形式 [407]。
 
 
-![图 15.23：两种嫁接元素风格的斯坦福兔子](Real-Time_Rendering_4th_中文/assets/fig_15_3_15.23.png)
+![图 15.23：两种嫁接元素风格的斯坦福兔子](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_3_15.23.png)
 
 图 15.23．使用两种不同的嫁接元素风格渲染斯坦福兔子。（图片由犹他大学 Bruce Gooch 和 Matt Kaplan 提供。）
 
@@ -309,7 +309,7 @@ Herrell 等人 [724] 提出了一种完全不使用偏移量的方案。它通�
 Bærentzen 等人 [86, 1295] 提出了一种很适合在 GPU 上实现的方法。他们使用像素着色器，根据三角形的重心坐标确定到最近一条边的距离。如果像素靠近某条边，就用边的颜色绘制它。边的粗细可以设为任意所需的值，可以随距离变化，也可以保持不变。见图 15.24。主要缺点是，轮廓边的粗细只有内部线条的一半，因为每个三角形只绘制每条线宽度的一半。在实际使用中，这种不一致往往并不明显。
 
 
-![图 15.24：像素着色器生成的线条](Real-Time_Rendering_4th_中文/assets/fig_15_4_15.24.png)
+![图 15.24：像素着色器生成的线条](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_4_15.24.png)
 
 图 15.24. 像素着色器生成的线条。左图为经过抗锯齿处理、宽度为单像素的边；右图为带有晕圈、粗细可变的线条。（图片由 J. Andreas Bærentzen 提供。）
 
@@ -330,7 +330,7 @@ Celes 和 Abraham [242] 对这一思路进行了扩展和简化，同时还对�
 图 15.25 展示了这里讨论的几种不同线条渲染方法的结果。
 
 
-![图 15.25：四种线条渲染样式](Real-Time_Rendering_4th_中文/assets/fig_15_4_15.25.png)
+![图 15.25：四种线条渲染样式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_4_15.25.png)
 
 图 15.25. 四种线条渲染样式。从左到右依次为：线框、隐藏线消除、被遮蔽线条以及带晕圈的线条。
 
@@ -344,7 +344,7 @@ Celes 和 Abraham [242] 对这一思路进行了扩展和简化，同时还对�
 人眼对强度差异的敏感程度高于对颜色差异的敏感程度。至少从 Apple II 时代起，人们就利用这一事实来提高感知到的空间分辨率 [527]。微软的 ClearType 技术是这一思路的一种应用，它利用了液晶显示器（LCD）的一项特性。LCD 显示器的每个像素都由红、绿、蓝三个竖直的彩色矩形组成——拿放大镜观察一下 LCD 显示器，你就能亲眼看到。如果不考虑这些子像素矩形的颜色，这种排列就能提供三倍于像素数量的水平分辨率。使用不同色调可以填充不同的子像素，因此这种技术有时称为**子像素渲染**。人眼会将这些颜色融合在一起，使偏红和偏蓝的边缘变得难以察觉。见图 15.26。这项技术于 1998 年首次公布，对尺寸大而 DPI 较低的 LCD 显示器帮助很大。微软在 Word 2013 中停止使用 ClearType，显然是因为文字与不同背景色混合时会出现问题。Excel 和各种网页浏览器仍在使用这一技术，Adobe 的 CoolType、Apple 的 Quartz 2D，以及 FreeType、SubLCD 等库也采用了它。Shemanarev 的一篇文章 [1618] 虽然年代较早，却详尽讨论了这种方法的各种微妙之处及相关问题。
 
 
-![图15.26 灰度抗锯齿与子像素抗锯齿对比](Real-Time_Rendering_4th_中文/assets/fig_15_5_15.26.png)
+![图15.26 灰度抗锯齿与子像素抗锯齿对比](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_5_15.26.png)
 
 图 15.26。同一个单词采用灰度抗锯齿和子像素抗锯齿后的放大图。当 LCD 屏幕显示一个彩色像素时，构成该像素的相应颜色的竖直子像素矩形就会亮起。这样便能提供额外的水平空间分辨率。（图像由 Steve Gibson 的“Free & Clear”程序生成。）
 
@@ -353,7 +353,7 @@ Celes 和 Abraham [242] 对这一思路进行了扩展和简化，同时还对�
 这些系统假设每张纹理都与像素对齐，一个纹素对应一个像素，文档通常就是这种情况。当文字应用到三维表面上时，这些假设可能不再成立。使用包含一组字形的纹理是一种简单而常用的方法，但它也有一些潜在缺点。应用程序仍然可以让文字朝向观察者，不过缩放和旋转会破坏一个纹素对应一个像素的假设。即使文字与屏幕对齐，也可能没有考虑**字体微调**（font hinting）。微调是调整字形轮廓、使之与像素单元对齐的过程。例如，若字母“I”的竖干宽度为一个纹素，那么最好让它覆盖一整列像素，而不是分别覆盖相邻两列像素的一半。见图 15.27。所有这些因素都意味着，光栅纹理可能出现模糊或走样问题。Rougier [1515] 详尽介绍了纹理生成算法涉及的问题，并展示了如何在基于 OpenGL 的字形渲染系统中使用 FreeType 的微调功能。
 
 
-![图15.27 Verdana字体微调前后的对比](Real-Time_Rendering_4th_中文/assets/fig_15_5_15.27.png)
+![图15.27 Verdana字体微调前后的对比](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_5_15.27.png)
 
 图 15.27。Verdana 字体未经微调（上）和经过微调（下）的渲染结果。（图片由 Nicolas Rougier 提供 [1515]。）
 
@@ -364,7 +364,7 @@ Pathfinder 库 [1834] 是近期利用 GPU 生成字形的一项工作。它的�
 即便不考虑缩放和旋转，例如，使用汉字的语言所用的字体，也可能需要数千个甚至更多字形。一个高质量的大字符需要更大的纹理。如果从斜角观察字形，可能还需要对纹理进行各向异性过滤。直接根据字形的边缘和曲线描述来渲染它，可以避免对任意大纹理的需求，也能避免采样网格带来的瑕疵。Loop–Blinn 方法 [1068, 1069] 使用像素着色器直接求值 Bézier 曲线，第 17.1.2 节将讨论这种方法。这项技术需要一个曲面细分步骤，如果在加载时执行，开销可能很大。Dobbie [360] 通过为每个字符的包围盒绘制一个矩形，并在单次绘制中对字形的全部轮廓求值，避开了这一问题。Lengyel [1028] 提出了一种稳健的求值方法，用来判断一个点是否位于字形内部；这对避免瑕疵至关重要。他还讨论了求值优化，以及发光、投影和多种颜色（例如用于表情符号）等效果。
 
 
-![图15.28 距离场表示与标牌文本渲染](Real-Time_Rendering_4th_中文/assets/fig_15_5_15.28.png)
+![图15.28 距离场表示与标牌文本渲染](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_15_5_15.28.png)
 
 图 15.28。矢量纹理。左图是字母“g”的距离场表示 [3]。右图的“禁止擅入”（no trespassing）标牌由距离场渲染而成。文字周围的描边是通过将特定的距离范围映射为描边颜色而添加的 [580]。（左图由 ARM Ltd. 提供。右图来自《军团要塞 2》，由 Valve Corp. 提供。）
 

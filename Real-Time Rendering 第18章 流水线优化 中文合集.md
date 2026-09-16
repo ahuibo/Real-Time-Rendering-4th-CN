@@ -159,7 +159,7 @@
 寄存器和本地缓存构成存储层次的一端，接下来依次是动态随机存取存储器（DRAM），再往后是 SSD 和硬盘存储。顶端是少量、快速而昂贵的存储，底端是大量、缓慢而廉价的存储。层次中每下降一级，速度都会按某个明显的倍数下降，见图 18.1。例如，处理器寄存器通常在一个时钟周期内即可访问，而 L1 缓存的访问需要几个周期。每次跨越层级，延迟都会这样增加。如第 3.10 节所述，架构有时可以隐藏延迟，但它始终是必须考虑的因素。
 
 
-![图18.1 存储层次](Real-Time_Rendering_4th_中文/assets/fig_18_4_18.1.png)
+![图18.1 存储层次](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_18_4_18.1.png)
 
 **图 18.1** 存储层次。沿金字塔向下，速度与成本都会降低。
 
@@ -245,7 +245,7 @@ Wloka 的经验法则是：“每帧你只能得到 X 个批次。”这是每�
 **注2：** Wloka 使用 batch 一词表示通过一次绘制调用渲染的单个网格。多年来，这个术语的含义有所扩展，现在有时也表示一组具有相同状态、将要渲染的独立对象，因为这样能降低 API 开销。
 
 
-![图18.2 批次性能基准](Real-Time_Rendering_4th_中文/assets/fig_18_4_18.2.png)
+![图18.2 批次性能基准](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_18_4_18.2.png)
 
 **图 18.2** 在 Intel Core 2 Duo 2.66 GHz CPU、NVIDIA G80 GPU 上运行 DirectX 10 的批次性能基准测试。测试在不同条件下运行不同大小的批次并计时。“Low”条件使用只有位置数据的三角形和恒定颜色像素着色器；另一组测试使用正常规模的网格与着色。“Single”表示多次渲染一个批次。“Instancing”复用网格数据，并把逐实例数据放在独立数据流中。“Constants”是 DirectX 10 的一种方法，把实例数据放入常量内存。可以看到，小批次会损害所有方法的性能，但实例化在比例上提供了快得多的性能。到几百个三角形时，性能趋于平稳，因为瓶颈变为从顶点缓冲区和缓存取出顶点的速度。（图表由 NVIDIA Corporation 提供。）
 
@@ -254,12 +254,12 @@ Wloka 的经验法则是：“每帧你只能得到 X 个批次。”这是每�
 尽量减少应用处理与 API 开销的另一种方法，是采用某种实例化形式 [232, 741, 1382]。多数 API 支持通过一次调用将一个对象绘制多次。通常，先指定一个基础模型，再提供独立数据结构，保存每个所需实例的信息。除位置与朝向外，还可以逐实例指定其他属性，例如树叶颜色、受风产生的弯曲程度，或任何可供着色器程序影响模型的参数。大量使用实例化，就能创建郁郁葱葱的丛林场景，见图 18.3。人群场景也非常适合实例化：从一组备选项中选择不同身体部件，可以让每个角色看起来不同。随机着色和贴花还能进一步增加变化。实例化还可以与细节层次技术结合 [122, 1107, 1108]，图 18.4 展示了一个例子。
 
 
-![图18.3 植被实例化](Real-Time_Rendering_4th_中文/assets/fig_18_4_18.3.png)
+![图18.3 植被实例化](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_18_4_18.3.png)
 
 **图 18.3** 植被实例化。下图中所有颜色相同的对象，都在一次绘制调用中渲染 [1869]。（图像来自 CryEngine1，由 Crytek 提供。）
 
 
-![图18.4 人群场景](Real-Time_Rendering_4th_中文/assets/fig_18_4_18.4.png)
+![图18.4 人群场景](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_18_4_18.4.png)
 
 **图 18.4** 人群场景。使用实例化可以尽量减少所需的绘制调用数量。这里还采用了细节层次技术，例如为远处模型渲染替身图像 [1107, 1108]。（图像由 Jonathan Maïm、Barbara Yersin、Mireille Clavien 和 Daniel Thalmann 提供。）
 
@@ -292,7 +292,7 @@ Wloka 的经验法则是：“每帧你只能得到 X 个批次。”这是每�
 为了理解程序行为，尤其是像素处理阶段的负载，将深度复杂度可视化很有帮助。深度复杂度就是覆盖一个像素的表面数量。图 18.5 给出了例子。生成深度复杂度图像的一种简单方法，是禁用 z 缓冲，并使用类似 OpenGL 的 `glBlendFunc(GL_ONE, GL_ONE)` 调用。首先将图像清为黑色，再以颜色 (1/255, 1/255, 1/255) 渲染场景中的全部对象。这一混合函数设置的作用是：每渲染一个图元，被写入的像素值就增加一个强度等级。因此，深度复杂度为 0 的像素是黑色，深度复杂度为 255 的像素是纯白色，即 (255, 255, 255)。
 
 
-![图18.5 深度复杂度](Real-Time_Rendering_4th_中文/assets/fig_18_4_18.5.png)
+![图18.5 深度复杂度](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_18_4_18.5.png)
 
 **图 18.5** 右图显示左侧场景的深度复杂度。（图像使用 NVIDIA Corporation 的 NVPerfHUD 创建。）
 
@@ -301,13 +301,13 @@ Wloka 的经验法则是：“每帧你只能得到 X 个批次。”这是每�
 假设两个三角形覆盖同一个像素，深度复杂度就是 2。如果先绘制较远的三角形，较近的三角形就会覆盖它，过度绘制量为 1。如果先绘制较近的三角形，较远的三角形无法通过深度测试，不会被绘制，因此没有过度绘制。对于以随机顺序覆盖一个像素的一组不透明三角形，平均绘制次数由调和级数给出 [296]：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_cfc290568a3ca3.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_cfc290568a3ca3.png)
 
 
 其中的逻辑是：第一个被渲染的三角形产生一次绘制。第二个三角形要么在第一个前面，要么在后面，两种可能各占 50%。第三个三角形相对于前两个可以有三种位置，因此有三分之一的机会处在最前面。当 n 趋于无穷时，
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_89bce58e59682c.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_89bce58e59682c.png)
 
 
 其中 γ = 0.57721… 是欧拉—马歇罗尼常数。在深度复杂度较低时，过度绘制增加得很快，但增长很快就趋缓。例如，深度复杂度为 4 时平均绘制 2.08 次，为 11 时平均绘制 3.02 次；但需要达到 12367 的深度复杂度，平均绘制次数才达到 10.00。
@@ -321,7 +321,7 @@ Wloka 的经验法则是：“每帧你只能得到 X 个批次。”这是每�
 前面建议按着色器和纹理分组，尽量减少状态改变；这里则讨论按距离排序后渲染对象。这两个目标通常产生不同的对象绘制顺序，因此彼此冲突。对于给定场景和视点，总有某个理想绘制顺序，但很难预先找到。也可以采用混合方案，例如将附近对象按深度排序，其余对象按材质排序 [1433]。一种常见而灵活的解决办法 [438, 488, 511, 1434, 1882]，是为每个对象创建排序键，给每项相关标准分配一组位，将它们全部封装进去，见图 18.6。
 
 
-![图18.6 绘制顺序排序键](Real-Time_Rendering_4th_中文/assets/fig_18_4_18.6.png)
+![图18.6 绘制顺序排序键](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_18_4_18.6.png)
 
 **图 18.6** 绘制顺序排序键的例子。键按从小到大排序。设置透明位意味着对象透明，因为透明对象要在所有不透明对象之后渲染。对象到摄像机的距离以低精度整数存储。对于透明对象，距离值需要反转或取负，因为我们希望它们按从后到前的顺序排列。每个着色器都有唯一标识号，纹理也是如此。
 
@@ -333,20 +333,20 @@ Wloka 的经验法则是：“每帧你只能得到 X 个批次。”这是每�
 
 渲染一个场景，常常涉及大量帧缓冲区访问和像素着色器执行。为了减轻缓存层次的压力，一条常见建议是缩小帧缓冲区中每个像素的存储大小。虽然每个颜色通道使用 16 位浮点值可以提供更高精度，但 8 位值只有其一半大小；只要精度足够，访问就会更快。JPEG、MPEG 等许多图像和视频压缩方案，常常对色度进行子采样。由于人类视觉系统对亮度比对色度更加敏感，这样做对视觉的影响往往可以忽略。例如，Frostbite 游戏引擎 [1877] 使用这种色度子采样思想，降低对每通道 16 位图像进行后处理时的带宽成本。
 
-Mavridis 和 Papaioannou [1144] 提议，使用书页 197 所述的有损 YCoCg 变换，在光栅化过程中对颜色缓冲区取得类似效果。他们的像素布局见图 18.7。与 RGBA 相比，这让颜色缓冲区的存储需求减半（假设不需要 A），并且通常能够提高性能，具体取决于架构。由于每个像素只有一个色度分量，需要用重建滤波器推导每个像素的完整 YCoCg，再在显示前转换回 RGB。例如，对于缺少 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_289cf5353106a3.png) 值的像素，可以取距离最近的四个 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_289cf5353106a3.png) 值的平均值。不过，这样重建边缘的效果不够理想。因此，改用一个简单的边缘感知滤波器，其实现为：
+Mavridis 和 Papaioannou [1144] 提议，使用书页 197 所述的有损 YCoCg 变换，在光栅化过程中对颜色缓冲区取得类似效果。他们的像素布局见图 18.7。与 RGBA 相比，这让颜色缓冲区的存储需求减半（假设不需要 A），并且通常能够提高性能，具体取决于架构。由于每个像素只有一个色度分量，需要用重建滤波器推导每个像素的完整 YCoCg，再在显示前转换回 RGB。例如，对于缺少 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_289cf5353106a3.png) 值的像素，可以取距离最近的四个 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_289cf5353106a3.png) 值的平均值。不过，这样重建边缘的效果不够理想。因此，改用一个简单的边缘感知滤波器，其实现为：
 
 
-![图18.7 颜色缓冲区的棋盘布局](Real-Time_Rendering_4th_中文/assets/fig_18_4_18.7.png)
+![图18.7 颜色缓冲区的棋盘布局](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_18_4_18.7.png)
 
-**图 18.7** 左：4 × 2 个像素，每个保存四个颜色分量（RGBA）。右：另一种表示方式，每个像素保存亮度 Y，以及第一色度分量 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_289cf5353106a3.png) 或第二色度分量 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_582ab39000dac7.png)，二者按棋盘格交替排列。
-
-
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_e05845a3f76c89.png)
+**图 18.7** 左：4 × 2 个像素，每个保存四个颜色分量（RGBA）。右：另一种表示方式，每个像素保存亮度 Y，以及第一色度分量 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_289cf5353106a3.png) 或第二色度分量 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_582ab39000dac7.png)，二者按棋盘格交替排列。
 
 
-该公式用于没有 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_289cf5353106a3.png) 的像素。其中 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_a576c2b5e63572.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_b456bbb8033d74.png) 是当前像素左、右、上、下相邻像素的值；L 是当前像素的亮度；t 是边缘检测阈值。Mavridis 和 Papaioannou 使用 t = 30/255。当 x < 0 时，step(x) 函数为 0，否则为 1。因此，滤波权重 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_3e929edc96716e.png) 为 0 或 1；当亮度梯度 |![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_b456bbb8033d74.png) − L| 大于 t 时，权重为 0。网上可以找到附源代码的 WebGL 演示 [1144]。
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_e05845a3f76c89.png)
 
-> 译注：公式（18.3）及上述解释均照原书保留，原文内部存在不一致。按照本页给出的 step 定义，当 |![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_18_04_b456bbb8033d74.png) − L| > t 时，排印公式得到的权重为 1，而不是文字所述的 0；公式也未显示加权平均通常需要的权重归一化分母。这里不自行改动原式。
+
+该公式用于没有 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_289cf5353106a3.png) 的像素。其中 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_a576c2b5e63572.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_b456bbb8033d74.png) 是当前像素左、右、上、下相邻像素的值；L 是当前像素的亮度；t 是边缘检测阈值。Mavridis 和 Papaioannou 使用 t = 30/255。当 x < 0 时，step(x) 函数为 0，否则为 1。因此，滤波权重 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_3e929edc96716e.png) 为 0 或 1；当亮度梯度 |![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_b456bbb8033d74.png) − L| 大于 t 时，权重为 0。网上可以找到附源代码的 WebGL 演示 [1144]。
+
+> 译注：公式（18.3）及上述解释均照原书保留，原文内部存在不一致。按照本页给出的 step 定义，当 |![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_18_04_b456bbb8033d74.png) − L| > t 时，排印公式得到的权重为 1，而不是文字所述的 0；公式也未显示加权平均通常需要的权重归一化分母。这里不自行改动原式。
 
 由于显示分辨率持续提高，同时希望节省着色器执行成本，已有多个系统采用棋盘格模式进行渲染 [231, 415, 836, 1885]。在虚拟现实应用中，Vlachos [1824] 对视野周边的像素使用棋盘格模式；Answer [59] 则使每个 2 × 2 四像素块减少一至三个采样。
 
@@ -380,7 +380,7 @@ Mavridis 和 Papaioannou [1144] 提议，使用书页 197 所述的有损 YCoCg 
 如前所述，流水线是一种加快执行速度的方法：把一项作业划分成若干可并行执行的流水线阶段。一个流水线阶段的结果会传递到下一个阶段。对于 n 个流水线阶段，理想加速比是 n 倍，而最慢的阶段（瓶颈）决定实际加速比。到目前为止，我们所看到的流水线，都是利用一个 CPU 核心和一个 GPU，使应用程序、几何处理、光栅化和像素处理并行运行。当主机有多个处理器可用时，也可以使用流水线；在这些情况下，它称为多进程流水线或软件流水线。
 
 
-![图18.8：多处理器流水线与并行处理](Real-Time_Rendering_4th_中文/assets/fig_18_5_18.8.png)
+![图18.8：多处理器流水线与并行处理](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_18_5_18.8.png)
 
 **图 18.8。** 使用多个处理器的两种不同方式。上图展示三个处理器（CPU）如何用于多处理器流水线，下图展示在三个 CPU 上并行执行的情况。这两种实现的一个区别是，采用下方的配置可以获得更低的延迟。另一方面，多处理器流水线可能更容易使用。两种配置的理想加速比都是线性的，也就是说，使用 n 个 CPU 可以获得 n 倍的加速。
 
@@ -396,14 +396,14 @@ DRAW 阶段接收 CULL 阶段生成的列表，发出列表中的所有图形调
 如果有一个处理器核心可用，那么三个阶段都在这个核心上运行。如果有两个 CPU 核心可用，那么 APP 和 CULL 可以在一个核心上执行，DRAW 则在另一个核心上执行。另一种配置是在一个核心上执行 APP，在另一个核心上执行 CULL 和 DRAW。哪种配置最好，取决于各阶段的工作负载。最后，如果主机有三个核心可用，那么每个阶段都可以在一个独立核心上执行。图 18.10 展示了这种可能性。
 
 
-![图18.9：多处理器流水线的不同配置](Real-Time_Rendering_4th_中文/assets/fig_18_5_18.9.png)
+![图18.9：多处理器流水线的不同配置](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_18_5_18.9.png)
 
 **图 18.9。** 多处理器流水线的不同配置。粗线表示阶段之间的同步，下标表示帧编号。最上方展示单 CPU 流水线。中间和下方展示使用两个 CPU 时两种不同的流水线划分方式。中间的配置让 APP 和 CULL 占用一个流水线阶段，DRAW 占用另一个流水线阶段。如果 DRAW 的工作量远大于其他阶段，这样划分就很合适。下方的配置让 APP 占用一个流水线阶段，其余两个占用另一个阶段。如果 APP 的工作量远大于其他阶段，这种划分就很合适。注意，下面两种配置为 APP、CULL 和 DRAW 阶段提供了更多时间。
 
 这种技术的优点是提高了吞吐量，也就是渲染速度。缺点是，与并行处理相比，其延迟更大。延迟，或称时间延迟，是指从轮询用户动作到产生最终图像所经历的时间 [1849]。不要将它与帧率混淆，帧率是每秒显示的帧数。例如，假设用户正在使用一台无线头戴式显示器。确定头部位置的信息可能需要 10 毫秒才能到达 CPU，随后渲染一帧需要 15 毫秒。那么，从最初输入到显示的延迟就是 25 毫秒。即使帧率为 66.7 Hz（1 ÷ 0.015 秒），如果不进行位置预测或其他补偿，交互仍可能让人感觉迟钝，因为位置变化传送至 CPU 存在延迟。忽略用户交互带来的延迟（这在两种系统中是一个相同的常量）后，多处理器流水线比并行处理的延迟更大，因为前者使用流水线。下一小节将详细讨论：并行处理会将一帧的工作拆分成若干部分，并发执行。
 
 
-![图18.10：三阶段流水线与重叠执行](Real-Time_Rendering_4th_中文/assets/fig_18_5_18.10.png)
+![图18.10：三阶段流水线与重叠执行](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_18_5_18.10.png)
 
 **图 18.10。** 上图展示一条三阶段流水线。与图 18.9 中的配置相比，这种配置为每个流水线阶段提供了更多时间。下图展示一种降低延迟的方法：让 CULL 与 DRAW 重叠执行，并在两者之间使用先进先出（FIFO）缓冲。
 
@@ -430,7 +430,7 @@ DRAW 阶段接收 CULL 阶段生成的列表，发出列表中的所有图形调
 同一程序的并行版本也会把作业分为三个工作包，但这三个工作包会在三个 CPU 上同时执行。这意味着延迟为 10 ms，而一帧的工作同样需要 10 ms。由此可见，与多处理器流水线相比，并行处理的延迟要短得多。
 
 
-![图18.11：Frostbite的CPU作业图](Real-Time_Rendering_4th_中文/assets/fig_18_5_18.11.png)
+![图18.11：Frostbite的CPU作业图](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_18_5_18.11.png)
 
 **图 18.11。** Frostbite 的 CPU 作业图，内嵌图放大了其中的一小部分 [45]。（图片由 Electronic Arts 的 Johan Andersson 提供。）
 
@@ -461,7 +461,7 @@ C++11 等语言内置了多线程支持设施 [1445]。在 Intel 兼容系统上
 这里使用的一个关键构造是命令缓冲区或命令列表，其渊源可以追溯到 OpenGL 中一个称为显示列表的旧概念。命令缓冲区（command buffer，CB）是一份 API 状态变更调用和绘制调用的列表。这些列表可以按需创建、存储和重放，也可以组合起来，形成更长的命令缓冲区。只有一个 CPU 处理器通过驱动程序与 GPU 通信，因此它可以将 CB 发送给 GPU 执行。不过，每个处理器（包括这个负责通信的处理器）都可以并行地创建或串接已存储的命令缓冲区。
 
 
-![图18.12：命令缓冲区](Real-Time_Rendering_4th_中文/assets/fig_18_5_18.12.png)
+![图18.12：命令缓冲区](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_18_5_18.12.png)
 
 **图 18.12。** 命令缓冲区。每个处理器使用自己的延迟上下文（橙色），创建并填充一个或多个命令缓冲区（蓝色）。每个命令缓冲区都会发送到进程 #1，由该进程使用自己的立即上下文（绿色）按需执行。进程 #1 在等待来自进程 #3 的命令缓冲区 N 时，可以执行其他操作。（据 Zink 等人 [1971] 改编。）
 

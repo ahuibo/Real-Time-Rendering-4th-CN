@@ -39,4 +39,6 @@
 27. [参考文献](<Real-Time%20Rendering%20%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%20%E4%B8%AD%E6%96%87%E5%90%88%E9%9B%86.md>)
 28. [索引](<Real-Time%20Rendering%20%E7%B4%A2%E5%BC%95%20%E4%B8%AD%E6%96%87%E5%90%88%E9%9B%86.md>)
 
-各章保留分节目录，点击即可进入对应的独立 Markdown。公式与插图已随文档保存；下载阅读时，请保留文件夹结构。
+各章保留分节目录，点击即可进入对应的独立 Markdown。在线版图片使用 GitHub 原始文件直链，减少页面跳转造成的加载等待。
+
+离线阅读请下载[含全部图片及相对路径的离线版](https://github.com/ahuibo/Real-Time-Rendering-4th-CN/archive/9215eb98631a4e887d4b06337cd13588ce1ec4c8.zip)，解压后保留文件夹结构。在线版与该离线版正文相同，仅图片链接格式不同。

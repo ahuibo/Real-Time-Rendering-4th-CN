@@ -40,7 +40,7 @@
 另一种方法是将静态光源烘焙到世界空间数据结构中。例如，《Just Cause 2》的光照系统使用世界空间中的俯视网格来存储场景光源信息。一个网格单元代表 4 米 × 4 米的区域。每个单元以 RGBα 纹理中的一个纹素存储，因此可以保存最多四个光源的列表。渲染一个像素时，取出它所在区域的列表，并应用相关光源 [1379]。缺点在于，对于影响某个区域的光源数量，存储空间有固定上限。这种方式虽然可能适用于精心设计的室外场景，但具有多层楼面的建筑很快就会超出这一存储方案的承受能力。
 
 
-![图20.1 复杂光照场景](Real-Time_Rendering_4th_中文/assets/fig_20_1_20.1.png)
+![图20.1 复杂光照场景](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_1_20.1.png)
 
 图 20.1：一种复杂的光照情形。请注意，肩膀上的小灯，以及建筑结构上的每一个亮点，都是光源。右上方远处的灯光也都是光源，在那个距离上以点精灵渲染。（图像出自《Just Cause 3》，由 Avalanche Studios 提供 [1387]。）
 
@@ -62,7 +62,7 @@
 在创建 G 缓冲的通道之后，使用另一个独立过程来计算光照效果。一种方法是逐一应用各个光源，利用 G 缓冲计算其作用。对于每个光源，我们绘制一个覆盖整个屏幕的四边形（12.1 节），并将 G 缓冲作为纹理访问 [222, 1762]。在每个像素处，可以确定最近表面的位置，以及它是否位于光源影响范围之内。如果在范围内，就计算该光源的作用，并将结果放入输出缓冲区。依次对每个光源执行这一过程，通过混合累加其贡献。最后，便应用了全部光源的贡献。
 
 
-![图20.2 延迟着色的几何缓冲](Real-Time_Rendering_4th_中文/assets/fig_20_1_20.2.png)
+![图20.2 延迟着色的几何缓冲](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_1_20.2.png)
 
 图 20.2：用于延迟着色的几何缓冲，其中一些为便于可视化而转换成了颜色。左列从上到下依次为：深度图、法线缓冲、粗糙度缓冲和阳光遮蔽。右列依次为：纹理颜色（亦称反照率纹理）、光照强度、镜面反射强度，以及接近最终结果的图像（不含运动模糊）。（图像出自《Killzone 2》，由 Guerrilla BV 提供 [1809]。）
 
@@ -77,7 +77,7 @@
 基本的延迟着色只支持一个具有固定参数集的材质着色器，这限制了能够表现的材质模型。支持不同材质描述的一种办法，是在某个指定字段中为每个像素存储一个材质 ID 或掩码。着色器随后便可依据 G 缓冲的内容执行不同计算。这种方法还可以根据该 ID 或掩码值，改变 G 缓冲存储的内容 [414, 667, 992, 1064]。例如，一种材质可能在 G 缓冲中使用 32 位存储第二层颜色和混合因子，另一种材质则用同样的位存储它所需的两个切向量。这些方案需要使用更复杂的着色器，因此可能影响性能。
 
 
-![图20.3 G缓冲布局示例](Real-Time_Rendering_4th_中文/assets/fig_20_1_20.3.png)
+![图20.3 G缓冲布局示例](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_1_20.3.png)
 
 图 20.3：《Rainbow Six Siege》中使用的一种可能的 G 缓冲布局示例。除了深度缓冲和模板缓冲，还使用了四个渲染目标（RT）。如图所示，这些缓冲区中可以放入任何数据。RT0 中的“GI”字段是“GI 法线偏移（A2）”。（据 El Mansouri [415] 的插图绘制。）
 
@@ -111,7 +111,7 @@ Crassin 等人 [309] 的抗锯齿研究着眼于高质量结果，并总结了�
 对于静态或刚体物体，一种常用方案是把贴花视为一张通过有限体积进行正交投影的纹理 [447, 893, 936, 1391, 1920]。在场景中放置一个定向盒，像电影放映机那样，将贴花从盒子的一个面投影到相对的面。参见图 20.4。对盒子的各个面进行光栅化，以此驱动像素着色器执行。凡是位于该体积内的几何体，都会在其材质之上施加贴花。具体做法是将表面的深度和屏幕位置转换为该体积中的位置，再由此得到贴花的纹理坐标 (u, v)。另一种选择是让贴花本身成为真正的体积纹理 [888, 1380]。通过分配 ID [900]、分配一个模板位 [1778]，或依靠渲染顺序，可以使贴花只影响体积内的某些物体。还经常依据表面与投影方向之间的夹角，使贴花淡出或限制其作用范围，以避免表面相对于投影方向越来越侧向时，贴花发生拉伸或扭曲 [893]。
 
 
-![图20.4：盒体定义的贴花投影](Real-Time_Rendering_4th_中文/assets/fig_20_2_20.4.png)
+![图20.4：盒体定义的贴花投影](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_2_20.4.png)
 
 图 20.4：一个盒体定义贴花投影，盒体内部的表面会被施加该贴花。图中夸大了盒体的厚度，以展示投影器及其效果。实际使用时，会使盒体尽可能薄且紧贴表面，从而尽量减少施加贴花时需要测试的像素数量。
 
@@ -122,14 +122,14 @@ Lagarde 和 de Rousiers [960] 描述了延迟着色环境中贴花存在的几�
 贴花既可用于刹车印或弹孔之类的动态元素，也可用于为不同地点增添变化。图 20.5 展示了一个在建筑墙面及其他位置施加贴花的场景。墙面纹理可以复用，而贴花则提供定制的细节，赋予每栋建筑独特的风貌。
 
 
-![图20.5：建筑场景中贴花区域、无贴花与施加贴花的对比](Real-Time_Rendering_4th_中文/assets/fig_20_2_20.5.png)
+![图20.5：建筑场景中贴花区域、无贴花与施加贴花的对比](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_2_20.5.png)
 
 图 20.5：上图用棋盘格标出了叠加颜色贴花和凹凸贴花的区域。中图展示未施加任何贴花的建筑。下图展示施加了约 200 张贴花后的场景。（图片由 IO Interactive 提供。）
 
 
 ## 20.3 分块着色
 
-来源：《Real-Time Rendering, 4th Edition》第 20.3 节“Tiled Shading”，书页 892—898（PDF 第 913—919 页）。本节正文截止于 20.4 节标题之前；包含图 20.6—20.9。文中 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_66a1b8fb0c4036.png) 分别表示最小和最大 z 深度。
+来源：《Real-Time Rendering, 4th Edition》第 20.3 节“Tiled Shading”，书页 892—898（PDF 第 913—919 页）。本节正文截止于 20.4 节标题之前；包含图 20.6—20.9。文中 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_66a1b8fb0c4036.png) 分别表示最小和最大 z 深度。
 
 在基本的延迟着色中，每个光源都单独求值，再将结果加到输出缓冲区中。对于早期 GPU，这是一项优势：由于着色器复杂度的限制，同时计算超过少数几个光源可能根本无法实现。延迟着色能够处理任意数量的光源，代价是每次都要访问 G 缓冲区。当光源达到数百乃至数千个时，基本延迟着色的开销就会很高，因为对于每个被光源覆盖的像素，都必须处理所有覆盖它的光源，而且在一个像素上计算每个光源，都涉及一次单独的着色器调用。在一次着色器调用中计算多个光源会更高效。在接下来的几节中，我们将讨论几种算法，它们能以交互速率快速处理大量光源，既适用于延迟着色，也适用于前向着色。
 
@@ -146,14 +146,14 @@ Lagarde 和 de Rousiers [960] 描述了延迟着色环境中贴花存在的几�
 可能影响某个块的光源会被记录在一个列表中。进行渲染时，某个块内的像素着色器使用该块对应的光源列表对表面进行着色。图 20.6 左侧展示了这一点。可以看到，并非所有光源都与每个块重叠。块在屏幕空间中的边界构成一个非对称视锥体，用来判断是否存在重叠。可以在 CPU 上或计算着色器中，快速测试每个光源的球形影响体积是否与各个块的视锥体重叠。只有存在重叠时，我们才需要针对该块内的像素进一步处理这个光源。按块而非按像素存储光源列表，是在判断上采取保守策略：光源体积未必覆盖整个块；作为交换，处理、存储和带宽成本都大幅降低 [1332]。
 
 
-![图 20.6 分块与深度范围示意](Real-Time_Rendering_4th_中文/assets/fig_20_3_20.6.png)
+![图 20.6 分块与深度范围示意](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_3_20.6.png)
 
 图 20.6. 分块示意。左：屏幕被划分为 6 × 6 个块，三个光源 1—3 为场景提供照明。观察块 A—C，可以看到块 A 可能受到光源 1 和 2 的影响，块 B 可能受到光源 1—3 的影响，而块 C 可能受到光源 3 的影响。右：从上方观察左图中用黑色边框标出的那一行块。对于块 B，红线表示深度边界。在屏幕上，块 B 看起来与所有光源都重叠，但同时与深度范围重叠的只有光源 1 和 2。
 
 要判断一个光源是否与某个块重叠，可以采用第 22.14 节介绍的球体与视锥体测试。那里所述的测试假定视锥体较大、较宽，而球体相对较小。然而，这里的视锥体来自屏幕空间中的一个块，因此往往又长又细，而且不对称。这会降低剔除效率，因为被报告为相交的情况可能增加，即出现误报。参见图 20.7 左侧。一种替代办法是在对视锥体各平面进行测试后，再增加一次球体／盒体测试（第 22.13.2 节）[1701, 1768]，如图 20.7 右侧所示。Mara 和 McGuire [1122] 逐一介绍了针对投影球体的其他测试，包括他们自己提出的 GPU 高效版本。Zhdan [1968] 指出，这种方法对聚光灯效果不佳，并讨论了利用层次剔除、光栅化和代理几何体的优化技术。
 
 
-![图 20.7 球体与视锥体相交测试的误报](Real-Time_Rendering_4th_中文/assets/fig_20_3_20.7.png)
+![图 20.7 球体与视锥体相交测试的误报](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_3_20.7.png)
 
 图 20.7. 左：采用朴素的球体／视锥体测试时，这个圆会被报告为相交，因为它与视锥体的下侧平面和右侧平面重叠。中：左侧测试的示意图，其中视锥体被扩大，仅使用粗黑线表示的平面对圆的原点（加号）进行测试。绿色区域会报告错误的相交结果。右：在视锥体外放置一个用点线表示的盒体，并在中图的平面测试之后增加球体／盒体测试，得到图中粗轮廓线围成的形状。注意，这一测试也会在它的绿色区域中产生其他错误相交，但同时应用两种测试后，这些区域会缩小。由于球心位于该形状之外，因此测试会正确报告球体不与视锥体重叠。
 
@@ -172,29 +172,29 @@ Lagarde 和 de Rousiers [960] 描述了延迟着色环境中贴花存在的几�
 
 分块前向着色已用于《The Order: 1886》等游戏 [1267, 1405]。Pettineo [1401] 提供了一个开源测试套件，用来比较分块着色的延迟 [990] 和前向分类实现。在使用延迟着色时，为了抗锯齿，每个采样都会被存储下来。测试结果各有胜负，在不同测试条件下，两种方案都曾优于对方。不使用抗锯齿时，随着光源数量增加到 1024，延迟方案在许多 GPU 上往往更有优势；而随着抗锯齿级别提高，前向方案表现更好。Stewart 和 Thomas [1700] 对一个 GPU 型号进行了范围更广的测试分析，也发现了类似结果。
 
-z 预通道还可以用于另一个目的：根据深度剔除光源。图 20.6 右侧展示了这一思想。第一步是找出块内对象的最小和最大 z 深度，即 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_66a1b8fb0c4036.png)。二者分别通过归约（reduce）操作确定：将着色器应用于块内数据，在一个或多个通道中通过采样计算 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_66a1b8fb0c4036.png) [43, 1701, 1768]。例如，Harada 等人 [667] 使用计算着色器和无序访问视图，高效执行视锥体剔除和块内归约。随后可以利用这些值，快速剔除不与该块这一深度范围重叠的光源。空块，例如只看得到天空的块，也可以忽略 [1877]。场景类型和应用会影响计算并使用最小值、最大值或两者是否值得 [144]。这种剔除方式也可以用于分块延迟着色，因为 G 缓冲区中已有深度值。
+z 预通道还可以用于另一个目的：根据深度剔除光源。图 20.6 右侧展示了这一思想。第一步是找出块内对象的最小和最大 z 深度，即 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_66a1b8fb0c4036.png)。二者分别通过归约（reduce）操作确定：将着色器应用于块内数据，在一个或多个通道中通过采样计算 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_66a1b8fb0c4036.png) [43, 1701, 1768]。例如，Harada 等人 [667] 使用计算着色器和无序访问视图，高效执行视锥体剔除和块内归约。随后可以利用这些值，快速剔除不与该块这一深度范围重叠的光源。空块，例如只看得到天空的块，也可以忽略 [1877]。场景类型和应用会影响计算并使用最小值、最大值或两者是否值得 [144]。这种剔除方式也可以用于分块延迟着色，因为 G 缓冲区中已有深度值。
 
-由于深度边界是根据不透明表面确定的，必须单独考虑透明效果。为了处理透明表面，Neubelt 和 Pettineo [1267] 额外渲染一组通道来建立逐块光源列表，仅用于透明表面的光照和着色。首先，在不透明几何体的 z 预通道缓冲区基础上渲染透明表面。保留透明表面的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_64df578b1bedb5.png)，同时使用不透明表面的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_66a1b8fb0c4036.png) 来限制视锥体的远端。第二个通道执行一次独立的光源分类，生成新的逐块光源列表。第三个通道只将透明表面送入渲染器，其方式与分块前向着色类似。所有这些表面都使用新的光源列表进行着色和光照计算。
+由于深度边界是根据不透明表面确定的，必须单独考虑透明效果。为了处理透明表面，Neubelt 和 Pettineo [1267] 额外渲染一组通道来建立逐块光源列表，仅用于透明表面的光照和着色。首先，在不透明几何体的 z 预通道缓冲区基础上渲染透明表面。保留透明表面的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_64df578b1bedb5.png)，同时使用不透明表面的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_66a1b8fb0c4036.png) 来限制视锥体的远端。第二个通道执行一次独立的光源分类，生成新的逐块光源列表。第三个通道只将透明表面送入渲染器，其方式与分块前向着色类似。所有这些表面都使用新的光源列表进行着色和光照计算。
 
 对于包含大量光源的场景，有效的 z 值范围对于剔除其中大多数光源、避免后续处理至关重要。不过，对于一种常见情况——深度不连续——这项优化几乎没有好处。假设一个块包含近处的人物，背景则是远处的山。两者之间的 z 范围极大，因此基本无法用于剔除光源。这种深度范围问题可能影响场景中很大一部分区域，如图 20.8 所示。这个例子并非极端情况。在森林、有高草或其他植被的场景中，出现深度不连续的块可能占更高比例 [1387]。
 
 
-![图 20.8 存在较大深度不连续的块](Real-Time_Rendering_4th_中文/assets/fig_20_3_20.8.png)
+![图 20.8 存在较大深度不连续的块](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_3_20.8.png)
 
 图 20.8. 存在较大深度不连续的块的可视化。（图像来自《Just Cause 3》，由 Avalanche Studios 提供 [1387]。）
 
-一种解决办法是在 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_66a1b8fb0c4036.png) 的中间位置进行一次划分。这种测试称为双峰簇（bimodal clusters）[992] 或 HalfZ [1701, 1768]，它相对于中点，将相交光源分为与较近范围重叠、与较远范围重叠或与整个范围重叠三类。这直接针对一个块中存在一近一远两个对象的情况。不过，它不能解决所有问题，例如光源体积与两个对象都不重叠，或者有两个以上的对象在不同深度上重叠。即便如此，它仍能显著减少整体光照计算量。
+一种解决办法是在 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_66a1b8fb0c4036.png) 的中间位置进行一次划分。这种测试称为双峰簇（bimodal clusters）[992] 或 HalfZ [1701, 1768]，它相对于中点，将相交光源分为与较近范围重叠、与较远范围重叠或与整个范围重叠三类。这直接针对一个块中存在一近一远两个对象的情况。不过，它不能解决所有问题，例如光源体积与两个对象都不重叠，或者有两个以上的对象在不同深度上重叠。即便如此，它仍能显著减少整体光照计算量。
 
-Harada 等人 [666, 667] 提出了一种更精细的算法，称为 2.5D 剔除。它将每个块从 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_64df578b1bedb5.png) 到 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_66a1b8fb0c4036.png) 的深度范围，沿深度方向分成 n 个单元。图 20.9 展示了这一过程。建立一个 n 位的几何体位掩码；有几何体存在的单元，其对应位设为 1。出于效率考虑，他们采用 n = 32。随后遍历所有光源，为每个与块视锥体重叠的光源建立一个光源位掩码。光源位掩码表示该光源位于哪些单元中。将几何体位掩码与光源掩码进行按位与（AND）运算。如果结果为零，该光源就不会影响这个块中的任何几何体，如图 20.9 右侧所示。否则，将该光源追加到块的光源列表中。对于一种 GPU 架构，Stewart 和 Thomas [1700] 发现，当光源数量增加到超过 512 时，HalfZ 开始优于基本分块延迟着色；当光源数量超过 2300 时，2.5D 剔除开始占优，不过优势并不显著。
+Harada 等人 [666, 667] 提出了一种更精细的算法，称为 2.5D 剔除。它将每个块从 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_64df578b1bedb5.png) 到 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_66a1b8fb0c4036.png) 的深度范围，沿深度方向分成 n 个单元。图 20.9 展示了这一过程。建立一个 n 位的几何体位掩码；有几何体存在的单元，其对应位设为 1。出于效率考虑，他们采用 n = 32。随后遍历所有光源，为每个与块视锥体重叠的光源建立一个光源位掩码。光源位掩码表示该光源位于哪些单元中。将几何体位掩码与光源掩码进行按位与（AND）运算。如果结果为零，该光源就不会影响这个块中的任何几何体，如图 20.9 右侧所示。否则，将该光源追加到块的光源列表中。对于一种 GPU 架构，Stewart 和 Thomas [1700] 发现，当光源数量增加到超过 512 时，HalfZ 开始优于基本分块延迟着色；当光源数量超过 2300 时，2.5D 剔除开始占优，不过优势并不显著。
 
-Mikkelsen [1210] 利用不透明对象的像素位置进一步精简光源列表。为每个 16 × 16 像素块生成一个列表，其中包含每个光源的屏幕空间包围矩形，以及用于剔除的几何体边界 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_66a1b8fb0c4036.png)。然后，让 64 个计算着色器线程中的每个线程，将块内四个像素与每个光源进行比较，以进一步剔除列表中的光源。如果一个块中没有任何像素的世界空间位置处在某个光源体积内部，就将该光源从列表中剔除。得到的光源集合可以相当准确，因为只保留确定会影响至少一个像素的光源。Mikkelsen 发现，对于他的场景，利用 z 轴进行进一步剔除反而降低了整体性能。
+Mikkelsen [1210] 利用不透明对象的像素位置进一步精简光源列表。为每个 16 × 16 像素块生成一个列表，其中包含每个光源的屏幕空间包围矩形，以及用于剔除的几何体边界 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_66a1b8fb0c4036.png)。然后，让 64 个计算着色器线程中的每个线程，将块内四个像素与每个光源进行比较，以进一步剔除列表中的光源。如果一个块中没有任何像素的世界空间位置处在某个光源体积内部，就将该光源从列表中剔除。得到的光源集合可以相当准确，因为只保留确定会影响至少一个像素的光源。Mikkelsen 发现，对于他的场景，利用 z 轴进行进一步剔除反而降低了整体性能。
 
 
-![图 20.9 2.5D 剔除与位掩码](Real-Time_Rendering_4th_中文/assets/fig_20_3_20.9.png)
+![图 20.9 2.5D 剔除与位掩码](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_3_20.9.png)
 
-图 20.9. 左：蓝色表示一个块的视锥体，黑色表示一些几何体，黄色圆形表示一组光源。中：在分块剔除中，使用红色标出的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_66a1b8fb0c4036.png) 值，剔除不与灰色区域重叠的光源。右：采用聚簇剔除时，将 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_66a1b8fb0c4036.png) 之间的区域分为 n 个单元，本例中 n = 8。根据像素深度计算几何体位掩码（10000001），并为每个光源计算一个光源位掩码。如果二者按位与的结果为 0，那么对于该块就不再考虑该光源。最上方光源的掩码为 11000000，因此只有它会被用于光照计算，因为 11000000 AND 10000001 得到 10000000，结果非零。
+图 20.9. 左：蓝色表示一个块的视锥体，黑色表示一些几何体，黄色圆形表示一组光源。中：在分块剔除中，使用红色标出的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_66a1b8fb0c4036.png) 值，剔除不与灰色区域重叠的光源。右：采用聚簇剔除时，将 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_66a1b8fb0c4036.png) 之间的区域分为 n 个单元，本例中 n = 8。根据像素深度计算几何体位掩码（10000001），并为每个光源计算一个光源位掩码。如果二者按位与的结果为 0，那么对于该块就不再考虑该光源。最上方光源的掩码为 11000000，因此只有它会被用于光照计算，因为 11000000 AND 10000001 得到 10000000，结果非零。
 
-> 译注：图 20.9 的原图注使用“clustered culling（聚簇剔除）”，此处依原文保留；正文介绍的是 2.5D 剔除。原图中 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_03_66a1b8fb0c4036.png) 的上下位置也按原图保留，不另行改动。
+> 译注：图 20.9 的原图注使用“clustered culling（聚簇剔除）”，此处依原文保留；正文介绍的是 2.5D 剔除。原图中 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_64df578b1bedb5.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_03_66a1b8fb0c4036.png) 的上下位置也按原图保留，不另行改动。
 
 当光源被放入列表并作为一个集合求值时，延迟系统的着色器可能变得相当复杂。单个着色器必须能够处理所有材质和所有光源类型。分块有助于降低这种复杂度。其思想是在每个像素中存储一个位掩码，每一位对应材质在该像素上使用的一项着色器功能。对于每个块，将这些位掩码按位或（OR），就能确定该块所需的最少功能集合。也可以将位掩码按位与（AND），找出所有像素都使用的功能，这意味着着色器无须通过“if”测试来检查是否应当执行相应代码。然后，为该块的所有像素使用一个满足这些要求的着色器 [273, 414, 1877]。这种着色器特化很重要，不仅因为需要执行的指令更少，还因为得到的着色器可能获得更高的占用率（第 23.3 节）；否则，着色器就必须为最坏情况的代码路径分配寄存器。除了材质和光源，还可以跟踪其他属性，并用它们影响着色器。例如，在游戏《Split/Second》中，Knight 等人 [911] 根据 4 × 4 像素块是完全处于阴影中还是部分处于阴影中、是否包含需要抗锯齿的多边形边缘，以及其他测试结果，对这些块进行分类。
 
@@ -206,11 +206,11 @@ Mikkelsen [1210] 利用不透明对象的像素位置进一步精简光源列表
 分块光源分类利用分块的二维空间范围，也可以选择利用几何体的深度边界。**聚簇着色**（clustered shading）将视锥体划分成一组三维单元，称为**簇**（cluster）。与分块着色中采用 z 深度的方法不同，这种划分针对整个视锥体进行，与场景中的几何体无关。所得算法的性能随相机位置产生的变化较小 [1328]，当一个分块包含深度不连续处时，表现也更好 [1387]。聚簇着色既可用于前向着色系统，也可用于延迟着色系统。
 
 
-![图20.10 分块着色与聚簇着色](Real-Time_Rendering_4th_中文/assets/fig_20_4_20.10.png)
+![图20.10 分块着色与聚簇着色](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_4_20.10.png)
 
-**图 20.10。** 以二维形式表示的分块着色与聚簇着色。视锥体被细分，场景中的光源体积根据其重叠的区域进行分类。分块着色在屏幕空间中细分，而聚簇着色还按 z 深度切片进一步划分。每个体积区域都包含一个光源列表；图中标出了长度为两个或更多光源的列表所对应的数值。如果分块着色没有根据场景几何体计算 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_04_3f16ddb16cefaa.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_04_6f44afca509d7a.png)（图中未示出），光源列表中就可能包含大量不需要的光源。聚簇着色无需渲染后的几何体即可剔除列表中的光源，尽管这样的处理遍可能有所帮助。（据 Persson [1387] 的图改绘。）
+**图 20.10。** 以二维形式表示的分块着色与聚簇着色。视锥体被细分，场景中的光源体积根据其重叠的区域进行分类。分块着色在屏幕空间中细分，而聚簇着色还按 z 深度切片进一步划分。每个体积区域都包含一个光源列表；图中标出了长度为两个或更多光源的列表所对应的数值。如果分块着色没有根据场景几何体计算 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_04_3f16ddb16cefaa.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_04_6f44afca509d7a.png)（图中未示出），光源列表中就可能包含大量不需要的光源。聚簇着色无需渲染后的几何体即可剔除列表中的光源，尽管这样的处理遍可能有所帮助。（据 Persson [1387] 的图改绘。）
 
-由于透视的作用，分块的横截面积随着到相机距离的增加而增大。均匀划分方案会在分块的视锥体中产生扁平或狭长的体素，这并不理想。为了补偿这一点，Olsson 等人 [1328, 1329] 在观察空间中以指数方式对几何体进行聚簇，完全不依赖几何体的 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_04_3f16ddb16cefaa.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_04_6f44afca509d7a.png)，使簇的形状更接近立方体。例如，《正当防卫 3》（Just Cause 3）的开发者采用 64 × 64 像素的分块和 16 个深度切片，并且试验过提高各轴方向的分辨率，以及不论分辨率如何都采用固定数量的屏幕分块 [1387]。虚幻引擎使用相同大小的分块，通常采用 32 个深度切片 [38]。见图 20.10。
+由于透视的作用，分块的横截面积随着到相机距离的增加而增大。均匀划分方案会在分块的视锥体中产生扁平或狭长的体素，这并不理想。为了补偿这一点，Olsson 等人 [1328, 1329] 在观察空间中以指数方式对几何体进行聚簇，完全不依赖几何体的 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_04_3f16ddb16cefaa.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_04_6f44afca509d7a.png)，使簇的形状更接近立方体。例如，《正当防卫 3》（Just Cause 3）的开发者采用 64 × 64 像素的分块和 16 个深度切片，并且试验过提高各轴方向的分辨率，以及不论分辨率如何都采用固定数量的屏幕分块 [1387]。虚幻引擎使用相同大小的分块，通常采用 32 个深度切片 [38]。见图 20.10。
 
 光源按其所重叠的簇分类，并组成列表。由于不依赖场景几何体的 z 深度，仅根据视图和光源集合就能计算这些簇 [1387]。随后，每个表面，无论不透明还是透明，都根据自己的位置获取相关的光源列表。聚簇提供了一种高效、统一的光照解决方案，适用于场景中的所有物体，包括透明物体和体积物体。
 
@@ -231,7 +231,7 @@ Olsson 等人 [1328, 1329] 以及下文提到的其他研究者探索了多种�
 可以利用 GPU 的光栅化流水线对光源体积进行分类，以避免这些问题。Örtegren 和 Persson [1340] 描述了一种构建光源列表的两遍处理流程。在**外壳遍**（shell pass）中，每个光源都由一个包围它的低分辨率网格表示。使用保守光栅化（第 23.1.2 节）将每个这样的外壳渲染到簇网格中，记录其重叠的最小和最大簇位置。在**填充遍**（fill pass）中，计算着色器把光源加入这些边界之间每个簇的链表。使用网格代替包围球，能为聚光灯提供更紧密的边界，而且几何体可以直接遮挡光源的可见区域，从而进一步剔除列表中的光源。当不支持保守光栅化时，Pettineo [1407] 描述了一种利用表面梯度，保守估计三角形在每个像素处 z 边界的方法。例如，如果需要求像素处的最远距离，就利用 x 和 y 方向的深度梯度，选择像素中最远的角点，并计算该点的深度。由于这些点可能位于三角形外，他还将结果钳制到整个光源的 z 深度范围，以避免某个几乎侧面对着视线的三角形让估计的 z 深度严重偏离。Wronski [1922] 探索了多种解决方案，最后选定的方法是在网格单元外放置一个包围球，再对它与圆锥执行相交测试。这种测试计算很快；当单元近似立方体时效果很好，而单元狭长时效果较差。
 
 
-![图20.11 z分箱的光源列表求交](Real-Time_Rendering_4th_中文/assets/fig_20_4_20.11.png)
+![图20.11 z分箱的光源列表求交](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_4_20.11.png)
 
 **图 20.11。** 使用 z 分箱时，根据每个光源的 z 深度为其赋予一个 ID，并为每个分块生成一个列表。每个 z 分箱保存一个最小 ID 和一个最大 ID，它们构成可能与该切片重叠的光源的保守范围。对于标记单元中的任意像素，获取两个列表并求出它们的交集。
 
@@ -285,7 +285,7 @@ Drobot [385] 描述了《使命召唤：无限战争》（Call of Duty: Infinite
 目前已经开发出几种不同的方案，它们只使用一个几何通道，并把纹理读取推迟到真正需要时。Haar和Aaltonen[625]介绍了《刺客信条：大革命》（Assassin’s Creed Unity）如何使用虚拟延迟纹理处理（virtual deferred texturing）。他们的系统维护一张8192 × 8192的局部纹理图集，其中的可见纹理从一个大得多的集合中选出，每张纹理的分辨率为128 × 128。这样的图集尺寸允许存储能够访问图集中任意纹素的纹理坐标(u, v)。每个坐标用16位存储；8192个位置需要13位，因此剩下3位，也就是8个等级，用来提供亚纹素精度。系统还存储一个32位切线基，并把它编码为四元数[498]（第16.6节）。这样就只需要一个64位G缓冲区。由于几何通道完全不进行纹理访问，过度绘制的开销可以极低。建立这个G缓冲区之后，才在着色时访问虚拟纹理。mipmap处理需要梯度，但系统并不存储梯度，而是检查每个像素的相邻像素，使用(u, v)值最接近的那些像素实时计算梯度。材质ID也可以通过确定访问的是纹理图集中的哪个图块来推导：将纹理坐标值除以128，也就是纹理的分辨率即可。
 
 
-![图20.12 可见性缓冲区的三角形ID可视化](Real-Time_Rendering_4th_中文/assets/fig_20_5_20.12.png)
+![图20.12 可见性缓冲区的三角形ID可视化](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_5_20.12.png)
 
 图20.12　在可见性缓冲区[217]的第一个通道中，只渲染三角形ID和实例ID，并将它们存储在单个G缓冲区内。这里为每个三角形赋予不同颜色，以便可视化。（图片由Electronic Arts的Graham Wihlidal提供[1885]。）
 
@@ -310,12 +310,12 @@ Doghramachi和Bucci[363]详细讨论了他们称为deferred+的延迟纹理处�
 
 来源：《Real-Time Rendering, Fourth Edition》，书页 908—913（PDF 物理页 929—934）。范围从 20.6 标题起，到“Further Reading and Resources”标题之前；章末延伸阅读另存。
 
-将几何体的采样速率与着色值的计算速率解耦，是本章反复出现的主题。这里介绍几种不容易归入前面各类的替代方法。特别是，我们要讨论一些混合方法，它们借鉴了最早出现在 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_20_06_f4cca4cd199027.png) 批处理渲染器 [289] 中的概念。皮克斯及其他公司多年来一直使用它制作电影。如今，制片工作室主要使用某种形式的光线追踪或路径追踪进行渲染；不过在当时，Reyes 以创新而高效的方式解决了若干渲染问题。
+将几何体的采样速率与着色值的计算速率解耦，是本章反复出现的主题。这里介绍几种不容易归入前面各类的替代方法。特别是，我们要讨论一些混合方法，它们借鉴了最早出现在 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_20_06_f4cca4cd199027.png) 批处理渲染器 [289] 中的概念。皮克斯及其他公司多年来一直使用它制作电影。如今，制片工作室主要使用某种形式的光线追踪或路径追踪进行渲染；不过在当时，Reyes 以创新而高效的方式解决了若干渲染问题。
 
 Reyes 的关键概念是微多边形。每个表面都被切分成极其精细的四边形网格。在最初的系统中，切分是相对于视点进行的，目标是使每个微多边形的宽和高都约为一个像素的一半，从而满足奈奎斯特极限（5.4.1 节）。位于视锥体之外或背向视点的四边形会被剔除。在该系统中，每个微多边形经过着色后被赋予一个单一颜色。这项技术后来发展为对微多边形网格的顶点进行着色 [63]。为了说明其中探索的思想，我们这里主要讨论原始系统。
 
 
-![图20.13 Reyes渲染流水线](Real-Time_Rendering_4th_中文/assets/fig_20_6_20.13.png)
+![图20.13 Reyes渲染流水线](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_6_20.13.png)
 
 **图 20.13** Reyes 渲染流水线。每个物体先被曲面细分为微多边形，然后分别着色。将每个像素的一组抖动采样点（红色）与微多边形进行比较，并利用结果渲染图像。
 
@@ -336,7 +336,7 @@ Burns 等人 [216] 探索了在确定物体的哪些位置可见之后，再执�
 Andersson 等人 [48] 采用另一种方法，称为**纹理空间着色**。每个三角形都要经过视锥体剔除和背面剔除测试，然后将其展开后的表面映射到输出目标的相应区域，依据其 (u, v) 参数化对该三角形着色。同时，利用几何着色器计算每个可见三角形在摄像机视图中的大小。这个大小值用于确定应将三角形放入哪个类似 mipmap 的层级。通过这种方式，为物体执行的着色工作量与其屏幕覆盖范围关联起来。见图 20.14。他们使用随机光栅化来渲染最终图像。生成的每个片元都从纹理中查询它的着色颜色。同样，计算出的着色值可以在运动模糊和景深效果中复用。
 
 
-![图20.14 物体空间纹理着色](Real-Time_Rendering_4th_中文/assets/fig_20_6_20.14.png)
+![图20.14 物体空间纹理着色](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_6_20.14.png)
 
 **图 20.14** 物体空间纹理着色。左侧是包含运动模糊的最终渲染图像。中间显示参数图中的可见三角形。右侧根据每个三角形的屏幕覆盖范围，将其放入适当的 mipmap 层级，供最终基于摄像机的光栅化遍使用。（经 M. Andersson [48] 和 Intel Corporation 许可转载；版权归 Intel Corporation 所有，2014 年。）
 
@@ -356,7 +356,7 @@ Baker [94] 介绍了 Oxide Games 为游戏《奇点灰烬》（Ashes of the Sing
 实现这样的系统存在若干挑战。与典型游戏引擎相比，整体发送的批次数大约翻倍，因为在物体着色步骤中，每个物体的“材质四边形”都要由计算着色器处理，随后光栅化时还要绘制该物体。不过，多数批次很简单，而 DirectX 12 和 Vulkan 之类的 API 有助于消除额外开销。依据物体大小为其分配主纹理的方式，会显著影响图像质量。在屏幕上很大的物体，或者像地形这样纹素密度存在变化的物体，可能出现问题。为使主纹理中不同分辨率的地形块之间保持平滑过渡，需要额外执行拼接处理。环境光遮蔽之类的屏幕空间技术实现起来很有挑战。与原始可见性缓冲区一样，影响物体形状的动画必须执行两次，分别用于着色和光栅化。物体先被着色、随后才被判定为受遮挡，这会造成浪费。对于即时战略游戏这样深度复杂度较低的应用，这项成本可以相对较低。与复杂的延迟着色器不同，每种材质都很容易求值，而且着色是在整个物体的参数图上完成的。采用简单着色器的物体，例如粒子和树木，从这项技术中获益很少。为了性能，可以改用前向着色渲染这些效果。如图 20.15 所示，能够处理大量光源可以使渲染场景更加丰富。
 
 
-![图20.15 奇点灰烬中的大量光源场景](Real-Time_Rendering_4th_中文/assets/fig_20_6_20.15.png)
+![图20.15 奇点灰烬中的大量光源场景](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_20_6_20.15.png)
 
 **图 20.15** 《奇点灰烬》中的一个场景，由大约一千个光源照亮。其中，每辆载具和每颗子弹都至少有一个光源。（图片由 Oxide Games 和 Stardock Entertainment 提供。）
 

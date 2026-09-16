@@ -38,12 +38,12 @@
 图 7.1 说明了本章使用的术语：遮挡物（occluder）是向接收物（receiver）投射阴影的物体。无面积光源（punctual light source），即不具有面积的光源，只会产生完全处于阴影之中的区域，有时称为硬阴影。如果使用面光源或体光源，则会产生软阴影。每个阴影此时都可能包含一个完全处于阴影中的区域，称为本影（umbra），以及一个部分处于阴影中的区域，称为半影（penumbra）。软阴影的特征是阴影边缘模糊。不过，需要注意的是，通常不能仅仅用低通滤波器模糊硬阴影的边缘，就正确地渲染出软阴影。如图 7.2 所示，在正确的软阴影中，投射阴影的几何体离接收物越近，阴影就越锐利。软阴影的本影区域并不等同于无面积光源产生的硬阴影。相反，随着光源变大，软阴影的本影区域会缩小；如果光源足够大，并且接收物离遮挡物足够远，本影甚至可能消失。软阴影通常更可取，因为半影边缘能让观看者认出这确实是一片阴影。边缘锐利的阴影通常显得不够真实，有时还可能被误认为实际的几何特征，例如表面上的一道折痕。不过，硬阴影的渲染速度比软阴影快。
 
 
-![图7.1 阴影术语](Real-Time_Rendering_4th_中文/assets/fig_7_0_7.1.png)
+![图7.1 阴影术语](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_0_7.1.png)
 
 图 7.1：阴影术语：光源（light source）、遮挡物（occluder）、接收物（receiver）、阴影（shadow）、本影（umbra）和半影（penumbra）。图中关系为：阴影＝本影＋半影。
 
 
-![图7.2 硬阴影与软阴影的混合](Real-Time_Rendering_4th_中文/assets/fig_7_0_7.2.png)
+![图7.2 硬阴影与软阴影的混合](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_0_7.2.png)
 
 图 7.2：硬阴影与软阴影的混合。箱子的阴影很锐利，因为遮挡物靠近接收物。人物的阴影在接触点处很锐利，随着到遮挡物的距离增大而逐渐变软。远处的树枝产生软阴影 [1711]。（图片出自《汤姆·克兰西：全境封锁》，由育碧提供。）
 
@@ -65,32 +65,32 @@
 首先推导 x 坐标的投影。根据图 7.3 左侧的相似三角形，可得
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_07_01_6752d5bd16c269.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_01_6752d5bd16c269.png)
 
 
-z 坐标可以用同样的方法得到：![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_01_18ed85091410e0.png)，而 y 坐标为零。现在可将这些方程转换成投影矩阵 **M**：
+z 坐标可以用同样的方法得到：![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_01_18ed85091410e0.png)，而 y 坐标为零。现在可将这些方程转换成投影矩阵 **M**：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_07_01_63ac3563c87a0b.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_01_63ac3563c87a0b.png)
 
 
 很容易验证 **Mv** = **p**，这意味着 **M** 确实是所求的投影矩阵。
 
 
-![图7.3 平面阴影投影的几何关系](Real-Time_Rendering_4th_中文/assets/fig_7_1_7.3.png)
+![图7.3 平面阴影投影的几何关系](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_1_7.3.png)
 
 图 7.3：左：位于 **l** 的光源向平面 y = 0 投射阴影。顶点 **v** 被投影到该平面上，投影点记为 **p**。利用相似三角形可推导投影矩阵。右：阴影被投射到平面 π：**n** · **x** + d = 0 上。
 
 一般情况下，接收阴影的平面不是 y = 0，而是 π：**n** · **x** + d = 0。图 7.3 右侧展示了这种情况。目标仍然是找到一个矩阵，将 **v** 投影到 **p**。为此，让从 **l** 出发、经过 **v** 的射线与平面 π 求交，得到投影点 **p**：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_07_01_c00d58387bf554.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_01_c00d58387bf554.png)
 
 
 这个方程也可以转换为式（7.4）所示的投影矩阵，它满足 **Mv** = **p**：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_07_01_6b140e199e0882.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_01_6b140e199e0882.png)
 
 
 正如预期的那样，如果平面为 y = 0，即 **n** = (0, 1, 0) 且 d = 0，这个矩阵就变成式（7.2）中的矩阵。
@@ -100,7 +100,7 @@ z 坐标可以用同样的方法得到：![数学符号](Real-Time_Rendering_4th
 更稳妥的方法是先绘制地面平面，再关闭 z 缓冲绘制投影三角形，最后照常渲染其余几何体。由于不进行深度比较，投影三角形总会绘制在地面平面之上。
 
 
-![图7.4 正确阴影与反阴影](Real-Time_Rendering_4th_中文/assets/fig_7_1_7.4.png)
+![图7.4 正确阴影与反阴影](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_1_7.4.png)
 
 图 7.4：左图显示正确的阴影；右图中，由于光源低于物体最高的顶点，出现了反阴影。
 
@@ -119,7 +119,7 @@ z 坐标可以用同样的方法得到：![数学符号](Real-Time_Rendering_4th
 利用多种技术，也可以让投影阴影变软。这里介绍 Heckbert 和 Herf 提出的一种生成软阴影的算法 [697, 722]。该算法的目标是生成一张显示软阴影的地面纹理。随后，我们介绍准确性较低、但速度更快的方法。
 
 
-![图7.5 两种软阴影方法的比较](Real-Time_Rendering_4th_中文/assets/fig_7_1_7.5.png)
+![图7.5 两种软阴影方法的比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_1_7.5.png)
 
 图 7.5：左图采用 Heckbert 和 Herf 的方法渲染，使用了 256 遍渲染。右图采用 Haines 的方法，只需一遍渲染。Haines 方法产生的本影过大，这一点在门口和窗户周围尤其明显。
 
@@ -132,7 +132,7 @@ Heckbert 和 Herf 使用一种基于视锥体的方法生成阴影。其思路�
 面光源采样方法的一个问题是，结果往往会暴露出它的本质：来自多个无面积光源的若干阴影相互叠加。此外，进行 n 遍阴影渲染只能生成 n + 1 种不同的明暗层次。大量渲染遍次可以得到准确的结果，但代价过高。这种方法适合获取用于检验其他更快算法质量的“真实基准”图像（ground-truth；在这里按字面也可理解为“地面上的真值”）。
 
 
-![图7.6 下落投影](Real-Time_Rendering_4th_中文/assets/fig_7_1_7.6.png)
+![图7.6 下落投影](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_1_7.6.png)
 
 图 7.6：下落投影（drop shadow）。先从上方渲染阴影投射物，再模糊该图像，由此生成阴影纹理，最后将它渲染到地面平面上。（图像由 Autodesk 的 A360 查看器生成，模型来自 Autodesk 的 Inventor 示例。）
 
@@ -161,7 +161,7 @@ Heckbert 和 Herf 使用一种基于视锥体的方法生成阴影。其思路�
 Heidmann 于 1991 年提出了一种方法 [701]，它基于 Crow 的阴影体（shadow volumes）[311]，通过巧妙使用模板缓冲区，能够把阴影投射到任意物体上。这种方法可用于任何 GPU，因为它唯一的要求就是具有模板缓冲区。它不是基于图像的方法（这与接下来介绍的阴影贴图算法不同），因而避免了采样问题，可以在各处生成正确且边缘锐利的阴影。有时，这也会成为缺点。例如，角色衣服上的褶皱可能产生细窄的硬阴影，造成严重的走样。由于开销难以预测，如今很少使用阴影体 [1599]。这里简要介绍这一算法，因为它展示了一些重要原理，而且基于这些原理的研究仍在继续。
 
 
-![图 7.7：由点光源与三角形构造阴影体](Real-Time_Rendering_4th_中文/assets/fig_7_3_7.7.png)
+![图 7.7：由点光源与三角形构造阴影体](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_3_7.7.png)
 
 **图 7.7** 左：从一个点光源出发、穿过三角形各顶点的直线继续延伸，形成一个无限长的棱锥。右：上半部分是一个棱锥，下半部分是一个无限长的截头棱锥，也称为阴影体。位于阴影体内部的所有几何体都处于阴影中。
 
@@ -172,14 +172,14 @@ Heidmann 于 1991 年提出了一种方法 [701]，它基于 Crow 的阴影体�
 使用射线完成这些操作很费时。但有一种巧妙得多的解决办法 [701]：让模板缓冲区代替我们计数。首先，清空模板缓冲区。其次，仅使用材质未受光照部分的颜色，将整个场景绘制到帧缓冲区中，从而将这些着色分量写入颜色缓冲区，并将深度信息写入 z 缓冲区。第三，关闭 z 缓冲区更新和颜色缓冲区写入（但仍然进行 z 缓冲区测试），然后绘制阴影体中正面朝向的三角形。在这一过程中，将模板操作设置为：只要绘制了三角形，就递增模板缓冲区相应位置的值。第四，使用模板缓冲区再执行一个遍次，这次只绘制阴影体中背面朝向的三角形。在这一遍中，绘制三角形时递减模板缓冲区中的值。只有当所渲染阴影体表面的像素可见时（即没有被任何实际几何体遮挡时），才执行递增和递减。此时，模板缓冲区保存着每个像素的阴影状态。最后，再次渲染整个场景，这次仅渲染当前材质中受该光源影响的分量，而且只在模板缓冲区值为 0 的位置显示这些分量。值为 0 表示射线离开阴影的次数与进入阴影体的次数相同，也就是说，该位置受到这个光源的照明。
 
 
-![图 7.8：z-pass 与 z-fail 阴影体交叉计数](Real-Time_Rendering_4th_中文/assets/fig_7_3_7.8.png)
+![图 7.8：z-pass 与 z-fail 阴影体交叉计数](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_3_7.8.png)
 
 **图 7.8** 用两种不同计数方法统计阴影体穿越次数的二维侧视图。在 z-pass 体积计数中，射线穿过阴影体的正面三角形时计数加一，穿过背面三角形离开时计数减一。因此，对于点 A，射线进入两个阴影体，计数为 +2，随后又离开这两个阴影体，最终净计数为零，所以该点受到光照。在 z-fail 体积计数中，计数从表面之后开始（这些计数在图中以斜体表示）。对于点 B 处的射线，z-pass 方法穿过两个正面三角形，得到 +2 的计数；z-fail 方法穿过两个背面三角形，得到相同的计数。点 C 展示了为什么 z-fail 阴影体必须封口。从点 C 出发的射线先碰到一个正面三角形，计数为 −1。随后它离开两个阴影体（穿过它们的端盖；要使该方法正确工作，这些端盖是必需的），最终净计数为 +1。计数不为零，所以该点处于阴影中。对于所观察表面上的所有点，两种方法始终给出相同的计数结果。
 
 这种计数方法就是阴影体背后的基本思想。图 7.9 给出了用阴影体算法生成阴影的示例。有一些高效方法，可以在单个遍次中实现该算法 [1514]。但是，当物体穿过相机的近裁剪平面时，就会出现计数问题。解决办法称为 z-fail，它统计隐藏在可见表面后方的交叉次数，而不是表面前方的交叉次数 [450, 775]。图 7.8 简要说明了这种替代方法。
 
 
-![图 7.9：角色阴影与模型挤出的三角形](Real-Time_Rendering_4th_中文/assets/fig_7_3_7.9.png)
+![图 7.9：角色阴影与模型挤出的三角形](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_3_7.9.png)
 
 **图 7.9** 阴影体。左图中，一个角色投射出阴影。右图展示了从模型挤出的三角形。（图片来自 Microsoft SDK [1208] 的“ShadowVolume”示例。）
 
@@ -207,14 +207,14 @@ Heidmann 于 1991 年提出了一种方法 [701]，它基于 Crow 的阴影体�
 不必将场景中的所有物体都渲染到光源的视见体中。首先，只需渲染能够投射阴影的物体。例如，如果已知地面只能接收阴影而不能投射阴影，就不必把它渲染到阴影贴图中。
 
 
-![图 7.10 阴影贴图](Real-Time_Rendering_4th_中文/assets/fig_7_4_7_10.png)
+![图 7.10 阴影贴图](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_4_7_10.png)
 
-图 7.10．阴影贴图。左上：通过存储视图中各表面的深度形成阴影贴图。右上：观察者看向两个位置。在点 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_04_36f18663e3c3d8.png) 处看见球体，确定该点位于阴影贴图的纹素 a 处。这里存储的深度并不比点 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_04_36f18663e3c3d8.png) 到光源的距离小（很多），因此该点受到照明。在点 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_04_18f528a1916075.png) 处命中的矩形，到光源的距离比纹素 b 中存储的深度大（很多），因此处于阴影中。左下是从光源视角看到的场景，白色表示距离更远。右下是使用这张阴影贴图渲染的场景。
+图 7.10．阴影贴图。左上：通过存储视图中各表面的深度形成阴影贴图。右上：观察者看向两个位置。在点 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_04_36f18663e3c3d8.png) 处看见球体，确定该点位于阴影贴图的纹素 a 处。这里存储的深度并不比点 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_04_36f18663e3c3d8.png) 到光源的距离小（很多），因此该点受到照明。在点 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_04_18f528a1916075.png) 处命中的矩形，到光源的距离比纹素 b 中存储的深度大（很多），因此处于阴影中。左下是从光源视角看到的场景，白色表示距离更远。右下是使用这张阴影贴图渲染的场景。
 
 按照定义，阴影投射物体位于光源的视锥体内。可以通过若干方式扩展或收紧这个视锥体，从而安全地忽略某些投影物体 [896, 1812]。考虑观察者可见的阴影接收物体集合：沿光源视线方向，这组物体都位于某个最大距离以内。超过这个距离的任何物体，都不可能向可见的接收物体投射阴影。同样，可见接收物体集合的范围也很可能小于光源原本的 x、y 视图边界，见图 7.11。另一个例子是，如果光源位于观察者的视锥体内，那么这个额外视锥体之外的物体不可能向接收物体投射阴影。只渲染相关物体不仅能节省渲染时间，还能缩小光源所需的视锥体，从而提高阴影贴图的有效分辨率，改善质量。此外，尽可能让光源视锥体的近裁剪面远离光源、远裁剪面靠近光源，也会有所帮助。这样可以提高 z 缓冲的有效精度 [1792]（第 4.7.2 节）。
 
 
-![图 7.11 收紧光源视锥体](Real-Time_Rendering_4th_中文/assets/fig_7_4_7_11.png)
+![图 7.11 收紧光源视锥体](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_4_7_11.png)
 
 图 7.11．左：光源的视图涵盖观察者的视锥体。中：将光源的远裁剪面拉近，只纳入可见的接收物体，因此将三角形从投影物体中剔除；近裁剪面也作了调整。右：调整光源视锥体的侧面，使其包围可见接收物体，从而剔除绿色胶囊体。
 
@@ -225,12 +225,12 @@ Heidmann 于 1991 年提出了一种方法 [701]，它基于 Crow 的阴影体�
 > 译注：原书书页 236 将该命令排为 `glPolygonOffset)`，含一个未配对的右括号；这里保留 API 名称并注明这一排印问题。
 
 
-![图 7.12 阴影贴图偏移伪影](Real-Time_Rendering_4th_中文/assets/fig_7_4_7_12.png)
+![图 7.12 阴影贴图偏移伪影](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_4_7_12.png)
 
 图 7.12．阴影贴图的偏移伪影。左：偏移过小，因此产生自阴影。右：偏移过大，导致鞋子没有投下接触阴影。阴影贴图的分辨率也过低，因此阴影呈现块状外观。（图像使用 Christoph Peters 的阴影演示程序生成。）
 
 
-![图 7.13 阴影偏移](Real-Time_Rendering_4th_中文/assets/fig_7_4_7_13.png)
+![图 7.13 阴影偏移](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_4_7_13.png)
 
 图 7.13．阴影偏移。将各表面渲染到一个位于上方的光源的阴影贴图中，竖线表示阴影贴图的像素中心。遮挡物深度记录在 × 标记的位置。我们希望知道三个圆点样本所在的表面是否受到照明。每个样本所对应的最近阴影贴图深度值，以相同颜色的 × 表示。左：如果不添加偏移，蓝色与橙色样本会被错误地判定为处于阴影中，因为它们到光源的距离大于对应的阴影贴图深度。中：从每个样本中减去一个常量深度偏移，使各样本更靠近光源。蓝色样本仍被认为处于阴影中，因为它没有比用于比较的阴影贴图深度更靠近光源。右：将每个多边形按与其斜率成比例的量向远离光源的方向移动，再生成阴影贴图。现在所有样本深度都比对应的阴影贴图深度更近，所以都受到照明。
 
@@ -245,7 +245,7 @@ Holbert [759, 760] 引入了**法线偏移**（normal offset bias）：首先将
 > 译注：上述平均深度处，原文使用 “the two objects”（两个物体），承接前文最近的两个表面；这里保留原文措辞，其操作对象仍是所记录的两个深度。书页 239 的 “occlude” 按上下文译为遮挡物。
 
 
-![图 7.14 阴影贴图中的表面](Real-Time_Rendering_4th_中文/assets/fig_7_4_7_14.png)
+![图 7.14 阴影贴图中的表面](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_4_7_14.png)
 
 图 7.14．上方光源所用的阴影贴图表面。左：将以红色标出的朝向光源的表面送入阴影贴图。这些表面可能被错误地判定为遮挡自身（“痤疮”），因此需要将它们向远离光源的方向偏移。中：仅将背向光源的三角形渲染到阴影贴图中。将这些遮挡物向下推的偏移可能使光漏到 a 点附近的地平面上；向前偏移则可能让标为 b 的轮廓边界附近本来受到照明的位置被认为处于阴影中。右：在阴影贴图每个位置找到最近的正面和背面三角形，在二者之间的中点处形成中间表面。c 点附近可能漏光（第二深度阴影贴图也会出现这种情况），因为最近的阴影贴图样本可能落在该位置左侧的中间表面上，于是这个点会比样本更靠近光源。
 
@@ -256,12 +256,12 @@ Holbert [759, 760] 引入了**法线偏移**（normal offset bias）：首先将
 与纹理的使用方式类似，理想情况下，我们希望阴影贴图的一个纹素大约覆盖图像的一个像素。如果光源与观察者位于同一位置，那么阴影贴图就与屏幕空间像素完美地一一对应（而且没有可见阴影，因为光源照亮的恰好就是观察者看到的内容）。一旦光源方向发生变化，这种逐像素的比例就会改变，可能引发伪影。图 7.15 展示了一个例子。阴影呈块状，轮廓不清晰，因为阴影贴图中的每个纹素都对应前景中的大量像素。这种不匹配称为**透视走样**（perspective aliasing）。如果表面从光源看去几乎呈侧面，却朝向观察者，那么单个阴影贴图纹素同样可能覆盖许多像素。这种问题称为**投影走样**（projective aliasing）[1792]，见图 7.16。提高阴影贴图分辨率可以减轻块状现象，但代价是增加内存和处理开销。
 
 
-![图 7.15 标准阴影贴图与 LiSPSM](Real-Time_Rendering_4th_中文/assets/fig_7_4_7_15.png)
+![图 7.15 标准阴影贴图与 LiSPSM](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_4_7_15.png)
 
 图 7.15．左图使用标准阴影贴图生成，右图使用 LiSPSM。图中显示了各阴影贴图纹素的投影。两张阴影贴图分辨率相同，区别在于 LiSPSM 重新构造光源的矩阵，在更靠近观察者的位置提供更高的采样率。（图像由维也纳工业大学 Daniel Scherzer 提供。）
 
 
-![图 7.16 投影走样](Real-Time_Rendering_4th_中文/assets/fig_7_4_7_16.png)
+![图 7.16 投影走样](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_4_7_16.png)
 
 图 7.16．左：光源几乎位于正上方。与观察者的视图相比，阴影贴图分辨率较低，因此阴影边缘略显参差。右：光源接近地平线，每个阴影纹素在水平方向覆盖的屏幕区域大得多，因此边缘锯齿更加明显。（图像由 GitHub 上 TheRealMJP 的 “Shadows” 程序生成。）
 
@@ -272,7 +272,7 @@ Holbert [759, 760] 引入了**法线偏移**（normal offset bias）：首先将
 这些矩阵扭曲算法的一个优点是，除了修改光源的矩阵之外，不需要额外工作。每种方法都有自己的优缺点 [484]：在某些几何形状和光照条件下，它们有助于匹配采样率；而在另一些情况下，却会使采样率更不匹配。Lloyd 等人 [1062, 1063] 分析了 PSM、TSM 和 LiSPSM 之间的等价关系，对这些方法中的采样与走样问题作了出色的综述。当光照方向与观察方向垂直时（例如光源位于上方），这些方案效果最好，因为此时可以调整透视变换，将更多样本布置在更靠近观察者的位置。
 
 
-![图 7.17 调整光源采样率](Real-Time_Rendering_4th_中文/assets/fig_7_4_7_17.png)
+![图 7.17 调整光源采样率](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_4_7_17.png)
 
 图 7.17．对于上方光源，左图地板上的采样率与观察者的采样率不匹配。右图通过改变光源的观察方向与投影窗口，使采样率偏向于在靠近观察者的地方具有更高的纹素密度。
 
@@ -287,29 +287,29 @@ Holbert [759, 760] 引入了**法线偏移**（normal offset bias）：首先将
 > 译注：原文写作 “slicing it parallel to the view direction”。图 7.18 显示各切分平面彼此平行、垂直于观察方向，沿观察深度形成前后排列的子视见体；上文“沿观察方向进行平行切分”据此理解，并保留原文措辞供核对。
 
 
-![图 7.18 级联阴影贴图的体积分割](Real-Time_Rendering_4th_中文/assets/fig_7_4_7_18.png)
+![图 7.18 级联阴影贴图的体积分割](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_4_7_18.png)
 
 图 7.18．左：观察者的视锥体分成四个体积。右：为这些体积建立包围盒，由它们决定方向光的四张阴影贴图各自渲染的体积。（根据 Engel [430] 绘制。）
 
 
-![图 7.19 单张贴图与级联贴图的质量比较](Real-Time_Rendering_4th_中文/assets/fig_7_4_7_19.png)
+![图 7.19 单张贴图与级联贴图的质量比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_4_7_19.png)
 
 图 7.19．左：场景可见区域很宽广，导致分辨率为 2048 × 2048 的单张阴影贴图出现透视走样。右：沿观察轴布置四张 1024 × 1024 的阴影贴图，显著改善了质量 [1963]。内嵌红框中显示了围栏前角的放大图。（图像由香港中文大学 Fan Zhang 提供。）
 
 这类算法实现直接，能够覆盖很大的场景区域并获得合理结果，而且很稳健。通过在靠近观察者的地方提高采样率，可以处理视锥体对抗问题，也不会出现严重的最坏情况。由于这些优点，级联阴影贴图被用于许多应用。
 
 
-![图 7.20 阴影级联可视化](Real-Time_Rendering_4th_中文/assets/fig_7_4_7_20.png)
+![图 7.20 阴影级联可视化](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_4_7_20.png)
 
 图 7.20．阴影级联的可视化。紫色、绿色、黄色和红色依次表示从最近到最远的级联。（图像由 Unity Technologies 提供。）
 
 虽然可以使用透视扭曲，将更多样本打包到单张阴影贴图的细分区域中 [1783]，但通常是为每一级联使用一张单独的阴影贴图。如图 7.18 所示，以及图 7.20 从观察者视角所展示的，每张贴图覆盖的区域可以不同。近处阴影贴图采用更小的视见体，就能在需要的地方提供更多样本。确定各张贴图如何划分 z 深度范围，这项工作称为 **z 分区**（z-partitioning），可以非常简单，也可以很复杂 [412, 991, 1791]。一种方法是**对数分区**（logarithmic partitioning）[1062]，使每一级联贴图的远、近裁剪面距离之比都相同：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_07_04_9643360b1dd9cc.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_04_9643360b1dd9cc.png)
 
 
-其中，n 和 f 分别是整个场景的近、远裁剪面距离，c 是贴图数量，r 是计算得到的比值。例如，如果场景中最近的物体距离为 1 米，最大距离为 1000 米，并且有三张级联贴图，那么 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_04_334378f418b955.png)。最近视图的近、远裁剪面距离分别是 1 和 10；为了保持同样的比值，下一区间为 10 到 100，最后一个区间为 100 到 1000 米。起始近端深度对这种分区影响很大。如果近端深度只有 0.1 米，那么 10000 的立方根为 21.54，比值高出许多，例如各边界依次为 0.1、2.154、46.42、1000。这意味着生成的每张阴影贴图都必须覆盖更大的区域，从而降低精度。在实践中，这种分区会把相当多的分辨率分配给靠近近裁剪面的区域，如果那里没有物体，这些分辨率就浪费了。避免这种不匹配的一种方法，是将分区距离设为对数分布和等距离分布的加权混合 [1962, 1963]；不过，如果能够确定紧密包围场景的视图边界，效果会更好。
+其中，n 和 f 分别是整个场景的近、远裁剪面距离，c 是贴图数量，r 是计算得到的比值。例如，如果场景中最近的物体距离为 1 米，最大距离为 1000 米，并且有三张级联贴图，那么 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_04_334378f418b955.png)。最近视图的近、远裁剪面距离分别是 1 和 10；为了保持同样的比值，下一区间为 10 到 100，最后一个区间为 100 到 1000 米。起始近端深度对这种分区影响很大。如果近端深度只有 0.1 米，那么 10000 的立方根为 21.54，比值高出许多，例如各边界依次为 0.1、2.154、46.42、1000。这意味着生成的每张阴影贴图都必须覆盖更大的区域，从而降低精度。在实践中，这种分区会把相当多的分辨率分配给靠近近裁剪面的区域，如果那里没有物体，这些分辨率就浪费了。避免这种不匹配的一种方法，是将分区距离设为对数分布和等距离分布的加权混合 [1962, 1963]；不过，如果能够确定紧密包围场景的视图边界，效果会更好。
 
 难点在于设置近裁剪面。如果它离观察者太远，物体可能被这个平面裁掉，这是一种极其糟糕的伪影。对于过场动画，美术人员可以提前精确设置这个值 [1590]，但交互环境中的问题更具挑战性。Lauritzen 等人 [991, 1403] 提出了**样本分布阴影贴图**（sample distribution shadow maps，SDSM），使用上一帧的 z 深度值，通过以下两种方法之一确定更好的分区。
 
@@ -324,7 +324,7 @@ Holbert [759, 760] 引入了**法线偏移**（normal offset bias）：首先将
 由于级联阴影贴图广受欢迎，人们投入了大量工作来提高其效率和质量 [1791, 1964]。如果某张阴影贴图的视锥体内部没有变化，就不必重新计算该贴图。对于每个光源，可以先找出哪些物体对光源可见，再从中找出哪些能够向接收物体投射阴影，从而预先计算阴影投射物体列表 [1405]。由于人们很难察觉阴影是否正确，可以采取一些适用于级联及其他算法的简化措施。一种技术是用低细节层次模型作为代理，实际投射阴影 [652, 1812]。另一种是排除很小的遮挡物 [1381, 1811]。还可以让远处阴影贴图的更新频率低于每帧一次，其理由是这些阴影不那么重要。这个思路存在大型移动物体引发伪影的风险，因此应谨慎使用 [865, 1389, 1391, 1678, 1679]。Day [329] 提出了让远处贴图在相邻帧之间“滚动”的思路：每张静态阴影贴图的大部分内容都可以逐帧复用，只有边缘可能变化，因此只需要渲染这些边缘。《DOOM》（2016）这样的游戏维护着一个大型阴影贴图图集，只重新生成其中物体发生移动的贴图 [294]。更远的级联贴图还可以设为完全忽略动态物体，因为这些阴影对场景的贡献可能很小。在某些环境中，可以用一张高分辨率静态阴影贴图代替这些较远的级联，从而显著减少工作量 [415, 1590]。对于单张静态阴影贴图会非常庞大的世界，可以采用稀疏纹理系统（第 19.10.1 节）[241, 625, 1253]。级联阴影贴图可以与烘焙的光照贴图纹理，或更适合特定情形的其他阴影技术相结合 [652]。Valient 的报告 [1811] 值得关注，因为它介绍了众多不同电子游戏对阴影系统所作的定制和采用的技术。第 11.5.1 节详细讨论了预计算光照与阴影算法。
 
 
-![图 7.21 深度边界的影响](Real-Time_Rendering_4th_中文/assets/fig_7_4_7_21.png)
+![图 7.21 深度边界的影响](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_4_7_21.png)
 
 图 7.21．深度边界的影响。左：没有采用特殊处理来调整近、远裁剪面。右：使用 SDSM 找到更紧密的边界。请注意每幅图像左边缘附近的窗框、二楼花箱下方的区域以及一楼的窗户：过于宽松的视图边界造成欠采样，从而产生伪影。这些图像使用指数阴影贴图渲染，但改善深度精度的思路对所有阴影贴图技术都有用。（图像由 Ready at Dawn Studios 提供，版权归 Sony Interactive Entertainment 所有。）
 
@@ -342,7 +342,7 @@ Holbert [759, 760] 引入了**法线偏移**（normal offset bias）：首先将
 这种从阴影贴图读取多个样本并混合结果的思路，称为**百分比渐近过滤**（percentage-closer filtering，PCF）[1475]。面光源会产生软阴影。到达表面某一位置的光量，取决于从该位置能看到的光源面积占总面积的比例。PCF 通过反转这一过程，尝试为点状光源（或方向光源）近似出软阴影：它不从一个表面位置求光源的可见面积，而是在原位置附近的一组表面位置上，求点状光源的可见性。见图 7.22。“百分比渐近过滤”这个名称指的是其最终目标：求出所取样本中对光源可见的样本所占的百分比。随后就按这个百分比确定用于表面着色的光量。
 
 
-![图 7.22 面光源软阴影与 PCF 采样的对应关系](Real-Time_Rendering_4th_中文/assets/fig_7_5_7.22.png)
+![图 7.22 面光源软阴影与 PCF 采样的对应关系](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_5_7.22.png)
 
 **图 7.22。** 左图中，从面光源发出的棕色线条展示了半影形成的位置。对于接收面上的单个点 p，可以测试面光源表面上的一组点，找出其中哪些点未被任何遮挡物挡住，从而计算该点接收到的照明量。右图中，点光源不会投射半影。PCF 通过反转这一过程来近似面光源的效果：对于给定位置，在阴影贴图上一个相应大小的区域内采样，求出受光样本所占的百分比。红色椭圆表示阴影贴图上的采样区域。理想情况下，这个圆盘的宽度与接收面和遮挡物之间的距离成正比。
 
@@ -351,7 +351,7 @@ Holbert [759, 760] 引入了**法线偏移**（normal offset bias）：首先将
 一旦确定了待采样区域的宽度，就应采用能够避免混叠伪影的方式采样，这一点很重要。对于如何采样和过滤阴影贴图上的邻近位置，存在许多变体。可变因素包括采样区域有多宽、使用多少个样本、采样模式，以及如何对结果加权。在功能较弱的 API 中，可以通过一种类似于双线性插值的特殊纹理采样模式加速采样过程。这种模式访问四个相邻位置，但不混合采样值，而是将四个样本分别与给定值比较，再返回通过测试的样本比例 [175]。不过，按规则网格模式进行最近邻采样，可能产生明显的伪影。使用联合双边滤波器，在模糊结果的同时保留物体边缘，可以提升质量，并避免阴影泄漏到其他表面上 [1343]。关于这种过滤技术的更多内容，见第 12.1.1 节。
 
 
-![图 7.23 PCF 规则网格采样与泊松采样的比较](Real-Time_Rendering_4th_中文/assets/fig_7_5_7.23.png)
+![图 7.23 PCF 规则网格采样与泊松采样的比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_5_7.23.png)
 
 **图 7.23。** 最左图展示了使用最近邻采样、按 4×4 网格模式进行 PCF 采样的结果。最右图展示了圆盘上的一种 12 采样点泊松采样模式。用这种模式采样阴影贴图，可得到中间偏左图所示的改进结果，但仍能看到伪影。中间偏右图中，各个像素所用的采样模式围绕其中心作随机旋转。结构化的阴影伪影由此转变成噪声，而噪声远没有前者那么令人不适。（图片由 ATI Research, Inc. 的 John Isidoro 提供。）
 
@@ -362,7 +362,7 @@ DirectX 10 引入了对 PCF 的单指令双线性过滤支持，能够给出更�
 人们提出了几种不同的附加偏移因子，用于降低出现自阴影的风险，并取得了一定成功。Burley [212] 描述了**偏移锥**（bias cone）：将每个样本向光源方向移动，移动量与它到原始样本的距离成正比。Burley 建议采用 2.0 的斜率，再加上一个较小的常量偏移。见图 7.24。
 
 
-![图 7.24 偏移锥、接收平面深度偏移与法线偏移](Real-Time_Rendering_4th_中文/assets/fig_7_5_7.24.png)
+![图 7.24 偏移锥、接收平面深度偏移与法线偏移](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_5_7.24.png)
 
 **图 7.24。** 附加的阴影偏移方法。对于 PCF，在原始采样位置，也就是五个圆点的中心点周围，取得若干样本。这些样本本来都应受光。左图构造了一个偏移锥，并将样本向上移动到锥面上。可以增大锥面的陡峭程度，将右边的样本拉到足够接近光源、能够受光的位置；但这样做存在风险：其他位置上真正处于阴影中的样本（图中未画出），可能产生更多漏光。中图将所有样本调整到接收面所在的平面上。这对凸表面很有效，但在凹陷处可能适得其反，如其左侧所示。右图中的法线偏移沿表面法线方向移动样本，移动量与法线和光照方向夹角的正弦成正比。对于中心样本，可以将其理解为移动到了原表面上方的一个假想表面上。这种偏移不仅影响深度，还会改变测试阴影贴图时使用的纹理坐标。
 
@@ -371,7 +371,7 @@ Schüler [1585]、Isidoro [804] 和 Tuft [1790] 提出的技术基于这样一�
 PCF 的一个问题是，采样区域的宽度保持不变，因此阴影看起来会均匀柔化，所有半影的宽度都相同。在某些情况下，这或许可以接受；但当遮挡物与接收面在地面处接触时，这种效果看起来就不正确了。见图 7.25。
 
 
-![图 7.25 PCF 与 PCSS 的软阴影比较](Real-Time_Rendering_4th_中文/assets/fig_7_5_7.25.png)
+![图 7.25 PCF 与 PCSS 的软阴影比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_5_7.25.png)
 
 **图 7.25。** 百分比渐近过滤与百分比渐近软阴影。左图为经过少量 PCF 过滤的硬阴影。中图为宽度恒定的软阴影。右图为宽度可变的软阴影，在物体与地面接触的位置具有正确的硬度。（图片由 NVIDIA Corporation 提供。）
 
@@ -383,10 +383,10 @@ PCF 的一个问题是，采样区域的宽度保持不变，因此阴影看起�
 2005 年，Fernando [212, 467, 1252] 发表了一种影响深远的方法，称为**百分比渐近软阴影**（percentage-closer soft shadows，PCSS）。它尝试通过搜索阴影贴图上的邻近区域，找出所有可能的遮挡物，以解决上述问题。这些遮挡物相对于该位置的平均距离，被用来确定采样区域的宽度：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_07_06_ba3327c2668b44.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_06_ba3327c2668b44.png)
 
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_06_2edc9be46ab316.png) 是接收面到光源的距离，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_06_d78ff8e96f9c46.png) 是遮挡物到光源的平均距离。换句话说，随着遮挡物平均而言离接收面更远、离光源更近，待采样表面区域的宽度就会增大。观察图 7.22，并考虑移动遮挡物所产生的影响，便可以理解这一现象。图 7.2（书页 224）、图 7.25 和图 7.26 展示了一些例子。
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_06_2edc9be46ab316.png) 是接收面到光源的距离，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_06_d78ff8e96f9c46.png) 是遮挡物到光源的平均距离。换句话说，随着遮挡物平均而言离接收面更远、离光源更近，待采样表面区域的宽度就会增大。观察图 7.22，并考虑移动遮挡物所产生的影响，便可以理解这一现象。图 7.2（书页 224）、图 7.25 和图 7.26 展示了一些例子。
 
 图 7.25 见本章前文。
 
@@ -412,33 +412,33 @@ Donnelly 和 Lauritzen 提出的方差阴影贴图（variance shadow map，VSM�
 
 这里我们将较深入地介绍 VSM，让读者了解这一过程的工作原理；此外，这一类算法中的所有方法都采用同类的测试。希望进一步了解这个领域的读者应查阅相关参考文献。我们也推荐 Eisemann 等人的著作 [412]，该书用了多得多的篇幅来讨论这一主题。
 
-首先，VSM 在接收面的位置对深度贴图采样（仅一次），返回距离光源最近的遮挡物的平均深度。这个平均深度 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_07_f2610d5ecd0b55.png) 称为一阶矩；如果它大于阴影接收面的深度 t，就认为接收面完全受光。如果平均深度小于接收面的深度，则使用下式：
+首先，VSM 在接收面的位置对深度贴图采样（仅一次），返回距离光源最近的遮挡物的平均深度。这个平均深度 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_07_f2610d5ecd0b55.png) 称为一阶矩；如果它大于阴影接收面的深度 t，就认为接收面完全受光。如果平均深度小于接收面的深度，则使用下式：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_07_07_63e0fc8863036c.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_07_63e0fc8863036c.png)
 
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_07_399ee2fcfd120a.png) 是受光样本的最大百分比，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_07_6a43046636744b.png) 是方差，t 是接收面的深度，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_07_f2610d5ecd0b55.png) 是阴影贴图中的平均期望深度。深度平方阴影贴图中的样本 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_07_c9b0ff3a1b7bfb.png) 称为二阶矩，用来计算方差：
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_07_399ee2fcfd120a.png) 是受光样本的最大百分比，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_07_6a43046636744b.png) 是方差，t 是接收面的深度，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_07_f2610d5ecd0b55.png) 是阴影贴图中的平均期望深度。深度平方阴影贴图中的样本 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_07_c9b0ff3a1b7bfb.png) 称为二阶矩，用来计算方差：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_07_07_eb9ba09b11ebab.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_07_eb9ba09b11ebab.png)
 
 
-![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_07_399ee2fcfd120a.png) 是接收面可见百分比的上界。实际的受光百分比 p 不可能大于这个值。这个上界来自切比雪夫不等式的单侧形式。该方程试图利用概率论，估计表面位置处的遮挡物分布中，有多大比例位于比该表面到光源的距离更远的地方。Donnelly 和 Lauritzen 证明，对于深度固定的平面遮挡物和平面接收面，有 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_07_0dcdb3f8128d2d.png)，因此公式（7.7）可以很好地近似许多真实的阴影情形。
+![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_07_399ee2fcfd120a.png) 是接收面可见百分比的上界。实际的受光百分比 p 不可能大于这个值。这个上界来自切比雪夫不等式的单侧形式。该方程试图利用概率论，估计表面位置处的遮挡物分布中，有多大比例位于比该表面到光源的距离更远的地方。Donnelly 和 Lauritzen 证明，对于深度固定的平面遮挡物和平面接收面，有 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_07_0dcdb3f8128d2d.png)，因此公式（7.7）可以很好地近似许多真实的阴影情形。
 
-Myers [1251] 对这一方法为何有效建立了直观解释。一个区域内的方差会在阴影边缘增大。深度差越大，方差越大。这时，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_07_ee7eca2ded54e2.png) 这一项就成为决定可见百分比的重要因素。如果这个值仅略大于零，就意味着遮挡物的平均深度只比接收面稍微靠近光源一些，此时 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_07_399ee2fcfd120a.png) 接近 1（完全受光）。这种情况会发生在半影中完全受光的那条边缘上。向半影内部移动时，遮挡物的平均深度变得更靠近光源，因此这一项增大，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_07_07_399ee2fcfd120a.png) 随之下降。与此同时，半影内部的方差本身也在变化：沿着边缘时几乎为零，而在不同深度的遮挡物各占该区域一半的位置，方差达到最大。这些项相互平衡，使阴影在整个半影范围内线性变化。与其他算法的比较见图 7.26。
+Myers [1251] 对这一方法为何有效建立了直观解释。一个区域内的方差会在阴影边缘增大。深度差越大，方差越大。这时，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_07_ee7eca2ded54e2.png) 这一项就成为决定可见百分比的重要因素。如果这个值仅略大于零，就意味着遮挡物的平均深度只比接收面稍微靠近光源一些，此时 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_07_399ee2fcfd120a.png) 接近 1（完全受光）。这种情况会发生在半影中完全受光的那条边缘上。向半影内部移动时，遮挡物的平均深度变得更靠近光源，因此这一项增大，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_07_07_399ee2fcfd120a.png) 随之下降。与此同时，半影内部的方差本身也在变化：沿着边缘时几乎为零，而在不同深度的遮挡物各占该区域一半的位置，方差达到最大。这些项相互平衡，使阴影在整个半影范围内线性变化。与其他算法的比较见图 7.26。
 
 方差阴影贴图的一个显著特点，是能够优雅地处理由几何形状引起的表面偏移问题。Lauritzen [988] 推导了如何利用表面的斜率来修改二阶矩的值。由数值稳定性引起的偏移及其他问题，可能给方差阴影贴图带来麻烦。例如，公式（7.8）从一个较大的数值中减去另一个与它相近的数值。这类计算往往会放大底层数值表示精度不足的影响。使用浮点纹理有助于避免这一问题。
 
 
-![图7.26 不同阴影贴图算法的比较](Real-Time_Rendering_4th_中文/assets/fig_7_7_7.26.png)
+![图7.26 不同阴影贴图算法的比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_7_7.26.png)
 
 图 7.26：左上为标准阴影贴图。右上为透视阴影贴图，它提高了观察者附近的阴影贴图纹素密度。左下为百分比渐近软阴影，随着遮挡物与接收面之间的距离增大，阴影变得更柔和。右下为方差阴影贴图，其软阴影宽度恒定，每个像素只需对方差贴图采样一次便可完成着色。（图片由 Nico Hempe、Yvonne Jung 和 Johannes Behr 提供。）
 
 总体而言，相对于花费的处理时间，VSM 能带来明显的质量提升，因为它高效利用了 GPU 优化过的纹理功能。PCF 在生成更柔和的阴影时，需要更多样本，也就需要更多时间，才能避免噪声；VSM 则只需一个高质量的样本，就能确定整个区域的影响，并生成平滑的半影。这种能力意味着，在算法自身的限制范围内，可以让阴影任意柔和，而不增加额外开销。
 
 
-![图7.27 不同光源距离下的方差阴影贴图](Real-Time_Rendering_4th_中文/assets/fig_7_7_7.27.png)
+![图7.27 不同光源距离下的方差阴影贴图](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_7_7.27.png)
 
 图 7.27：方差阴影贴图，从左到右，与光源的距离逐渐增大。（图片来自 NVIDIA SDK 10 [1300] 的示例，由 NVIDIA Corporation 提供。）
 
@@ -449,7 +449,7 @@ Myers [1251] 对这一方法为何有效建立了直观解释。一个区域内�
 能够利用滤波技术快速生成平滑阴影的前景，使可滤波阴影贴图受到了广泛关注；主要挑战在于解决各种漏光问题。Annen 等人 [55] 提出了卷积阴影贴图（convolution shadow map）。它扩展了 Soler 和 Sillion 针对平面接收面的算法 [1673] 背后的思想：将阴影深度编码为傅里叶展开。与方差阴影贴图一样，这类贴图也可以滤波。这一方法会收敛到正确结果，因此能减轻漏光问题。
 
 
-![图7.28 方差阴影贴图的漏光伪影](Real-Time_Rendering_4th_中文/assets/fig_7_7_7.28.png)
+![图7.28 方差阴影贴图的漏光伪影](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_7_7.28.png)
 
 图 7.28：左图为将方差阴影贴图应用于茶壶的结果。右图中，一个三角形（未显示）在茶壶上投下阴影，导致地面阴影中出现令人难以接受的伪影。（图片由 Marco Salvi 提供。）
 
@@ -477,7 +477,7 @@ Myers [1251] 对这一方法为何有效建立了直观解释。一个区域内�
 Kim 和 Neumann [894] 最早提出了一种基于 GPU 的方法，他们称之为**不透明度阴影贴图（opacity shadow maps）**。该方法在一组固定深度处生成仅存储不透明度的贴图。Nguyen 和 Donnelly [1274] 给出了这一方法的更新版本，可以生成类似于第 719 页图 17.2 的图像。然而，这些深度切片全都彼此平行且均匀分布，因此需要很多切片，才能掩盖线性插值在切片之间产生的不透明度伪影。Yuksel 和 Keyser [1953] 通过创建更贴合模型形状的不透明度贴图，提高了效率与质量。这样可以减少所需的层数，因为对每一层的求值对于最终图像都有更大的影响。
 
 
-![图 7.29 自适应体积阴影贴图渲染的毛发与烟雾](Real-Time_Rendering_4th_中文/assets/fig_7_8_7.29.png)
+![图 7.29 自适应体积阴影贴图渲染的毛发与烟雾](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_8_7.29.png)
 
 图 7.29. 使用自适应体积阴影贴图渲染的毛发与烟雾 [1531]。（经 Marco Salvi 和 Intel Corporation 许可转载，版权归 Intel Corporation 所有，2010 年。）
 
@@ -503,7 +503,7 @@ Kim 和 Neumann [894] 最早提出了一种基于 GPU 的方法，他们称之�
 与其在阴影贴图中存储三角形或其他数据，再用它们测试接收位置，不如把问题反过来：存储接收位置，然后逐一用三角形对这些位置进行测试。Johnson 等人 [839] 以及 Aila 和 Laine [14] 最早探索了这种保存接收位置的思想，它被称为不规则 z 缓冲（irregular z-buffer，IZB）。这个名称稍有误导性，因为缓冲区本身具有普通阴影贴图那样的规则形状。不规则的其实是缓冲区的内容：每个阴影贴图纹素中会存储一个或多个接收位置，也可能一个都没有。见图 7.30。
 
 
-![图 7.30 不规则 z 缓冲的构建与阴影测试](Real-Time_Rendering_4th_中文/assets/fig_7_9_7.30.png)
+![图 7.30 不规则 z 缓冲的构建与阴影测试](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_9_7.30.png)
 
 **图 7.30** 不规则 z 缓冲。左上：从眼睛视角在各像素中心生成一组点，图中展示了构成立方体一个面的两个三角形。右上：从光源视角观察这些点。左下：叠加阴影贴图网格；为每个纹素生成一个列表，记录其网格单元内的所有点。右下：对红色三角形进行保守光栅化，以执行阴影测试。对于每个被触及的纹素（以浅红色显示），将其列表中的所有点与该三角形进行测试，判断这些点对光源是否可见。（底层光栅图像由 Timo Aila 和 Samuli Laine 提供 [14]。）
 
@@ -518,7 +518,7 @@ Kim 和 Neumann [894] 最早提出了一种基于 GPU 的方法，他们称之�
 这种方法避免了其他方法的采样和偏置问题，并能提供完全锐利的阴影。出于美观和感知方面的原因，人们通常希望得到软阴影，但当遮挡物距离很近时，软阴影可能出现偏置问题，例如阴影悬浮（Peter Panning）。Story 和 Wyman [1711, 1712] 探索了混合阴影技术。其核心思想是利用遮挡物距离混合 IZB 阴影与 PCSS 阴影：遮挡物较近时使用硬阴影结果，较远时使用软阴影结果。见图 7.31。对于近处物体，阴影质量通常最为重要，因此可以只对选定的一部分物体使用 IZB 技术，以降低其开销。这种解决方案已经成功用于电子游戏。本章开头就展示了这样一幅图像，即书页 224 的图 7.2。
 
 
-![图 7.31 PCF、PCSS 与 IZB 和 PCSS 混合阴影的比较](Real-Time_Rendering_4th_中文/assets/fig_7_9_7.31.png)
+![图 7.31 PCF、PCSS 与 IZB 和 PCSS 混合阴影的比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_7_9_7.31.png)
 
 **图 7.31** 左：PCF 为所有物体生成软化程度一致的阴影。中：PCSS 根据距遮挡物的距离软化阴影，但与箱子左角重叠的树枝阴影产生了伪影。右：将 IZB 的锐利阴影与 PCSS 的软阴影混合，得到更好的结果 [1711]。（图像出自《汤姆·克兰西：全境封锁》，由 Ubisoft 提供。）
 
@@ -532,7 +532,7 @@ Kim 和 Neumann [894] 最早提出了一种基于 GPU 的方法，他们称之�
 最后还有一种值得一提的方法：渲染*屏幕空间阴影*。由于分辨率有限，阴影贴图往往无法对细小特征产生准确的遮挡。渲染人脸时，这个问题尤其严重，因为我们特别容易注意到人脸上的任何视觉瑕疵。例如，无意中渲染出发光的鼻孔，就会显得十分突兀。使用更高分辨率的阴影贴图，或者为感兴趣的区域单独设置一张阴影贴图，固然有所帮助，但还有一种可能的办法是利用已经存在的数据。在大多数现代渲染引擎中，渲染期间都可以使用来自先前预处理通道的、摄像机视角下的深度缓冲区。它所存储的数据可以视为一个高度场。通过迭代采样这个深度缓冲区，我们可以执行光线步进过程（第 6.8.1 节），检查朝向光源的方向是否未被遮挡。尽管这种方法需要反复采样深度缓冲区，开销较大，但它能够为过场动画中的特写提供高质量结果；在这种场合，多花几毫秒往往是值得的。这一方法由 Sousa 等人 [1678] 提出，如今已在许多游戏引擎中得到普遍应用 [384, 1802]。
 
 
-![图 7.32 地形及树木的高度场阴影](Real-Time_Rendering_4th_中文/assets/fig_07_10_7.32.png)
+![图 7.32 地形及树木的高度场阴影](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_07_10_7.32.png)
 
 **图 7.32。** 为高度场中的每个位置计算首次能够看见太阳的高度，并据此对地形进行光照计算。注意，沿阴影边缘分布的树木也获得了正确的阴影 [555]。（CD PROJEKT®、The Witcher® 是 CD PROJEKT Capital Group 的注册商标。《巫师》游戏 © CD PROJEKT S.A.。由 CD PROJEKT S.A. 开发。保留所有权利。《巫师》游戏改编自 Andrzej Sapkowski 的文学作品。所有其他版权和商标均归各自所有者所有。）
 
@@ -541,7 +541,7 @@ Kim 和 Neumann [894] 最早提出了一种基于 GPU 的方法，他们称之�
 本章重点介绍了目前应用程序所采用的关键概念和技术。每种方法都有自己的优势；具体选择取决于世界规模、场景构成（静态内容还是动画内容）、材质类型（不透明、透明、毛发或烟雾），以及光源的数量和类型（静态还是动态；局部还是远处；点光源、聚光灯还是面光源），还取决于底层纹理能够在多大程度上掩盖瑕疵等因素。GPU 的能力在不断发展和提高，因此我们预计，未来几年仍会不断出现适合硬件的新算法。例如，第 19.10.1 节介绍的稀疏纹理技术已经被用于阴影贴图存储，以提高分辨率 [241, 625, 1253]。在一种富有创意的方法中，Sintorn、Kämpe 等人 [850, 1647] 探索了将某个光源的二维阴影贴图转换为三维体素集合的思路（体素即小盒子；见第 13.10 节）。使用体素的一个优点是，可以将每个体素归类为受光或处于阴影中，因此所需存储量极小。高度压缩的稀疏体素八叉树表示能够存储大量光源和静态遮挡物的阴影。Scandolo 等人 [1546] 将他们的压缩技术与一种使用双阴影贴图的区间方案结合起来，进一步提高了压缩率。Kasyan [865] 使用体素锥体追踪（第 13.10 节）来生成面光源的软阴影。图 7.33 给出了一个示例。书页 585 的图 13.33 展示了更多通过锥体追踪生成的阴影。
 
 
-![图 7.33 基础软阴影近似与体素锥体追踪的比较](Real-Time_Rendering_4th_中文/assets/fig_07_10_7.33.png)
+![图 7.33 基础软阴影近似与体素锥体追踪的比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_07_10_7.33.png)
 
 **图 7.33。** 上图是使用基础软阴影近似方法生成的图像。下图是在场景的体素化表示上使用锥体追踪，计算基于体素的面光源阴影的结果。注意，汽车的阴影明显更加弥散。由于一天中的时刻发生了变化，光照也有所不同。（图片由 Crytek 提供 [865]。）
 

@@ -40,7 +40,7 @@
 从贴近表面的掠射角度观察时，这种凹凸错觉可能会失效。砖块本应突出于砂浆之上，遮挡住砂浆。即使正面观察，砖块也应在砂浆上投下阴影。 **视差映射（parallax mapping）** 利用纹理，在渲染时让平坦表面看起来发生形变； **视差遮蔽映射（parallax occlusion mapping）** 则向高度场纹理投射射线，以增强真实感。 **置换映射（displacement mapping）** 通过修改构成模型的三角形的高度，真正移动表面。图 6.1 展示了一个结合颜色纹理和凹凸映射的例子。
 
 
-![图6.1 颜色纹理和凹凸映射的鱼](Real-Time_Rendering_4th_中文/assets/fig_6_0_6.1.png)
+![图6.1 颜色纹理和凹凸映射的鱼](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_0_6.1.png)
 
 **图 6.1** 纹理处理。为这条鱼应用颜色贴图和凹凸贴图，以提高视觉细节程度。（图片由 Elinor Quittner 提供。）
 
@@ -60,14 +60,14 @@
 在使用这些新数值访问纹理之前，可以先用一个或多个**对应函数（corresponder function）**把纹理坐标变换到纹理空间。随后利用这些纹理空间位置从纹理中取得数值；例如，它们可以是图像纹理中的数组索引，用来读取一个像素。读出的数值还可能再次经过一个**数值变换函数**处理，最终用这些新数值修改表面的某种属性，例如材质或着色法线。图 6.2 详细展示了应用单个纹理时的这一过程。流水线之所以如此复杂，是因为每个步骤都为使用者提供了一种有用的控制手段。需要注意，并非任何时候都必须启用所有步骤。
 
 
-![图6.2 单个纹理的通用纹理流水线](Real-Time_Rendering_4th_中文/assets/fig_6_1_6.2.png)
+![图6.2 单个纹理的通用纹理流水线](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_1_6.2.png)
 
 **图 6.2** 单个纹理的通用纹理流水线。
 
 图中流程依次为：物体空间位置 → 投影函数 → 参数空间坐标 → 对应函数 → 纹理空间位置 → 获取数值 → 纹理值 → 数值变换函数 → 变换后的纹理值。
 
 
-![图6.3 砖墙的纹理流水线](Real-Time_Rendering_4th_中文/assets/fig_6_1_6.3.png)
+![图6.3 砖墙的纹理流水线](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_1_6.3.png)
 
 **图 6.3** 砖墙的流水线。
 
@@ -78,7 +78,7 @@
 纹理处理的第一步，是取得表面的位置，并将其投影到纹理坐标空间，通常是二维的 (u, v) 空间。建模软件通常允许美术人员为每个顶点定义 (u, v) 坐标。这些坐标可以通过投影函数或网格展开算法来初始化。美术人员可以像编辑顶点位置一样编辑 (u, v) 坐标。投影函数通常把空间中的一个三维点转换为纹理坐标。建模程序中常用的函数包括球面投影、圆柱投影和平面投影 [141, 884, 970]。
 
 
-![图6.4 不同的纹理投影](Real-Time_Rendering_4th_中文/assets/fig_6_1_6.4.png)
+![图6.4 不同的纹理投影](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_1_6.4.png)
 
 **图 6.4** 不同的纹理投影。从左到右依次为球面、圆柱、平面和自然 (u, v) 投影。下排展示了这些投影分别应用于同一个物体的结果（该物体没有自然投影）。
 
@@ -91,7 +91,7 @@
 在实时应用中，投影函数通常在建模阶段应用，投影结果保存在顶点上。但情况并非总是如此；有时在顶点着色器或像素着色器中应用投影函数会更有利。这可以提高精度，并有助于实现包括动画在内的各种效果（第 6.4 节）。某些渲染方法，例如环境映射（第 10.4 节），有各自专用的投影函数，并对每个像素进行求值。
 
 
-![图6.5 同一模型上的不同纹理投影](Real-Time_Rendering_4th_中文/assets/fig_6_1_6.5.png)
+![图6.5 同一模型上的不同纹理投影](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_1_6.5.png)
 
 **图 6.5** 如何在同一个模型上使用各种纹理投影。盒式映射由六个平面映射组成，盒子的每个面各用一个。（图片由 Tito Pagán 提供。）
 
@@ -104,7 +104,7 @@
 由于侧对投影方向的表面会出现严重畸变，美术人员往往必须手动把模型拆成一些近似平面的部分。也有一些工具通过展开网格、创建一组接近最优的平面投影，或以其他方式辅助这一过程，来尽量减小畸变。其目标是让每个多边形都获得更合理的一份纹理面积，同时尽可能保持网格的连通性。连通性很重要，因为纹理中不同部分相接的边缘可能产生采样伪影。良好的网格展开还能够减轻美术人员的工作量 [970, 1345]。第 16.2.1 节讨论了纹理畸变如何对渲染产生不利影响。图 6.6 展示了创建图 6.5 中雕像时使用的工作区。展开过程属于一个更大的研究领域，即**网格参数化**。感兴趣的读者可以参阅 Hormann 等人编写的 SIGGRAPH 课程讲义 [774]。
 
 
-![图6.6 雕像纹理及网格展开](Real-Time_Rendering_4th_中文/assets/fig_6_1_6.6.png)
+![图6.6 雕像纹理及网格展开](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_1_6.6.png)
 
 **图 6.6** 雕像模型的若干小纹理保存在两张较大的纹理中。右图展示了如何将三角形网格展开并显示在纹理上，以辅助纹理制作。（图片由 Tito Pagán 提供。）
 
@@ -130,7 +130,7 @@
 - **border（DirectX）或 clamp to border（OpenGL），边框／钳制到边框**：纹理坐标超出 [0, 1] 时，使用单独定义的边框颜色渲染。例如，这个函数适合把贴花渲染到单色表面上，因为纹理边缘会与边框颜色平滑混合。
 
 
-![图6.7 重复、镜像、钳制与边框函数](Real-Time_Rendering_4th_中文/assets/fig_6_1_6.7.png)
+![图6.7 重复、镜像、钳制与边框函数](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_1_6.7.png)
 
 **图 6.7** 图像纹理的重复、镜像、钳制和边框函数的实际效果。
 
@@ -163,7 +163,7 @@
 
 这里值得解释的一个术语是**依赖纹理读取**（dependent texture read），它有两种定义。第一种特别适用于移动设备：通过 `texture2D` 或类似调用访问纹理时，只要像素着色器计算纹理坐标，而不是直接使用从顶点着色器传来的、未经修改的纹理坐标，就属于依赖纹理读取 [66]。注意，这包括对输入纹理坐标所做的任何修改，甚至只是交换 u、v 这样简单的操作。较老的移动 GPU，即不支持 OpenGL ES 3.0 的 GPU，在着色器没有依赖纹理读取时运行效率更高，因为这时可以预取纹素数据。另一个较早的定义对早期桌面 GPU 尤其重要：在这种语境中，如果某个纹理的坐标依赖于先前某次纹理取值的结果，就会发生依赖纹理读取。例如，一个纹理可能改变着色法线，继而改变访问立方体贴图时使用的坐标。在早期 GPU 上，这类功能受到限制，甚至根本不存在。如今，这种读取仍可能影响性能，具体取决于一个批次所计算的像素数量等因素。更多信息见 23.8 节。
 
-GPU 使用的纹理图像尺寸通常为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_20791332e1dde2.png) × ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_7f1bd93c0857c2.png) 个纹素，其中 m、n 是非负整数。这类纹理称为**二次幂纹理**（power-of-two，POT）。现代 GPU 可以处理任意尺寸的**非二次幂纹理**（non-power-of-two，NPOT），因此生成的图像也可以作为纹理使用。不过，一些较老的移动 GPU 可能不支持 NPOT 纹理的 mipmapping（见 6.2.2 节）。不同图形加速器具有不同的纹理尺寸上限。例如，DirectX 12 允许最多 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_96d69c50e218f7.png) 个纹素。
+GPU 使用的纹理图像尺寸通常为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_20791332e1dde2.png) × ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_7f1bd93c0857c2.png) 个纹素，其中 m、n 是非负整数。这类纹理称为**二次幂纹理**（power-of-two，POT）。现代 GPU 可以处理任意尺寸的**非二次幂纹理**（non-power-of-two，NPOT），因此生成的图像也可以作为纹理使用。不过，一些较老的移动 GPU 可能不支持 NPOT 纹理的 mipmapping（见 6.2.2 节）。不同图形加速器具有不同的纹理尺寸上限。例如，DirectX 12 允许最多 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_96d69c50e218f7.png) 个纹素。
 
 假设我们有一幅 256 × 256 纹素的纹理，希望把它贴在一个正方形上。只要这个正方形投影到屏幕后，其尺寸与纹理大致相同，正方形上的纹理看起来就会几乎和原图一样。但如果投影后的正方形覆盖的像素数是原图的十倍，即发生**放大**（magnification），或者只覆盖屏幕上一小部分，即发生**缩小**（minification），又会怎样？答案取决于你针对这两种不同情况选择了怎样的采样和过滤方法。
 
@@ -178,27 +178,27 @@ GPU 使用的纹理图像尺寸通常为 ![数学符号](Real-Time_Rendering_4th
 同图的中间图像使用双线性插值，有时也称线性插值。对每个像素，这种过滤方法找到相邻的四个纹素，并在两个维度上进行线性插值，得到该像素的混合值。结果更加模糊，但最近邻方法产生的大部分锯齿已经消失。可以做个实验：眯起眼睛观察左图。这大致具有低通滤波器的效果，可以让脸部稍微更容易辨认。
 
 
-![图6.8 纹理放大方法比较](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.8.png)
+![图6.8 纹理放大方法比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.8.png)
 
 图 6.8：把 48 × 48 的图像放大到 320 × 320 像素。左：最近邻过滤，每个像素选择最近的纹素。中：双线性过滤，使用最近的四个纹素的加权平均。右：三次过滤，使用最近的 5 × 5 个纹素的加权平均。
 
-回到书页 170 的砖墙纹理示例：不舍弃小数部分时，得到 (![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_d14080cd5bb40e.png), ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_b1722f06c5af4a.png)) = (81.92, 74.24)。这里采用 OpenGL 的左下角原点纹素坐标系，因为它与标准笛卡尔坐标系一致。我们的目标是在最近的四个纹素之间插值，并以它们的纹素中心定义一个大小等于一个纹素的坐标系。见图 6.9。为了找出最近的四个像素，从采样位置减去像素中心的小数部分 (0.5, 0.5)，得到 (81.42, 73.74)。去掉小数部分后，最近的四个像素从 (x, y) = (81, 73) 延伸到 (x + 1, y + 1) = (82, 74)。小数部分，在本例中为 (0.42, 0.74)，就是采样点相对于四个纹素中心构成的坐标系的位置。将此位置记作 (u′, v′)。
+回到书页 170 的砖墙纹理示例：不舍弃小数部分时，得到 (![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_d14080cd5bb40e.png), ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_b1722f06c5af4a.png)) = (81.92, 74.24)。这里采用 OpenGL 的左下角原点纹素坐标系，因为它与标准笛卡尔坐标系一致。我们的目标是在最近的四个纹素之间插值，并以它们的纹素中心定义一个大小等于一个纹素的坐标系。见图 6.9。为了找出最近的四个像素，从采样位置减去像素中心的小数部分 (0.5, 0.5)，得到 (81.42, 73.74)。去掉小数部分后，最近的四个像素从 (x, y) = (81, 73) 延伸到 (x + 1, y + 1) = (82, 74)。小数部分，在本例中为 (0.42, 0.74)，就是采样点相对于四个纹素中心构成的坐标系的位置。将此位置记作 (u′, v′)。
 
 
-![图6.9 双线性插值](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.9.png)
+![图6.9 双线性插值](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.9.png)
 
 图 6.9：双线性插值。左侧四个方格表示参与插值的四个纹素，蓝色点表示纹素中心。右侧是由这四个纹素中心构成的坐标系。
 
-定义纹理访问函数为 t(x, y)，其中 x、y 为整数，函数返回纹素颜色。任意位置 (u′, v′) 的双线性插值颜色可以分两步计算。首先，在水平方向使用 u′ 对底部纹素 t(x, y) 和 t(x + 1, y) 插值；同样，对顶部两个纹素 t(x, y + 1) 和 t(x + 1, y + 1) 插值。底部得到 (1 − u′)t(x, y) + u′t(x + 1, y)，即图 6.9 下方的绿色圆点；顶部得到 (1 − u′)t(x, y + 1) + u′t(x + 1, y + 1)，即上方绿色圆点。随后使用 v′ 在竖直方向对这两个值插值。因此，(![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_d14080cd5bb40e.png), ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_b1722f06c5af4a.png)) 处的双线性插值颜色 b 为
+定义纹理访问函数为 t(x, y)，其中 x、y 为整数，函数返回纹素颜色。任意位置 (u′, v′) 的双线性插值颜色可以分两步计算。首先，在水平方向使用 u′ 对底部纹素 t(x, y) 和 t(x + 1, y) 插值；同样，对顶部两个纹素 t(x, y + 1) 和 t(x + 1, y + 1) 插值。底部得到 (1 − u′)t(x, y) + u′t(x + 1, y)，即图 6.9 下方的绿色圆点；顶部得到 (1 − u′)t(x, y + 1) + u′t(x + 1, y + 1)，即上方绿色圆点。随后使用 v′ 在竖直方向对这两个值插值。因此，(![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_d14080cd5bb40e.png), ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_b1722f06c5af4a.png)) 处的双线性插值颜色 b 为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_d04878bbdadcd2.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_d04878bbdadcd2.png)
 
 
 直观地说，离采样位置越近的纹素，对最终值的影响越大。这个方程确实体现了这一点。右上方 (x + 1, y + 1) 处纹素的影响为 u′v′。注意这种对称性：右上方纹素的影响等于左下角与采样点构成的矩形面积。回到示例，这意味着从该纹素取得的值要乘以 0.42 × 0.74，即 0.3108。从此纹素顺时针看，其他乘数依次是 0.42 × 0.26、0.58 × 0.26、0.58 × 0.74。这四个权重之和为 1.0。
 
 
-![图6.10 棋盘纹理的过滤和重映射](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.10.png)
+![图6.10 棋盘纹理的过滤和重映射](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.10.png)
 
 图 6.10：对同一幅 2 × 2 棋盘纹理分别使用最近邻、双线性插值，以及通过重映射得到的两者之间的效果。注意，最近邻采样产生的方格大小略有不同，因为纹理与图像网格并不完全匹配。
 
@@ -213,27 +213,27 @@ GPU 使用的纹理图像尺寸通常为 ![数学符号](Real-Time_Rendering_4th
 如果认为双三次滤波器太昂贵，Quílez [1451] 提出了一种简单技术：在一组 2 × 2 纹素之间用平滑曲线插值。我们先介绍曲线，再介绍技术。两条常用曲线是 smoothstep 曲线和五次曲线 [1372]：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_93c6e30843486c.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_93c6e30843486c.png)
 
 
 在许多需要从一个值平滑插值到另一个值的情形中，这些曲线也很有用。smoothstep 曲线满足 s′(0) = s′(1) = 0，并且在 0 到 1 之间平滑。五次曲线具有相同性质，还满足 q″(0) = q″(1) = 0，即曲线起点和终点的二阶导数也为 0。两条曲线见图 6.11。
 
 
-![图6.11 smoothstep与五次曲线](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.11.png)
+![图6.11 smoothstep与五次曲线](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.11.png)
 
 图 6.11：smoothstep 曲线 s(x)（左）和五次曲线 q(x)（右）。
 
-该技术首先计算 (u′, v′)，与公式（6.1）及图 6.9 中使用的量相同：先将采样坐标乘以纹理尺寸，再加上 0.5。保留整数部分供后续使用，将小数部分存入 u′ 和 v′，它们位于 [0, 1] 范围内。然后将 (u′, v′) 变换为 (![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_53f092f08fd5f3.png), ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_9edbbf4c952e7f.png)) = (q(u′), q(v′))，仍然位于 [0, 1] 内。最后减去 0.5，并加回整数部分；将所得 u 坐标除以纹理宽度，对 v 也进行类似处理。此时，用新的纹理坐标执行 GPU 提供的双线性插值查询。注意，这种方法会在每个纹素处产生平台。这意味着，例如当纹素颜色在 RGB 空间中位于同一个平面上时，这种插值会产生平滑但仍带有阶梯状的外观，未必总是理想。见图 6.12。
+该技术首先计算 (u′, v′)，与公式（6.1）及图 6.9 中使用的量相同：先将采样坐标乘以纹理尺寸，再加上 0.5。保留整数部分供后续使用，将小数部分存入 u′ 和 v′，它们位于 [0, 1] 范围内。然后将 (u′, v′) 变换为 (![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_53f092f08fd5f3.png), ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_9edbbf4c952e7f.png)) = (q(u′), q(v′))，仍然位于 [0, 1] 内。最后减去 0.5，并加回整数部分；将所得 u 坐标除以纹理宽度，对 v 也进行类似处理。此时，用新的纹理坐标执行 GPU 提供的双线性插值查询。注意，这种方法会在每个纹素处产生平台。这意味着，例如当纹素颜色在 RGB 空间中位于同一个平面上时，这种插值会产生平滑但仍带有阶梯状的外观，未必总是理想。见图 6.12。
 
 
-![图6.12 一维纹理的四种放大方法](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.12.png)
+![图6.12 一维纹理的四种放大方法](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.12.png)
 
 图 6.12：放大一维纹理的四种不同方法。橙色圆点表示纹素中心及其纹素值，高度表示数值。从左到右：最近邻、线性插值、在每对相邻纹素之间使用五次曲线，以及三次插值。
 
 ### 6.2.2 缩小
 
 
-![图6.13 缩小与像素单元](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.13.png)
+![图6.13 缩小与像素单元](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.13.png)
 
 图 6.13：缩小。通过一行像素单元观察一个贴有棋盘纹理的正方形，粗略展示多个纹素如何影响每个像素。
 
@@ -248,7 +248,7 @@ GPU 使用的纹理图像尺寸通常为 ![数学符号](Real-Time_Rendering_4th
 要实现这个目标，要么提高像素采样频率，要么降低纹理频率。上一章讨论的抗锯齿方法提供了提高像素采样率的途径，但所能实现的提高幅度有限。为了更充分地解决这个问题，人们开发了多种纹理缩小算法。
 
 
-![图6.14 三种纹理缩小方法](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.14.png)
+![图6.14 三种纹理缩小方法](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.14.png)
 
 图 6.14：上图使用点采样，即最近邻，进行渲染；中图使用 mipmapping；下图使用区域求和表。
 
@@ -261,7 +261,7 @@ GPU 使用的纹理图像尺寸通常为 ![数学符号](Real-Time_Rendering_4th
 使用 mipmapping 缩小滤波器时，在真正开始渲染之前，要为原始纹理添加一组较小的纹理版本。将第 0 级纹理下采样到原面积的四分之一，每个新纹素值通常由原纹理中四个相邻纹素的平均值计算得到。新的第 1 级纹理有时称为原纹理的**子纹理**。不断递归执行缩小，直到纹理的一个或两个维度等于一个纹素。图 6.15 展示了这一过程。这一整组图像通常称为 **mipmap 链**。
 
 
-![图6.15 Mipmap金字塔](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.15.png)
+![图6.15 Mipmap金字塔](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.15.png)
 
 图 6.15：构造 mipmap 时，将原始图像放在金字塔底部，作为第 0 级；对每个 2 × 2 区域取平均，形成上一级的一个纹素值。竖直轴是第三个纹理坐标 d。在此图中，d 不是线性的；它用来衡量一个样本使用哪两个纹理层级进行插值。
 
@@ -272,7 +272,7 @@ GPU 使用的纹理图像尺寸通常为 ![数学符号](Real-Time_Rendering_4th
 如前所述，有些纹理与最终着色颜色之间本质上是非线性关系。虽然这对一般过滤就构成问题，但 mipmap 生成对此尤其敏感，因为它要过滤数百乃至数千个像素。为了获得最佳结果，往往需要专门的 mipmap 生成方法。9.13 节将详细介绍这些方法。
 
 
-![图6.16 像素单元在纹理上的投影](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.16.png)
+![图6.16 像素单元在纹理上的投影](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.16.png)
 
 图 6.16：左侧是一个正方形像素单元及其看到的纹理。右侧是该像素单元在纹理本身上的投影。
 
@@ -291,14 +291,14 @@ Mipmapping 的优点在于：不必逐一累加影响一个像素的所有纹素
 另一种避免过度模糊的方法是**区域求和表**（summed-area table，SAT）[312]。使用此方法时，先建立一个与纹理尺寸相同的数组，但存储颜色时使用更高的位精度，例如红、绿、蓝每个通道各用 16 位或更多。在数组的每个位置，计算并存储由这个位置与纹素 (0, 0)，即原点，构成的矩形内所有对应纹素的总和。进行纹理处理时，用一个矩形包围像素单元在纹理上的投影。然后访问区域求和表，确定这个矩形的平均颜色，并将其作为该像素的纹理颜色返回。计算平均值所用的矩形纹理坐标见图 6.17，具体采用公式（6.3）：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_d00950ebda715c.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_d00950ebda715c.png)
 
 
-![图6.17 区域求和表访问](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.17.png)
+![图6.17 区域求和表访问](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.17.png)
 
 图 6.17：将像素单元反投影到纹理上，用矩形包围它；利用矩形的四个角访问区域求和表。
 
-这里，x 和 y 是矩形的纹素坐标，s[x, y] 是该纹素处的区域求和值。这个方程先取右上角到原点的整个区域之和，再通过减去相邻角点的贡献，减掉区域 A 和 B。区域 C 被减去了两次，因此再通过左下角把它加回。注意，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_d67aae891470a7.png) 是区域 C 的右上角，即 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_38e9a4180e5938.png) 才是包围盒的左下角。
+这里，x 和 y 是矩形的纹素坐标，s[x, y] 是该纹素处的区域求和值。这个方程先取右上角到原点的整个区域之和，再通过减去相邻角点的贡献，减掉区域 A 和 B。区域 C 被减去了两次，因此再通过左下角把它加回。注意，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_d67aae891470a7.png) 是区域 C 的右上角，即 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_38e9a4180e5938.png) 才是包围盒的左下角。
 
 使用区域求和表的结果见图 6.14。靠近右边缘、伸向地平线的线条更加清晰，但中间斜向交叉的线条仍然过度模糊。问题在于：沿纹理对角方向观察时，会生成一个很大的矩形，其中许多纹素离正在计算的像素很远。例如，想象一个细长矩形代表像素单元的反投影，沿图 6.17 整张纹理的对角线横跨纹理。返回的将是整个纹理矩形的平均值，而不只是像素单元内部的平均值。
 
@@ -311,14 +311,14 @@ Mipmapping 的优点在于：不必逐一累加影响一个像素的所有纹素
 对于当前图形硬件，进一步改善纹理过滤最常见的方法是复用现有的 mipmap 硬件。基本思想是：将像素单元反投影，在纹理上所得的四边形上采样多次，再合并样本。如前所述，每个 mipmap 样本都关联一个位置和一个大致呈正方形的区域。该算法不使用单个 mipmap 样本近似整个四边形的覆盖范围，而是用多个正方形覆盖它。可以用四边形的较短边确定 d；这与 mipmapping 通常使用较长边不同。这样，每个 mipmap 样本取平均的区域就更小，因而模糊更少。用四边形的较长边建立一条**各向异性线**，它与较长边平行，并穿过四边形中部。当各向异性程度介于 1∶1 和 2∶1 之间时，沿该线取两个样本（见图 6.18）。各向异性比例更高时，就沿该轴取更多样本。
 
 
-![图6.18 各向异性过滤的采样线](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.18.png)
+![图6.18 各向异性过滤的采样线](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.18.png)
 
 图 6.18：各向异性过滤。像素单元的反投影形成一个四边形。在较长的两条边之间建立一条各向异性线。
 
 这种方案允许各向异性线沿任意方向，因此没有区域求和表的方向限制。它利用 mipmap 算法采样，所以所需纹理内存也不多于 mipmap。图 6.19 给出了各向异性过滤的示例。
 
 
-![图6.19 Mipmap与各向异性过滤比较](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.19.png)
+![图6.19 Mipmap与各向异性过滤比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.19.png)
 
 图 6.19：Mipmap 与各向异性过滤。左侧使用三线性 mipmapping，右侧使用 16∶1 各向异性过滤。靠近地平线时，各向异性过滤得到更清晰的结果，同时只有极少混叠。（图像来自 three.js 示例 `webgl_materials_texture_anisotropy` [218]。）
 
@@ -345,7 +345,7 @@ Mipmapping 的优点在于：不必逐一累加影响一个像素的所有纹素
 为了尽可能将更多工作批量交给 GPU，通常应尽量减少状态切换（18.4.2 节）。为此，可以把若干图像放进一张更大的纹理中，称为**纹理图集**。图 6.20 左侧展示了这一点。注意，子纹理的形状可以是任意的，如图 6.6 所示。Nöll 和 Stricker [1286] 介绍了图集中子纹理放置的优化。生成和访问 mipmap 时也需要小心，因为 mipmap 的上层可能包含几个彼此独立、互不相关的形状。Manson 和 Schaefer [1119] 提出一种考虑表面参数化的 mipmap 创建优化方法，能够产生明显更好的结果。Burley 和 Lacewell [213] 提出名为 Ptex 的系统，其中细分曲面的每个四边形都有自己的小纹理。其优点是无需为整个网格分配唯一纹理坐标，而且不会在纹理图集中不相连部分的接缝处出现伪影。为实现跨四边形过滤，Ptex 使用一种邻接数据结构。尽管最初面向影视制作渲染，Hillesland [746] 提出了打包 Ptex，将每个面的子纹理放入纹理图集，并用相邻面的填充内容避免过滤时的间接寻址。Yuksel [1955] 提出**网格颜色纹理**，进一步改进 Ptex。Toth [1780] 为类似 Ptex 的系统提供高质量跨面过滤：如果某个过滤采样点超出 [0, 1]² 范围，就舍弃该点。
 
 
-![图6.20 纹理图集与纹理数组](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.20.png)
+![图6.20 纹理图集与纹理数组](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.20.png)
 
 图 6.20：左：一张纹理图集，将九幅较小图像合成为单张大纹理。右：更现代的方式是将小图像设置为纹理数组，这是大多数 API 都具有的概念。
 
@@ -357,7 +357,7 @@ Mipmapping 的优点在于：不必逐一累加影响一个像素的所有纹素
 
 ### 6.2.6 纹理压缩
 
-一种直接解决内存、带宽和缓存问题的办法是**固定码率纹理压缩** [127]。让 GPU 即时解码压缩纹理，可以减少纹理占用的显存，进而增大有效缓存容量。至少同样重要的是，压缩纹理访问时消耗的内存带宽更少，因此使用效率更高。一个相关但不同的应用情形，是通过压缩来容纳更大的纹理。例如，一张每纹素使用 3 字节、分辨率为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_f02026a42e7d64.png) 的未压缩纹理占用 768 kB。若采用 6∶1 的纹理压缩率，一张 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_5a214b67b000d4.png) 的纹理只需 512 kB。
+一种直接解决内存、带宽和缓存问题的办法是**固定码率纹理压缩** [127]。让 GPU 即时解码压缩纹理，可以减少纹理占用的显存，进而增大有效缓存容量。至少同样重要的是，压缩纹理访问时消耗的内存带宽更少，因此使用效率更高。一个相关但不同的应用情形，是通过压缩来容纳更大的纹理。例如，一张每纹素使用 3 字节、分辨率为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_f02026a42e7d64.png) 的未压缩纹理占用 768 kB。若采用 6∶1 的纹理压缩率，一张 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_5a214b67b000d4.png) 的纹理只需 512 kB。
 
 JPEG、PNG 等图像文件格式采用了多种图像压缩方法，但用硬件实现这些格式的解码代价很高；关于纹理转码的信息，另见 19.10.1 节。S3 开发了一种名为 S3 Texture Compression（S3TC）的方案 [1524]，被选为 DirectX 的标准，并称为 DXTC；在 DirectX 10 中称为 BC，即 Block Compression，块压缩。此外，它也是 OpenGL 的事实标准，因为几乎所有 GPU 都支持它。这种方案的优点是压缩图像大小固定，各部分独立编码，并且解码简单，因而快速。图像中每个压缩部分可以独立于其他部分处理，没有共享查找表或其他依赖关系，从而简化了解码。
 
@@ -388,7 +388,7 @@ BC6H 用于高动态范围（HDR）纹理，其中每个纹素的 R、G、B 通�
 BC1—BC5 的一个问题是，每个块使用的所有颜色都位于 RGB 空间的一条直线上。例如，红、绿、蓝三种颜色不能同时表示在一个块中。BC6H 和 BC7 支持更多线，因此可以提供更高质量。
 
 
-![图6.21 ETC纹理压缩](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.21.png)
+![图6.21 ETC纹理压缩](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.21.png)
 
 图 6.21：ETC（爱立信纹理压缩）对像素块的颜色进行编码，然后逐像素修改亮度，产生最终纹素颜色。（图像由 Jacob Ström 压缩。）图中从左到右为基础颜色、亮度、解压结果和原始图像。
 
@@ -399,10 +399,10 @@ OpenGL ES 3.0 纳入的 ETC2 [1715] 利用未使用的位组合，为原有 ETC 
 压缩法线贴图，见 6.7.2 节，需要谨慎处理。为 RGB 颜色设计的压缩格式通常不适合处理法线 xyz 数据。大多数方法利用法线已知为单位长度这一事实，并进一步假设 z 分量为正；对于切线空间法线，这是一个合理假设。这样只需存储法线的 x、y 分量，z 分量即时推导为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_707f549013a52e.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_707f549013a52e.png)
 
 
-![图6.22 法线的双分量编码](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.22.png)
+![图6.22 法线的双分量编码](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.22.png)
 
 图 6.22：左：球面上的单位法线只需编码 x 和 y 分量。右：对于 BC4/3Dc，xy 平面上的一个盒子包围这些法线；对于每个 4 × 4 法线块，可以使用该盒内的 8 × 8 个法线。为清楚起见，图中只画出 4 × 4 个法线。
 
@@ -421,26 +421,26 @@ PVRTC [465] 是 Imagination Technologies 的 PowerVR 硬件支持的纹理压缩
 Kaplanyan [856] 提出了几种改善压缩纹理质量的方法。对于颜色纹理和法线贴图，都建议在制作时每分量使用 16 位。对于颜色纹理，随后对这 16 位数据进行**直方图重新归一化**，再在着色器中使用每纹理的缩放和偏置常量逆转其效果。直方图归一化将图像使用的数值展开，使其覆盖整个范围，实际上是一种对比度增强。每分量采用 16 位，可以确保重新归一化后直方图中没有未使用的空档，从而减少许多纹理压缩方案可能引入的色带伪影。图 6.23 展示了这种效果。此外，Kaplanyan 建议：如果 75% 的像素高于 116/255，就将纹理存储在线性颜色空间中，否则存储在 sRGB 中。对于法线贴图，他还指出，BC5/3Dc 通常独立于 y 压缩 x，这意味着未必总能找到最佳法线。因此，他建议使用下述法线误差度量：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_ca830298334701.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_ca830298334701.png)
 
 
-其中 **n** 是原始法线，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_2340df29cb0c35.png) 是该法线经过压缩、再解压缩后的结果。
+其中 **n** 是原始法线，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_2340df29cb0c35.png) 是该法线经过压缩、再解压缩后的结果。
 
 
-![图6.23 纹理压缩的输入精度比较](Real-Time_Rendering_4th_中文/assets/fig_6_2_6.23.png)
+![图6.23 纹理压缩的输入精度比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_2_6.23.png)
 
 图 6.23：纹理压缩中使用每分量 16 位与 8 位的效果比较。从左到右：原始纹理；从每分量 8 位数据压缩得到的 DXT1；从每分量 16 位数据压缩得到的 DXT1，并在着色器中进行重新归一化处理。为更清楚地展示效果，纹理在强光照下渲染。（图片由 Anton Kaplanyan 惠允提供。）
 
 还应注意，可以在不同颜色空间中压缩纹理，从而加快纹理压缩。一种常用变换是 RGB → YCoCg [1112]：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_c17ea5372a6396.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_c17ea5372a6396.png)
 
 
-其中 Y 是亮度项，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_070e3162fc4925.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_582ab39000dac7.png) 是色度项。逆变换的开销也很低：
+其中 Y 是亮度项，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_070e3162fc4925.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_582ab39000dac7.png) 是色度项。逆变换的开销也很低：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_06d90c56ead294.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_06d90c56ead294.png)
 
 
 只需要少量加法。这两个变换是线性的；公式（6.6）是矩阵与向量相乘，其本身就是线性运算，见公式（4.1）和（4.2）。这一点很重要，因为可以在纹理中存储 YCoCg 而不是 RGB，纹理硬件仍能在 YCoCg 空间中执行过滤，再由像素着色器按需转换回 RGB。应当注意，这个变换本身有损，这一点是否重要取决于具体情况。
@@ -448,10 +448,10 @@ Kaplanyan [856] 提出了几种改善压缩纹理质量的方法。对于颜色�
 另有一种可逆的 RGB → YCoCg 变换，归纳如下：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_33161db5de955d.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_33161db5de955d.png)
 
 
-其中 ≫ 表示右移。这意味着，例如可以在一个 24 位 RGB 颜色和对应的 YCoCg 表示之间来回转换，而不产生任何损失。注意，如果 RGB 每个分量有 n 位，那么为了保证变换可逆，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_070e3162fc4925.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_582ab39000dac7.png) 各需要 n + 1 位，而 Y 只需 n 位。Van Waveren 和 Castaño [1852] 使用有损 YCoCg 变换，在 CPU 或 GPU 上实现了快速 DXT5/BC3 压缩。他们将 Y 存入 alpha 通道，因为它的精度最高，而将 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_070e3162fc4925.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_582ab39000dac7.png) 存储在 RGB 的前两个分量中。由于 Y 单独存储和压缩，压缩速度变快。对于 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_070e3162fc4925.png)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_02_582ab39000dac7.png) 分量，他们求出一个二维包围盒，再选择产生最佳结果的包围盒对角线。注意，对于在 CPU 上动态创建的纹理，最好也在 CPU 上压缩；对于通过 GPU 渲染创建的纹理，通常也最好在 GPU 上压缩。
+其中 ≫ 表示右移。这意味着，例如可以在一个 24 位 RGB 颜色和对应的 YCoCg 表示之间来回转换，而不产生任何损失。注意，如果 RGB 每个分量有 n 位，那么为了保证变换可逆，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_070e3162fc4925.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_582ab39000dac7.png) 各需要 n + 1 位，而 Y 只需 n 位。Van Waveren 和 Castaño [1852] 使用有损 YCoCg 变换，在 CPU 或 GPU 上实现了快速 DXT5/BC3 压缩。他们将 Y 存入 alpha 通道，因为它的精度最高，而将 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_070e3162fc4925.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_582ab39000dac7.png) 存储在 RGB 的前两个分量中。由于 Y 单独存储和压缩，压缩速度变快。对于 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_070e3162fc4925.png)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_02_582ab39000dac7.png) 分量，他们求出一个二维包围盒，再选择产生最佳结果的包围盒对角线。注意，对于在 CPU 上动态创建的纹理，最好也在 CPU 上压缩；对于通过 GPU 渲染创建的纹理，通常也最好在 GPU 上压缩。
 
 YCoCg 变换以及其他亮度—色度变换常用于图像压缩，其中色度分量在 2 × 2 像素范围内取平均。这可以减少 50% 的存储量，而且通常效果良好，因为色度往往变化缓慢。Lee-Steere 和 Harmon [1015] 更进一步，将数据转换到色相—饱和度—明度（HSV）空间，在 x、y 方向上分别把色相和饱和度下采样为四分之一，并将明度存为单通道 DXT1 纹理。Van Waveren 和 Castaño 还介绍了快速压缩法线贴图的方法 [1853]。
 
@@ -467,7 +467,7 @@ Griffin 和 Olano [601] 的研究表明，当多个纹理通过复杂着色模�
 考虑到体积图像纹理的存储成本很高，体积纹理是程序化纹理技术一个特别有吸引力的应用领域。这类纹理可以通过多种技术合成。最常见的方法之一是使用一个或多个噪声函数生成数值 [407, 1370, 1371, 1372]。见图 6.24。通常会以依次为 2 的幂次的频率对噪声函数采样，这些频率层次称为倍频层（octaves）。每个倍频层都被赋予一个权重，权重通常随频率升高而减小；这些加权采样值的和称为湍流函数（turbulence function）。
 
 
-![图 6.24：使用体积纹理进行实时程序化纹理处理的两个示例](Real-Time_Rendering_4th_中文/assets/fig_6_3_6.24.png)
+![图 6.24：使用体积纹理进行实时程序化纹理处理的两个示例](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_3_6.24.png)
 
 图 6.24：使用体积纹理进行实时程序化纹理处理的两个示例。左侧的弹珠是一种采用光线步进渲染的半透明体积纹理。右侧物体是使用复杂的程序化木材着色器 [1054] 生成的合成图像，并被合成到真实世界的环境之上。（左图来自 Shadertoy 作品“Playing marble”，由 Stéphane Guillitte 惠允提供。右图由 Autodesk, Inc. 的 Nicolas Savva 惠允提供。）
 
@@ -502,7 +502,7 @@ Griffin 和 Olano [601] 的研究表明，当多个纹理通过复杂着色模�
 纹理的一种常见用途，是修改影响着色方程的某项材质属性。现实世界中，物体的材质属性通常会随表面位置而变化。为了模拟这样的物体，像素着色器可以从纹理中读取数值，并在求解着色方程之前，用这些数值修改材质参数。最常通过纹理修改的参数是表面颜色。这种纹理称为**反照率颜色贴图**（albedo color map）或**漫反射颜色贴图**（diffuse color map）。不过，任何参数都可以通过纹理来修改：可以用纹理值替换它、与它相乘，或者以其他方式改变它。例如，图6.25将三种不同的纹理应用于一个表面，替换原本的常量值。
 
 
-![图6.25：金属质感的砖块和砂浆，以及反照率、粗糙度和高度场纹理](Real-Time_Rendering_4th_中文/assets/fig_6_5_6.25.png)
+![图6.25：金属质感的砖块和砂浆，以及反照率、粗糙度和高度场纹理](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_5_6.25.png)
 
 **图6.25**　金属质感的砖块和砂浆。右侧依次为表面颜色纹理、粗糙度纹理（越亮表示越粗糙）和凹凸贴图的高度纹理（越亮表示越高）。（图片来自 three.js 示例 webgl_tonemapping [218]。）
 
@@ -522,7 +522,7 @@ Griffin 和 Olano [601] 的研究表明，当多个纹理通过复杂着色模�
 一种与纹理有关的效果是贴花（decaling）。例如，假设你想把一幅花朵图片贴到茶壶上。你并不想要整张图片，而只要其中有花的部分。把某个纹素的 alpha 设为 0，就可以使它透明，从而不产生任何影响。因此，只要适当地设置贴花纹理的 alpha，就能用贴花替换底层表面，或与底层表面混合。通常，会把钳制对应函数与透明边框配合使用，从而将贴花的单个副本应用到表面上，而不是形成重复纹理。图 6.26 展示了一种贴花实现方式。关于贴花的更多信息，见第 20.2 节。
 
 
-![图 6.26 贴花投影示意](Real-Time_Rendering_4th_中文/assets/fig_6_6_6.26.png)
+![图 6.26 贴花投影示意](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_6_6.26.png)
 
 图 6.26　一种实现贴花的方法。首先将场景渲染到帧缓冲中，然后渲染一个盒子；对于盒子内部的所有点，把贴花纹理投影到帧缓冲内容上。最左边的纹素完全透明，因此不会影响帧缓冲。黄色纹素不可见，因为它会被投影到表面上被遮挡的部分。
 
@@ -531,12 +531,12 @@ alpha 的一种类似应用是制作镂空贴片（cutout）。假设你制作�
 对于灌木，如果让观察者绕着它转动，这种假象就会失效，因为灌木没有厚度。一种解决办法是复制这个灌木矩形，并绕树干旋转 90°。两个矩形就构成了一个成本很低的三维灌木，有时称为“十字树”（cross tree）[1204]；从地面高度观察时，这种假象相当有效。见图 6.27。Pelzer [1367] 讨论了一种类似的配置，用三个镂空贴片表示草。在第 13.6 节中，我们会讨论一种称为公告板（billboarding）的方法，它可以将这种渲染简化为单个矩形。如果观察者升到地面上方，这种假象便会破灭，因为从上方可以看出灌木只是两个镂空贴片。见图 6.28。为解决这个问题，可以采用不同方式添加更多贴片，例如切片、枝条或分层，以提供更可信的模型。第 13.6.5 节讨论了一种生成这类模型的方法；第 857 页的图 19.31 展示了另一种方法。最终效果的实例可见第 2 页和第 1049 页的图片。
 
 
-![图 6.27 十字树的构成](Real-Time_Rendering_4th_中文/assets/fig_6_6_6.27.png)
+![图 6.27 十字树的构成](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_6_6.27.png)
 
 图 6.27　左侧为灌木纹理贴图，下方为其 1 位 alpha 通道贴图。右侧为渲染在单个矩形上的灌木；再添加一个旋转了 90° 的矩形副本，就构成了一个成本很低的三维灌木。
 
 
-![图 6.28 从高处观察十字树](Real-Time_Rendering_4th_中文/assets/fig_6_6_6.28.png)
+![图 6.28 从高处观察十字树](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_6_6.28.png)
 
 图 6.28　先从稍高于地面的位置观察“十字树”灌木，然后从更高的位置观察，此时这种假象便不再成立。
 
@@ -554,23 +554,23 @@ if (texture.a < alphaThreshold) discard;
 
 其中，texture.a 是纹理查询得到的 alpha 值，参数 alphaThreshold 是用户提供的阈值，用来决定丢弃哪些片元。由于透明片元会被丢弃，这种二元可见性测试允许以任意顺序渲染三角形。通常，我们希望对 alpha 为 0.0 的所有片元执行这种处理。丢弃完全透明的片元还具有额外好处：节省后续着色器处理及合并的开销，并避免在 z 缓冲中把像素错误地标记为可见 [394]。对于镂空贴片，我们常把阈值设置为高于 0.0 的值，例如 0.5 或更高；然后进一步完全忽略 alpha 值，不再用它进行混合。这样可以避免顺序错误造成的伪影。不过，这种方式的质量较低，因为它只提供两个透明度等级，即完全不透明和完全透明。另一种解决办法是为每个模型执行两个遍次：一个遍次处理实心的镂空贴片，并写入 z 缓冲；另一个遍次处理半透明采样，而不写入 z 缓冲。
 
-alpha 测试还存在另外两个问题，即过度放大 [1374] 和过度缩小 [234, 557]。当 alpha 测试与 mipmapping 一起使用时，如果不作特殊处理，效果可能并不可信。图 6.29 上部给出了一个例子：树叶变得比预期更加透明。可以用一个例子解释这种现象。假设有一个包含四个 alpha 值的一维纹理，其值为 (0.0, 1.0, 1.0, 0.0)。取平均值后，下一级 mipmap 变为 (0.5, 0.5)，再往上的顶级则为 (0.5)。现在假设采用 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_06_3d0e68d062cb76.png) = 0.75。可以证明，访问 mipmap 第 0 级时，4 个纹素中有相当于 1.5 个纹素的范围能够通过丢弃测试。但是，访问后面两级时，由于 0.5 < 0.75，所有内容都会被丢弃。另一个例子见图 6.30。
+alpha 测试还存在另外两个问题，即过度放大 [1374] 和过度缩小 [234, 557]。当 alpha 测试与 mipmapping 一起使用时，如果不作特殊处理，效果可能并不可信。图 6.29 上部给出了一个例子：树叶变得比预期更加透明。可以用一个例子解释这种现象。假设有一个包含四个 alpha 值的一维纹理，其值为 (0.0, 1.0, 1.0, 0.0)。取平均值后，下一级 mipmap 变为 (0.5, 0.5)，再往上的顶级则为 (0.5)。现在假设采用 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_06_3d0e68d062cb76.png) = 0.75。可以证明，访问 mipmap 第 0 级时，4 个纹素中有相当于 1.5 个纹素的范围能够通过丢弃测试。但是，访问后面两级时，由于 0.5 < 0.75，所有内容都会被丢弃。另一个例子见图 6.30。
 
-Castaño [234] 提出了一种在创建 mipmap 时执行的简单方法，效果很好。对于 mipmap 第 k 级，覆盖率 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_06_6ec524b62aa257.png) 定义为：
-
-
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_06_84784fde2d33e4.png)
+Castaño [234] 提出了一种在创建 mipmap 时执行的简单方法，效果很好。对于 mipmap 第 k 级，覆盖率 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_06_6ec524b62aa257.png) 定义为：
 
 
-其中，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_06_cf7672793e6013.png) 是 mipmap 第 k 级的纹素数量，α(k, i) 是 mipmap 第 k 级像素 i 处的 alpha 值，而 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_06_3d0e68d062cb76.png) 是式（6.9）中用户提供的 alpha 阈值。这里假定：α(k, i) > ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_06_3d0e68d062cb76.png) 为真时结果为 1，否则为 0。注意，k = 0 表示最低的 mipmap 层级，即原始图像。然后，对于每个 mipmap 层级，我们寻找一个新的 mipmap 阈值 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_06_fb9d2586faa97a.png) 来替代 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_06_3d0e68d062cb76.png)，使 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_06_6ec524b62aa257.png) 等于 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_06_9cfadbc59ca2cc.png)，或者尽可能接近它。这可以通过二分搜索实现。最后，把 mipmap 第 k 级中所有纹素的 alpha 值乘以 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_06_beeaa158705fb8.png)。图 6.29 下部使用了这种方法，NVIDIA 的纹理工具也支持它。Golus [557] 给出了一种变体：不修改 mipmap，而是在着色器中随着 mipmap 层级的提高而放大 alpha 值。
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_06_84784fde2d33e4.png)
 
 
-![图 6.29 覆盖率修正前后对比](Real-Time_Rendering_4th_中文/assets/fig_6_6_6.29.png)
+其中，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_06_cf7672793e6013.png) 是 mipmap 第 k 级的纹素数量，α(k, i) 是 mipmap 第 k 级像素 i 处的 alpha 值，而 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_06_3d0e68d062cb76.png) 是式（6.9）中用户提供的 alpha 阈值。这里假定：α(k, i) > ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_06_3d0e68d062cb76.png) 为真时结果为 1，否则为 0。注意，k = 0 表示最低的 mipmap 层级，即原始图像。然后，对于每个 mipmap 层级，我们寻找一个新的 mipmap 阈值 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_06_fb9d2586faa97a.png) 来替代 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_06_3d0e68d062cb76.png)，使 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_06_6ec524b62aa257.png) 等于 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_06_9cfadbc59ca2cc.png)，或者尽可能接近它。这可以通过二分搜索实现。最后，把 mipmap 第 k 级中所有纹素的 alpha 值乘以 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_06_beeaa158705fb8.png)。图 6.29 下部使用了这种方法，NVIDIA 的纹理工具也支持它。Golus [557] 给出了一种变体：不修改 mipmap，而是在着色器中随着 mipmap 层级的提高而放大 alpha 值。
+
+
+![图 6.29 覆盖率修正前后对比](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_6_6.29.png)
 
 图 6.29　上：结合 mipmapping 使用 alpha 测试，未进行任何修正。下：根据覆盖率重新缩放 alpha 值后进行 alpha 测试。（图片来自《The Witness》，由 Ignacio Castaño 提供。）
 
 
-![图 6.30 各级 mipmap 的 alpha 测试](Real-Time_Rendering_4th_中文/assets/fig_6_6_6.30.png)
+![图 6.30 各级 mipmap 的 alpha 测试](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_6_6.30.png)
 
 图 6.30　上排为叶片图案采用混合时的不同 mipmap 层级，较高层级已放大以便观察。下排显示这些 mipmap 在采用阈值为 0.5 的 alpha 测试时的处理结果，可以看到物体后退时所占像素越来越少。（图片由 Ben Golus [557] 提供。）
 
@@ -599,12 +599,12 @@ float hash2D(x,y) { return fract(1.0e4*sin(17.0*x+0.1*y) *
 float hash3D(x,y,z) { return hash2D(hash2D(x,y),z); }
 ```
 
-它返回 [0, 1) 中的数。哈希函数的输入为物体空间坐标除以这些物体空间坐标在屏幕空间 x 和 y 方向上的最大导数，再进行钳制。要在沿 z 方向运动时获得稳定性，还需要进一步的处理；这种方法最好与时间抗锯齿技术结合使用。该技术随距离增加而逐渐引入，因此近距离时完全不会产生随机效果。这种方法的优点是，每个片元从平均意义上说都是正确的；而 Castaño 的方法 [234] 为每个 mipmap 层级只生成一个 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_06_fb9d2586faa97a.png)。然而，所需的这个值很可能在同一 mipmap 层级的不同位置有所变化，从而降低质量，并需要美术人员介入。
+它返回 [0, 1) 中的数。哈希函数的输入为物体空间坐标除以这些物体空间坐标在屏幕空间 x 和 y 方向上的最大导数，再进行钳制。要在沿 z 方向运动时获得稳定性，还需要进一步的处理；这种方法最好与时间抗锯齿技术结合使用。该技术随距离增加而逐渐引入，因此近距离时完全不会产生随机效果。这种方法的优点是，每个片元从平均意义上说都是正确的；而 Castaño 的方法 [234] 为每个 mipmap 层级只生成一个 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_06_fb9d2586faa97a.png)。然而，所需的这个值很可能在同一 mipmap 层级的不同位置有所变化，从而降低质量，并需要美术人员介入。
 
 alpha 测试在放大时会出现波纹伪影，可以通过预先把 alpha 贴图计算为距离场来避免 [580]，另见第 677 页的讨论。
 
 
-![图 6.31 叶片边缘的不同处理方式](Real-Time_Rendering_4th_中文/assets/fig_6_6_6.31.png)
+![图 6.31 叶片边缘的不同处理方式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_6_6.31.png)
 
 图 6.31　叶片纹理边缘具有部分 alpha 覆盖率时的不同渲染技术。从左至右：alpha 测试、alpha 混合、alpha 转覆盖率，以及边缘经过锐化的 alpha 转覆盖率。（图片由 Ben Golus [557] 提供。）
 
@@ -638,14 +638,14 @@ Blinn 于 1978 年提出了在纹理中编码中观尺度细节的想法 [160]�
 切线向量和副切线向量表示法线贴图自身的坐标轴在物体空间中的方向，因为我们的目标是把光源变换到相对于贴图的坐标系中。见图 6.32。
 
 
-![图6.32 球面三角形与圆环上的切线标架](Real-Time_Rendering_4th_中文/assets/fig_6_7_6.32.png)
+![图6.32 球面三角形与圆环上的切线标架](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_7_6.32.png)
 
 **图 6.32** 展示了一个球面三角形，并在它的每个角点画出了切线标架。球体和圆环这类形状具有天然的切线空间基，圆环上的经纬线展示了这一点。
 
 法线 **n**、切线 **t** 和副切线 **b** 这三个向量组成一个基矩阵：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_d704e6c57b5c4b.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_d704e6c57b5c4b.png)
 
 
 这个矩阵有时简称为 TBN，它把光源方向（针对给定顶点）从世界空间变换到切线空间。这些向量不一定真正彼此垂直，因为法线贴图自身可能已经发生形变，以便适配表面。不过，非正交基会给纹理引入斜切，这可能意味着需要更多存储空间，也可能影响性能；也就是说，这时无法仅通过简单的转置求出该矩阵的逆 [494]。一种节省内存的方法是在顶点只存储切线和副切线，然后取二者的叉积来计算法线。但是，只有当矩阵的手性始终相同时，这种技术才有效 [1226]。模型往往是对称的：飞机、人、文件柜，以及许多其他物体都是如此。由于纹理消耗大量内存，它们往往会以镜像方式映射到对称模型上。因此，只存储物体一侧的纹理，但纹理映射会把它放到模型的两侧。在这种情况下，两侧切线空间的手性不同，不能预先假定它们一致。此时，如果在每个顶点额外存储一位信息来指示手性，仍然可以避免存储法线。如果该位被置位，就将切线和副切线的叉积取反，以得到正确的法线。如果切线标架是正交的，还可以把这个基存储为四元数（第 4.3 节），这不仅更节省空间，还能减少一些逐像素计算 [494, 1114, 1154, 1381, 1639]。质量可能会有轻微损失，但实际中很少看得出来。
@@ -654,17 +654,17 @@ Blinn 于 1978 年提出了在纹理中编码中观尺度细节的想法 [160]�
 
 ### 6.7.1 Blinn 的方法
 
-Blinn 最初的凹凸映射方法在纹理的每个纹素中存储两个有符号数值 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_d67e869922b0ea.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_703c3ca00a76e8.png)。这两个值对应于沿图像 u 轴和 v 轴改变法线的幅度。也就是说，用这些通常经过双线性插值的纹理值，分别缩放两个垂直于法线的向量。将这两个向量加到法线上，即可改变法线的方向。![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_d67e869922b0ea.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_703c3ca00a76e8.png) 这两个值描述了表面在该点处朝向哪一边。见图 6.33。这类凹凸贴图纹理称为**偏移向量凹凸贴图**，或**偏移贴图**。
+Blinn 最初的凹凸映射方法在纹理的每个纹素中存储两个有符号数值 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_d67e869922b0ea.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_703c3ca00a76e8.png)。这两个值对应于沿图像 u 轴和 v 轴改变法线的幅度。也就是说，用这些通常经过双线性插值的纹理值，分别缩放两个垂直于法线的向量。将这两个向量加到法线上，即可改变法线的方向。![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_d67e869922b0ea.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_703c3ca00a76e8.png) 这两个值描述了表面在该点处朝向哪一边。见图 6.33。这类凹凸贴图纹理称为**偏移向量凹凸贴图**，或**偏移贴图**。
 
 
-![图6.33 偏移向量与高度场对法线的影响](Real-Time_Rendering_4th_中文/assets/fig_6_7_6.33.png)
+![图6.33 偏移向量与高度场对法线的影响](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_7_6.33.png)
 
-**图 6.33** 左：利用从凹凸纹理中取得的（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_d67e869922b0ea.png), ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_703c3ca00a76e8.png)）值，沿 **u** 和 **v** 方向修改法线向量 **n**，得到 **n′**（尚未归一化）。右：展示了一个高度场及其对着色法线的影响。也可以在各高度之间对这些法线进行插值，以得到更平滑的外观。
+**图 6.33** 左：利用从凹凸纹理中取得的（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_d67e869922b0ea.png), ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_703c3ca00a76e8.png)）值，沿 **u** 和 **v** 方向修改法线向量 **n**，得到 **n′**（尚未归一化）。右：展示了一个高度场及其对着色法线的影响。也可以在各高度之间对这些法线进行插值，以得到更平滑的外观。
 
 另一种表示凹凸的方式，是使用**高度场**来修改表面法线的方向。每个单色纹理值表示一个高度，因此纹理中的白色表示高处，黑色表示低处（或者反过来）。图 6.34 给出了一个例子。这是初次创建或扫描凹凸贴图时常用的格式，同样由 Blinn 于 1978 年提出。高度场用于推导类似第一种方法中的 u 和 v 有符号数值。具体做法是：对相邻列取差，得到 u 方向的斜率；对相邻行取差，得到 v 方向的斜率 [1567]。一种变体是使用 Sobel 滤波器，它给直接相邻的邻居赋予更大的权重 [535]。
 
 
-![图6.34 波状高度场及球体效果](Real-Time_Rendering_4th_中文/assets/fig_6_7_6.34.png)
+![图6.34 波状高度场及球体效果](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_7_6.34.png)
 
 **图 6.34** 一幅波状高度场凹凸图像，以及它在球体上的应用。
 
@@ -677,7 +677,7 @@ Blinn 最初的凹凸映射方法在纹理的每个纹素中存储两个有符�
 法线贴图表示最初以世界空间法线贴图的形式提出 [274, 891]，但实际中很少使用。对于这种映射，扰动的处理很直接：在每个像素处从贴图中获取法线，并将它与光源方向一起直接用于计算表面该位置的着色。法线贴图也可以定义在物体空间中，这样即使模型旋转，法线仍然有效。但是，世界空间和物体空间这两种表示都把纹理绑定到了特定朝向的特定几何体上，限制了纹理的重复利用。
 
 
-![图6.35 法线贴图及木箱渲染效果](Real-Time_Rendering_4th_中文/assets/fig_6_7_6.35.png)
+![图6.35 法线贴图及木箱渲染效果](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_7_6.35.png)
 
 **图 6.35** 使用法线贴图进行凹凸映射。每个颜色通道实际上都是一个表面法线坐标。红色通道表示 x 偏移；红色越多，法线就越朝右。绿色表示 y 偏移，蓝色表示 z。右侧是使用这张法线贴图生成的图像。注意立方体顶部看起来较为扁平。（图片由 Manuel M. Oliveira 和 Fabio Policarpo 提供。）
 
@@ -686,7 +686,7 @@ Blinn 最初的凹凸映射方法在纹理的每个纹素中存储两个有符�
 法线映射能够有效地增强真实感，见图 6.36。
 
 
-![图6.36 类游戏场景中的法线贴图对比](Real-Time_Rendering_4th_中文/assets/fig_6_7_6.36.png)
+![图6.36 类游戏场景中的法线贴图对比](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_7_6.36.png)
 
 **图 6.36** 在类似游戏的场景中使用法线贴图进行凹凸映射的示例。左上：未应用右侧的两张法线贴图。左下：应用了法线贴图。右：法线贴图。（三维模型和法线贴图由 Dulce Isis Segarra López 提供。）
 
@@ -695,7 +695,7 @@ Blinn 最初的凹凸映射方法在纹理的每个纹素中存储两个有符�
 朗伯表面是一个特例，法线贴图对其着色的影响近乎线性。朗伯着色几乎完全是一次点积，而点积是一种线性运算。对一组法线取平均，再用结果做点积，等价于先分别与各条法线做点积，再对结果取平均：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_45ca31d3f66708.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_45ca31d3f66708.png)
 
 
 注意，平均向量在使用前不进行归一化。式（6.14）说明，对于朗伯表面，标准滤波和 mipmap **几乎**能够产生正确结果。结果并不完全正确，是因为朗伯着色方程并非单纯的点积，而是经过截断的点积，即 max(**l** · **n**, 0)。截断操作使它变成非线性运算。对于掠射光照方向，这会使表面过度变暗，不过在实践中通常不会造成明显问题 [891]。需要注意的是，一些通常用于法线贴图的纹理压缩方法（例如利用另外两个分量重建 z 分量）不支持非单位长度的法线，因此使用未归一化的法线贴图可能给压缩带来困难。
@@ -705,16 +705,16 @@ Blinn 最初的凹凸映射方法在纹理的每个纹素中存储两个有符�
 最后，从高度贴图 h(x, y) 推导法线贴图可能很有用。其做法如下 [405]。首先，使用中心差分计算 x 和 y 方向导数的近似值：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_678dea041dd24c.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_678dea041dd24c.png)
 
 
 然后，纹素（x, y）处未归一化的法线为
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_64ed884bfa4191.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_64ed884bfa4191.png)
 
 
-> 译注：已对照原书书页 214。式（6.16）原文的前两个分量均印为 −![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_bbc58392ab7d2f.png)(x, y)，上式忠实保留原样。依据紧接在前的式（6.15）及高度场法线的构造，第二个分量疑应为 −![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_2ce3fc7462454a.png)(x, y)，即（−![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_bbc58392ab7d2f.png)(x, y), −![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_07_2ce3fc7462454a.png)(x, y), 1）；此处明确说明疑点，不暗改原式。
+> 译注：已对照原书书页 214。式（6.16）原文的前两个分量均印为 −![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_bbc58392ab7d2f.png)(x, y)，上式忠实保留原样。依据紧接在前的式（6.15）及高度场法线的构造，第二个分量疑应为 −![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_2ce3fc7462454a.png)(x, y)，即（−![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_bbc58392ab7d2f.png)(x, y), −![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_07_2ce3fc7462454a.png)(x, y), 1）；此处明确说明疑点，不暗改原式。
 
 必须小心处理纹理边界。
 
@@ -728,32 +728,32 @@ Blinn 最初的凹凸映射方法在纹理的每个纹素中存储两个有符�
 凹凸映射和法线映射存在一个问题：凹凸的位置从不随观察角度改变，也从不相互遮挡。例如，沿着一面真实的砖墙看去，在某些角度下，你将看不到砖块之间的砂浆。墙面的凹凸贴图永远无法表现这类遮挡，因为它仅仅改变法线。如果能让凹凸实际影响每个像素所渲染的表面位置，效果就会更好。
 
 
-![图6.37 视差映射的目标与一阶近似](Real-Time_Rendering_4th_中文/assets/fig_6_8_6.37.png)
+![图6.37 视差映射的目标与一阶近似](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_8_6.37.png)
 
-图 6.37．左图表示我们希望达到的目标：由观察向量穿入高度场的位置，找到实际的表面位置。视差映射采用一阶近似，取矩形上该位置的高度，并用它求出一个新位置 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_08_97c9c10255aae4.png)。（据 Welsh [1866] 改绘。）
+图 6.37．左图表示我们希望达到的目标：由观察向量穿入高度场的位置，找到实际的表面位置。视差映射采用一阶近似，取矩形上该位置的高度，并用它求出一个新位置 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_08_97c9c10255aae4.png)。（据 Welsh [1866] 改绘。）
 
 视差映射（parallax mapping）的思想由 Kaneko [851] 于 2001 年提出，并由 Welsh [1866] 加以改进和推广。视差是指随着观察者移动，物体之间的相对位置也发生变化这一现象。当观察者移动时，凹凸应当呈现出高度感。视差映射的关键思想是：检查当前判定为可见位置的高度，据此对像素中应该看到什么作出有根据的估计。
 
-对于视差映射，凹凸存储在高度场纹理中。观察给定像素处的表面时，先读取该位置的高度场值，再用它偏移纹理坐标，以读取表面的另一部分。偏移量取决于所读取的高度以及视线与表面之间的夹角，见图 6.37。高度场值可以存储在单独的纹理中，也可以打包到另一幅纹理中未使用的颜色通道或 alpha 通道内（将彼此无关的纹理打包在一起时必须谨慎，因为这可能损害压缩质量）。在用于偏移坐标之前，需要对高度场值进行缩放并加上偏置。缩放量决定高度场应当延伸到表面上方或下方多高的位置，而偏置给出不发生偏移时的“海平面”高度。给定纹理坐标位置 p、调整后的高度场高度 h，以及归一化的观察向量 v，其高度分量为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_08_b3518a89023317.png)、水平分量为 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_08_6f957ff72ae2f3.png)，经过视差调整的新纹理坐标 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_08_97c9c10255aae4.png) 为
+对于视差映射，凹凸存储在高度场纹理中。观察给定像素处的表面时，先读取该位置的高度场值，再用它偏移纹理坐标，以读取表面的另一部分。偏移量取决于所读取的高度以及视线与表面之间的夹角，见图 6.37。高度场值可以存储在单独的纹理中，也可以打包到另一幅纹理中未使用的颜色通道或 alpha 通道内（将彼此无关的纹理打包在一起时必须谨慎，因为这可能损害压缩质量）。在用于偏移坐标之前，需要对高度场值进行缩放并加上偏置。缩放量决定高度场应当延伸到表面上方或下方多高的位置，而偏置给出不发生偏移时的“海平面”高度。给定纹理坐标位置 p、调整后的高度场高度 h，以及归一化的观察向量 v，其高度分量为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_08_b3518a89023317.png)、水平分量为 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_08_6f957ff72ae2f3.png)，经过视差调整的新纹理坐标 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_08_97c9c10255aae4.png) 为
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_08_8b4f539d16942d.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_08_8b4f539d16942d.png)
 
 注意，与大多数着色方程不同，这里采用什么空间进行计算非常重要：观察向量必须位于切线空间中。
 
 尽管这只是一个简单近似，但如果凹凸高度变化相对缓慢，这种偏移在实践中效果相当好 [1171]。这时，附近相邻纹素具有大致相同的高度，因此把原位置的高度作为新位置高度的估计是合理的。然而，在贴近表面的低角度观察时，该方法就会失效。当观察向量接近表面的地平线方向时，微小的高度变化就会导致纹理坐标的大幅偏移。由于读取到的新位置与原表面位置之间几乎没有高度相关性，甚至完全无关，这个近似便不再成立。
 
 
-![图6.38 视差偏移限制及墙面效果](Real-Time_Rendering_4th_中文/assets/fig_6_8_6.38.png)
+![图6.38 视差偏移限制及墙面效果](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_8_6.38.png)
 
 图 6.38．在视差偏移限制中，偏移后的位置与原位置的距离至多等于高度值，图中的虚线圆弧表示这一限制。灰色偏移表示原方法的结果，黑色偏移表示施加限制后的结果。右图是一面采用该技术渲染的墙。（图片由 Terry Welsh 提供。）
 
 为缓解这一问题，Welsh [1866] 引入了偏移限制（offset limiting）的思想，即将偏移量限制为永远不大于所读取的高度。方程于是变为
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_06_08_6a185ba76516d8.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_08_6a185ba76516d8.png)
 
 注意，这个方程的计算速度比原方程更快。从几何上解释，高度定义了一个半径，位置不能偏移到这个半径之外，如图 6.38 所示。
 
-当观察角度较陡、接近正视表面时，由于 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_06_08_b3518a89023317.png) 几乎等于 1，这个方程与原方程几乎相同。在贴近表面的低角度下，偏移的作用则受到限制。从视觉上看，这会使低角度下的凹凸感减弱，但仍远好于对纹理进行随机采样。随着视点改变，纹理仍可能出现游动问题；立体渲染也仍存在问题，因为观察者会同时感知到两个视点，而它们必须提供一致的深度线索 [1171]。即使存在这些缺点，带偏移限制的视差映射也只需增加少量像素着色器程序指令，就能相对于基本法线映射显著改善图像质量。Shishkovtsov [1631] 通过沿凹凸贴图法线方向移动估计位置，改善了视差遮蔽的阴影效果。
+当观察角度较陡、接近正视表面时，由于 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_06_08_b3518a89023317.png) 几乎等于 1，这个方程与原方程几乎相同。在贴近表面的低角度下，偏移的作用则受到限制。从视觉上看，这会使低角度下的凹凸感减弱，但仍远好于对纹理进行随机采样。随着视点改变，纹理仍可能出现游动问题；立体渲染也仍存在问题，因为观察者会同时感知到两个视点，而它们必须提供一致的深度线索 [1171]。即使存在这些缺点，带偏移限制的视差映射也只需增加少量像素着色器程序指令，就能相对于基本法线映射显著改善图像质量。Shishkovtsov [1631] 通过沿凹凸贴图法线方向移动估计位置，改善了视差遮蔽的阴影效果。
 
 ### 6.8.1 视差遮蔽映射
 
@@ -762,14 +762,14 @@ Blinn 最初的凹凸映射方法在纹理的每个纹素中存储两个有符�
 为了更好地解决这个问题，多位研究者提出沿观察向量进行光线步进（ray marching），直到找到一个近似交点。这项工作可以在像素着色器中完成，其中高度数据能够以纹理的形式访问。我们将这些方法的研究统归为视差映射技术的一个子类，它们以各种方式利用光线步进 [192, 1171, 1361, 1424, 1742, 1743]。
 
 
-![图6.39 沿观察光线采样高度场并寻找交点](Real-Time_Rendering_4th_中文/assets/fig_6_8_6.39.png)
+![图6.39 沿观察光线采样高度场并寻找交点](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_8_6.39.png)
 
 图 6.39．将绿色的视线光线投影到表面平面上，在平面上以固定间隔采样（紫色点），并读取高度。算法寻找视线光线与黑色线段之间的第一个交点，这些黑色线段近似表示弯曲的高度场。
 
 这类算法称为视差遮蔽映射（parallax occlusion mapping，POM）或浮雕映射（relief mapping）等。其关键思想是先沿投影后的向量，测试固定数量的高度场纹理样本。对于掠射角的观察光线，通常会生成更多样本，以免错过最近的交点 [1742, 1743]。沿光线取得各个三维位置，将它们变换到纹理空间，并判断其位于高度场上方还是下方。一旦找到位于高度场下方的样本，就利用该样本低于高度场的距离，以及前一个样本高于高度场的距离，求得交点位置，见图 6.39。然后使用关联的法线贴图、颜色贴图以及其他纹理，对这个位置的表面进行着色。使用多层高度场，可以产生悬挑结构、相互独立且重叠的表面，以及使用浮雕映射的双面替身，见 13.7 节。高度场追踪方法还可以让凹凸表面对自身投射阴影，既包括硬阴影 [1171, 1424]，也包括软阴影 [1742, 1743]。图 6.40 给出了对比。
 
 
-![图6.40 使用和不使用光线步进的视差映射对比](Real-Time_Rendering_4th_中文/assets/fig_6_8_6.40.png)
+![图6.40 使用和不使用光线步进的视差映射对比](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_8_6.40.png)
 
 图 6.40．不使用光线步进的视差映射（左）与使用光线步进的视差映射（右）的比较。不使用光线步进时，立方体顶面的凹凸会变得扁平。使用光线步进还能产生自阴影效果。（图片由 Manuel M. Oliveira 和 Fabio Policarpo 提供。）
 
@@ -782,14 +782,14 @@ Blinn 最初的凹凸映射方法在纹理的每个纹素中存储两个有符�
 另一种同时提高性能和采样精度的途径，是最初不以固定间隔采样高度场，而是尝试跳过中间的空白空间。Donnelly [367] 将高度场预处理成一组体素，每个体素存储其到高度场表面的距离。这样就能快速跳过中间空间，代价是每个高度场需要更多存储空间。Wang 等人 [1844] 使用五维位移映射方案，存储从所有方向和位置到表面的距离。这能够支持复杂曲面、自阴影以及其他效果，但代价是显著增加内存用量。Mehra 和 Kumar [1195] 使用方向距离贴图实现类似目的。Dummer [393] 提出了锥步进映射（cone step mapping）的思想，Policarpo 和 Oliveira [1426] 又对其进行了改进。这里的概念是，为高度场的每个位置额外存储一个圆锥半径。这个半径定义了光线上的一个区间，在该区间内光线至多与高度场相交一次。利用这一性质，可以沿光线快速跳跃，而不会遗漏任何可能的交点，代价则是需要进行依赖纹理读取。另一个缺点是创建锥步进贴图需要预计算，因此这种方法无法用于动态变化的高度场。Schroders 和 Gulik [1581] 提出了四叉树浮雕映射，这是一种在遍历期间跳过体积区域的层次方法。Tevs 等人 [1760] 使用“最大值 mipmap”，既允许跳跃，又尽量降低预计算成本。Drobot [377] 同样利用存储在 mipmap 中的类似四叉树的结构来加速遍历，并给出了一种在不同高度场之间混合的方法，使一种地形类型能够过渡到另一种。
 
 
-![图6.41 法线映射和浮雕映射的遮蔽与轮廓对比](Real-Time_Rendering_4th_中文/assets/fig_6_8_6.41.png)
+![图6.41 法线映射和浮雕映射的遮蔽与轮廓对比](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_8_6.41.png)
 
 图 6.41．法线映射与浮雕映射。法线映射不会发生自遮蔽。对于重复纹理，浮雕映射在轮廓处存在问题，因为矩形更像是观察高度场的一个窗口，而不是真正的边界定义。（图片由 NVIDIA Corporation 提供。）
 
 上述所有方法都有一个问题：在物体的轮廓边缘处，这种视觉错觉会失效，因为那里仍然显示原始表面的平滑外轮廓，见图 6.41。关键思想在于：渲染出的三角形决定哪些像素应当由像素着色器程序求值，而不是决定表面实际位于何处。此外，对于曲面，轮廓问题会更复杂。Oliveira 和 Policarpo [1325, 1850] 描述并发展了一种方法，使用二次轮廓近似技术。Jeschke 等人 [824] 和 Dachsbacher 等人 [323] 都给出了更通用、更稳健的方法，以正确处理轮廓和曲面，并回顾了先前的研究。其总体思想最早由 Hirche [750] 探索，即将网格中的每个三角形向外挤出，形成一个棱柱。渲染这个棱柱，就会强制对所有可能出现高度场的像素求值。这类方法称为壳映射（shell mapping），因为扩张后的网格会在原模型外形成一个独立的壳层。在棱柱与光线求交时保留棱柱的非线性特性，便有可能对高度场进行无伪影渲染，不过计算代价较高。图 6.42 展示了这类技术的一个令人印象深刻的应用。
 
 
-![图6.42 孤岛危机道路上的视差遮蔽映射](Real-Time_Rendering_4th_中文/assets/fig_6_8_6.42.png)
+![图6.42 孤岛危机道路上的视差遮蔽映射](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_8_6.42.png)
 
 图 6.42．在道路上使用视差遮蔽映射，又称浮雕映射，使石块看起来更加真实。地面实际上只是一组应用了高度场的简单三角形。（图片来自《孤岛危机》（Crysis），由 Crytek 提供。）
 
@@ -801,7 +801,7 @@ Blinn 最初的凹凸映射方法在纹理的每个纹素中存储两个有符�
 纹理也可以用来丰富光源的视觉表现，并实现复杂的强度分布或聚光灯函数。对于照明完全局限在一个圆锥或截锥体内的光源，可以使用投影纹理来调制光强 [1192, 1597, 1904]。这样便能实现具有特定形状的聚光灯、带图案的灯光，甚至“幻灯机”效果（图6.43）。这类光源通常称为 gobo 或 cookie 光源，这些名称来自专业舞台和电影照明中所用镂空遮光片的术语。第7.2节讨论了以类似方式使用投影映射来投射阴影。
 
 
-![图6.43 投影纹理光源](Real-Time_Rendering_4th_中文/assets/fig_6_9_6.43.png)
+![图6.43 投影纹理光源](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_6_9_6.43.png)
 
 **图6.43** 投影纹理光源。纹理投影到茶壶和地面平面上，用于调制投影截锥体内的光源贡献（截锥体外的贡献设为0）。（图片由 NVIDIA Corporation 提供。）
 

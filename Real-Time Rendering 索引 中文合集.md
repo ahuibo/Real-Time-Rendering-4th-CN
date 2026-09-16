@@ -107,7 +107,7 @@
   - 抖动（jittering） — 144, 909
   - 形态学（morphological） — 146–148
   - 多重采样（multisampling） — *139–142*, 144–148, 155
-  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_75820ecdef3de4.png)车采样（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_75820ecdef3de4.png)-rooks） — 143
+  - ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_75820ecdef3de4.png)车采样（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_75820ecdef3de4.png)-rooks） — 143
   - 梅花五点采样（Quincunx） — 145–146
   - 旋转网格（rotated grid） — 143, 145, 146
   - 基于屏幕（screen based） — 137–148, 204–207
@@ -315,8 +315,8 @@
 - 总线带宽（bus bandwidth） — 1006
 - BV — 见“包围体”（see bounding volume）
 - BVH — 见“空间数据结构 → 包围体层次结构”（see spatial data structure, bounding volume hierarchy）
-- ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_d3847367703df1.png)连续性（continuity） — 见“连续性”（see continuity）
-- ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_7d4203676e2f8d.png)连续性（continuity） — 见“连续性”（see continuity）
+- ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_d3847367703df1.png)连续性（continuity） — 见“连续性”（see continuity）
+- ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_7d4203676e2f8d.png)连续性（continuity） — 见“连续性”（see continuity）
 - 缓存（cache）
   - 层次结构（hierarchy） — 1038
   - 内存（memory） — 792
@@ -382,7 +382,7 @@
 - 簇式延迟着色（clustered deferred shading） — 904
 - 簇式前向着色（clustered forward shading） — 904, 907, 908, 914
 - 簇式着色（clustered shading） — 898–905
-- ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_86bf7fa8249987.png)连续性（continuity） — 728
+- ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_86bf7fa8249987.png)连续性（continuity） — 728
 - 代码优化（code optimization） — 见“优化 → 代码”（see optimization, code）
 - CodeAnalyst — 792
 - 相干性（coherence）
@@ -409,7 +409,7 @@
   - ACEScg — 278
   - Adobe 1998 — 277
   - DCI-P3 — 277
-  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_b1f1a7494460f8.png) — 276, 287
+  - ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_b1f1a7494460f8.png) — 276, 287
   - Rec. 2020 — 277, 281
   - Rec. 709 — 277, 281
   - sRGB — 277, 281
@@ -437,11 +437,11 @@
 - 相长干涉（constructive interference） — 见“光 → 干涉 → 相长”（see light, interference, constructive）
 - 构造实体几何（constructive solid geometry） — 750
 - 连续性（continuity） — 另见“曲线与曲面”（see also curves and surfaces）
-  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_d3847367703df1.png) — *728*, 741, 745
-  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_7d4203676e2f8d.png) — *728*, 742
-  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_86bf7fa8249987.png) — 728
-  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_b0f949a5b178a2.png) — 728, 742
-  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_f44c92620541e7.png) — 728
+  - ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_d3847367703df1.png) — *728*, 741, 745
+  - ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_7d4203676e2f8d.png) — *728*, 742
+  - ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_86bf7fa8249987.png) — 728
+  - ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_b0f949a5b178a2.png) — 728, 742
+  - ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_f44c92620541e7.png) — 728
 - 连续信号（continuous signal） — 131
 - 轮廓（contour） — 686
   - 边缘检测（edge detection） — 665–669
@@ -521,9 +521,9 @@
   - 门户（portal） — 837–839
   - 射线空间（ray-space） — 843
   - 视锥（view frustum） — 807, *835–837*, 981
-  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_00efa9f788eb2b.png) — 846
-  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_6f44afca509d7a.png) — 1015
-  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I01_3f16ddb16cefaa.png) — 1015
+  - ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_00efa9f788eb2b.png) — 846
+  - ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_6f44afca509d7a.png) — 1015
+  - ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I01_3f16ddb16cefaa.png) — 1015
 - 曲线段（curve segment） — 729–730
 - 弯曲表面（curved surfaces） — 见“曲面”（see surfaces）
 - 曲线（curves）
@@ -810,7 +810,7 @@
 - FX Composer — 44
 - FXAA — 见抗锯齿→快速近似（see antialiasing, fast approximate）
 - G-sync — 1011
-- 一阶几何连续性（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I02_b0f949a5b178a2.png)-continuity） — 见连续性（see continuity）
+- 一阶几何连续性（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I02_b0f949a5b178a2.png)-continuity） — 见连续性（see continuity）
 - 伽马校正（gamma correction） — *160–165*, 184
 - 色域（gamut） — 276, 323
   - sRGB — 323
@@ -842,7 +842,7 @@
 - GLSL — 35, 39
 - gluLookAt — 67
 - gluPerspective — 99
-- n 阶几何连续性（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I02_f44c92620541e7.png)-continuity） — 728
+- n 阶几何连续性（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I02_f44c92620541e7.png)-continuity） — 728
 - 遮光图案片（gobo） — 173, 221, 230, 434
 - 金线（golden thread） — 547
 - Gooch 着色（Gooch shading） — *103*, 663
@@ -1065,7 +1065,7 @@
 - 等面积立方体映射（isocube） — 412
 - 等值面（isosurface） — 584, 682, 753
 - 各向同性缩放（isotropic scaling） — 62
-- 色彩空间（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I02_c58550a5c920ad.png)） — 276
+- 色彩空间（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I02_c58550a5c920ad.png)） — 276
 - 锯齿（jaggies） — 见走样项下（see under aliasing）
 - 抖动采样（jittering） — 见抗锯齿项下（see under antialiasing）
 - 接合点（joint） — 720, *726*, 728, 731
@@ -1344,8 +1344,8 @@
 - 多重采样（multisampling） — 见“抗锯齿”项下（see under antialiasing）
 - 多重纹理（multitexturing） — 见“纹理映射”（see texturing）
 - 以小容多（multum in parvo） — 183
-- ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I03_75820ecdef3de4.png)面片（N-patch） — 见“曲面 → PN三角形”（see surfaces, PN triangle）
-- ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I03_75820ecdef3de4.png)车采样（N-rooks sampling） — 143
+- ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I03_75820ecdef3de4.png)面片（N-patch） — 见“曲面 → PN三角形”（see surfaces, PN triangle）
+- ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I03_75820ecdef3de4.png)车采样（N-rooks sampling） — 143
 - 钉板（nailboard） — 见“替身 → 深度精灵”（see impostor, depth sprite）
 - 纳米几何（nanogeometry） — 359
 - NDF — 332, *337–346*, 367, 498
@@ -1754,7 +1754,7 @@
 - 垂直回扫（retrace, vertical） — 25, 1012
 - 逆反射（retroreflection） — 330
 - 反向映射（reverse mapping） — 532
-- 反向深度![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I03_00efa9f788eb2b.png)（reversed z） — 100
+- 反向深度![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I03_00efa9f788eb2b.png)（reversed z） — 100
 - Reyes — 908–912
 - RGB — 176
     - 颜色立方体（color cube） — 275
@@ -1971,7 +1971,7 @@
   - 缓存无关（cache-oblivious） — 827–828
   - 层次式（hierarchical） — 818
   - 非规则（irregular） — 819
-  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_d1e7b95f571d4f.png)-d树（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_d1e7b95f571d4f.png)-d tree） — 822–823
+  - ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_d1e7b95f571d4f.png)-d树（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_d1e7b95f571d4f.png)-d tree） — 822–823
   - 松散八叉树（loose octree） — 826–827
   - 八叉树（octree） — 819, *824–827*, 846
   - 四叉树（quadtree） — 825, 874
@@ -2331,7 +2331,7 @@
 - 树（tree）
   - 平衡（balanced） — 820
   - 二叉（binary） — 820
-  - ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_d1e7b95f571d4f.png)叉树（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_d1e7b95f571d4f.png)-ary tree） — 820
+  - ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_d1e7b95f571d4f.png)叉树（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_d1e7b95f571d4f.png)-ary tree） — 820
 - 树木（森林）（trees (forest)） — 202, 559–560
 - 三角形（triangle）
   - 扇（fan） — 686, *696–697*
@@ -2474,11 +2474,11 @@
 - 偏航（yaw） — 70n
 - YCoCg — *197–198*, 804–805
 - 远裁剪距离（yon） — 93n
-- ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_00efa9f788eb2b.png)缓冲区（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_00efa9f788eb2b.png)-buffer） — 见下列条目下的子项：“缓冲区”（see under buffer）
-- 深度冲突（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_00efa9f788eb2b.png)-fighting） — 1014
-- 深度预通道（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_00efa9f788eb2b.png)-prepass） — *803*, 881, 882, 901, 1016
-- 深度金字塔（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_00efa9f788eb2b.png)-pyramid） — 846
+- ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_00efa9f788eb2b.png)缓冲区（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_00efa9f788eb2b.png)-buffer） — 见下列条目下的子项：“缓冲区”（see under buffer）
+- 深度冲突（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_00efa9f788eb2b.png)-fighting） — 1014
+- 深度预通道（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_00efa9f788eb2b.png)-prepass） — *803*, 881, 882, 901, 1016
+- 深度金字塔（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_00efa9f788eb2b.png)-pyramid） — 846
 - 《Zaxxon》（*Zaxxon*） — 17
-- 最大深度剔除（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_6f44afca509d7a.png)-culling） — 见“剔除 › ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_6f44afca509d7a.png)”（see culling, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_6f44afca509d7a.png)）
-- 最小深度剔除（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_3f16ddb16cefaa.png)-culling） — 见“剔除 › ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_3f16ddb16cefaa.png)”（see culling, ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_I04_3f16ddb16cefaa.png)）
+- 最大深度剔除（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_6f44afca509d7a.png)-culling） — 见“剔除 › ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_6f44afca509d7a.png)”（see culling, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_6f44afca509d7a.png)）
+- 最小深度剔除（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_3f16ddb16cefaa.png)-culling） — 见“剔除 › ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_3f16ddb16cefaa.png)”（see culling, ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_I04_3f16ddb16cefaa.png)）
 - 带状谐波（zonal harmonics） — 401, 428, 430, 470

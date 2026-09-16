@@ -32,7 +32,7 @@
 辐射度学研究电磁辐射的测量。正如第 9.1 节将详细讨论的那样，这种辐射以波的形式传播。波长不同的电磁波往往具有不同的性质；波长是两个相邻同相位点之间的距离，例如两个相邻波峰之间的距离。在自然界中，电磁波的波长范围极其广阔，从长度不到百分之一纳米的伽马射线，到长达数万千米的极低频（ELF）无线电波。人类能够看见的波只占其中极小的一部分，从约 400 纳米的紫光延伸至略高于 700 纳米的红光。见图 8.1。
 
 
-![图8.1 可见光波长范围](Real-Time_Rendering_4th_中文/assets/fig_8_1_8.1.png)
+![图8.1 可见光波长范围](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_1_8.1.png)
 
 图 8.1. 可见光的波长范围，以及它在完整电磁波谱中的位置。
 
@@ -49,12 +49,12 @@
 | 名称 | 符号 | 单位 |
 | --- | --- | --- |
 | 辐射通量 | Φ | 瓦特（W） |
-| 辐照度 | E | W/![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_ffbbe823ae3e15.png) |
+| 辐照度 | E | W/![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_ffbbe823ae3e15.png) |
 | 辐射强度 | I | W/sr |
-| 辐亮度 | L | W/(![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_ffbbe823ae3e15.png)·sr) |
+| 辐亮度 | L | W/(![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_ffbbe823ae3e15.png)·sr) |
 
 
-![图8.2 一个球面度](Real-Time_Rendering_4th_中文/assets/fig_8_1_8.2.png)
+![图8.2 一个球面度](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_1_8.2.png)
 
 图 8.2. 在球的剖视图中，取出了一个立体角为一球面度的锥体。形状本身与这种度量无关，关键在于它覆盖的球面面积。
 
@@ -62,20 +62,20 @@
 
 现在可以介绍辐射强度 I：它是通量相对于方向的密度，更准确地说，是相对于立体角的密度（dΦ/dω）。其单位为瓦特每球面度。
 
-最后，辐亮度 L 度量单条光线中的电磁辐射。更准确地说，它定义为辐射通量同时相对于面积和立体角的密度（![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_5b3b08e89b31f7.png)Φ/(dA dω)）。这里的面积在垂直于光线的平面上测量。如果把辐亮度应用于其他朝向的表面，就必须使用一个余弦修正因子。你可能见过使用“投影面积”一词的辐亮度定义，该词指的就是这一修正因子。
+最后，辐亮度 L 度量单条光线中的电磁辐射。更准确地说，它定义为辐射通量同时相对于面积和立体角的密度（![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_5b3b08e89b31f7.png)Φ/(dA dω)）。这里的面积在垂直于光线的平面上测量。如果把辐亮度应用于其他朝向的表面，就必须使用一个余弦修正因子。你可能见过使用“投影面积”一词的辐亮度定义，该词指的就是这一修正因子。
 
-辐亮度是眼睛或相机等传感器所测量的量（更多细节见第 9.2 节），因此对渲染至关重要。求解着色方程的目的，是计算沿给定光线、从被着色表面点到相机的辐亮度。这条光线上的 L 值，是第 5 章中 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_6c3643fe80e198.png) 这一量在基于物理的描述中的对应物。辐亮度的公制单位是瓦特每平方米每球面度。
+辐亮度是眼睛或相机等传感器所测量的量（更多细节见第 9.2 节），因此对渲染至关重要。求解着色方程的目的，是计算沿给定光线、从被着色表面点到相机的辐亮度。这条光线上的 L 值，是第 5 章中 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_6c3643fe80e198.png) 这一量在基于物理的描述中的对应物。辐亮度的公制单位是瓦特每平方米每球面度。
 
 一个环境中的辐亮度可以看作由五个变量决定的函数（若计入波长，则为六个），称为辐亮度分布 [400]。其中三个变量指定位置，另外两个指定方向。这个函数描述在空间任意位置传播的所有光。理解渲染过程的一种方式是：眼睛与屏幕确定一个点和一组方向（例如穿过每个像素的光线），然后在眼睛位置沿每个方向对该函数求值。第 13.4 节讨论的基于图像的渲染使用了一个相关概念，称为光场。
 
-在着色方程中，辐亮度经常以 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_22bb825426ad82.png) 或 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_e97ae8ce09ddc4.png) 的形式出现，分别表示从点 **x** 出射或进入该点的辐亮度。方向向量 **d** 指示光线方向，按照约定始终指向远离 **x** 的方向。对于 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_b456bbb8033d74.png) 而言，这个约定可能有些令人困惑，因为 **d** 与光传播方向相反，但它便于点积等计算。
+在着色方程中，辐亮度经常以 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_22bb825426ad82.png) 或 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_e97ae8ce09ddc4.png) 的形式出现，分别表示从点 **x** 出射或进入该点的辐亮度。方向向量 **d** 指示光线方向，按照约定始终指向远离 **x** 的方向。对于 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_b456bbb8033d74.png) 而言，这个约定可能有些令人困惑，因为 **d** 与光传播方向相反，但它便于点积等计算。
 
 辐亮度的一个重要性质是：忽略雾等大气效应时，它不受距离影响。换言之，无论表面距离观察者多远，其辐亮度都相同。表面越远，覆盖的像素越少，但每个像素处来自表面的辐亮度保持不变。
 
 多数光波包含许多不同波长的混合。通常用光谱功率分布（spectral power distribution，SPD）将其可视化，即绘出光的能量如何分布在不同波长上。图 8.3 给出三个例子。值得注意的是，图 8.3 中间和下方的 SPD 虽然差异巨大，却被感知为同一种颜色。显然，人眼不是好的光谱仪。第 8.1.3 节将详细讨论色觉。
 
 
-![图8.3 三种光谱功率分布](Real-Time_Rendering_4th_中文/assets/fig_8_1_8.3.png)
+![图8.3 三种光谱功率分布](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_1_8.3.png)
 
 图 8.3. 三种不同光波的 SPD（光谱功率分布）。上图是绿色激光的 SPD，其光谱分布极窄，波形类似书页 294 图 9.1 中的简单正弦波。中图的光由同样的绿色激光，再加上红、蓝两种激光组成。这些激光的波长与相对强度，对应于显示中性白色的 RGB 激光投影显示器。下图是标准照明体 D65 的 SPD，它是一种典型的中性白色参考，旨在代表室外照明。这类能量连续分布于可见光谱范围内的 SPD，是自然照明的典型情况。
 
@@ -88,7 +88,7 @@
 辐射度学只处理物理量，不考虑人的感知。相关领域光度学与辐射度学类似，但会根据人眼的敏感度对所有量进行加权。辐射度学计算的结果，通过乘以 CIE 光度曲线¹ 转换为光度学单位。该曲线呈钟形，中心在约 555 nm，表示人眼对不同波长光的响应 [76, 544]。见图 8.4。
 
 
-![图8.4 光度曲线](Real-Time_Rendering_4th_中文/assets/fig_8_1_8.4.png)
+![图8.4 光度曲线](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_1_8.4.png)
 
 图 8.4. 光度曲线。
 
@@ -103,9 +103,9 @@
 | 辐射度学量：单位 | 光度学量：单位 |
 | --- | --- |
 | 辐射通量：瓦特（W） | 光通量：流明（lm） |
-| 辐照度：W/![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_ffbbe823ae3e15.png) | 照度：勒克斯（lx） |
+| 辐照度：W/![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_ffbbe823ae3e15.png) | 照度：勒克斯（lx） |
 | 辐射强度：W/sr | 发光强度：坎德拉（cd） |
-| 辐亮度：W/(![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_ffbbe823ae3e15.png)·sr) | 亮度：cd/![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_ffbbe823ae3e15.png) = 尼特（nit） |
+| 辐亮度：W/(![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_ffbbe823ae3e15.png)·sr) | 亮度：cd/![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_ffbbe823ae3e15.png) = 尼特（nit） |
 
 ### 8.1.3 色度学
 
@@ -118,21 +118,21 @@
 这些函数提供了一种把光谱功率分布转换为三个数值的方法。对于给定的单一波长的光，可以从图中读出三束彩色光的设置值，调整旋钮，建立相应照明条件，使屏幕上两个色块带来相同的感觉。对于任意光谱分布，可以将颜色匹配函数与该分布相乘，各条所得曲线下方的面积（即积分）给出彩色光的相对用量，使它们匹配该光谱产生的感知颜色。差异很大的光谱分布可能得到相同的三个权重，即对观察者来说看起来相同。给出相同匹配权重的光谱分布称为同色异谱体（metamers）。
 
 
-![图8.5 颜色匹配曲线](Real-Time_Rendering_4th_中文/assets/fig_8_1_8.5.png)
+![图8.5 颜色匹配曲线](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_1_8.5.png)
 
 图 8.5. Stiles 和 Burch [1703] 给出的 r、g 和 b 的 2° 视场颜色匹配曲线。不要把这些颜色匹配曲线与颜色匹配实验中所用光源的光谱分布混淆；那些光源是纯波长光。
 
-三束经过加权的 r、g、b 光不能直接表示所有可见颜色，因为它们的颜色匹配函数在一些波长上具有负权重。CIE 提出了三种不同的假想光源，其颜色匹配函数在所有可见波长上均为正。这些曲线是原始 r、g、b 颜色匹配函数的线性组合。这要求这些光源的光谱功率分布在某些波长上为负，因此它们是无法实际实现的数学抽象。它们的颜色匹配函数记作 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_0691fd68f2b833.png)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_213999127cafdb.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_ee6aff33849aee.png)，如图 8.6 所示。颜色匹配函数 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_213999127cafdb.png) 与光度曲线（图 8.4）相同，因为辐亮度正是通过这条曲线转换为亮度的。
+三束经过加权的 r、g、b 光不能直接表示所有可见颜色，因为它们的颜色匹配函数在一些波长上具有负权重。CIE 提出了三种不同的假想光源，其颜色匹配函数在所有可见波长上均为正。这些曲线是原始 r、g、b 颜色匹配函数的线性组合。这要求这些光源的光谱功率分布在某些波长上为负，因此它们是无法实际实现的数学抽象。它们的颜色匹配函数记作 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_0691fd68f2b833.png)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_213999127cafdb.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_ee6aff33849aee.png)，如图 8.6 所示。颜色匹配函数 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_213999127cafdb.png) 与光度曲线（图 8.4）相同，因为辐亮度正是通过这条曲线转换为亮度的。
 
 
-![图8.6 CIE颜色匹配函数](Real-Time_Rendering_4th_中文/assets/fig_8_1_8.6.png)
+![图8.6 CIE颜色匹配函数](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_1_8.6.png)
 
 图 8.6. 经 Judd–Vos 修正的 CIE（1978）2° 视场颜色匹配函数。注意，图中两个带上划线的 x 标记属于同一条曲线。
 
-与前一组颜色匹配函数一样，![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_0691fd68f2b833.png)、![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_213999127cafdb.png) 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_ee6aff33849aee.png) 通过相乘与积分，将任意 SPD s(λ) 化为三个数：
+与前一组颜色匹配函数一样，![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_0691fd68f2b833.png)、![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_213999127cafdb.png) 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_ee6aff33849aee.png) 通过相乘与积分，将任意 SPD s(λ) 化为三个数：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_181750dc84b36f.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_181750dc84b36f.png)
 
 
 这些 X、Y 和 Z 三刺激值，是在 CIE XYZ 空间中定义颜色的权重。将颜色分离为亮度（明亮程度）与色度，通常很方便。色度是独立于明亮程度的颜色特征。例如，两种蓝色，一种深、一种浅，虽然亮度不同，却可以具有相同色度。
@@ -140,7 +140,7 @@
 为此，CIE 通过把颜色投影到 X + Y + Z = 1 平面上，定义了一个二维色度空间。见图 8.7。这个空间的坐标称为 x 和 y，计算如下：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_44b7d3d5f547b4.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_44b7d3d5f547b4.png)
 
 
 z 值不提供额外信息，因此通常省略。以色度坐标 x 和 y 的值绘制的图，称为 CIE 1931 色度图。见图 8.8。图中的弯曲轮廓标示可见光谱颜色的位置，连接光谱两端的直线称为紫线。黑点标示照明体 D65 的色度，它是一个经常使用的白点，即用来定义白色或无彩色（无色）刺激的色度。
@@ -148,12 +148,12 @@ z 值不提供额外信息，因此通常省略。以色度坐标 x 和 y 的值
 回顾一下，我们从一个实验开始：使用三束单一波长的光，测量每束光需要多少才能匹配某个其他波长光的外观。有时，必须将这些纯色光添加到所观察的样本中，才能实现匹配。由此得到一组颜色匹配函数，再将它们组合，创建一组不含负值的新函数。有了这组非负颜色匹配函数，我们就能把任意光谱分布转换为一个定义颜色色度与亮度的 XYZ 坐标；保持亮度不变时，又可以将其约化为仅描述色度的 xy。
 
 
-![图8.7 XYZ空间中的RGB颜色立方体](Real-Time_Rendering_4th_中文/assets/fig_8_1_8.7.png)
+![图8.7 XYZ空间中的RGB颜色立方体](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_1_8.7.png)
 
 图 8.7. 在 XYZ 空间中展示了采用 CIE RGB 基色的 RGB 颜色立方体，以及它在 X + Y + Z = 1 平面上的投影（紫色）。蓝色轮廓包围所有可能的色度值所构成的空间。从原点出发的每条射线上，色度值保持不变，只有亮度变化。
 
 
-![图8.8 CIE1931色度图](Real-Time_Rendering_4th_中文/assets/fig_8_1_8.8.png)
+![图8.8 CIE1931色度图](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_1_8.8.png)
 
 图 8.8. CIE 1931 色度图。曲线上标注了相应纯色的波长。白色三角形与黑点分别表示 sRGB 和 Rec. 709 色彩空间所使用的色域与白点。
 
@@ -163,10 +163,10 @@ z 值不提供额外信息，因此通常省略。以色度坐标 x 和 y 的值
 
 色度图中的三角形表示典型电视或计算机显示器的色域。三角形的三个顶点是基色，即屏幕所能显示的饱和度最高的红、绿、蓝三色。色度图的一个重要性质是：可以用直线连接这些极限颜色，从而表示整个显示系统的极限。这些直线代表混合三种基色所能显示的颜色边界。白点表示当 R、G、B 颜色值彼此相等时，显示系统产生的色度。必须注意，显示系统的完整色域是一个三维体积；色度图只展示该体积在二维平面上的投影。更多信息见 Stone 的书 [1706]。
 
-有几种 RGB 空间与渲染密切相关，每种都由 R、G、B 基色和一个白点定义。为了比较它们，我们将使用另一种色度图，称为 CIE 1976 UCS（均匀色度标度）图。它是 CIELUV 色彩空间的一部分；CIE 采用该空间以及另一种空间 CIELAB，是为了提供在感知上比 XYZ 空间更加均匀的替代方案 [1707]。对于感知差异相同的颜色对，它们在 CIE XYZ 空间中的距离最多可以相差 20 倍。CIELUV 改善了这一情况，将该比值降至最多四倍。感知均匀性的提升，使 1976 色度图比 1931 色度图更适合比较 RGB 空间的色域。对感知均匀色彩空间的持续研究，近来产生了 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_183f43790d77ef.png) [364] 和 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_0b41a81b18610e.png) [1527] 空间。它们比 CIELUV 更加感知均匀，尤其适用于现代显示器典型的高亮度和饱和颜色。不过，基于这些色彩空间的色度图尚未被广泛采用，因此本章仍使用 CIE 1976 UCS 色度图，例如图 8.9。
+有几种 RGB 空间与渲染密切相关，每种都由 R、G、B 基色和一个白点定义。为了比较它们，我们将使用另一种色度图，称为 CIE 1976 UCS（均匀色度标度）图。它是 CIELUV 色彩空间的一部分；CIE 采用该空间以及另一种空间 CIELAB，是为了提供在感知上比 XYZ 空间更加均匀的替代方案 [1707]。对于感知差异相同的颜色对，它们在 CIE XYZ 空间中的距离最多可以相差 20 倍。CIELUV 改善了这一情况，将该比值降至最多四倍。感知均匀性的提升，使 1976 色度图比 1931 色度图更适合比较 RGB 空间的色域。对感知均匀色彩空间的持续研究，近来产生了 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_183f43790d77ef.png) [364] 和 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_0b41a81b18610e.png) [1527] 空间。它们比 CIELUV 更加感知均匀，尤其适用于现代显示器典型的高亮度和饱和颜色。不过，基于这些色彩空间的色度图尚未被广泛采用，因此本章仍使用 CIE 1976 UCS 色度图，例如图 8.9。
 
 
-![图8.9 三种RGB空间色域](Real-Time_Rendering_4th_中文/assets/fig_8_1_8.9.png)
+![图8.9 三种RGB空间色域](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_1_8.9.png)
 
 图 8.9. CIE 1976 UCS 图，展示三种 RGB 色彩空间 sRGB、DCI-P3 和 ACEScg 的基色与白点。sRGB 的图也适用于 Rec. 709，因为二者具有相同的基色和白点。
 
@@ -179,7 +179,7 @@ z 值不提供额外信息，因此通常省略。以色度坐标 x 和 y 的值
 一种常用转换是把 RGB 颜色转成灰度亮度值。由于亮度就是 Y 系数，这个操作只需要 RGB 到 XYZ 转换中的“Y 部分”。换言之，它是 RGB 系数与 RGB 到 XYZ 矩阵中间一行的点积。对于 sRGB 和 Rec. 709 空间，其公式为 [1704]：
 
 
-![数学公式](Real-Time_Rendering_4th_中文/assets/math/eq_08_01_a46b938f0a203d.png)
+![数学公式](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_01_a46b938f0a203d.png)
 
 
 这又把我们带回书页 271 图 8.4 的光度曲线。该曲线表示标准观察者的眼睛对各种波长光的响应。将它分别与三种基色的光谱功率分布相乘，再对每条所得曲线积分，得到的三个权重便构成了上述亮度方程。灰度强度值之所以不是红、绿、蓝各占相同比例，是因为眼睛对不同波长的光有不同敏感度。
@@ -195,7 +195,7 @@ z 值不提供额外信息，因此通常省略。以色度坐标 x 和 y 的值
 例如，最常见的渲染操作之一，是计算物体反射的光。通常，物体表面对某些波长光的反射比其他波长更多，这由其光谱反射率曲线描述。严格正确的反射光颜色计算方法，是在每个波长上将入射光 SPD 与光谱反射率相乘，得到反射光的 SPD，再把它转换为 RGB 颜色。而在 RGB 渲染器中，则把光源与表面的 RGB 颜色相乘，得到反射光的 RGB 颜色。在一般情况下，这样得不到正确结果。为了说明这一点，我们来看图 8.10 中一个有些极端的例子。
 
 
-![图8.10 投影幕反射率及两种照明体](Real-Time_Rendering_4th_中文/assets/fig_8_1_8.10.png)
+![图8.10 投影幕反射率及两种照明体](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_1_8.10.png)
 
 图 8.10. 上图显示一种为投影幕设计的材料的光谱反射率。下面两幅图显示两种具有相同 RGB 颜色的照明体的光谱功率分布：中图为 RGB 激光投影机，下图为 D65 标准照明体。幕布材料能够反射激光投影机约 80% 的光，因为它的反射率峰值与投影机的基色对齐。然而，它反射的 D65 照明体光线不到 20%，因为该照明体的大部分能量位于幕布反射率峰值之外。对该场景进行 RGB 渲染，则会预测幕布对两种光反射相同的强度。
 
@@ -204,7 +204,7 @@ z 值不提供额外信息，因此通常省略。以色度坐标 x 和 y 的值
 但是，图 8.10 展示的情况远非典型。实际遇到的表面光谱反射率曲线要平滑得多，例如图 8.11 中的曲线。典型照明体的 SPD 更接近 D65 照明体，而不是例子中的激光投影机。当照明体 SPD 和表面光谱反射率都平滑时，RGB 渲染所引入的误差就相对细微。
 
 
-![图8.11 黄色香蕉的光谱反射率](Real-Time_Rendering_4th_中文/assets/fig_8_1_8.11.png)
+![图8.11 黄色香蕉的光谱反射率](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_1_8.11.png)
 
 图 8.11. 黄色香蕉的光谱反射率 [544]。
 
@@ -225,14 +225,14 @@ z 值不提供额外信息，因此通常省略。以色度坐标 x 和 y 的值
 
 本节内容建立在介绍显示编码的第 5.6 节之上。我们决定把高动态范围（HDR）显示器的讨论推迟到本节，因为它需要色域等方面的背景知识，而本书前面相应位置尚未讨论这些主题。
 
-第 5.6 节讨论了标准动态范围（SDR）监视器和 SDR 电视机的显示编码：前者通常使用 sRGB 显示标准，后者使用 Rec. 709 和 Rec. 1886 标准。这两套标准的 RGB 色域和白点（D65）相同，非线性显示编码曲线也有些相似，但并不完全一致。它们的参考白亮度也大致相近：sRGB 为 80 cd/![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_02_ffbbe823ae3e15.png)，Rec. 709/1886 为 100 cd/![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_02_ffbbe823ae3e15.png)。监视器和电视机制造商并未严格遵守这些亮度规定；实际生产的显示器往往具有更亮的白电平 [1081]。
+第 5.6 节讨论了标准动态范围（SDR）监视器和 SDR 电视机的显示编码：前者通常使用 sRGB 显示标准，后者使用 Rec. 709 和 Rec. 1886 标准。这两套标准的 RGB 色域和白点（D65）相同，非线性显示编码曲线也有些相似，但并不完全一致。它们的参考白亮度也大致相近：sRGB 为 80 cd/![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_02_ffbbe823ae3e15.png)，Rec. 709/1886 为 100 cd/![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_02_ffbbe823ae3e15.png)。监视器和电视机制造商并未严格遵守这些亮度规定；实际生产的显示器往往具有更亮的白电平 [1081]。
 
-HDR 显示器采用 Rec. 2020 和 Rec. 2100 标准。Rec. 2020 定义的颜色空间具有明显更宽的色域，如图 8.12 所示，其白点与 Rec. 709 和 sRGB 颜色空间相同，都是 D65。Rec. 2100 定义了两种非线性显示编码：感知量化器（perceptual quantizer，PQ）[1213] 和混合对数伽马（hybrid log-gamma，HLG）。HLG 编码在渲染场合中使用不多，因此这里主要讨论 PQ；它定义的峰值亮度为 10,000 cd/![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_02_ffbbe823ae3e15.png)。
+HDR 显示器采用 Rec. 2020 和 Rec. 2100 标准。Rec. 2020 定义的颜色空间具有明显更宽的色域，如图 8.12 所示，其白点与 Rec. 709 和 sRGB 颜色空间相同，都是 D65。Rec. 2100 定义了两种非线性显示编码：感知量化器（perceptual quantizer，PQ）[1213] 和混合对数伽马（hybrid log-gamma，HLG）。HLG 编码在渲染场合中使用不多，因此这里主要讨论 PQ；它定义的峰值亮度为 10,000 cd/![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_02_ffbbe823ae3e15.png)。
 
-虽然峰值亮度和色域的规定对于编码十分重要，但就实际显示器而言，这些指标在一定程度上仍是理想目标。在本书写作时，消费级 HDR 显示器中，峰值亮度能够超过 1500 cd/![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_02_ffbbe823ae3e15.png) 的都很少。实际显示器的色域也更接近 DCI-P3，而不是 Rec. 2020；图 8.12 同时画出了 DCI-P3 色域。因此，HDR 显示器会在内部进行色调映射和色域映射，把标准规定的范围映射到显示器的实际能力范围。应用程序可以传递元数据，指出内容的实际动态范围和色域，从而影响这种映射 [672, 1082]。
+虽然峰值亮度和色域的规定对于编码十分重要，但就实际显示器而言，这些指标在一定程度上仍是理想目标。在本书写作时，消费级 HDR 显示器中，峰值亮度能够超过 1500 cd/![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_02_ffbbe823ae3e15.png) 的都很少。实际显示器的色域也更接近 DCI-P3，而不是 Rec. 2020；图 8.12 同时画出了 DCI-P3 色域。因此，HDR 显示器会在内部进行色调映射和色域映射，把标准规定的范围映射到显示器的实际能力范围。应用程序可以传递元数据，指出内容的实际动态范围和色域，从而影响这种映射 [672, 1082]。
 
 
-![图 8.12 色域与白点](Real-Time_Rendering_4th_中文/assets/fig_8_2_8.12.png)
+![图 8.12 色域与白点](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_2_8.12.png)
 
 图 8.12：CIE 1976 UCS 色度图，显示了 Rec. 2020 与 sRGB/Rec. 709 颜色空间的色域和白点（D65）。图中还给出了 DCI-P3 颜色空间的色域以供比较。
 
@@ -253,7 +253,7 @@ Lottes [1083] 指出，实际上还有第四种选择。如果仔细调整曝光
 **色调映射**（tone mapping），或称**色调再现**（tone reproduction），是将场景辐亮度值转换为显示辐亮度值的过程。这一步应用的变换称为**端到端传递函数**（end-to-end transfer function），或**场景到屏幕变换**（scene-to-screen transform）。理解色调映射的关键在于**图像状态**（image state）这一概念 [1602]。有两种基本图像状态：**场景参照**（scene-referred）图像相对于场景辐亮度值定义；**显示参照**（display-referred）图像则相对于显示辐亮度值定义。图像状态与编码无关，处于任何一种状态的图像都可以采用线性编码或非线性编码。图 8.13 展示了图像状态、色调映射和显示编码如何在**成像流水线**中协同工作；这条流水线处理从最初渲染到最终显示的颜色值。
 
 
-![图 8.13 成像流水线](Real-Time_Rendering_4th_中文/assets/fig_8_2_8.13.png)
+![图 8.13 成像流水线](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_2_8.13.png)
 
 图 8.13：合成图像（渲染图像）的成像流水线。首先渲染出线性的场景参照辐亮度值，色调映射将其转换成线性的显示参照值。显示编码应用 EOTF 的逆函数，将线性显示值转换成非线性编码值（码值），并传递给显示器。最后，显示硬件应用 EOTF，把非线性显示值转换为从屏幕发出并进入眼睛的线性辐亮度。
 
@@ -262,7 +262,7 @@ Lottes [1083] 指出，实际上还有第四种选择。如果仔细调整曝光
 要理解色调映射的目标，最好把它看作**图像再现**（image reproduction）的一个实例 [757]。图像再现的目标，是生成一幅显示参照图像，使其在给定的显示器特性和观看条件下，尽可能接近地再现观看者直接观察原始场景时所获得的感知印象。见图 8.14。
 
 
-![图 8.14 图像再现的感知目标](Real-Time_Rendering_4th_中文/assets/fig_8_2_8.14.png)
+![图 8.14 图像再现的感知目标](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_2_8.14.png)
 
 图 8.14：图像再现的目标，是确保再现图像（右）唤起的感知印象尽可能接近原始场景（左）所产生的感知印象。
 
@@ -300,12 +300,12 @@ Day [330] 介绍了一条 S 形色调曲线，它用于 Insomniac Games 的游�
 
 虽然 ACES 是为电影和电视设计的，但它的变换正越来越多地用于实时应用。Unreal Engine 默认启用 ACES 色调映射 [1802]，Unity 引擎也支持它 [1801]。Narkowicz 给出了针对 ACES RRT 与 SDR、HDR ODT 所拟合的低成本曲线 [1260, 1261]，Patry [1359] 也做了类似工作。Hart [672] 则给出了 ACES ODT 的参数化版本，以支持一系列设备。
 
-使用 HDR 显示器进行色调映射需要谨慎，因为显示器本身也会应用一些色调映射。Fry [497] 介绍了 Frostbite 游戏引擎使用的一组色调映射变换。对于 SDR 显示器，它们应用较强的色调再现曲线；对于使用 HDR10 信号路径的显示器，应用较弱的曲线，并根据显示器峰值亮度作一定调整；对于使用 Dolby Vision 路径的显示器，则不应用色调映射，换句话说，依赖显示器执行内置的 Dolby Vision 色调映射。Frostbite 色调再现变换被设计为中性，不显著改变对比度或色相，目的是让所有期望的对比度或色相修改都通过调色来完成，见第 8.2.3 节。为此，色调再现变换在 ![数学符号](Real-Time_Rendering_4th_中文/assets/math/eq_08_02_850e566f72f9e6.png)（ICtCp）颜色空间中执行 [364]；该空间的设计目标是感知均匀性，以及色度轴和亮度轴之间的正交性。Frostbite 变换对亮度进行色调映射，并随着亮度逐渐压缩至显示白色而越来越多地降低色度的饱和程度。这样就能获得不产生色相偏移的干净变换。
+使用 HDR 显示器进行色调映射需要谨慎，因为显示器本身也会应用一些色调映射。Fry [497] 介绍了 Frostbite 游戏引擎使用的一组色调映射变换。对于 SDR 显示器，它们应用较强的色调再现曲线；对于使用 HDR10 信号路径的显示器，应用较弱的曲线，并根据显示器峰值亮度作一定调整；对于使用 Dolby Vision 路径的显示器，则不应用色调映射，换句话说，依赖显示器执行内置的 Dolby Vision 色调映射。Frostbite 色调再现变换被设计为中性，不显著改变对比度或色相，目的是让所有期望的对比度或色相修改都通过调色来完成，见第 8.2.3 节。为此，色调再现变换在 ![数学符号](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/math/eq_08_02_850e566f72f9e6.png)（ICtCp）颜色空间中执行 [364]；该空间的设计目标是感知均匀性，以及色度轴和亮度轴之间的正交性。Frostbite 变换对亮度进行色调映射，并随着亮度逐渐压缩至显示白色而越来越多地降低色度的饱和程度。这样就能获得不产生色相偏移的干净变换。
 
 颇具讽刺意味的是，一些资源（例如火焰效果）在制作时特意利用了原先变换中的色相偏移，因此新变换使这些资源出现了问题。Frostbite 团队最终修改了变换，让用户能够重新向显示参照颜色中引入一定程度的色相偏移。图 8.15 将 Frostbite 变换与本节提到的其他几种变换进行了比较。
 
 
-![图 8.15 四种色调变换的比较](Real-Time_Rendering_4th_中文/assets/fig_8_2_8.15.png)
+![图 8.15 四种色调变换的比较](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_2_8.15.png)
 
 图 8.15：对同一场景应用四种不同的色调变换。差异主要出现在圈出的区域，其中场景像素值特别高。左上：裁剪，外加 sRGB OETF；右上：Reinhard [1478]；左下：Duiker [392]；右下：Frostbite 的保持色相版本 [497]。Reinhard、Duiker 和 Frostbite 变换都保留了裁剪会丢失的高光信息。不过，Reinhard 曲线倾向于降低图像较暗部分的饱和度 [628, 629]，而 Duiker 变换会提高暗部区域的饱和度；有时这种特性被认为是理想的 [630]。Frostbite 变换按设计同时保持饱和度与色相，避免了其他三幅图中左下圆圈处可见的强烈色相偏移。（图片由 ©2018 Electronic Arts Inc. 提供。）
 
@@ -328,7 +328,7 @@ Day [330] 介绍了一条 S 形色调曲线，它用于 Insomniac Games 的游�
 Selan [1601] 展示了如何把调色或图像编辑应用程序中的任意颜色变换“烘焙”进三维颜色查找表（LUT）。使用这种表时，以输入的 R、G、B 值分别作为 x、y、z 坐标，在表中查找新的颜色。因此，在 LUT 分辨率所允许的范围内，它可以实现任意输入颜色到输出颜色的映射。Selan 的烘焙过程首先取一个恒等 LUT，也就是将每个输入颜色映射为其自身的 LUT，将它“切片”成二维图像。随后，把这个切片 LUT 图像载入调色应用程序，对它应用定义所需创意风格的各项操作。必须注意，只能对 LUT 施加颜色操作，不能使用模糊等空间操作。然后保存编辑后的 LUT，将其“打包”为三维 GPU 纹理，并在渲染应用程序中实时对渲染像素施加同样的颜色变换。Iwanicki [806] 提出了一种巧妙的方法，利用最小二乘最小化来减小将颜色变换存入 LUT 时的采样误差。
 
 
-![图 8.16 显示参照与场景参照调色](Real-Time_Rendering_4th_中文/assets/fig_8_2_8.16.png)
+![图 8.16 显示参照与场景参照调色](https://raw.githubusercontent.com/ahuibo/Real-Time-Rendering-4th-CN/main/Real-Time_Rendering_4th_%E4%B8%AD%E6%96%87/assets/fig_8_2_8.16.png)
 
 图 8.16：游戏《神秘海域 4》（Uncharted 4）中的一个场景。上方截图没有调色，另外两张截图分别应用了调色操作。为了说明问题，这里选择了极端的调色操作，即乘以一个高饱和度的青色。左下截图是在显示参照图像上调色，也就是色调映射之后；右下截图是在场景参照图像上调色，也就是色调映射之前。（UNCHARTED 4 A Thief’s End ©/TM 2016 SIE。由 Naughty Dog LLC 创作并开发。）
 
